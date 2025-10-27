@@ -1,0 +1,293 @@
+# 📚 Teoría - Módulo 1: Fundamentos de Bash
+
+> **Objetivo**: Comprender los conceptos básicos de Bash y el shell scripting
+
+## 🎯 ¿Qué es Bash?
+
+**Bash** (Bourne Again Shell) es un intérprete de comandos y lenguaje de scripting que permite:
+
+- Interactuar con el sistema operativo
+- Automatizar tareas repetitivas
+- Procesar archivos y datos
+- Administrar el sistema
+
+## 🤔 ¿Para qué sirve?
+
+### En el Día a Día
+
+- ✅ Automatizar tareas manuales repetitivas
+- ✅ Gestionar archivos y directorios eficientemente
+- ✅ Procesar datos y logs del sistema
+- ✅ Crear herramientas personalizadas
+
+### En el Mundo Profesional
+
+- 🚀 **DevOps**: Scripts de despliegue y automatización
+- 🔧 **SysAdmin**: Administración y monitoreo de servidores
+- 📊 **Data Processing**: Limpieza y transformación de datos
+- 🧪 **Testing**: Automatización de pruebas
+
+## 📖 Conceptos Clave
+
+### 1. El Shell
+
+**¿Qué es?** El shell es la interfaz entre el usuario y el sistema operativo.
+
+**¿Para qué?** Permite ejecutar comandos, programas y scripts de forma interactiva o automatizada.
+
+```bash
+# Ejemplo básico
+echo "Hola Mundo"  # Muestra texto en pantalla
+```
+
+### 2. Variables
+
+**¿Qué son?** Contenedores que almacenan información temporalmente.
+
+**¿Para qué?** Guardar datos que necesitamos usar múltiples veces o procesar.
+
+```bash
+# Definir variable
+nombre="Juan"
+echo "Hola $nombre"  # Usa la variable
+```
+
+### 3. Comandos Básicos
+
+**¿Qué son?** Instrucciones que le damos al sistema.
+
+**¿Para qué?** Realizar operaciones como listar archivos, crear carpetas, mover datos.
+
+```bash
+ls        # Listar archivos
+pwd       # Mostrar directorio actual
+cd dir    # Cambiar de directorio
+mkdir dir # Crear directorio
+```
+
+### 4. Scripts
+
+**¿Qué son?** Archivos de texto con una secuencia de comandos.
+
+**¿Para qué?** Automatizar tareas que requieren múltiples pasos.
+
+```bash
+#!/bin/bash
+# Mi primer script
+
+echo "Iniciando proceso..."
+fecha=$(date)
+echo "Fecha actual: $fecha"
+echo "Proceso completado!"
+```
+
+### 5. Permisos
+
+**¿Qué son?** Controles de acceso a archivos y directorios.
+
+**¿Para qué?** Seguridad y control sobre quién puede leer, escribir o ejecutar archivos.
+
+```bash
+# Hacer un script ejecutable
+chmod +x mi_script.sh
+
+# Ver permisos
+ls -l mi_script.sh
+```
+
+## 🎨 Casos de Uso Reales
+
+### 1. Backup Automatizado
+
+**Problema**: Necesito hacer copias de seguridad diarias  
+**Solución**: Script que copia archivos importantes
+
+```bash
+#!/bin/bash
+backup_dir="/backup/$(date +%Y%m%d)"
+mkdir -p "$backup_dir"
+cp -r /ruta/importante/* "$backup_dir/"
+echo "Backup completado en $backup_dir"
+```
+
+### 2. Limpieza de Archivos Temporales
+
+**Problema**: Los archivos temp ocupan mucho espacio  
+**Solución**: Script que elimina archivos antiguos
+
+```bash
+#!/bin/bash
+find /tmp -type f -mtime +7 -delete
+echo "Archivos temporales eliminados"
+```
+
+### 3. Reporte de Sistema
+
+**Problema**: Necesito revisar el estado del servidor  
+**Solución**: Script que genera reporte rápido
+
+```bash
+#!/bin/bash
+echo "=== Reporte del Sistema ==="
+echo "Fecha: $(date)"
+echo "Espacio en disco:"
+df -h /
+echo "Memoria:"
+free -h
+```
+
+## 🔑 Conceptos Fundamentales
+
+### Entrada y Salida
+
+- **stdin** (0): Entrada estándar (teclado)
+- **stdout** (1): Salida estándar (pantalla)
+- **stderr** (2): Salida de errores
+
+```bash
+# Redirigir salida a archivo
+echo "Hola" > archivo.txt
+
+# Redirigir errores
+comando 2> errores.log
+
+# Redirigir todo
+comando &> todo.log
+```
+
+### Variables Especiales
+
+```bash
+$0  # Nombre del script
+$1  # Primer argumento
+$#  # Número de argumentos
+$@  # Todos los argumentos
+$?  # Código de salida del último comando
+$$  # PID del proceso actual
+```
+
+## 🎓 Principios de Buenas Prácticas
+
+### 1. Siempre usar Shebang
+
+```bash
+#!/bin/bash
+# Indica qué intérprete usar
+```
+
+### 2. Comentar el código
+
+```bash
+# Esto explica qué hace el código
+# Es esencial para mantenimiento
+```
+
+### 3. Usar nombres descriptivos
+
+```bash
+# ❌ Mal
+x="archivo"
+
+# ✅ Bien
+nombre_archivo="datos.txt"
+```
+
+### 4. Validar errores
+
+```bash
+# Detener si hay error
+set -e
+
+# Validar que existe un archivo
+if [ ! -f "$archivo" ]; then
+    echo "Error: archivo no existe"
+    exit 1
+fi
+```
+
+### 5. Usar comillas
+
+```bash
+# ❌ Puede fallar si hay espacios
+echo $variable
+
+# ✅ Seguro
+echo "$variable"
+```
+
+## 📝 Sintaxis Básica
+
+### Estructura de un Script
+
+```bash
+#!/bin/bash
+# Título: Mi Script
+# Descripción: Qué hace el script
+# Autor: Tu nombre
+# Fecha: 2025-01-01
+
+# Configuración
+set -euo pipefail  # Modo estricto
+
+# Variables
+variable="valor"
+
+# Lógica principal
+echo "Inicio del script"
+
+# Más código...
+
+echo "Fin del script"
+exit 0
+```
+
+## 🚀 Ventajas de Dominar Bash
+
+1. **Productividad**: Automatiza tareas tediosas
+2. **Portabilidad**: Funciona en casi todos los sistemas Unix/Linux
+3. **Poder**: Acceso completo al sistema
+4. **Eficiencia**: Scripts ligeros y rápidos
+5. **Demanda**: Habilidad muy valorada en el mercado
+
+## 🎯 Lo que Aprenderás
+
+Al finalizar este módulo podrás:
+
+- ✅ Escribir scripts básicos de Bash
+- ✅ Usar variables y comandos fundamentales
+- ✅ Gestionar archivos y directorios
+- ✅ Entender permisos y ejecución
+- ✅ Crear herramientas simples pero útiles
+
+## 📚 Recursos Adicionales
+
+### Comandos Esenciales a Memorizar
+
+- `echo` - Mostrar texto
+- `ls` - Listar contenido
+- `cd` - Cambiar directorio
+- `pwd` - Directorio actual
+- `mkdir` - Crear directorio
+- `rm` - Eliminar
+- `cp` - Copiar
+- `mv` - Mover/Renombrar
+- `cat` - Ver contenido
+- `chmod` - Cambiar permisos
+
+### Archivos Importantes
+
+- `/etc/` - Configuración del sistema
+- `/home/` - Directorios de usuarios
+- `/tmp/` - Archivos temporales
+- `/var/log/` - Logs del sistema
+
+## ➡️ Siguiente Paso
+
+Una vez comprendida la teoría, continúa con:
+
+- **[2-ejercicios](../2-ejercicios/README.md)**: Práctica guiada paso a paso
+- **[3-proyectos](../3-proyectos/README.md)**: Aplicación en proyectos reales
+
+---
+
+**💡 Recuerda**: La teoría es la base, pero la práctica es lo que consolida el conocimiento. ¡Avanza a los ejercicios cuando te sientas listo!
