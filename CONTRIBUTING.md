@@ -141,10 +141,12 @@ bc_bash/
 │   ├── templates/           # 📋 Plantillas
 │   └── assets/              # 🖼️ Recursos
 ├── _scripts/                # 🔧 Automatización
-├── modulo1-8/               # 📖 Módulos educativos
-│   ├── ejercicios/          # 💪 Ejercicios
-│   ├── proyectos/           # 🚀 Proyectos
-│   └── README.md           # 📋 Descripción
+├── assets/                  # 🎨 Logos y recursos visuales
+├── bootcamp/                # 🎓 Contenido del bootcamp
+│   ├── modulo1-8/          # 📖 Módulos educativos
+│   │   ├── ejercicios/     # 💪 Ejercicios
+│   │   ├── proyectos/      # 🚀 Proyectos
+│   │   └── README.md       # 📋 Descripción
 └── tests/                   # 🧪 Tests (si aplica)
 ```
 
@@ -152,7 +154,7 @@ bc_bash/
 
 - **Documentación global** → `_docs/`
 - **Scripts de utilidad** → `_scripts/`
-- **Contenido educativo** → `moduloX/`
+- **Contenido educativo** → `bootcamp/moduloX/`
 - **Assets compartidos** → `assets/`
 
 ## 🔄 Sistema de Commits

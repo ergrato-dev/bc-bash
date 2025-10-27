@@ -1,0 +1,81 @@
+{
+  "name": "Bootcamp Bash Development Environment",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "bootcamp-bash",
+  "workspaceFolder": "/workspace",
+
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "username": "vscode",
+      "userUid": "automatic",
+      "userGid": "automatic"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "ppa": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "nodeGypDependencies": true,
+      "version": "lts"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-json",
+        "ms-vscode.hexeditor",
+        "timonwong.shellcheck",
+        "rogalmic.bash-debug",
+        "mads-hartmann.bash-ide-vscode",
+        "foxundermoon.shell-format",
+        "ms-vscode.vscode-markdown",
+        "yzhang.markdown-all-in-one",
+        "davidanson.vscode-markdownlint",
+        "github.copilot",
+        "github.copilot-chat",
+        "ms-vscode.live-server",
+        "formulahendry.code-runner"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/usr/bin/zsh"
+          }
+        },
+        "shellcheck.enable": true,
+        "shellcheck.run": "onType",
+        "bash-ide-vscode.highlightParsingErrors": true,
+        "files.eol": "\n",
+        "files.insertFinalNewline": true,
+        "files.trimTrailingWhitespace": true,
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "markdown.preview.fontSize": 14,
+        "markdown.preview.lineHeight": 1.6
+      }
+    }
+  },
+
+  "forwardPorts": [3000, 8000, 8080],
+
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+
+  "remoteUser": "vscode",
+
+  "containerEnv": {
+    "BOOTCAMP_ENV": "container",
+    "LANG": "en_US.UTF-8",
+    "LC_ALL": "en_US.UTF-8",
+    "TZ": "America/Bogota",
+    "PNPM_HOME": "/home/vscode/.local/share/pnpm",
+    "PATH": "/home/vscode/.local/share/pnpm:$PATH"
+  }
+}

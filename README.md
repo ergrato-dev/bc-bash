@@ -38,14 +38,16 @@ Este proyecto incluye un **sistema de commits automáticos profesional** que pue
 bc_bash/
 ├── _docs/          # 📚 Documentación completa
 ├── _scripts/       # 🔧 Scripts de automatización
-├── modulo1/        # 📖 Fundamentos de Bash
-├── modulo2/        # 📖 Comandos Avanzados y Pipes
-├── modulo3/        # 📖 Variables y Control de Flujo
-├── modulo4/        # 📖 Funciones y Arrays
-├── modulo5/        # 📖 Operaciones de Archivos y Texto
-├── modulo6/        # 📖 Manipulación Avanzada de Datos
-├── modulo7/        # 📖 Optimización y Debugging
-└── modulo8/        # 📖 Proyectos Avanzados y Automatización
+├── assets/         # 🎨 Logos y recursos visuales
+└── bootcamp/       # 🎓 Contenido del bootcamp
+    ├── modulo1/    # 📖 Fundamentos de Bash
+    ├── modulo2/    # 📖 Comandos Avanzados y Pipes
+    ├── modulo3/    # 📖 Variables y Control de Flujo
+    ├── modulo4/    # 📖 Funciones y Arrays
+    ├── modulo5/    # 📖 Operaciones de Archivos y Texto
+    ├── modulo6/    # 📖 Manipulación Avanzada de Datos
+    ├── modulo7/    # 📖 Optimización y Debugging
+    └── modulo8/    # 📖 Proyectos Avanzados y Automatización
 ```
 
 ### Módulos del Bootcamp
@@ -115,7 +117,7 @@ cd bc_bash
 
 ```bash
 # Comenzar con módulo 1
-cd modulo1
+cd bootcamp/modulo1
 cat README.md
 ```
 
@@ -123,7 +125,7 @@ cat README.md
 
 ```bash
 # Hacer cambios y commitear automáticamente
-echo "Mi ejercicio" > modulo1/mi_script.sh
+echo "Mi ejercicio" > bootcamp/modulo1/mi_script.sh
 ./_scripts/commit.sh auto
 ```
 

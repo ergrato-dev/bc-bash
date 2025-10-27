@@ -6,7 +6,7 @@ This is a comprehensive 8-module Bash scripting bootcamp project designed for le
 
 ## Project Structure
 
-- **8 modules**: `modulo1/` through `modulo8/`
+- **8 modules**: Inside `bootcamp/` directory - `bootcamp/modulo1/` through `bootcamp/modulo8/`
 - **Documentation**: All documentation files go in `_docs/`
 - **Scripts**: All utility and automation scripts go in `_scripts/`
 - **Exercises**: Each module contains `/ejercicios/` subdirectory
@@ -18,17 +18,19 @@ This is a comprehensive 8-module Bash scripting bootcamp project designed for le
 bc_bash/
 ├── _docs/                    # All project documentation
 ├── _scripts/                 # All utility and automation scripts
-├── modulo1/                  # Module 1: Bash Basics
-│   ├── ejercicios/           # Hands-on exercises
-│   ├── proyectos/            # Module projects
-│   └── README.md            # Module overview
-├── modulo2/                  # Module 2: Advanced Commands and Pipes
-├── modulo3/                  # Module 3: Variables and Control Flow
-├── modulo4/                  # Module 4: Functions and Arrays
-├── modulo5/                  # Module 5: File Operations and Text Processing
-├── modulo6/                  # Module 6: Advanced Data Manipulation
-├── modulo7/                  # Module 7: Optimization and Debugging
-├── modulo8/                  # Module 8: Advanced Projects and Automation
+├── assets/                   # Logos and visual resources
+├── bootcamp/                 # Bootcamp content directory
+│   ├── modulo1/             # Module 1: Bash Basics
+│   │   ├── ejercicios/      # Hands-on exercises
+│   │   ├── proyectos/       # Module projects
+│   │   └── README.md        # Module overview
+│   ├── modulo2/             # Module 2: Advanced Commands and Pipes
+│   ├── modulo3/             # Module 3: Variables and Control Flow
+│   ├── modulo4/             # Module 4: Functions and Arrays
+│   ├── modulo5/             # Module 5: File Operations and Text Processing
+│   ├── modulo6/             # Module 6: Advanced Data Manipulation
+│   ├── modulo7/             # Module 7: Optimization and Debugging
+│   └── modulo8/             # Module 8: Advanced Projects and Automation
 └── README.md                # Main project README
 ```
 

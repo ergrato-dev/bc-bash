@@ -63,12 +63,9 @@ docs/_build/
 *.html
 
 # Archivos específicos del proyecto
-# Carpetas excluidas del repositorio de GitHub
-_docs/
-_scripts/
-
-# Archivos específicos del proyecto
 # (descomenta según necesites)
+# _docs/private/
+# _scripts/secrets/
 # local/
 
 # Node modules si usas herramientas de Node.js con pnpm
@@ -138,18 +135,8 @@ config/private.json
 .config/secrets
 .secrets/
 
-# Development containers - ignored for GitHub
-.devcontainer/
-.devcontainer.json
-devcontainer.json
-docker-compose.override.yml
 
-# Docker
-.dockerignore
-Dockerfile.local
-docker-compose.local.yml
-
-# Containers y volumenes
-.docker/
-docker-data/
-container-data/
+_docs/*
+_scripts/*
+# Video content - Bootcamp Bash (LOCAL ONLY)
+_docs/video-bash-bootcamp/

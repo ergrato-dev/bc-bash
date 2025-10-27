@@ -14,13 +14,13 @@ assignees: ''
 - [ ] Clarificación necesaria
 - [ ] Mejora de ejemplos
 - [ ] Traducción
-- [ ] Otro: ******\_******
+- [ ] Otro: **\*\***\_**\*\***
 
 ## 📍 Ubicación
 
 ¿Dónde está el problema de documentación?
 
-- **Archivo**: [ej. README.md, modulo3/README.md]
+- **Archivo**: [ej. README.md, bootcamp/modulo3/README.md]
 - **Sección**: [ej. "Instalación", "Módulo 3"]
 - **Línea**: [si es aplicable]
 

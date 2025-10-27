@@ -1,0 +1,107 @@
+services:
+  bootcamp-bash:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bootcamp-bash-dev
+    hostname: bootcamp-bash
+
+    # Configuración de volúmenes para proteger datos
+    volumes:
+      - ../:/workspace:cached
+      - bootcamp-bash-data:/home/vscode/.local
+      - bootcamp-bash-cache:/home/vscode/.cache
+      - bootcamp-bash-config:/home/vscode/.config
+      - /var/run/docker.sock:/var/run/docker-host.sock:ro
+
+    # Variables de entorno
+    environment:
+      - BOOTCAMP_ENV=container
+      - LANG=en_US.UTF-8
+      - LC_ALL=en_US.UTF-8
+      - TZ=America/Bogota
+      - DOCKER_HOST=unix:///var/run/docker-host.sock
+      - WORKSPACE_ROOT=/workspace
+      - PNPM_HOME=/home/vscode/.local/share/pnpm
+      - PATH=/home/vscode/.local/share/pnpm:$PATH
+
+    # Puertos para desarrollo web y servicios
+    ports:
+      - '3000:3000'
+      - '8000:8000'
+      - '8080:8080'
+      - '9000:9000'
+
+    # Configuración de red
+    networks:
+      - bootcamp-network
+
+    # Configuración de seguridad
+    security_opt:
+      - seccomp:unconfined
+
+    # Mantener el contenedor ejecutándose
+    command: sleep infinity
+
+    # Usuario no root para mayor seguridad
+    user: vscode
+
+    # Configuración de recursos
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+
+  # Servicio opcional para base de datos (para ejercicios avanzados)
+  postgres:
+    image: postgres:15-alpine
+    container_name: bootcamp-postgres
+    environment:
+      - POSTGRES_DB=bootcamp_db
+      - POSTGRES_USER=bootcamp_user
+      - POSTGRES_PASSWORD=bootcamp_pass
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    networks:
+      - bootcamp-network
+    profiles:
+      - database
+
+  # Servicio opcional para Redis (para ejercicios de cache)
+  redis:
+    image: redis:7-alpine
+    container_name: bootcamp-redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis-data:/data
+    networks:
+      - bootcamp-network
+    profiles:
+      - cache
+
+volumes:
+  bootcamp-bash-data:
+    driver: local
+  bootcamp-bash-cache:
+    driver: local
+  bootcamp-bash-config:
+    driver: local
+  postgres-data:
+    driver: local
+  redis-data:
+    driver: local
+
+networks:
+  bootcamp-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16

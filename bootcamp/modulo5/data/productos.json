@@ -1,0 +1,44 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Laptop Gaming",
+      "precio": 1299.99,
+      "categoria": "Electrónicos",
+      "stock": 15,
+      "activo": true
+    },
+    {
+      "id": 2,
+      "nombre": "Mouse Inalámbrico",
+      "precio": 29.99,
+      "categoria": "Accesorios",
+      "stock": 45,
+      "activo": true
+    },
+    {
+      "id": 3,
+      "nombre": "Teclado Mecánico",
+      "precio": 89.99,
+      "categoria": "Accesorios",
+      "stock": 23,
+      "activo": true
+    },
+    {
+      "id": 4,
+      "nombre": "Monitor 4K",
+      "precio": 399.99,
+      "categoria": "Electrónicos",
+      "stock": 8,
+      "activo": false
+    },
+    {
+      "id": 5,
+      "nombre": "Webcam HD",
+      "precio": 79.99,
+      "categoria": "Accesorios",
+      "stock": 31,
+      "activo": true
+    }
+  ]
+}
