@@ -138,5 +138,6 @@ config/private.json
 
 _docs/*
 _scripts/*
+epti/*
 # Video content - Bootcamp Bash (LOCAL ONLY)
 _docs/video-bash-bootcamp/
