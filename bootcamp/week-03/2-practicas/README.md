@@ -1,305 +1,93 @@
-# 📚 Ejercicios - Semana 3: Variables y Control de Flujo
+# 📚 Prácticas - Semana 3: Variables y Control de Flujo
 
-## 📖 Descripción General
+> **Tiempo estimado total**: 2-2.5 horas
 
-Este módulo contiene ejercicios prácticos para dominar las estructuras de control de flujo en Bash: condicionales, loops y case statements. Estos son los fundamentos para crear scripts dinámicos y poderosos.
+## 🎯 Descripción General
 
-## 🎯 Objetivos de Aprendizaje
+Esta carpeta contiene 5 prácticas guiadas que te llevarán desde los conceptos básicos de condicionales hasta la creación de un analizador de logs completo.
 
-Al completar estos ejercicios, serás capaz de:
+## 📋 Lista de Prácticas
 
-- ✅ Usar condicionales `if/elif/else` para tomar decisiones
-- ✅ Iterar con loops `for` sobre listas, rangos y archivos
-- ✅ Controlar flujo con `while` y `until`
-- ✅ Crear menús elegantes con `case`
-- ✅ Validar entrada de usuario
-- ✅ Combinar estructuras para crear aplicaciones completas
+| # | Práctica | Dificultad | Tiempo | Temas |
+|---|----------|------------|--------|-------|
+| 1 | [Condicionales](practica-01-condicionales/README.md) | ⭐ | 25-30 min | if, elif, else, operadores |
+| 2 | [Bucles for](practica-02-bucles-for/README.md) | ⭐ | 25-30 min | for, rangos, arrays, break |
+| 3 | [Bucles while/until](practica-03-bucles-while/README.md) | ⭐⭐ | 25-30 min | while, until, lectura de archivos |
+| 4 | [Case y Menús](practica-04-case-menus/README.md) | ⭐⭐ | 30-35 min | case, patrones, menús |
+| 5 | [Integración](practica-05-integracion/README.md) | ⭐⭐⭐ | 35-40 min | Proyecto mini: Analizador |
 
-## 📋 Lista de Ejercicios
+## 📂 Estructura de Cada Práctica
 
-### 1. 🔀 Ejercicio 01: Condicionales if/elif/else
+\`\`\`
+practica-XX-nombre/
+├── README.md           # Instrucciones y explicaciones
+├── starter/
+│   └── script.sh       # Script con código para descomentar
+└── solution/
+    └── script.sh       # Solución completa
+\`\`\`
 
-**Archivo:** `ejercicio-01-condicionales.sh`  
-**Dificultad:** ⭐ Básica  
-**Tiempo estimado:** 20-25 minutos
+## �� Cómo Trabajar
 
-**Temas cubiertos:**
+### 1. Lee el README de la práctica
+Cada práctica tiene una guía paso a paso con explicaciones de los conceptos.
 
-- Sintaxis if/elif/else
-- Operadores de comparación numérica (`-eq`, `-lt`, `-gt`)
-- Operadores de comparación de strings (`==`, `!=`)
-- Tests de archivos (`-f`, `-d`, `-w`, `-r`)
-- Operadores lógicos (`&&`, `||`)
-- Expresiones regulares básicas
+### 2. Abre el starter
+\`\`\`bash
+cd practica-01-condicionales/starter
+code script.sh  # o tu editor favorito
+\`\`\`
 
-**¿Qué aprenderás?**
-Los condicionales son la base para que tus scripts tomen decisiones. Aprenderás a validar entrada, verificar condiciones y ejecutar código condicionalmente.
+### 3. Descomenta el código
+Sigue las instrucciones del README para descomentar las secciones.
 
----
+### 4. Ejecuta y verifica
+\`\`\`bash
+chmod +x script.sh
+./script.sh
+\`\`\`
 
-### 2. 🔄 Ejercicio 02: Loops con for
+### 5. Compara con la solución
+Si tienes dudas, revisa la carpeta \`solution/\`.
 
-**Archivo:** `ejercicio-02-loops-for.sh`  
-**Dificultad:** ⭐ Básica  
-**Tiempo estimado:** 25-30 minutos
+## ⏱️ Distribución del Tiempo
 
-**Temas cubiertos:**
+\`\`\`
+Práctica 1 (Condicionales)      ████████████░░░░░░░░  25-30 min
+Práctica 2 (for loops)          ████████████░░░░░░░░  25-30 min
+Práctica 3 (while/until)        ████████████░░░░░░░░  25-30 min
+Práctica 4 (case/menús)         ██████████████░░░░░░  30-35 min
+Práctica 5 (Integración)        ████████████████░░░░  35-40 min
+                                ─────────────────────
+Total                           ████████████████████  2-2.5 hrs
+\`\`\`
 
-- Loop for sobre listas
-- Rangos con `{inicio..fin}`
-- Loop estilo C: `for ((i=0; i<10; i++))`
-- Iteración sobre archivos
-- Arrays y sus índices
-- Control con `break` y `continue`
-- Loops anidados
+## ✅ Checklist de Progreso
 
-**¿Qué aprenderás?**
-El loop `for` es perfecto para iterar sobre elementos conocidos. Aprenderás diferentes sintaxis y casos de uso prácticos.
+- [ ] Práctica 1: Domino condicionales if/elif/else
+- [ ] Práctica 2: Sé usar bucles for y rangos
+- [ ] Práctica 3: Entiendo while, until y lectura de archivos
+- [ ] Práctica 4: Puedo crear menús con case
+- [ ] Práctica 5: He completado el mini proyecto
 
----
+## 🎓 Objetivos de Aprendizaje
 
-### 3. 🔁 Ejercicio 03: Loops while y until
+Al completar todas las prácticas serás capaz de:
 
-**Archivo:** `ejercicio-03-loops-while.sh`  
-**Dificultad:** ⭐⭐ Media  
-**Tiempo estimado:** 25-30 minutos
+- ✅ Usar estructuras condicionales para tomar decisiones
+- ✅ Iterar sobre listas, rangos y archivos
+- ✅ Procesar texto y archivos línea por línea
+- ✅ Crear menús interactivos y validar entrada
+- ✅ Combinar múltiples estructuras en scripts complejos
 
-**Temas cubiertos:**
+## 📚 Recursos Adicionales
 
-- Loop `while` (mientras condición sea verdadera)
-- Loop `until` (hasta que condición sea verdadera)
-- Loops infinitos con `while true`
-- Lectura de archivos línea por línea
-- Control con `break` y `continue`
-- Contadores y acumuladores
-
-**¿Qué aprenderás?**
-`while` y `until` son ideales cuando no sabes cuántas iteraciones necesitas. Perfectos para validación y procesamiento de archivos.
-
----
-
-### 4. 🎯 Ejercicio 04: Case Statement
-
-**Archivo:** `ejercicio-04-case-menu.sh`  
-**Dificultad:** ⭐⭐ Media  
-**Tiempo estimado:** 30-35 minutos
-
-**Temas cubiertos:**
-
-- Sintaxis básica de `case`
-- Múltiples patrones con `|`
-- Pattern matching con wildcards
-- Validación de entrada
-- Menús interactivos
-- Comparación case vs if/elif
-
-**¿Qué aprenderás?**
-`case` es la forma elegante de manejar múltiples opciones. Ideal para menús, validación de comandos y parseo de argumentos.
+- [Diagrama de Condicionales](../0-assets/03-condicionales-flujo.svg)
+- [Diagrama de Bucles](../0-assets/04-bucles-iteracion.svg)
+- [Teoría](../1-teoria/README.md)
 
 ---
 
-### 5. 🧮 Ejercicio 05: Calculadora Interactiva (PROYECTO INTEGRADOR)
+## ➡️ Siguiente
 
-**Archivo:** `ejercicio-05-calculadora.sh`  
-**Dificultad:** ⭐⭐⭐ Avanzada  
-**Tiempo estimado:** 45-60 minutos
-
-**Temas cubiertos:**
-
-- Integración de todos los conceptos del módulo
-- Menú con loop infinito y case
-- Validación robusta con regex
-- Funciones modulares
-- Arrays para historial
-- Manejo de errores
-- Operaciones matemáticas con `bc`
-
-**¿Qué aprenderás?**
-Este es un proyecto completo que demuestra cómo combinar todas las estructuras de control para crear una aplicación funcional y profesional.
-
-**Características:**
-
-- ➕ Operaciones básicas: suma, resta, multiplicación, división
-- 🔢 Operaciones avanzadas: potencia, raíz cuadrada, módulo
-- 📜 Historial de operaciones
-- ✅ Validación exhaustiva de entrada
-- 🛡️ Manejo de errores (división por cero, raíz negativa)
-
----
-
-## 🚀 Cómo Usar los Ejercicios
-
-### 1. Preparación
-
-```bash
-# Navega al directorio
-cd bootcamp/week-03/2-practicas/
-
-# Verifica permisos de ejecución
-ls -lh *.sh
-```
-
-### 2. Ejecutar un Ejercicio
-
-```bash
-# Ejecuta cualquier ejercicio
-./ejercicio-01-condicionales.sh
-./ejercicio-05-calculadora.sh
-```
-
-### 3. Metodología
-
-1. **Lee las instrucciones** al inicio de cada script
-2. **Completa las secciones** marcadas como `# TU CÓDIGO AQUÍ:`
-3. **Usa las pistas** proporcionadas si te atascas
-4. **Ejecuta y prueba** tu código
-5. **Compara con la solución** (comentada al final)
-6. **Lee las explicaciones** de conceptos
-
----
-
-## 📊 Progresión Recomendada
-
-```
-Ejercicio 01 (if/elif/else) → Base de decisiones
-         ↓
-Ejercicio 02 (for) → Iteración sobre colecciones
-         ↓
-Ejercicio 03 (while/until) → Iteración condicional
-         ↓
-Ejercicio 04 (case) → Decisiones múltiples
-         ↓
-Ejercicio 05 (Calculadora) → Proyecto integrador
-```
-
-**Completa en orden** ya que cada ejercicio construye sobre los anteriores.
-
----
-
-## 💡 Consejos por Nivel
-
-### Para Principiantes:
-
-- ✅ Empieza con ejercicios 1-2
-- ✅ Lee todos los comentarios con atención
-- ✅ Prueba cada concepto por separado en terminal
-- ✅ No tengas miedo de cometer errores
-- ✅ Usa `echo` para debugear tus variables
-
-### Para Intermedios:
-
-- ✅ Intenta resolver sin mirar las pistas
-- ✅ Experimenta con modificaciones
-- ✅ Optimiza las soluciones
-- ✅ Completa el proyecto integrador (ejercicio 5)
-
-### Para Avanzados:
-
-- ✅ Resuelve sin consultar soluciones
-- ✅ Añade funcionalidades extras
-- ✅ Optimiza para eficiencia
-- ✅ Refactoriza usando mejores prácticas
-
----
-
-## 🎓 Desafíos Extra
-
-### Fácil:
-
-1. Modifica el ejercicio 1 para validar emails
-2. En ejercicio 2, crea tabla de multiplicar completa
-3. En ejercicio 3, lee un archivo CSV línea por línea
-
-### Medio:
-
-1. Añade operación factorial a la calculadora
-2. Crea un menú de gestión de archivos con case
-3. Implementa un sistema de login con intentos limitados
-
-### Difícil:
-
-1. Parser de expresiones matemáticas (2+3\*4)
-2. Calculadora con memoria (M+, M-, MR, MC)
-3. Menú jerárquico (submenús con navegación)
-
----
-
-## 🐛 Solución de Problemas
-
-### Error: "Permission denied"
-
-```bash
-chmod +x *.sh
-```
-
-### Error: "bc: command not found"
-
-```bash
-# Instalar bc (necesario para calculadora)
-sudo apt-get install bc  # Debian/Ubuntu
-sudo yum install bc      # RedHat/CentOS
-sudo dnf install bc      # Fedora
-```
-
-### El loop no termina
-
-- Verifica que la condición cambie dentro del loop
-- Asegúrate de tener una salida (`break` o cambio de condición)
-- Usa `Ctrl+C` para interrumpir
-
-### Variables no se expanden
-
-- Usa `$variable` para expandir
-- Quote variables: `"$variable"`
-- Verifica que estés en bash, no sh: `#!/bin/bash`
-
----
-
-## 📈 Autoevaluación
-
-Después de completar los ejercicios, deberías poder:
-
-- [ ] Explicar la diferencia entre `if` y `case`
-- [ ] Usar `for` con diferentes sintaxis (lista, rango, estilo C)
-- [ ] Explicar cuándo usar `while` vs `for`
-- [ ] Crear menús interactivos funcionales
-- [ ] Validar entrada de usuario con condicionales
-- [ ] Combinar estructuras para resolver problemas complejos
-- [ ] Leer y procesar archivos línea por línea
-- [ ] Manejar errores apropiadamente
-
----
-
-## 🔗 Referencias Útiles
-
-- [Bash Conditionals](https://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html)
-- [Bash Loops](https://www.gnu.org/software/bash/manual/html_node/Looping-Constructs.html)
-- [Pattern Matching](https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html)
-- [Test Commands](https://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html)
-
----
-
-## 🎯 Siguiente Paso
-
-Una vez completados estos ejercicios:
-
-1. ✅ Revisa los ejemplos en `week-03/1-teoria/ejemplos/`
-2. ✅ Practica con casos reales de tu sistema
-3. ✅ Continúa con **Semana 4: Funciones y Arrays**
-4. ✅ Aplica estos conceptos en proyectos personales
-
----
-
-## 🤝 Contribuciones
-
-¿Encontraste un error o tienes sugerencias?
-
-- Revisa `CONTRIBUTING.md` en la raíz del proyecto
-- Abre un issue en el repositorio
-- Comparte tus mejoras
-
----
-
-**¡Feliz aprendizaje! 🚀**
-
-El dominio de control de flujo es fundamental para convertirte en un experto en Bash scripting. Tómate tu tiempo y practica cada concepto.
+Después de completar las prácticas, continúa con el [Proyecto de la Semana](../3-proyecto/README.md).

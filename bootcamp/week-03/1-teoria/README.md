@@ -2,6 +2,19 @@
 
 > **Objetivo**: Crear scripts inteligentes con lógica condicional y bucles
 
+## 📊 Recursos Visuales
+
+Esta semana incluye diagramas visuales para facilitar el aprendizaje:
+
+| Diagrama       | Descripción                | Enlace                                                                 |
+| -------------- | -------------------------- | ---------------------------------------------------------------------- |
+| Variables Bash | Tipos y declaración        | [01-variables-bash.svg](../0-assets/01-variables-bash.svg)             |
+| Expansión      | Manipulación de parámetros | [02-expansion-parametros.svg](../0-assets/02-expansion-parametros.svg) |
+| Condicionales  | Flujo de decisiones        | [03-condicionales-flujo.svg](../0-assets/03-condicionales-flujo.svg)   |
+| Bucles         | for, while, until          | [04-bucles-iteracion.svg](../0-assets/04-bucles-iteracion.svg)         |
+
+---
+
 ## 🎯 ¿Qué son las Variables y el Control de Flujo?
 
 Las **variables** almacenan datos y el **control de flujo** permite tomar decisiones y repetir acciones.
