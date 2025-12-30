@@ -1,4 +1,4 @@
-# 🛠️ Módulo 5 - Ejemplos: File Operations & Text Processing
+# 🛠️ Semana 5 - Ejemplos: File Operations & Text Processing
 
 **Ejemplos prácticos de operaciones con archivos y procesamiento de texto en Bash.**
 

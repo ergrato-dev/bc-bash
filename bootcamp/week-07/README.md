@@ -1,18 +1,18 @@
 <div align="center">
-  <img src="../assets/module-7-logo.svg" alt="Módulo 7: Optimización y Debugging" width="300">
+  <img src="../_assets/week-07-logo.svg" alt="Semana 7: Optimización y Debugging" width="300">
 </div>
 
-# MÓDULO 7: OPTIMIZACIÓN Y DEBUGGING
+# SEMANA 7: OPTIMIZACIÓN Y DEBUGGING
 
 **Bootcamp Bash Scripting - Semana 7**
 
-## 🎯 VISIÓN GENERAL DEL MÓDULO
+## 🎯 VISIÓN GENERAL DE LA SEMANA
 
-El Módulo 7 representa la **transformación definitiva** de scripter básico a **desarrollador de Bash profesional**. Aquí no solo aprenderás a hacer que tus scripts funcionen, sino a hacerlos **rápidos, confiables y seguros** bajo cualquier condición.
+La Semana 7 representa la **transformación definitiva** de scripter básico a **desarrollador de Bash profesional**. Aquí no solo aprenderás a hacer que tus scripts funcionen, sino a hacerlos **rápidos, confiables y seguros** bajo cualquier condición.
 
 ### 🎯 Objetivos de Aprendizaje
 
-Al completar este módulo, serás capaz de:
+Al completar esta semana, serás capaz de:
 
 - **Debuggear scripts complejos** con herramientas profesionales y técnicas avanzadas
 - **Optimizar performance** hasta obtener mejoras del 50-90% en velocidad de ejecución
@@ -21,7 +21,7 @@ Al completar este módulo, serás capaz de:
 - **Desarrollar herramientas** de monitoring y profiling personalizadas
 - **Aplicar mejores prácticas** de desarrollo profesional en Bash
 
-### 🌟 ¿Por qué este módulo es transformacional?
+### 🌟 ¿Por qué esta semana es transformacional?
 
 En el mundo profesional, la diferencia entre un scripter junior y un **Senior DevOps Engineer** no está en conocer más comandos, sino en escribir código que:
 
@@ -30,7 +30,7 @@ En el mundo profesional, la diferencia entre un scripter junior y un **Senior De
 - **Resiste ataques** - Seguridad por diseño
 - **Se mantiene fácilmente** - Código limpio y documentado
 
-### 📚 Estructura del Módulo
+### 📚 Estructura de la Semana
 
 #### **Lección 7.1: Debugging y Troubleshooting**
 
@@ -1436,7 +1436,7 @@ fi
 
 ### Descripción del Proyecto
 
-Vas a tomar un script "amateur" típico con múltiples problemas y aplicar **todas las técnicas del Módulo 7** para transformarlo en una herramienta profesional de nivel empresarial.
+Vas a tomar un script "amateur" típico con múltiples problemas y aplicar **todas las técnicas de la Semana 7** para transformarlo en una herramienta profesional de nivel empresarial.
 
 ### Script Original (Problemático)
 
@@ -1501,7 +1501,7 @@ echo "Done!"
 
 ```bash
 #!/bin/bash
-# File Processor Professional - Refactorización del Módulo 7
+# File Processor Professional - Refactorización de la Semana 7
 # Autor: [Tu Nombre]
 # Versión: 2.0.0
 
@@ -1514,7 +1514,7 @@ readonly WORK_DIR="${WORK_DIR:-/tmp/file_processor}"
 readonly MAX_WORKERS="${MAX_WORKERS:-4}"
 
 # Tu implementación aquí...
-# Debe incluir TODAS las técnicas aprendidas en el módulo
+# Debe incluir TODAS las técnicas aprendidas en la semana
 ```
 
 #### **Suite de Testing (`test_file_processor.sh`)**
@@ -1523,7 +1523,7 @@ readonly MAX_WORKERS="${MAX_WORKERS:-4}"
 #!/bin/bash
 # Tests comprehensivos para el file processor
 
-# Incluir todas las funciones de testing del módulo
+# Incluir todas las funciones de testing de la semana
 source "$SCRIPT_DIR/testing_framework.sh"
 source "$SCRIPT_DIR/file_processor_pro.sh"
 
@@ -1596,11 +1596,11 @@ Al completar este proyecto deberías lograr:
 
 ---
 
-## 🎓 CONCLUSIONES DEL MÓDULO 7
+## 🎓 CONCLUSIONES DE LA SEMANA 7
 
 ### Lo que has logrado
 
-¡Felicitaciones! Has completado el módulo más técnico y transformacional del bootcamp. Ya no eres un scripter amateur - **eres un desarrollador de Bash profesional**.
+¡Felicitaciones! Has completado la semana más técnica y transformacional del bootcamp. Ya no eres un scripter amateur - **eres un desarrollador de Bash profesional**.
 
 #### **Habilidades Profesionales Dominadas:**
 
@@ -1621,16 +1621,16 @@ Con estas habilidades, puedes aspirar a roles como:
 
 ### Próximos Pasos
 
-Estás listo para el **Módulo 8: Proyectos Avanzados** donde aprenderás:
+Estás listo para la **Semana 8: Proyectos Avanzados** donde aprenderás:
 
 - **Integración con APIs** y servicios modernos
 - **Containerización** con Docker
 - **CI/CD** y automatización empresarial
 - **Distribución y empaquetado** de herramientas
 
-### Certificación del Módulo
+### Certificación de la Semana
 
-Para obtener la certificación del Módulo 7:
+Para obtener la certificación de la Semana 7:
 
 1. ✅ Completa todas las lecciones con sus ejercicios
 2. ✅ Implementa el Proyecto Práctico 7 completo
@@ -1643,16 +1643,16 @@ Para obtener la certificación del Módulo 7:
 
 | ← Anterior                                                 | Actual                                 | Siguiente →                                           |
 | ---------------------------------------------------------- | -------------------------------------- | ----------------------------------------------------- |
-| [Módulo 6: Herramientas del Sistema](../week-06/README.md) | **Módulo 7: Optimización y Debugging** | [Módulo 8: Proyectos Avanzados](../week-08/README.md) |
+| [Semana 6: Herramientas del Sistema](../week-06/README.md) | **Semana 7: Optimización y Debugging** | [Semana 8: Proyectos Avanzados](../week-08/README.md) |
 
 ---
 
 <div align="center">
-  <p><strong>¡Felicitaciones! Has completado el Módulo 7 🎉</strong></p>
+  <p><strong>¡Felicitaciones! Has completado la Semana 7 🎉</strong></p>
   <p>Ahora eres oficialmente un <strong>Desarrollador de Bash Profesional</strong></p>
   
   [![Volver al Inicio](https://img.shields.io/badge/⬅️_Volver_al_Inicio-blue?style=for-the-badge)](../README.md)
-  [![Siguiente Módulo](https://img.shields.io/badge/Módulo_8_➡️-green?style=for-the-badge)](../week-08/README.md)
+  [![Siguiente Semana](https://img.shields.io/badge/Semana_8_➡️-green?style=for-the-badge)](../week-08/README.md)
 </div>
 
-**¡El módulo final te espera para completar tu transformación! 🚀**
+**¡La semana final te espera para completar tu transformación! 🚀**

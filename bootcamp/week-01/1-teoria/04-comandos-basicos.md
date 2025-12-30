@@ -9,6 +9,8 @@
 
 ## 📋 Contenido
 
+![Comandos Básicos de Navegación](../0-assets/04-comandos-basicos.svg)
+
 ### 1. Creación de Archivos
 
 #### touch - Crear archivos vacíos

@@ -1,0 +1,73 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#1a202c"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" fill="#e2e8f0" font-weight="bold">🔐 Sistema de Permisos Unix/Linux</text>
+  
+  <!-- Permission string example -->
+  <rect x="150" y="60" width="500" height="70" rx="8" fill="#2d3748"/>
+  <text x="400" y="95" text-anchor="middle" font-family="Courier, monospace" font-size="28" fill="#f0db4f" font-weight="bold">-rwxr-xr--</text>
+  <text x="400" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">Ejemplo de permisos en ls -l</text>
+  
+  <!-- Breakdown boxes -->
+  <!-- Type -->
+  <rect x="80" y="150" width="80" height="60" rx="6" fill="#667eea"/>
+  <text x="120" y="175" text-anchor="middle" font-family="Courier, monospace" font-size="24" fill="#fff">-</text>
+  <text x="120" y="198" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e2e8f0">Tipo</text>
+  
+  <!-- Owner -->
+  <rect x="180" y="150" width="120" height="60" rx="6" fill="#48bb78"/>
+  <text x="240" y="175" text-anchor="middle" font-family="Courier, monospace" font-size="24" fill="#fff">rwx</text>
+  <text x="240" y="198" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e2e8f0">Owner (u)</text>
+  
+  <!-- Group -->
+  <rect x="320" y="150" width="120" height="60" rx="6" fill="#4299e1"/>
+  <text x="380" y="175" text-anchor="middle" font-family="Courier, monospace" font-size="24" fill="#fff">r-x</text>
+  <text x="380" y="198" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e2e8f0">Group (g)</text>
+  
+  <!-- Others -->
+  <rect x="460" y="150" width="120" height="60" rx="6" fill="#ed8936"/>
+  <text x="520" y="175" text-anchor="middle" font-family="Courier, monospace" font-size="24" fill="#fff">r--</text>
+  <text x="520" y="198" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e2e8f0">Others (o)</text>
+  
+  <!-- Octal value -->
+  <rect x="600" y="150" width="100" height="60" rx="6" fill="#f0db4f"/>
+  <text x="650" y="180" text-anchor="middle" font-family="Courier, monospace" font-size="28" fill="#1a202c" font-weight="bold">754</text>
+  
+  <!-- Permission meanings -->
+  <rect x="50" y="235" width="700" height="100" rx="8" fill="#2d3748"/>
+  <text x="400" y="260" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#e2e8f0" font-weight="bold">Significado de los Permisos</text>
+  
+  <!-- r -->
+  <text x="120" y="295" text-anchor="middle" font-family="Courier, monospace" font-size="22" fill="#48bb78">r</text>
+  <text x="120" y="315" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">read = 4</text>
+  
+  <!-- w -->
+  <text x="280" y="295" text-anchor="middle" font-family="Courier, monospace" font-size="22" fill="#ed8936">w</text>
+  <text x="280" y="315" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">write = 2</text>
+  
+  <!-- x -->
+  <text x="440" y="295" text-anchor="middle" font-family="Courier, monospace" font-size="22" fill="#4299e1">x</text>
+  <text x="440" y="315" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">execute = 1</text>
+  
+  <!-- - -->
+  <text x="600" y="295" text-anchor="middle" font-family="Courier, monospace" font-size="22" fill="#718096">-</text>
+  <text x="600" y="315" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">none = 0</text>
+  
+  <!-- Common examples -->
+  <rect x="50" y="355" width="700" height="80" rx="8" fill="#1e3a2d" stroke="#48bb78" stroke-width="1"/>
+  <text x="400" y="380" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#48bb78" font-weight="bold">Permisos Comunes</text>
+  
+  <text x="130" y="410" text-anchor="middle" font-family="Courier, monospace" font-size="14" fill="#e2e8f0">755</text>
+  <text x="130" y="425" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">Scripts</text>
+  
+  <text x="280" y="410" text-anchor="middle" font-family="Courier, monospace" font-size="14" fill="#e2e8f0">644</text>
+  <text x="280" y="425" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">Archivos</text>
+  
+  <text x="430" y="410" text-anchor="middle" font-family="Courier, monospace" font-size="14" fill="#e2e8f0">700</text>
+  <text x="430" y="425" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">Privado</text>
+  
+  <text x="580" y="410" text-anchor="middle" font-family="Courier, monospace" font-size="14" fill="#ef4444">777</text>
+  <text x="580" y="425" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#ef4444">⚠️ Evitar</text>
+</svg>

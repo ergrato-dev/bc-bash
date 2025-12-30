@@ -30,7 +30,7 @@
   <text x="85" y="55" font-family="Monaco, monospace" font-size="6" fill="#a7f3d0">Pipes y Filtros</text>
   
   <!-- Title -->
-  <text x="140" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">Módulo 2</text>
+  <text x="140" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">Semana 2</text>
   <text x="140" y="50" font-family="Arial, sans-serif" font-size="14" fill="#d1fae5">Comandos Avanzados y Pipes</text>
   <text x="140" y="65" font-family="Arial, sans-serif" font-size="10" fill="#a7f3d0">Redirección • Filtros • Wildcards</text>
 </svg>

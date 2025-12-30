@@ -1,6 +1,6 @@
-# Ejemplos de Functions & Arrays - Módulo 4
+# Ejemplos de Functions & Arrays - Semana 4
 
-Este directorio contiene ejemplos prácticos para el módulo 4 del Bootcamp Bash Scripting.
+Este directorio contiene ejemplos prácticos para la semana 4 del Bootcamp Bash Scripting.
 
 ## 📁 Estructura
 
@@ -8,11 +8,11 @@ Este directorio contiene ejemplos prácticos para el módulo 4 del Bootcamp Bash
 week-04/
 ├── ejemplos/           # Scripts de ejemplo para aprendizaje
 ├── ejercicios/         # Ejercicios prácticos
-├── proyectos/          # Proyectos del módulo
+├── proyectos/          # Proyectos de la semana
 └── datos/              # Archivos de datos para práctica
 ```
 
-## 🎯 Contenido del Módulo
+## 🎯 Contenido de la Semana
 
 ### Funciones en Bash
 

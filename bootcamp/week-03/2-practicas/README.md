@@ -1,4 +1,4 @@
-# 📚 Ejercicios - Módulo 3: Variables y Control de Flujo
+# 📚 Ejercicios - Semana 3: Variables y Control de Flujo
 
 ## 📖 Descripción General
 
@@ -285,7 +285,7 @@ Una vez completados estos ejercicios:
 
 1. ✅ Revisa los ejemplos en `week-03/1-teoria/ejemplos/`
 2. ✅ Practica con casos reales de tu sistema
-3. ✅ Continúa con **Módulo 4: Funciones y Arrays**
+3. ✅ Continúa con **Semana 4: Funciones y Arrays**
 4. ✅ Aplica estos conceptos en proyectos personales
 
 ---

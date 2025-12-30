@@ -1,4 +1,4 @@
-# 📚 Ejemplos - Módulo 7: Optimización y Debugging
+# 📚 Ejemplos - Semana 7: Optimización y Debugging
 
 Scripts que demuestran técnicas profesionales de debugging, logging y optimización.
 

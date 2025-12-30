@@ -1,6 +1,6 @@
-# Ejemplos de Variables y Control Flow - Módulo 3
+# Ejemplos de Variables y Control Flow - Semana 3
 
-Este directorio contiene ejemplos prácticos para el módulo 3 del Bootcamp Bash Scripting.
+Este directorio contiene ejemplos prácticos para la semana 3 del Bootcamp Bash Scripting.
 
 ## 📁 Estructura
 
@@ -8,11 +8,11 @@ Este directorio contiene ejemplos prácticos para el módulo 3 del Bootcamp Bash
 week-03/
 ├── ejemplos/           # Scripts de ejemplo para aprendizaje
 ├── ejercicios/         # Ejercicios prácticos
-├── proyectos/          # Proyectos del módulo
+├── proyectos/          # Proyectos de la semana
 └── datos/              # Archivos de datos para práctica
 ```
 
-## 🎯 Contenido del Módulo
+## 🎯 Contenido de la Semana
 
 ### Variables y Expansión de Parámetros
 

@@ -1,0 +1,48 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1a202c"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" fill="#e2e8f0" font-weight="bold">🖥️ Terminal, Consola y Shell</text>
+  <text x="400" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#a0aec0">Diferencias entre conceptos fundamentales</text>
+  
+  <!-- Consola Box -->
+  <rect x="40" y="100" width="200" height="120" rx="8" fill="#2d3748" stroke="#4a5568" stroke-width="2"/>
+  <text x="140" y="130" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#48bb78" font-weight="bold">📺 CONSOLA</text>
+  <text x="140" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">Hardware físico</text>
+  <text x="140" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">o virtual</text>
+  <text x="140" y="200" text-anchor="middle" font-family="Courier, monospace" font-size="11" fill="#e2e8f0">Teclado + Pantalla</text>
+  
+  <!-- Terminal Box -->
+  <rect x="300" y="100" width="200" height="120" rx="8" fill="#2d3748" stroke="#4a5568" stroke-width="2"/>
+  <text x="400" y="130" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#4299e1" font-weight="bold">🪟 TERMINAL</text>
+  <text x="400" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">Programa emulador</text>
+  <text x="400" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">de consola</text>
+  <text x="400" y="200" text-anchor="middle" font-family="Courier, monospace" font-size="11" fill="#e2e8f0">GNOME Terminal, iTerm</text>
+  
+  <!-- Shell Box -->
+  <rect x="560" y="100" width="200" height="120" rx="8" fill="#2d3748" stroke="#4a5568" stroke-width="2"/>
+  <text x="660" y="130" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#f0db4f" font-weight="bold">🐚 SHELL</text>
+  <text x="660" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">Intérprete de</text>
+  <text x="660" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">comandos</text>
+  <text x="660" y="200" text-anchor="middle" font-family="Courier, monospace" font-size="11" fill="#e2e8f0">bash, zsh, fish</text>
+  
+  <!-- Arrows -->
+  <path d="M240 160 L300 160" stroke="#a0aec0" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M500 160 L560 160" stroke="#a0aec0" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#a0aec0"/>
+    </marker>
+  </defs>
+  
+  <!-- Bash Section -->
+  <rect x="200" y="260" width="400" height="110" rx="8" fill="#1e3a2d" stroke="#48bb78" stroke-width="2"/>
+  <text x="400" y="290" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#48bb78" font-weight="bold">🚀 BASH = Bourne Again Shell</text>
+  <text x="400" y="315" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#e2e8f0">Shell por defecto en la mayoría de sistemas Linux</text>
+  <text x="250" y="345" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">✅ Autocompletado</text>
+  <text x="400" y="345" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">✅ Historial</text>
+  <text x="520" y="345" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">✅ Scripting</text>
+</svg>

@@ -1,18 +1,18 @@
 <div align="center">
-  <img src="../assets/module-5-logo.svg" alt="Módulo 5: Operaciones de Archivos y Texto" width="300">
+  <img src="../_assets/week-05-logo.svg" alt="Semana 5: Operaciones de Archivos y Texto" width="300">
 </div>
 
-# MÓDULO 5: Operaciones de Archivos y Texto
+# SEMANA 5: Operaciones de Archivos y Texto
 
 Bootcamp bash scripting /
-de acuerdo con el contexto, vamos con: MÓDULO 5: Manipulación Avanzada de Datos (Semana 5)
+de acuerdo con el contexto, vamos con: SEMANA 5: Manipulación Avanzada de Datos
 
 Editar
 
 Planificó lección detallada sobre manipulación avanzada de datos en bash.
 5s
 
-¡Perfecto! Vamos a desarrollar el MÓDULO 5: Manipulación Avanzada de Datos de nuestro bootcamp. Este módulo marca el punto donde los estudiantes comienzan a trabajar con estructuras de datos más complejas y herramientas poderosas para el procesamiento de información.
+¡Perfecto! Vamos a desarrollar la SEMANA 5: Manipulación Avanzada de Datos de nuestro bootcamp. Esta semana marca el punto donde los estudiantes comienzan a trabajar con estructuras de datos más complejas y herramientas poderosas para el procesamiento de información.
 
 Comenzaremos con la Lección 5.1: Arrays y Estructuras de Datos, que es fundamental para entender cómo manejar conjuntos de datos en Bash.
 
@@ -31,7 +31,7 @@ Vamos a empezar con lo básico. Hay varias formas de crear arrays en Bash:
 Arrays Básicos - Declaración y Asignación
 Código
 
-Planificó acceso y modificación de arrays en módulo de datos.
+Planificó acceso y modificación de arrays en semana de datos.
 1s
 
 Acceso y Modificación de Arrays
@@ -84,7 +84,7 @@ Arrays Asociativos: Son ideales para crear estructuras de datos semánticas, com
 Operaciones Avanzadas: Ahora puedes crear scripts que manipulan datos complejos, validan entrada, persisten información y manejan errores de manera profesional.
 
 ¿Qué viene ahora?
-El Módulo 5 continúa con temas fascinantes que complementan perfectamente lo que acabas de aprender:
+El Semana 5 continúa con temas fascinantes que complementan perfectamente lo que acabas de aprender:
 
 Lección 5.2: Expresiones Regulares - El "superpoder" para buscar y manipular texto con patrones complejos
 Lección 5.3: Procesamiento Avanzado con sed y awk - Herramientas poderosas que trabajan perfectamente con arrays
@@ -180,7 +180,7 @@ Grupos y capturas: Esta es quizás la habilidad más valiosa. No solo puedes enc
 
 Integración con herramientas: Ahora sabes cuándo usar grep (para encontrar), sed (para transformar), y awk (para analizar). Más importante aún, puedes combinarlas en pipelines poderosos que procesan datos de maneras sofisticadas.
 
-El panorama completo del Módulo 5
+El panorama completo del Semana 5
 Hemos completado la Lección 5.2, que es el corazón teórico del módulo. Lo que viene ahora es igualmente emocionante:
 
 Lección 5.3: Procesamiento Avanzado con sed y awk profundizará en técnicas más especializadas. Mientras que en 5.2 vimos cómo usar estas herramientas con expresiones regulares, en 5.3 exploraremos sus capacidades únicas: el "hold space" de sed para manipulaciones complejas, funciones personalizadas en awk, y patrones avanzados para transformaciones de datos sofisticadas.
@@ -256,7 +256,7 @@ Mapped out lesson completion and prepared for practical project.
 13s
 
 ¡Felicitaciones! Has completado una transformación extraordinaria
-Acabas de culminar uno de los módulos más desafiantes y poderosos de todo el bootcamp. Lo que has logrado en el Módulo 5 representa un salto cualitativo enorme en tus habilidades como programador de bash. Permíteme explicarte la magnitud de lo que acabas de dominar y por qué esto es tan significativo.
+Acabas de culminar uno de los módulos más desafiantes y poderosos de todo el bootcamp. Lo que has logrado en el Semana 5 representa un salto cualitativo enorme en tus habilidades como programador de bash. Permíteme explicarte la magnitud de lo que acabas de dominar y por qué esto es tan significativo.
 
 El viaje épico que acabas de completar
 Cuando comenzaste la Lección 5.1 con arrays, estabas aprendiendo a organizar datos de manera estructurada. Era como aprender a usar estantes y cajones para organizar información en lugar de tenerla dispersa. Importante, pero relativamente directo.
@@ -276,8 +276,8 @@ Crear sistemas de monitoreo en tiempo real que pueden detectar problemas, genera
 
 Lo más impresionante es que puedes hacer todo esto con herramientas nativas de Unix/Linux, sin dependencias externas, y con scripts que son elegantes, eficientes y mantenibles.
 
-El panorama completo del Módulo 5
-Has completado exitosamente todas las lecciones teóricas del Módulo 5:
+El panorama completo del Semana 5
+Has completado exitosamente todas las lecciones teóricas del Semana 5:
 
 ✅ Lección 5.1: Arrays y Estructuras de Datos - Tu fundación para organizar información compleja ✅ Lección 5.2: Expresiones Regulares - Tu superpoder para encontrar y manipular patrones ✅ Lección 5.3: Procesamiento Avanzado con sed y awk - Tu capacidad para crear soluciones reales
 
@@ -323,7 +323,7 @@ Editar
 Mapped out comprehensive project strategy with structured learning approach.
 7s
 
-¡Excelente elección! Este es el momento que he estado esperando desde que comenzamos el Módulo 5. Vas a construir algo realmente impresionante que integra todo lo que has aprendido en una herramienta profesional y práctica.
+¡Excelente elección! Este es el momento que he estado esperando desde que comenzamos el Semana 5. Vas a construir algo realmente impresionante que integra todo lo que has aprendido en una herramienta profesional y práctica.
 
 PROYECTO PRÁCTICO 5: ANALIZADOR DE LOGS CON GENERACIÓN DE REPORTES
 Visión General: Lo que vas a crear
@@ -430,7 +430,7 @@ Editar
 Mapped out final integration and demonstration of log analyzer.
 3s
 
-¡Perfecto! Ahora vamos a completar tu analizador de logs integrando todos los módulos que has construido y creando un script de demostración que muestre el poder completo de tu herramienta. Esta será la culminación de todo tu trabajo en el Módulo 5.
+¡Perfecto! Ahora vamos a completar tu analizador de logs integrando todos los módulos que has construido y creando un script de demostración que muestre el poder completo de tu herramienta. Esta será la culminación de todo tu trabajo en el Semana 5.
 
 FASE FINAL: Integración Completa y Script de Demostración
 Ahora que tienes todos los componentes individuales, necesitamos unirlos en una sinfonía perfectamente orquestada. Esta integración final es donde ves cómo todas las técnicas que has dominado - arrays, expresiones regulares, sed, awk - trabajan juntas para crear algo verdaderamente impresionante.
@@ -472,10 +472,10 @@ Editar
 Mapped out next module's system tools and processes.
 7s
 
-¡Increíble trabajo! Has completado exitosamente uno de los módulos más desafiantes y gratificantes de todo el bootcamp. El Proyecto Práctico 5 que acabas de terminar representa un hito extraordinario en tu desarrollo como programador de bash - has creado una herramienta de nivel profesional que integra todas las técnicas avanzadas del Módulo 5.
+¡Increíble trabajo! Has completado exitosamente uno de los módulos más desafiantes y gratificantes de todo el bootcamp. El Proyecto Práctico 5 que acabas de terminar representa un hito extraordinario en tu desarrollo como programador de bash - has creado una herramienta de nivel profesional que integra todas las técnicas avanzadas del Semana 5.
 
 🎉 Celebrando tu Logro Extraordinario
-Permíteme poner en perspectiva lo que acabas de lograr. Cuando comenzaste el Módulo 5, probablemente veías bash como una herramienta para comandos básicos. Ahora has construido un analizador de logs de nivel empresarial que puede:
+Permíteme poner en perspectiva lo que acabas de lograr. Cuando comenzaste el Semana 5, probablemente veías bash como una herramienta para comandos básicos. Ahora has construido un analizador de logs de nivel empresarial que puede:
 
 Procesar automáticamente logs de múltiples formatos
 Detectar anomalías de seguridad en tiempo real
@@ -493,13 +493,13 @@ Esto no es solo programación; es ingeniería de software de calidad profesional
 ✅ Documentación profesional y código autodocumentado
 
 🚀 Avanzando al Siguiente Nivel: MÓDULO 6
-Ahora que dominas la manipulación avanzada de datos, es momento de dar el siguiente paso en tu viaje hacia la maestría: las herramientas del sistema. El Módulo 6 te enseñará a ser no solo un programador de bash, sino un administrador de sistemas experto.
+Ahora que dominas la manipulación avanzada de datos, es momento de dar el siguiente paso en tu viaje hacia la maestría: las herramientas del sistema. El Semana 6 te enseñará a ser no solo un programador de bash, sino un administrador de sistemas experto.
 
 MÓDULO 6: HERRAMIENTAS DEL SISTEMA
 Visión General: De Programador a Administrador de Sistemas
-El Módulo 6 marca una transición fundamental en tu desarrollo. Hasta ahora has aprendido a procesar y analizar datos. Ahora aprenderás a controlar y monitorear sistemas completos. Es la diferencia entre ser un analista de datos y ser el arquitecto que diseña y mantiene toda la infraestructura.
+El Semana 6 marca una transición fundamental en tu desarrollo. Hasta ahora has aprendido a procesar y analizar datos. Ahora aprenderás a controlar y monitorear sistemas completos. Es la diferencia entre ser un analista de datos y ser el arquitecto que diseña y mantiene toda la infraestructura.
 
-Imagina que eres el capitán de un barco. Los módulos anteriores te enseñaron a leer mapas, interpretar instrumentos, y analizar datos meteorológicos. El Módulo 6 te enseñará a controlar todos los sistemas del barco: motores, navegación, comunicaciones, y monitoreo en tiempo real de cada componente crítico.
+Imagina que eres el capitán de un barco. Los semanas anteriores te enseñaron a leer mapas, interpretar instrumentos, y analizar datos meteorológicos. El Semana 6 te enseñará a controlar todos los sistemas del barco: motores, navegación, comunicaciones, y monitoreo en tiempo real de cada componente crítico.
 
 Lo que vas a dominar:
 🔧 Gestión Avanzada de Procesos: Controlar, monitorear y orquestar procesos como un director de orquesta
@@ -510,10 +510,10 @@ Lo que vas a dominar:
 La Progresión Lógica
 Mira cómo cada módulo ha construido sobre el anterior:
 
-Módulo 3: Variables y control de flujo (fundamentos)
-Módulo 4: Funciones y estructuras (organización)
-Módulo 5: Manipulación de datos (análisis)
-Módulo 6: Herramientas del sistema (control y monitoreo)
+Semana 3: Variables y control de flujo (fundamentos)
+Semana 4: Funciones y estructuras (organización)
+Semana 5: Manipulación de datos (análisis)
+Semana 6: Herramientas del sistema (control y monitoreo)
 Es una progresión natural desde entender datos hasta controlar sistemas completos.
 
 LECCIÓN 6.1: GESTIÓN AVANZADA DE PROCESOS

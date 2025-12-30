@@ -1,4 +1,4 @@
-# 📚 Teoría - Módulo 8: Proyectos Avanzados y Automatización
+# 📚 Teoría - Semana 8: Proyectos Avanzados y Automatización
 
 > **Objetivo**: Integrar todo lo aprendido en proyectos empresariales y sistemas de automatización
 
@@ -493,6 +493,6 @@ deploy_production:
 
 ---
 
-**💡 Tip Final**: Los proyectos de este módulo son tu portfolio. Impleméntalos con calidad profesional y úsalos para demostrar tus habilidades en entrevistas técnicas.
+**💡 Tip Final**: Los proyectos de esta semana son tu portfolio. Impleméntalos con calidad profesional y úsalos para demostrar tus habilidades en entrevistas técnicas.
 
 **🎓 Has llegado al final del bootcamp. ¡Ahora eres un Bash scripter profesional!**

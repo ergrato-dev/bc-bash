@@ -1,4 +1,4 @@
-# 📚 Teoría - Módulo 5: Operaciones de Archivos y Procesamiento de Texto
+# 📚 Teoría - Semana 5: Operaciones de Archivos y Procesamiento de Texto
 
 > **Objetivo**: Dominar la manipulación de archivos y procesamiento avanzado de texto
 

@@ -1,0 +1,69 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#1a202c"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" fill="#e2e8f0" font-weight="bold">⌨️ Comandos Básicos de Navegación</text>
+  
+  <!-- pwd section -->
+  <rect x="40" y="60" width="220" height="130" rx="8" fill="#2d3748"/>
+  <text x="150" y="90" text-anchor="middle" font-family="Courier, monospace" font-size="18" fill="#f0db4f" font-weight="bold">pwd</text>
+  <text x="150" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">Print Working Directory</text>
+  <rect x="60" y="130" width="180" height="45" rx="4" fill="#1a202c"/>
+  <text x="70" y="150" font-family="Courier, monospace" font-size="11" fill="#48bb78">$ pwd</text>
+  <text x="70" y="165" font-family="Courier, monospace" font-size="11" fill="#e2e8f0">/home/usuario</text>
+  
+  <!-- ls section -->
+  <rect x="290" y="60" width="220" height="130" rx="8" fill="#2d3748"/>
+  <text x="400" y="90" text-anchor="middle" font-family="Courier, monospace" font-size="18" fill="#f0db4f" font-weight="bold">ls</text>
+  <text x="400" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">List directory contents</text>
+  <rect x="310" y="130" width="180" height="45" rx="4" fill="#1a202c"/>
+  <text x="320" y="150" font-family="Courier, monospace" font-size="11" fill="#48bb78">$ ls -la</text>
+  <text x="320" y="165" font-family="Courier, monospace" font-size="11" fill="#e2e8f0">drwxr-xr-x docs/</text>
+  
+  <!-- cd section -->
+  <rect x="540" y="60" width="220" height="130" rx="8" fill="#2d3748"/>
+  <text x="650" y="90" text-anchor="middle" font-family="Courier, monospace" font-size="18" fill="#f0db4f" font-weight="bold">cd</text>
+  <text x="650" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a0aec0">Change Directory</text>
+  <rect x="560" y="130" width="180" height="45" rx="4" fill="#1a202c"/>
+  <text x="570" y="150" font-family="Courier, monospace" font-size="11" fill="#48bb78">$ cd /var/log</text>
+  <text x="570" y="165" font-family="Courier, monospace" font-size="11" fill="#a0aec0"># cambia directorio</text>
+  
+  <!-- File operations -->
+  <rect x="40" y="210" width="350" height="170" rx="8" fill="#1e3a2d" stroke="#48bb78" stroke-width="1"/>
+  <text x="215" y="240" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#48bb78" font-weight="bold">📄 Operaciones con Archivos</text>
+  
+  <text x="60" y="275" font-family="Courier, monospace" font-size="13" fill="#f0db4f">touch</text>
+  <text x="130" y="275" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">Crear archivo vacío</text>
+  
+  <text x="60" y="300" font-family="Courier, monospace" font-size="13" fill="#f0db4f">cp</text>
+  <text x="130" y="300" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">Copiar archivo</text>
+  
+  <text x="60" y="325" font-family="Courier, monospace" font-size="13" fill="#f0db4f">mv</text>
+  <text x="130" y="325" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">Mover/renombrar</text>
+  
+  <text x="60" y="350" font-family="Courier, monospace" font-size="13" fill="#f0db4f">rm</text>
+  <text x="130" y="350" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">Eliminar archivo</text>
+  
+  <text x="60" y="375" font-family="Courier, monospace" font-size="13" fill="#f0db4f">mkdir</text>
+  <text x="130" y="375" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">Crear directorio</text>
+  
+  <!-- View operations -->
+  <rect x="410" y="210" width="350" height="170" rx="8" fill="#1e293d" stroke="#4299e1" stroke-width="1"/>
+  <text x="585" y="240" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#4299e1" font-weight="bold">👀 Ver Contenido</text>
+  
+  <text x="430" y="275" font-family="Courier, monospace" font-size="13" fill="#f0db4f">cat</text>
+  <text x="500" y="275" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">Ver todo el archivo</text>
+  
+  <text x="430" y="300" font-family="Courier, monospace" font-size="13" fill="#f0db4f">head</text>
+  <text x="500" y="300" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">Primeras N líneas</text>
+  
+  <text x="430" y="325" font-family="Courier, monospace" font-size="13" fill="#f0db4f">tail</text>
+  <text x="500" y="325" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">Últimas N líneas</text>
+  
+  <text x="430" y="350" font-family="Courier, monospace" font-size="13" fill="#f0db4f">less</text>
+  <text x="500" y="350" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">Ver con paginación</text>
+  
+  <text x="430" y="375" font-family="Courier, monospace" font-size="13" fill="#f0db4f">wc</text>
+  <text x="500" y="375" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">Contar líneas/palabras</text>
+</svg>

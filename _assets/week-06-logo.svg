@@ -25,7 +25,7 @@
   <text x="80" y="68" font-family="Monaco, monospace" font-size="6" fill="#fdba74">JSON • XML • CSV</text>
   
   <!-- Title -->
-  <text x="130" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">Módulo 6</text>
+  <text x="130" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">Semana 6</text>
   <text x="130" y="50" font-family="Arial, sans-serif" font-size="14" fill="#fed7aa">Manipulación Avanzada</text>
   <text x="130" y="65" font-family="Arial, sans-serif" font-size="10" fill="#fdba74">Datos Estructurados • Parsing</text>
 </svg>

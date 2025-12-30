@@ -12,18 +12,18 @@ Este directorio contiene todos los recursos gráficos del proyecto Bootcamp Bash
 | `logo-compact.svg`       | 200x60      | Headers pequeños | Versión compacta para espacios reducidos       |
 | `terminal-icon.svg`      | 64x64       | Icono general    | Icono de terminal con animación de cursor      |
 
-### 📚 Logos por Módulo
+### 📚 Logos por Semana
 
-| Módulo   | Archivo             | Color Principal    | Temática                     |
-| -------- | ------------------- | ------------------ | ---------------------------- |
-| Módulo 1 | `module-1-logo.svg` | Azul (#3b82f6)     | Fundamentos de Bash          |
-| Módulo 2 | `module-2-logo.svg` | Verde (#10b981)    | Comandos Avanzados y Pipes   |
-| Módulo 3 | `module-3-logo.svg` | Púrpura (#8b5cf6)  | Variables y Control de Flujo |
-| Módulo 4 | `module-4-logo.svg` | Naranja (#f97316)  | Funciones y Arrays           |
-| Módulo 5 | `module-5-logo.svg` | Cian (#06b6d4)     | Operaciones de Archivos      |
-| Módulo 6 | `module-6-logo.svg` | Marrón (#ea580c)   | Manipulación Avanzada        |
-| Módulo 7 | `module-7-logo.svg` | Rosa (#ec4899)     | Optimización y Debugging     |
-| Módulo 8 | `module-8-logo.svg` | Amarillo (#fbbf24) | Proyectos y Automatización   |
+| Semana   | Archivo            | Color Principal    | Temática                     |
+| -------- | ------------------ | ------------------ | ---------------------------- |
+| Semana 1 | `week-01-logo.svg` | Azul (#3b82f6)     | Fundamentos de Bash          |
+| Semana 2 | `week-02-logo.svg` | Verde (#10b981)    | Comandos Avanzados y Pipes   |
+| Semana 3 | `week-03-logo.svg` | Púrpura (#8b5cf6)  | Variables y Control de Flujo |
+| Semana 4 | `week-04-logo.svg` | Naranja (#f97316)  | Funciones y Arrays           |
+| Semana 5 | `week-05-logo.svg` | Cian (#06b6d4)     | Operaciones de Archivos      |
+| Semana 6 | `week-06-logo.svg` | Marrón (#ea580c)   | Manipulación Avanzada        |
+| Semana 7 | `week-07-logo.svg` | Rosa (#ec4899)     | Optimización y Debugging     |
+| Semana 8 | `week-08-logo.svg` | Amarillo (#fbbf24) | Proyectos y Automatización   |
 
 ### 🏅 Badges y Elementos
 
@@ -44,15 +44,15 @@ Este directorio contiene todos los recursos gráficos del proyecto Bootcamp Bash
 --accent-green: #00ff88    /* Verde neón de terminal */
 --accent-light: #00cc6a    /* Verde más suave */
 
-/* Colores por Módulo */
---module-1: #3b82f6        /* Azul - Fundamentos */
---module-2: #10b981        /* Verde - Pipes */
---module-3: #8b5cf6        /* Púrpura - Variables */
---module-4: #f97316        /* Naranja - Funciones */
---module-5: #06b6d4        /* Cian - Archivos */
---module-6: #ea580c        /* Marrón - Datos */
---module-7: #ec4899        /* Rosa - Debug */
---module-8: #fbbf24        /* Amarillo - Automatización */
+/* Colores por Semana */
+--week-01: #3b82f6        /* Azul - Fundamentos */
+--week-02: #10b981        /* Verde - Pipes */
+--week-03: #8b5cf6        /* Púrpura - Variables */
+--week-04: #f97316        /* Naranja - Funciones */
+--week-05: #06b6d4        /* Cian - Archivos */
+--week-06: #ea580c        /* Marrón - Datos */
+--week-07: #ec4899        /* Rosa - Debug */
+--week-08: #fbbf24        /* Amarillo - Automatización */
 ```
 
 ## 📐 Especificaciones de Diseño
@@ -68,14 +68,14 @@ Este directorio contiene todos los recursos gráficos del proyecto Bootcamp Bash
   - Decoraciones de código
   - Indicadores de progreso (8 puntos)
 
-### Logos de Módulos
+### Logos de Semanas
 
 - **Dimensiones**: 300x80 px
 - **Estructura consistente**:
-  - Círculo numerado con el número del módulo
-  - Área de código/ejemplo específico del módulo
-  - Título y descripción del módulo
-  - Color temático único por módulo
+  - Círculo numerado con el número de la semana
+  - Área de código/ejemplo específico de la semana
+  - Título y descripción de la semana
+  - Color temático único por semana
 
 ### Badges
 
@@ -98,12 +98,12 @@ Este directorio contiene todos los recursos gráficos del proyecto Bootcamp Bash
 </div>
 ```
 
-### README de Módulos
+### README de Semanas
 
 ```markdown
-![Módulo X](../assets/module-X-logo.svg)
+![Semana X](../_assets/week-0X-logo.svg)
 
-# Módulo X: [Título]
+# Semana X: [Título]
 ```
 
 ### Documentación General

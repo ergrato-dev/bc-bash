@@ -1,12 +1,12 @@
 #!/bin/bash
 # Ejercicio 05: Calculadora Interactiva - Proyecto Integrador
-# Módulo: 3 | Dificultad: Avanzada
+# Semana: 3 | Dificultad: Avanzada
 # Objetivo: Integrar todos los conceptos: condicionales, loops, case y validación
 
 # ============================================================================
 # INSTRUCCIONES
 # ============================================================================
-# Este es un proyecto completo que integra todo lo aprendido en el módulo 3.
+# Este es un proyecto completo que integra todo lo aprendido en la semana 3.
 # Crearás una calculadora interactiva con menú, validación y manejo de errores.
 #
 # FUNCIONALIDADES REQUERIDAS:
@@ -462,5 +462,5 @@ Este proyecto demuestra:
 ✅ Validación exhaustiva de entrada
 ✅ Experiencia de usuario fluida
 
-¡Felicidades por completar el Módulo 3!
+¡Felicidades por completar la Semana 3!
 '

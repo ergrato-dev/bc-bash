@@ -1,4 +1,4 @@
-# 📚 Ejemplos - Módulo 2: Comandos Avanzados y Pipes
+# 📚 Ejemplos - Semana 2: Comandos Avanzados y Pipes
 
 Colección de scripts que demuestran el poder de los pipes y comandos de procesamiento de texto.
 

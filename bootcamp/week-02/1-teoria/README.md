@@ -1,216 +1,77 @@
-# 📚 Teoría - Módulo 2: Comandos Avanzados y Pipes
+# 📚 Teoría - Semana 02
 
-> **Objetivo**: Dominar el encadenamiento de comandos y el procesamiento de datos
+## 🎯 Objetivos de la Semana
 
-## 🎯 ¿Qué son los Pipes y Comandos Avanzados?
+Al completar esta sección teórica serás capaz de:
 
-Los **pipes** (`|`) y comandos avanzados permiten:
+- ✅ Dominar pipes y redirección de flujos (stdin, stdout, stderr)
+- ✅ Filtrar y buscar texto con grep y expresiones regulares
+- ✅ Transformar texto con sed (stream editor)
+- ✅ Procesar datos estructurados con awk
+- ✅ Construir pipelines de procesamiento de texto
 
-- Conectar la salida de un comando con la entrada de otro
-- Procesar grandes volúmenes de datos
-- Crear flujos de transformación complejos
-- Filtrar, ordenar y analizar información
+## 📖 Contenidos
 
-## 🤔 ¿Para qué sirven?
+### 1. [Pipes y Redirección](01-pipes-redireccion.md)
 
-### Casos de Uso Reales
+- Los tres flujos de datos: stdin, stdout, stderr
+- Operadores de redirección: `>`, `>>`, `2>`, `&>`
+- Pipes: conectar comandos con `|`
+- Comandos `tee` y `xargs`
 
-- 📊 **Análisis de Logs**: Buscar errores en miles de líneas
-- 🔍 **Filtrado de Datos**: Extraer información específica
-- 📈 **Reportes**: Generar estadísticas automáticas
-- 🧹 **Limpieza**: Procesar y normalizar datos
+### 2. [grep - Búsqueda y Filtrado](02-grep-filtrado.md)
 
-## 📖 Conceptos Clave
+- Opciones esenciales: `-i`, `-v`, `-n`, `-c`, `-r`
+- Expresiones regulares básicas
+- grep extendido (`grep -E`)
+- Combinaciones útiles con pipes
 
-### 1. Pipes (|)
+### 3. [sed - Stream Editor](03-sed-transformacion.md)
 
-**¿Qué es?** Conecta la salida de un comando con la entrada de otro.
+- Sustitución con `s/patrón/reemplazo/`
+- Flags: `g`, `i`, `p`
+- Grupos de captura
+- Eliminar e insertar líneas
+- Edición in-place con `-i`
 
-**¿Para qué?** Crear flujos de procesamiento secuenciales.
+### 4. [awk - Procesamiento de Columnas](04-awk-procesamiento.md)
 
-```bash
-# Ver procesos y filtrar
-ps aux | grep nginx
+- Campos y separadores
+- Patrones y condiciones
+- Bloques BEGIN y END
+- Variables y cálculos
+- Arrays asociativos
 
-# Contar archivos
-ls -la | wc -l
-```
+## 📁 Ejemplos de Código
 
-### 2. Redirección
+La carpeta `ejemplos/` contiene scripts ejecutables que demuestran los conceptos:
 
-**¿Qué es?** Controla hacia dónde va la salida de comandos.
+| Archivo                                                     | Descripción                        |
+| ----------------------------------------------------------- | ---------------------------------- |
+| [01-pipes-basicos.sh](ejemplos/01-pipes-basicos.sh)         | Ejemplos de pipes simples          |
+| [02-redireccion.sh](ejemplos/02-redireccion.sh)             | Redirección de entrada/salida      |
+| [03-grep-ejemplos.sh](ejemplos/03-grep-ejemplos.sh)         | Búsqueda con grep                  |
+| [04-sed-ejemplos.sh](ejemplos/04-sed-ejemplos.sh)           | Transformaciones con sed           |
+| [05-pipeline-completo.sh](ejemplos/05-pipeline-completo.sh) | Pipeline completo de procesamiento |
 
-**¿Para qué?** Guardar resultados, combinar archivos, descartar errores.
+## ⏱️ Tiempo Estimado
 
-```bash
-# Guardar salida
-comando > salida.txt
+- **Lectura de teoría**: 1-1.5 horas
+- **Experimentar con ejemplos**: 30-45 minutos
 
-# Agregar a archivo
-comando >> archivo.txt
+## 📊 Orden Recomendado
 
-# Redirigir entrada
-comando < entrada.txt
-```
+1. 📖 Lee cada archivo teórico en orden
+2. 🧪 Ejecuta los ejemplos de la carpeta `ejemplos/`
+3. 💡 Prueba variaciones de los comandos en tu terminal
+4. ✅ Completa el checklist de cada sección
 
-### 3. grep - Búsqueda
+## 🔗 Navegación
 
-**¿Qué es?** Busca patrones en texto.
-
-**¿Para qué?** Filtrar líneas que contienen texto específico.
-
-```bash
-# Buscar en archivo
-grep "error" log.txt
-
-# Buscar recursivamente
-grep -r "función" *.sh
-
-# Ignorar mayúsculas
-grep -i "WARNING" *.log
-```
-
-### 4. sed - Edición de Texto
-
-**¿Qué es?** Editor de stream para transformar texto.
-
-**¿Para qué?** Buscar y reemplazar, eliminar líneas, insertar texto.
-
-```bash
-# Reemplazar texto
-sed 's/antiguo/nuevo/g' archivo.txt
-
-# Eliminar líneas vacías
-sed '/^$/d' archivo.txt
-
-# Reemplazar en archivo
-sed -i 's/foo/bar/g' archivo.txt
-```
-
-### 5. awk - Procesamiento de Columnas
-
-**¿Qué es?** Lenguaje de procesamiento de patrones y texto.
-
-**¿Para qué?** Trabajar con datos tabulares, calcular, filtrar columnas.
-
-```bash
-# Imprimir columna
-awk '{print $1}' archivo.txt
-
-# Filtrar por condición
-awk '$3 > 100' datos.txt
-
-# Sumar columna
-awk '{sum+=$2} END {print sum}' numeros.txt
-```
-
-### 6. sort - Ordenamiento
-
-**¿Qué es?** Ordena líneas de texto.
-
-**¿Para qué?** Organizar datos alfabéticamente o numéricamente.
-
-```bash
-# Ordenar alfabéticamente
-sort archivo.txt
-
-# Ordenar números
-sort -n numeros.txt
-
-# Ordenar inverso
-sort -r archivo.txt
-```
-
-### 7. uniq - Líneas Únicas
-
-**¿Qué es?** Filtra líneas duplicadas consecutivas.
-
-**¿Para qué?** Obtener valores únicos, contar ocurrencias.
-
-```bash
-# Líneas únicas
-sort archivo.txt | uniq
-
-# Contar duplicados
-sort archivo.txt | uniq -c
-
-# Solo duplicados
-sort archivo.txt | uniq -d
-```
-
-### 8. cut - Cortar Columnas
-
-**¿Qué es?** Extrae secciones de cada línea.
-
-**¿Para qué?** Obtener columnas específicas de datos delimitados.
-
-```bash
-# Extraer campo
-cut -d':' -f1 /etc/passwd
-
-# Columnas 1 y 3
-cut -d',' -f1,3 datos.csv
-
-# Caracteres
-cut -c1-10 archivo.txt
-```
-
-## 🎨 Ejemplos Prácticos
-
-### 1. Top 10 IPs en un Log
-
-```bash
-cat access.log | \
-    awk '{print $1}' | \
-    sort | \
-    uniq -c | \
-    sort -nr | \
-    head -10
-```
-
-### 2. Buscar Errores del Día
-
-```bash
-grep "$(date +%Y-%m-%d)" /var/log/syslog | \
-    grep -i "error" | \
-    wc -l
-```
-
-### 3. Estadísticas de Archivos
-
-```bash
-ls -l | \
-    awk '{sum+=$5} END {print "Total:", sum/1024/1024, "MB"}'
-```
-
-### 4. Usuarios del Sistema
-
-```bash
-cut -d':' -f1 /etc/passwd | \
-    sort | \
-    head -10
-```
-
-## 🔧 Herramientas Complementarias
-
-- **find**: Buscar archivos
-- **xargs**: Construir comandos desde entrada
-- **tee**: Duplicar salida (archivo + pantalla)
-- **head/tail**: Primeras/últimas líneas
-- **wc**: Contar líneas, palabras, caracteres
-
-## 🎓 Mejores Prácticas
-
-1. **Usa pipes para legibilidad**: Cada paso en una línea
-2. **Combina herramientas**: grep + awk + sort
-3. **Valida resultados**: Prueba cada paso del pipe
-4. **Documenta pipelines complejos**: Añade comentarios
-
-## ➡️ Siguiente Paso
-
-- **[2-practicas](../2-practicas/README.md)**: Práctica con pipes y filtros
-- **[3-proyecto](../3-proyecto/README.md)**: Analizador de logs avanzado
+| ← Anterior                           | Actual        | Siguiente →                  |
+| ------------------------------------ | ------------- | ---------------------------- |
+| [Semana 01](../../week-01/1-teoria/) | **Semana 02** | [Prácticas](../2-practicas/) |
 
 ---
 
-**💡 Tip**: Dominar pipes es como dominar el arte de combinar herramientas simples para crear soluciones poderosas.
+[← Volver al README de la semana](../README.md)

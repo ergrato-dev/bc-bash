@@ -1,14 +1,14 @@
-# MÓDULO 8: PROYECTOS AVANZADOS Y AUTOMATIZACIÓN
+# SEMANA 8: PROYECTOS AVANZADOS Y AUTOMATIZACIÓN
 
-![Módulo 8 Logo](../assets/module-8-logo.svg)
+![Semana 8 Logo](../_assets/week-08-logo.svg)
 
-## 🎯 VISIÓN GENERAL DEL MÓDULO
+## 🎯 VISIÓN GENERAL DE LA SEMANA
 
-El **Módulo 8** representa la culminación del Bootcamp Bash Scripting. Aquí integrarás todo lo aprendido en los módulos anteriores para crear **sistemas de automatización complejos** y **proyectos de nivel empresarial**. Este módulo transforma a los participantes en **arquitectos de automatización** capaces de diseñar e implementar soluciones robustas para entornos de producción.
+La **Semana 8** representa la culminación del Bootcamp Bash Scripting. Aquí integrarás todo lo aprendido en las semanas anteriores para crear **sistemas de automatización complejos** y **proyectos de nivel empresarial**. Esta semana transforma a los participantes en **arquitectos de automatización** capaces de diseñar e implementar soluciones robustas para entornos de producción.
 
 ### 🏆 Lo que Lograrás
 
-Al completar este módulo serás capaz de:
+Al completar esta semana serás capaz de:
 
 - Diseñar arquitecturas de automatización escalables y mantenibles
 - Implementar sistemas de orquestación de procesos complejos
@@ -19,7 +19,7 @@ Al completar este módulo serás capaz de:
 
 ---
 
-## 📚 ESTRUCTURA DEL MÓDULO
+## 📚 ESTRUCTURA DE LA SEMANA
 
 ### 📖 Lecciones Principales
 
@@ -1017,7 +1017,7 @@ api_oauth2_login() {
 
 ### Desafío: "DevOps Automation Hub"
 
-Desarrollarás un **sistema completo de automatización** que integre todas las técnicas aprendidas en el módulo. Este proyecto simula un entorno empresarial real donde necesitas coordinar múltiples procesos, integrar sistemas externos y mantener alta disponibilidad.
+Desarrollarás un **sistema completo de automatización** que integre todas las técnicas aprendidas en la semana. Este proyecto simula un entorno empresarial real donde necesitas coordinar múltiples procesos, integrar sistemas externos y mantener alta disponibilidad.
 
 #### **Requerimientos del Sistema:**
 
@@ -1069,11 +1069,11 @@ Desarrollarás un **sistema completo de automatización** que integre todas las 
 
 ---
 
-## 🎓 CONCLUSIONES DEL MÓDULO
+## 🎓 CONCLUSIONES DE LA SEMANA 8
 
 ### Lo que Has Logrado
 
-Al completar este módulo has alcanzado el nivel de **Arquitecto de Automatización**, capaz de:
+Al completar esta semana has alcanzado el nivel de **Arquitecto de Automatización**, capaz de:
 
 - ✅ Diseñar sistemas complejos de automatización
 - ✅ Integrar múltiples tecnologías y servicios
@@ -1108,9 +1108,9 @@ Al completar este módulo has alcanzado el nivel de **Arquitecto de Automatizaci
 
 ## 🧭 NAVEGACIÓN DEL BOOTCAMP
 
-### ⬅️ Módulo Anterior
+### ⬅️ Semana Anterior
 
-**[MÓDULO 7: Optimización y Debugging](../week-07/README.md)**
+**[SEMANA 7: Optimización y Debugging](../week-07/README.md)**
 
 - Debugging y troubleshooting profesional
 - Optimización de performance avanzada
@@ -1145,9 +1145,9 @@ Al completar este módulo has alcanzado el nivel de **Arquitecto de Automatizaci
 
 Para obtener la **certificación oficial del Bootcamp Bash Scripting** debes completar:
 
-1. ✅ Todos los ejercicios de los 8 módulos
-2. ✅ Los 8 proyectos prácticos modulares
-3. ✅ El proyecto final del Módulo 8
+1. ✅ Todos los ejercicios de las 8 semanas
+2. ✅ Los 8 proyectos prácticos semanales
+3. ✅ El proyecto final de la Semana 8
 4. ✅ La evaluación técnica final
 
 ### Próximos Pasos

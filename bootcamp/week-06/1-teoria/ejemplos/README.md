@@ -1,4 +1,4 @@
-# 🚀 Módulo 6 - Ejemplos: Advanced Data Manipulation
+# 🚀 Semana 6 - Ejemplos: Advanced Data Manipulation
 
 **Ejemplos prácticos de manipulación avanzada de datos en Bash.**
 

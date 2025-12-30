@@ -1,5 +1,5 @@
 #!/bin/bash
-# Ejemplo de script de ejercicio - Módulo 1
+# Ejemplo de script de ejercicio - Semana 1
 
 echo "Hola mundo desde Bash!"
 echo "Este es un ejercicio de ejemplo"

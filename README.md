@@ -9,7 +9,7 @@
 
 # 🎓 Bootcamp Bash (bc_bash)
 
-Un bootcamp completo de scripting en Bash dividido en 8 módulos progresivos, con sistema de commits automáticos integrado.
+Un bootcamp completo de scripting en Bash dividido en 8 semanas progresivas, con sistema de commits automáticos integrado.
 
 ## 🚀 Sistema de Auto-Commit Incluido
 
@@ -54,7 +54,7 @@ bc_bash/
         └── 5-glosario/           # Términos clave
 ```
 
-### Módulos del Bootcamp
+### Semanas del Bootcamp
 
 | Semana | Tema                         | Proyecto Principal                |
 | ------ | ---------------------------- | --------------------------------- |
@@ -71,23 +71,23 @@ bc_bash/
 
 ### 🎯 Semanas 1-2: Fundamentos
 
-- **Módulo 1**: Conceptos básicos de Bash y scripting
-- **Módulo 2**: Comandos avanzados y procesamiento de texto
+- **Semana 1**: Conceptos básicos de Bash y scripting
+- **Semana 2**: Comandos avanzados y procesamiento de texto
 
 ### 🚀 Semanas 3-4: Programación
 
-- **Módulo 3**: Variables, condicionales y bucles
-- **Módulo 4**: Funciones y estructuras de datos
+- **Semana 3**: Variables, condicionales y bucles
+- **Semana 4**: Funciones y estructuras de datos
 
 ### 💪 Semanas 5-6: Aplicaciones
 
-- **Módulo 5**: Manipulación de archivos y directorios
-- **Módulo 6**: Procesamiento avanzado de datos
+- **Semana 5**: Manipulación de archivos y directorios
+- **Semana 6**: Procesamiento avanzado de datos
 
 ### 🏆 Semanas 7-8: Maestría
 
-- **Módulo 7**: Optimización, debugging y mejores prácticas
-- **Módulo 8**: Proyectos complejos y automatización empresarial
+- **Semana 7**: Optimización, debugging y mejores prácticas
+- **Semana 8**: Proyectos complejos y automatización empresarial
 
 ### ⏱️ Dedicación Sugerida
 
@@ -111,7 +111,7 @@ bc_bash/
 
 ### 📖 Contenido Educativo
 
-- **Ejercicios prácticos** en cada módulo
+- **Ejercicios prácticos** en cada semana
 - **Proyectos reales** para aplicar conocimientos
 - **Progresión gradual** de dificultad
 - **Mejores prácticas** de shell scripting
@@ -127,10 +127,10 @@ cd bc_bash
 ./_scripts/setup-auto-commit.sh
 ```
 
-### 2. Explorar Módulos
+### 2. Explorar Semanas
 
 ```bash
-# Comenzar con módulo 1
+# Comenzar con semana 1
 cd bootcamp/week-01
 cat README.md
 ```
@@ -151,13 +151,16 @@ echo "Mi ejercicio" > bootcamp/week-01/mi_script.sh
 - **[Estrategia de Commits](_docs/automation/COMMIT_STRATEGY.md)** - Sistema de commits automáticos
 - **[Plantillas](_docs/templates/)** - Templates para ejercicios
 
-### Por Módulo
+### Por Semana
 
-Cada módulo incluye:
+Cada semana incluye:
 
 - `README.md` - Objetivos y contenido
-- `ejercicios/` - Ejercicios prácticos
-- `proyectos/` - Proyectos del módulo
+- `1-teoria/` - Material teórico
+- `2-practicas/` - Ejercicios prácticos
+- `3-proyecto/` - Proyecto semanal
+- `4-recursos/` - Recursos adicionales
+- `5-glosario/` - Términos clave
 
 ## 🔧 Scripts de Automatización
 
@@ -171,11 +174,11 @@ Cada módulo incluye:
 ## 🎨 Ejemplos de Commits Generados
 
 ```
-feat(module1): add calculator exercise solution
+feat(week-01): add calculator exercise solution
 docs(docs): update installation guide
 script(scripts): improve automation tools
-fix(module2): resolve syntax error in loop example
-test(module3): add function validation tests
+fix(week-02): resolve syntax error in loop example
+test(week-03): add function validation tests
 ```
 
 ## 🛠️ Tecnologías y Herramientas
@@ -217,7 +220,7 @@ test(module3): add function validation tests
 ./_scripts/commit.sh auto
 
 # Manual si necesitas control específico
-git commit -m "feat(module2): add advanced loop examples"
+git commit -m "feat(week-02): add advanced loop examples"
 ```
 
 ## 📞 Soporte
@@ -231,7 +234,7 @@ git commit -m "feat(module2): add advanced loop examples"
 ### ¿Preguntas sobre Bash?
 
 - Revisar documentación en `_docs/`
-- Consultar ejercicios resueltos en cada módulo
+- Consultar ejercicios resueltos en cada semana
 - Usar plantillas en `_docs/templates/`
 
 ---

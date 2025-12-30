@@ -13,6 +13,8 @@
 
 El sistema de archivos Unix/Linux es como un **árbol invertido** donde todo comienza desde la raíz `/`.
 
+![Jerarquía del Sistema de Archivos](../0-assets/02-sistema-archivos.svg)
+
 ```
 /                     ← Raíz (root)
 ├── bin/              ← Comandos esenciales

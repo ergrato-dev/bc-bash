@@ -1,4 +1,4 @@
-# 📚 Teoría - Módulo 6: Manipulación Avanzada de Datos
+# 📚 Teoría - Semana 6: Herramientas del Sistema
 
 > **Objetivo**: Procesar formatos de datos complejos y crear pipelines de transformación
 

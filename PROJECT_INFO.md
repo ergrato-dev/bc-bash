@@ -11,12 +11,12 @@
 
 ## 🎯 Propósito
 
-Bootcamp completo de scripting en Bash dividido en 8 módulos progresivos, diseñado para enseñar los fundamentos de shell scripting a través de ejercicios prácticos y proyectos reales.
+Bootcamp completo de scripting en Bash dividido en 8 semanas progresivas, diseñado para enseñar los fundamentos de shell scripting a través de ejercicios prácticos y proyectos reales.
 
 ## 📚 Estructura Educativa
 
-- **8 módulos** de aprendizaje progresivo
-- **8 semanas** de duración sugerida
+- **8 semanas** de aprendizaje progresivo
+- **4-6 horas** de dedicación semanal
 - **24 ejercicios** prácticos aproximadamente
 - **8 proyectos** principales
 - **Sistema de auto-commit** integrado
@@ -97,7 +97,7 @@ open-source, mit-license, learning, programming, unix, system-administration
 
 | Característica        | Estado      | Versión |
 | --------------------- | ----------- | ------- |
-| 8 Módulos Educativos  | ✅ Completo | 1.0.0   |
+| 8 Semanas Educativas  | ✅ Completo | 1.0.0   |
 | Sistema Auto-Commit   | ✅ Completo | 1.0.0   |
 | Documentación         | ✅ Completo | 1.0.0   |
 | Templates GitHub      | ✅ Completo | 1.0.0   |
@@ -151,8 +151,8 @@ open-source, mit-license, learning, programming, unix, system-administration
 
 ## 📜 Historial de Versiones
 
-- **v1.0.0** (2025-08-02): Release inicial con 8 módulos completos
-- **v0.9.0** (2025-07-XX): Beta con 5 módulos
+- **v1.0.0** (2025-08-02): Release inicial con 8 semanas completas
+- **v0.9.0** (2025-07-XX): Beta con 5 semanas
 - **v0.1.0** (2025-06-XX): Proyecto inicial
 
 ## 🤝 Colaboradores

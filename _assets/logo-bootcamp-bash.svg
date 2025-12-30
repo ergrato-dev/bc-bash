@@ -41,7 +41,7 @@
   <text x="120" y="65" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="url(#terminalGradient)">Bash</text>
   
   <!-- Subtitle -->
-  <text x="120" y="85" font-family="Arial, sans-serif" font-size="14" fill="#8b949e">8 Módulos • Shell Scripting</text>
+  <text x="120" y="85" font-family="Arial, sans-serif" font-size="14" fill="#8b949e">8 Semanas • Shell Scripting</text>
   
   <!-- Code brackets decoration -->
   <text x="320" y="30" font-family="Monaco, 'Courier New', monospace" font-size="20" fill="#00ff88" opacity="0.6">{</text>

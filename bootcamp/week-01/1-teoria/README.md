@@ -256,7 +256,7 @@ exit 0
 
 ## 🎯 Lo que Aprenderás
 
-Al finalizar este módulo podrás:
+Al finalizar esta semana podrás:
 
 - ✅ Escribir scripts básicos de Bash
 - ✅ Usar variables y comandos fundamentales

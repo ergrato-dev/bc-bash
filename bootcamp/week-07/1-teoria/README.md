@@ -1,4 +1,4 @@
-# 📚 Teoría - Módulo 7: Optimización y Debugging
+# 📚 Teoría - Semana 7: Optimización y Debugging
 
 > **Objetivo**: Crear scripts eficientes, debuggear problemas y aplicar mejores prácticas
 

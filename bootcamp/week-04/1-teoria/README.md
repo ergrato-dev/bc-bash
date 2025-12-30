@@ -1,4 +1,4 @@
-# 📚 Teoría - Módulo 4: Funciones y Arrays
+# 📚 Teoría - Semana 4: Funciones y Arrays
 
 > **Objetivo**: Organizar código reutilizable y manejar colecciones de datos
 

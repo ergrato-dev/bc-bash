@@ -20,7 +20,7 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.h
 
 ### Changed
 
-- Documentación actualizada para reflejar 8 módulos
+- Documentación actualizada para reflejar 8 semanas
 - Estructura del proyecto reorganizada para open source
 
 ### Security
@@ -32,64 +32,64 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.h
 
 ### Added
 
-- 8 módulos completos de Bootcamp Bash
+- 8 semanas completas de Bootcamp Bash
 - Sistema de commits automáticos
 - Documentación completa del proyecto
 - Scripts de automatización
 - Estructura educativa progresiva
 
-### Módulos Incluidos
+### Semanas Incluidas
 
-#### Módulo 1: Fundamentos de Bash
+#### Semana 1: Fundamentos de Bash
 
 - Comandos básicos y navegación
 - Permisos de archivos
 - Variables básicas
 - Proyecto: Sistema de Gestión de Archivos
 
-#### Módulo 2: Comandos Avanzados y Pipes
+#### Semana 2: Comandos Avanzados y Pipes
 
 - Redirección y pipes
 - Filtros de texto
 - Wildcards y patrones
 - Proyecto: Procesador de Logs Avanzado
 
-#### Módulo 3: Variables y Control de Flujo
+#### Semana 3: Variables y Control de Flujo
 
 - Variables y expansión
 - Estructuras condicionales
 - Bucles y iteración
 - Proyecto: Sistema de Menús Interactivo
 
-#### Módulo 4: Funciones y Arrays
+#### Semana 4: Funciones y Arrays
 
 - Definición de funciones
 - Manejo de arrays
 - Scope de variables
 - Proyecto: Gestor Interactivo de Archivos
 
-#### Módulo 5: Operaciones de Archivos y Texto
+#### Semana 5: Operaciones de Archivos y Texto
 
 - Manipulación avanzada de archivos
 - Expresiones regulares
 - Herramientas sed y awk
 - Proyecto: Analizador de Logs con Reportes
 
-#### Módulo 6: Manipulación Avanzada de Datos
+#### Semana 6: Manipulación Avanzada de Datos
 
 - Procesamiento de CSV/JSON
 - Transformación de datos
 - Parsing complejo
 - Proyecto: Procesador de Datos Empresariales
 
-#### Módulo 7: Optimización y Debugging
+#### Semana 7: Optimización y Debugging
 
 - Técnicas de debugging
 - Optimización de performance
 - Mejores prácticas de seguridad
 - Proyecto: Monitor de Sistema Avanzado
 
-#### Módulo 8: Proyectos Avanzados y Automatización
+#### Semana 8: Proyectos Avanzados y Automatización
 
 - Integración con APIs
 - Automatización empresarial
@@ -149,11 +149,11 @@ Al contribuir al proyecto:
 ### Fixed
 
 - Corregido bug en script de setup (#456)
-- Solucionado problema de permisos en módulo 3
+- Solucionado problema de permisos en semana 3
 
 ### Changed
 
-- Actualizada documentación del módulo 2
+- Actualizada documentación de la semana 2
 - Mejorado mensaje de error en auto-commit
 ```
 

@@ -2,7 +2,7 @@
 
 ## Descripción General
 
-Este es un bootcamp completo de scripting en Bash dividido en 8 módulos progresivos, diseñado para enseñar los fundamentos de shell scripting a través de ejercicios prácticos y proyectos reales.
+Este es un bootcamp completo de scripting en Bash dividido en 8 semanas progresivas, diseñado para enseñar los fundamentos de shell scripting a través de ejercicios prácticos y proyectos reales.
 
 ## Estructura del Proyecto
 
@@ -10,65 +10,71 @@ Este es un bootcamp completo de scripting en Bash dividido en 8 módulos progres
 bc_bash/
 ├── _docs/                    # 📚 Toda la documentación del proyecto
 ├── _scripts/                 # 🔧 Scripts de utilidad y automatización
-├── week-01/                  # 📖 Módulo 1: Fundamentos de Bash
-│   ├── ejercicios/           # 💪 Ejercicios prácticos
-│   ├── proyectos/            # 🚀 Proyectos del módulo
-│   └── README.md            # 📋 Descripción del módulo
-├── week-02/                  # 📖 Módulo 2: Comandos Avanzados y Pipes
-├── week-03/                  # 📖 Módulo 3: Variables y Control de Flujo
-├── week-04/                  # 📖 Módulo 4: Funciones y Arrays
-├── week-05/                  # 📖 Módulo 5: Operaciones de Archivos y Texto
-├── week-06/                  # 📖 Módulo 6: Manipulación Avanzada de Datos
-├── week-07/                  # 📖 Módulo 7: Optimización y Debugging
-├── week-08/                  # 📖 Módulo 8: Proyectos y Automatización
-└── README.md                # 📖 README principal del proyecto
+├── _assets/                  # 🎨 Logos y recursos visuales
+├── bootcamp/
+│   ├── week-01/              # 📖 Semana 1: Fundamentos de Bash
+│   │   ├── 0-assets/         # 🖼️ Recursos visuales
+│   │   ├── 1-teoria/         # 📚 Material teórico
+│   │   ├── 2-practicas/      # 💪 Ejercicios prácticos
+│   │   ├── 3-proyecto/       # 🚀 Proyecto semanal
+│   │   ├── 4-recursos/       # 📖 Recursos adicionales
+│   │   ├── 5-glosario/       # 📖 Glosario de términos
+│   │   └── README.md         # 📋 Descripción de la semana
+│   ├── week-02/              # 📖 Semana 2: Comandos Avanzados y Pipes
+│   ├── week-03/              # 📖 Semana 3: Variables y Control de Flujo
+│   ├── week-04/              # 📖 Semana 4: Funciones y Arrays
+│   ├── week-05/              # 📖 Semana 5: Operaciones de Archivos y Texto
+│   ├── week-06/              # 📖 Semana 6: Manipulación Avanzada de Datos
+│   ├── week-07/              # 📖 Semana 7: Optimización y Debugging
+│   └── week-08/              # 📖 Semana 8: Proyectos y Automatización
+└── README.md                 # 📖 README principal del proyecto
 ```
 
-## Módulos del Bootcamp
+## Semanas del Bootcamp
 
-### Módulo 1: Fundamentos de Bash
+### Semana 1: Fundamentos de Bash
 
 - **Objetivo**: Introducir comandos básicos y sintaxis de Bash
 - **Contenido**: Terminal, shell, navegación, permisos de archivos
 - **Proyecto**: Sistema de Gestión de Archivos
 
-### Módulo 2: Comandos Avanzados y Pipes
+### Semana 2: Comandos Avanzados y Pipes
 
 - **Objetivo**: Dominar comandos avanzados y procesamiento de texto
 - **Contenido**: Pipes, redirección, wildcards, filtros de texto
 - **Proyecto**: Procesador de Logs Avanzado
 
-### Módulo 3: Variables y Control de Flujo
+### Semana 3: Variables y Control de Flujo
 
 - **Objetivo**: Manejar variables y estructuras de control
 - **Contenido**: Variables, condicionales, bucles, entrada/salida
 - **Proyecto**: Sistema de Menús Interactivo
 
-### Módulo 4: Funciones y Arrays
+### Semana 4: Funciones y Arrays
 
 - **Objetivo**: Organizar código con funciones y manejar arrays
 - **Contenido**: Funciones, arrays, códigos de salida, logging
 - **Proyecto**: Gestor Interactivo de Archivos
 
-### Módulo 5: Operaciones de Archivos y Texto
+### Semana 5: Operaciones de Archivos y Texto
 
 - **Objetivo**: Automatizar manipulación avanzada de archivos
 - **Contenido**: Expresiones regulares, sed, awk, análisis de datos
 - **Proyecto**: Analizador de Logs con Reportes
 
-### Módulo 6: Manipulación Avanzada de Datos
+### Semana 6: Manipulación Avanzada de Datos
 
 - **Objetivo**: Procesamiento sofisticado de datos estructurados
 - **Contenido**: CSV, JSON, XML, parsing complejo, transformaciones
 - **Proyecto**: Procesador de Datos Empresariales
 
-### Módulo 7: Optimización y Debugging
+### Semana 7: Optimización y Debugging
 
 - **Objetivo**: Técnicas de optimización y resolución de problemas
 - **Contenido**: Debugging, profiling, optimización, seguridad
 - **Proyecto**: Monitor de Sistema Avanzado
 
-### Módulo 8: Proyectos Avanzados y Automatización
+### Semana 8: Proyectos Avanzados y Automatización
 
 - **Objetivo**: Integración empresarial y automatización completa
 - **Contenido**: APIs, Docker, Git, CI/CD, automatización empresarial
@@ -101,7 +107,7 @@ bc_bash/
 
 #### 📊 **Resúmenes** (`summaries/`)
 
-- [`8-modules-update-summary.md`](summaries/8-modules-update-summary.md) - Actualización a 8 módulos
+- [`8-weeks-update-summary.md`](summaries/8-weeks-update-summary.md) - Actualización a 8 semanas
 - [`absolute-paths-update.md`](summaries/absolute-paths-update.md) - Actualización de rutas absolutas
 - [`open-source-implementation-summary.md`](summaries/open-source-implementation-summary.md) - Implementación open source
 - [`svg-logos-implementation-summary.md`](summaries/svg-logos-implementation-summary.md) - Implementación de logos SVG
@@ -114,11 +120,11 @@ bc_bash/
 
 - [`ejercicio-template.md`](templates/ejercicio-template.md) - Plantilla para ejercicios
 
-### Por Módulo
+### Por Semana
 
-- Cada módulo tiene su propio `README.md` con objetivos específicos
-- Ejercicios documentados en `moduloX/2-practicas/README.md`
-- Proyectos documentados en `moduloX/3-proyecto/[proyecto]/README.md`
+- Cada semana tiene su propio `README.md` con objetivos específicos
+- Ejercicios documentados en `week-XX/2-practicas/README.md`
+- Proyectos documentados en `week-XX/3-proyecto/[proyecto]/README.md`
 
 ## Scripts de Automatización
 

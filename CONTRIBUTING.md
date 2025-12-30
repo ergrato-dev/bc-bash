@@ -58,7 +58,10 @@ cd bc-bash
 ./_scripts/setup-auto-commit.sh
 
 # Verificar estructura
-for i in {1..8}; do [ -d "modulo$i" ] && echo "✓ modulo$i" || echo "✗ modulo$i"; done
+for i in {1..8}; do
+  week=$(printf "week-%02d" $i)
+  [ -d "bootcamp/$week" ] && echo "✓ $week" || echo "✗ $week"
+done
 ```
 
 ### 3. Crear una Rama
@@ -77,7 +80,7 @@ git checkout -b docs/actualizar-readme-week-03
 ./_scripts/commit.sh auto
 
 # O hacer commits manuales siguiendo Conventional Commits
-git commit -m "feat(module4): add array manipulation exercise"
+git commit -m "feat(week-04): add array manipulation exercise"
 ```
 
 ### 5. Enviar Pull Request
@@ -141,12 +144,16 @@ bc_bash/
 │   ├── templates/           # 📋 Plantillas
 │   └── assets/              # 🖼️ Recursos
 ├── _scripts/                # 🔧 Automatización
-├── assets/                  # 🎨 Logos y recursos visuales
+├── _assets/                 # 🎨 Logos y recursos visuales
 ├── bootcamp/                # 🎓 Contenido del bootcamp
-│   ├── week-01 a week-08/  # 📖 Módulos educativos
-│   │   ├── ejercicios/     # 💪 Ejercicios
-│   │   ├── proyectos/      # 🚀 Proyectos
-│   │   └── README.md       # 📋 Descripción
+│   └── week-01 a week-08/   # 📖 Semanas educativas
+│       ├── 0-assets/        # 🖼️ Recursos visuales
+│       ├── 1-teoria/        # 📚 Teoría
+│       ├── 2-practicas/     # 💪 Prácticas
+│       ├── 3-proyecto/      # 🚀 Proyecto semanal
+│       ├── 4-recursos/      # 📚 Recursos adicionales
+│       ├── 5-glosario/      # 📖 Glosario
+│       └── README.md        # 📋 Descripción
 └── tests/                   # 🧪 Tests (si aplica)
 ```
 
@@ -154,8 +161,8 @@ bc_bash/
 
 - **Documentación global** → `_docs/`
 - **Scripts de utilidad** → `_scripts/`
-- **Contenido educativo** → `bootcamp/moduloX/`
-- **Assets compartidos** → `assets/`
+- **Contenido educativo** → `bootcamp/week-XX/`
+- **Assets globales** → `_assets/`
 
 ## 🔄 Sistema de Commits
 
@@ -173,19 +180,19 @@ Este proyecto usa **Conventional Commits** con auto-detección:
 
 ### Scopes
 
-- `module1-8`: Cambios específicos por módulo
+- `week-01` a `week-08`: Cambios específicos por semana
 - `docs`: Documentación en `_docs/`
 - `scripts`: Scripts en `_scripts/`
-- `exercises`: Ejercicios
-- `projects`: Proyectos
+- `practicas`: Prácticas
+- `proyecto`: Proyectos semanales
 
 ### Ejemplos
 
 ```bash
-feat(module3): add interactive menu exercise
+feat(week-03): add interactive menu exercise
 fix(scripts): resolve auto-commit permission issue
-docs(module1): update README with new objectives
-style(module4): improve code formatting in examples
+docs(week-01): update README with new objectives
+style(week-04): improve code formatting in examples
 ```
 
 ### Uso del Auto-Commit

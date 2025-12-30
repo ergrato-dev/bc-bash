@@ -1,4 +1,4 @@
-# 📚 Ejemplos - Módulo 8: Proyectos Avanzados y Automatización
+# 📚 Ejemplos - Semana 8: Proyectos Avanzados y Automatización
 
 Scripts completos que demuestran patrones de automatización profesional y proyectos del mundo real.
 

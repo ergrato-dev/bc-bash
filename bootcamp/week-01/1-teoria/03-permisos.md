@@ -13,6 +13,8 @@
 
 Cada archivo y directorio tiene **tres tipos de permisos** para **tres tipos de usuarios**.
 
+![Sistema de Permisos rwx](../0-assets/03-permisos-rwx.svg)
+
 #### Tipos de Permisos
 
 | Permiso     | Símbolo | En archivos            | En directorios          |

@@ -1,20 +1,20 @@
 <div align="center">
-  <img src="../assets/module-3-logo.svg" alt="Módulo 3: Variables y Control de Flujo" width="300">
+  <img src="../_assets/week-03-logo.svg" alt="Semana 3: Variables y Control de Flujo" width="300">
 </div>
 
-# MÓDULO 3: Variables y Control de Flujo
+# SEMANA 3: Variables y Control de Flujo
 
 Bootcamp bash scripting /
-de acuerdo con el contexto, vamos con: MÓDULO 3: Primer Script y Variables (Semana 3)
+de acuerdo con el contexto, vamos con: SEMANA 3: Primer Script y Variables
 
 Editar
 
-Planificó módulo de Bash Scripting con lecciones detalladas.
+Planificó semana de Bash Scripting con lecciones detalladas.
 4s
 
-¡Perfecto! Vamos a desarrollar en profundidad el MÓDULO 3: Primer Script y Variables de nuestro bootcamp de Bash Scripting. Este módulo es fundamental porque marca la transición de usar comandos individuales a crear programas completos.
+¡Perfecto! Vamos a desarrollar en profundidad la SEMANA 3: Primer Script y Variables de nuestro bootcamp de Bash Scripting. Esta semana es fundamental porque marca la transición de usar comandos individuales a crear programas completos.
 
-MÓDULO 3: Primer Script y Variables (Semana 3)
+SEMANA 3: Primer Script y Variables
 Lección 3.1: Creación del Primer Script
 Conceptos Fundamentales
 Antes de escribir nuestro primer script, necesitamos entender qué hace especial a un archivo de texto para que se convierta en un programa ejecutable en Bash.
@@ -1398,7 +1398,7 @@ Editar
 Planificó proyecto interactivo de gestión de archivos en script
 6s
 
-¡Excelente elección! El Proyecto Práctico 3 va a ser el momento donde realmente consolidamos todo lo que hemos aprendido en este módulo. Vamos a crear un Script Interactivo para Gestión de Archivos que será como construir una navaja suiza digital: una herramienta versátil que nos permita manejar archivos de manera eficiente y profesional.
+¡Excelente elección! El Proyecto Práctico 3 va a ser el momento donde realmente consolidamos todo lo que hemos aprendido en esta semana. Vamos a crear un Script Interactivo para Gestión de Archivos que será como construir una navaja suiza digital: una herramienta versátil que nos permita manejar archivos de manera eficiente y profesional.
 
 Proyecto Práctico 3: Gestor Interactivo de Archivos
 Entendiendo el Objetivo
@@ -1423,7 +1423,7 @@ Código
 Preparó explicación detallada del proyecto práctico 3.
 6s
 
-¡Perfecto! Acabamos de crear nuestro proyecto más ambicioso hasta ahora. Este Gestor Interactivo de Archivos es como construir una navaja suiza digital que demuestra todo lo que hemos aprendido en el Módulo 3. Permíteme explicarte paso a paso cómo está construido este proyecto y por qué cada decisión técnica fue tomada.
+¡Perfecto! Acabamos de crear nuestro proyecto más ambicioso hasta ahora. Este Gestor Interactivo de Archivos es como construir una navaja suiza digital que demuestra todo lo que hemos aprendido en la Semana 3. Permíteme explicarte paso a paso cómo está construido este proyecto y por qué cada decisión técnica fue tomada.
 
 Anatomía del Proyecto: Entendiendo la Arquitectura
 La Filosofía del Diseño
@@ -1440,7 +1440,7 @@ Funciones de Validación: En el mundo real, los usuarios cometen errores, los ar
 
 Funciones Especializadas: Cada grupo de funciones maneja un aspecto específico del programa, como navegación, manipulación de archivos, búsqueda y backup. Es como tener diferentes departamentos en una empresa, cada uno especializado en su área.
 
-Integración de Conceptos del Módulo 3
+Integración de Conceptos de la Semana 3
 Este proyecto es un laboratorio vivo donde aplicamos todo lo aprendido:
 
 Variables y Tipos de Datos: Observa cómo usamos variables globales para mantener el estado del programa (como directorio_actual y modo_debug), constantes para valores inmutables, y variables locales dentro de las funciones para evitar contaminación del espacio de nombres.

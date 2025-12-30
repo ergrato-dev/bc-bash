@@ -13,6 +13,8 @@
 
 Antes de sumergirnos en el mundo del scripting, necesitamos entender claramente qué herramientas estamos usando. Muchas personas confunden los términos "terminal", "consola" y "shell", pero cada uno tiene un propósito específico:
 
+![Terminal, Shell y Consola](../0-assets/01-terminal-shell-consola.svg)
+
 | Término      | Definición                                                        | Analogía               |
 | ------------ | ----------------------------------------------------------------- | ---------------------- |
 | **Consola**  | Hardware físico o virtual donde interactúas con el sistema        | Teclado y pantalla     |

@@ -1,0 +1,95 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#1a202c"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" fill="#e2e8f0" font-weight="bold">📁 Jerarquía del Sistema de Archivos Unix/Linux</text>
+  
+  <!-- Root -->
+  <rect x="360" y="55" width="80" height="35" rx="6" fill="#f0db4f" stroke="#e2c822" stroke-width="2"/>
+  <text x="400" y="78" text-anchor="middle" font-family="Courier, monospace" font-size="16" fill="#1a202c" font-weight="bold">/</text>
+  
+  <!-- Lines from root -->
+  <line x1="400" y1="90" x2="400" y2="110" stroke="#a0aec0" stroke-width="2"/>
+  <line x1="100" y1="110" x2="700" y2="110" stroke="#a0aec0" stroke-width="2"/>
+  
+  <!-- Vertical lines to directories -->
+  <line x1="100" y1="110" x2="100" y2="130" stroke="#a0aec0" stroke-width="2"/>
+  <line x1="200" y1="110" x2="200" y2="130" stroke="#a0aec0" stroke-width="2"/>
+  <line x1="300" y1="110" x2="300" y2="130" stroke="#a0aec0" stroke-width="2"/>
+  <line x1="400" y1="110" x2="400" y2="130" stroke="#a0aec0" stroke-width="2"/>
+  <line x1="500" y1="110" x2="500" y2="130" stroke="#a0aec0" stroke-width="2"/>
+  <line x1="600" y1="110" x2="600" y2="130" stroke="#a0aec0" stroke-width="2"/>
+  <line x1="700" y1="110" x2="700" y2="130" stroke="#a0aec0" stroke-width="2"/>
+  
+  <!-- /bin -->
+  <rect x="60" y="130" width="80" height="30" rx="4" fill="#4299e1"/>
+  <text x="100" y="150" text-anchor="middle" font-family="Courier, monospace" font-size="13" fill="#fff">/bin</text>
+  <text x="100" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">Binarios</text>
+  <text x="100" y="187" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">esenciales</text>
+  
+  <!-- /etc -->
+  <rect x="160" y="130" width="80" height="30" rx="4" fill="#9f7aea"/>
+  <text x="200" y="150" text-anchor="middle" font-family="Courier, monospace" font-size="13" fill="#fff">/etc</text>
+  <text x="200" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">Configuración</text>
+  <text x="200" y="187" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">del sistema</text>
+  
+  <!-- /home -->
+  <rect x="260" y="130" width="80" height="30" rx="4" fill="#48bb78"/>
+  <text x="300" y="150" text-anchor="middle" font-family="Courier, monospace" font-size="13" fill="#fff">/home</text>
+  <text x="300" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">Directorios</text>
+  <text x="300" y="187" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">de usuarios</text>
+  
+  <!-- /tmp -->
+  <rect x="360" y="130" width="80" height="30" rx="4" fill="#ed8936"/>
+  <text x="400" y="150" text-anchor="middle" font-family="Courier, monospace" font-size="13" fill="#fff">/tmp</text>
+  <text x="400" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">Archivos</text>
+  <text x="400" y="187" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">temporales</text>
+  
+  <!-- /usr -->
+  <rect x="460" y="130" width="80" height="30" rx="4" fill="#4299e1"/>
+  <text x="500" y="150" text-anchor="middle" font-family="Courier, monospace" font-size="13" fill="#fff">/usr</text>
+  <text x="500" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">Programas</text>
+  <text x="500" y="187" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">de usuario</text>
+  
+  <!-- /var -->
+  <rect x="560" y="130" width="80" height="30" rx="4" fill="#ed64a6"/>
+  <text x="600" y="150" text-anchor="middle" font-family="Courier, monospace" font-size="13" fill="#fff">/var</text>
+  <text x="600" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">Datos</text>
+  <text x="600" y="187" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">variables</text>
+  
+  <!-- /opt -->
+  <rect x="660" y="130" width="80" height="30" rx="4" fill="#667eea"/>
+  <text x="700" y="150" text-anchor="middle" font-family="Courier, monospace" font-size="13" fill="#fff">/opt</text>
+  <text x="700" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">Software</text>
+  <text x="700" y="187" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a0aec0">adicional</text>
+  
+  <!-- Subdirectory example: /home -->
+  <line x1="300" y1="195" x2="300" y2="220" stroke="#48bb78" stroke-width="2"/>
+  <rect x="250" y="220" width="100" height="25" rx="4" fill="#2d3748" stroke="#48bb78" stroke-width="1"/>
+  <text x="300" y="237" text-anchor="middle" font-family="Courier, monospace" font-size="11" fill="#48bb78">/home/user</text>
+  
+  <!-- Legend Box -->
+  <rect x="50" y="280" width="700" height="200" rx="8" fill="#2d3748"/>
+  <text x="400" y="310" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#e2e8f0" font-weight="bold">📍 Símbolos de Navegación</text>
+  
+  <!-- Symbols -->
+  <text x="100" y="350" font-family="Courier, monospace" font-size="20" fill="#f0db4f">/</text>
+  <text x="140" y="350" font-family="system-ui, sans-serif" font-size="13" fill="#e2e8f0">Raíz del sistema</text>
+  
+  <text x="100" y="385" font-family="Courier, monospace" font-size="20" fill="#f0db4f">~</text>
+  <text x="140" y="385" font-family="system-ui, sans-serif" font-size="13" fill="#e2e8f0">Directorio home del usuario</text>
+  
+  <text x="100" y="420" font-family="Courier, monospace" font-size="20" fill="#f0db4f">.</text>
+  <text x="140" y="420" font-family="system-ui, sans-serif" font-size="13" fill="#e2e8f0">Directorio actual</text>
+  
+  <text x="430" y="350" font-family="Courier, monospace" font-size="20" fill="#f0db4f">..</text>
+  <text x="470" y="350" font-family="system-ui, sans-serif" font-size="13" fill="#e2e8f0">Directorio padre</text>
+  
+  <text x="430" y="385" font-family="Courier, monospace" font-size="20" fill="#f0db4f">-</text>
+  <text x="470" y="385" font-family="system-ui, sans-serif" font-size="13" fill="#e2e8f0">Directorio anterior</text>
+  
+  <!-- Path types -->
+  <text x="100" y="460" font-family="system-ui, sans-serif" font-size="12" fill="#48bb78">🔹 Ruta absoluta: /home/user/docs</text>
+  <text x="430" y="460" font-family="system-ui, sans-serif" font-size="12" fill="#4299e1">🔹 Ruta relativa: ./docs o ../otro</text>
+</svg>

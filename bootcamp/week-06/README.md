@@ -1,18 +1,18 @@
 <div align="center">
-  <img src="../assets/module-6-logo.svg" alt="Módulo 6: Herramientas del Sistema" width="300">
+  <img src="../_assets/week-06-logo.svg" alt="Semana 6: Herramientas del Sistema" width="300">
 </div>
 
-# MÓDULO 6: HERRAMIENTAS DEL SISTEMA
+# SEMANA 6: HERRAMIENTAS DEL SISTEMA
 
 **Bootcamp Bash Scripting - Semana 6**
 
-## 🎯 VISIÓN GENERAL DEL MÓDULO
+## 🎯 VISIÓN GENERAL DE LA SEMANA
 
-El Módulo 6 marca una transición fundamental en tu desarrollo como programador de bash. Hasta ahora has aprendido a procesar y analizar datos. Ahora aprenderás a **controlar y monitorear sistemas completos**. Es la diferencia entre ser un analista de datos y ser el arquitecto que diseña y mantiene toda la infraestructura.
+La Semana 6 marca una transición fundamental en tu desarrollo como programador de bash. Hasta ahora has aprendido a procesar y analizar datos. Ahora aprenderás a **controlar y monitorear sistemas completos**. Es la diferencia entre ser un analista de datos y ser el arquitecto que diseña y mantiene toda la infraestructura.
 
 ### 🎯 Objetivos de Aprendizaje
 
-Al completar este módulo, serás capaz de:
+Al completar esta semana, serás capaz de:
 
 - **Gestionar procesos** de manera avanzada con monitoreo y control automatizado
 - **Automatizar tareas** con programación temporal y cron jobs inteligentes
@@ -21,11 +21,11 @@ Al completar este módulo, serás capaz de:
 - **Implementar logging** avanzado y sistemas de auditoría
 - **Crear herramientas** de administración de sistemas robustas y escalables
 
-### 🌟 ¿Por qué es crucial este módulo?
+### 🌟 ¿Por qué es crucial esta semana?
 
-En el mundo profesional, no basta con saber programar. Los **administradores de sistemas**, **DevOps engineers**, y **SREs** (Site Reliability Engineers) necesitan herramientas que mantengan los sistemas funcionando 24/7. Este módulo te enseña a crear esas herramientas.
+En el mundo profesional, no basta con saber programar. Los **administradores de sistemas**, **DevOps engineers**, y **SREs** (Site Reliability Engineers) necesitan herramientas que mantengan los sistemas funcionando 24/7. Esta semana te enseña a crear esas herramientas.
 
-### 📚 Estructura del Módulo
+### 📚 Estructura de la Semana
 
 #### **Lección 6.1: Gestión Avanzada de Procesos**
 
@@ -54,9 +54,9 @@ En el mundo profesional, no basta con saber programar. Los **administradores de 
 - Alertas automáticas por email/Slack
 - Dashboard web en tiempo real
 - Reportes automatizados
-  El Módulo 6 marca una transición fundamental en tu desarrollo. Hasta ahora has aprendido a procesar y analizar datos. Ahora aprenderás a controlar y monitorear sistemas completos. Es la diferencia entre ser un analista de datos y ser el arquitecto que diseña y mantiene toda la infraestructura.
+  La Semana 6 marca una transición fundamental en tu desarrollo. Hasta ahora has aprendido a procesar y analizar datos. Ahora aprenderás a controlar y monitorear sistemas completos. Es la diferencia entre ser un analista de datos y ser el arquitecto que diseña y mantiene toda la infraestructura.
 
-Imagina que eres el capitán de un barco. Los módulos anteriores te enseñaron a leer mapas, interpretar instrumentos, y analizar datos meteorológicos. El Módulo 6 te enseñará a controlar todos los sistemas del barco: motores, navegación, comunicaciones, y monitoreo en tiempo real de cada componente crítico.
+Imagina que eres el capitán de un barco. Las semanas anteriores te enseñaron a leer mapas, interpretar instrumentos, y analizar datos meteorológicos. La Semana 6 te enseñará a controlar todos los sistemas del barco: motores, navegación, comunicaciones, y monitoreo en tiempo real de cada componente crítico.
 
 Lo que vas a dominar:
 🔧 Gestión Avanzada de Procesos: Controlar, monitorear y orquestar procesos como un director de orquesta
@@ -65,12 +65,12 @@ Lo que vas a dominar:
 🚨 Alertas Inteligentes: Configurar notificaciones que te mantengan informado sin abrumarte
 
 La Progresión Lógica
-Mira cómo cada módulo ha construido sobre el anterior:
+Mira cómo cada semana ha construido sobre la anterior:
 
-Módulo 3: Variables y control de flujo (fundamentos)
-Módulo 4: Funciones y estructuras (organización)
-Módulo 5: Manipulación de datos (análisis)
-Módulo 6: Herramientas del sistema (control y monitoreo)
+Semana 3: Variables y control de flujo (fundamentos)
+Semana 4: Funciones y estructuras (organización)
+Semana 5: Manipulación de datos (análisis)
+Semana 6: Herramientas del sistema (control y monitoreo)
 Es una progresión natural desde entender datos hasta controlar sistemas completos.
 
 ---
@@ -526,7 +526,7 @@ main() {
 main "$@"
 ```
 
-## Esta es la **Parte 1** del README regenerado del Módulo 6. ¿Te gustaría que continúe con la **Parte 2** que incluirá la **Lección 6.3: Monitoreo de Sistema y Alertas** y el **Proyecto Práctico 6**?
+---
 
 ## 📊 LECCIÓN 6.3: MONITOREO DE SISTEMA Y ALERTAS
 
@@ -1077,11 +1077,11 @@ DASHBOARD_SCRIPT="$BASE_DIR/dashboard.sh"
 
 ---
 
-## 🎓 CONCLUSIONES DEL MÓDULO 6
+## 🎓 CONCLUSIONES DE LA SEMANA 6
 
 ### Lo que has aprendido
 
-Al completar este módulo, has desarrollado habilidades de **nivel profesional** en:
+Al completar esta semana, has desarrollado habilidades de **nivel profesional** en:
 
 1. **Gestión de Procesos**: Control total sobre los procesos del sistema
 2. **Automatización**: Programación temporal y mantenimiento automático
@@ -1102,12 +1102,12 @@ Estas habilidades te preparan para roles como:
 
 Con estas bases sólidas, estás listo para:
 
-- **Módulo 7**: Optimización y Debugging Avanzado
-- **Módulo 8**: Proyectos Avanzados y Automatización Empresarial
+- **Semana 7**: Optimización y Debugging Avanzado
+- **Semana 8**: Proyectos Avanzados y Automatización Empresarial
 
-### Certificación del Módulo
+### Certificación de la Semana
 
-Para obtener la certificación del Módulo 6:
+Para obtener la certificación de la Semana 6:
 
 1. ✅ Completa todos los ejercicios de las lecciones
 2. ✅ Implementa el Proyecto Práctico 6
@@ -1120,16 +1120,16 @@ Para obtener la certificación del Módulo 6:
 
 | ← Anterior                                                        | Actual                                 | Siguiente →                                                |
 | ----------------------------------------------------------------- | -------------------------------------- | ---------------------------------------------------------- |
-| [Módulo 5: Procesamiento Avanzado de Datos](../week-05/README.md) | **Módulo 6: Herramientas del Sistema** | [Módulo 7: Optimización y Debugging](../week-07/README.md) |
+| [Semana 5: Procesamiento Avanzado de Datos](../week-05/README.md) | **Semana 6: Herramientas del Sistema** | [Semana 7: Optimización y Debugging](../week-07/README.md) |
 
 ---
 
 <div align="center">
-  <p><strong>¡Felicitaciones! Has completado el Módulo 6 🎉</strong></p>
+  <p><strong>¡Felicitaciones! Has completado la Semana 6 🎉</strong></p>
   <p>Ahora eres capaz de crear sistemas de monitoreo y herramientas de administración de nivel empresarial.</p>
   
   [![Volver al Inicio](https://img.shields.io/badge/⬅️_Volver_al_Inicio-blue?style=for-the-badge)](../README.md)
-  [![Siguiente Módulo](https://img.shields.io/badge/Módulo_7_➡️-green?style=for-the-badge)](../week-07/README.md)
+  [![Siguiente Semana](https://img.shields.io/badge/Semana_7_➡️-green?style=for-the-badge)](../week-07/README.md)
 </div>
 
 **¡Tu viaje hacia la maestría en Bash scripting continúa! 🚀**

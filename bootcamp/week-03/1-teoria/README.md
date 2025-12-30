@@ -1,4 +1,4 @@
-# 📚 Teoría - Módulo 3: Variables y Control de Flujo
+# 📚 Teoría - Semana 3: Variables y Control de Flujo
 
 > **Objetivo**: Crear scripts inteligentes con lógica condicional y bucles
 

@@ -23,7 +23,7 @@
   <text x="83" y="55" font-family="Monaco, monospace" font-size="6" fill="#8b949e">Fundamentos</text>
   
   <!-- Title -->
-  <text x="140" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">Módulo 1</text>
+  <text x="140" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">Semana 1</text>
   <text x="140" y="50" font-family="Arial, sans-serif" font-size="14" fill="#bfdbfe">Fundamentos de Bash</text>
   <text x="140" y="65" font-family="Arial, sans-serif" font-size="10" fill="#93c5fd">Comandos básicos • Terminal • Navegación</text>
 </svg>
