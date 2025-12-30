@@ -116,8 +116,8 @@ config: update git and project settings
     "docs": "update documentation"
   },
   "scope_mapping": {
-    "modulo1": "module1",
-    "modulo2": "module2",
+    "week-01": "module1",
+    "week-02": "module2",
     "scripts": "scripts",
     "ejercicios": "exercises"
   }
@@ -148,7 +148,7 @@ config: update git and project settings
 
 ```bash
 # Hacer cambios en archivos
-echo "Nueva función" >> modulo1/ejercicio.sh
+echo "Nueva función" >> week-01/ejercicio.sh
 
 # Commit automático
 ./scripts/commit.sh auto
@@ -183,7 +183,7 @@ echo "Nueva función" >> modulo1/ejercicio.sh
 ### Detección de Scope Automática
 
 ```bash
-# Cambios en modulo1/ -> scope: module1
+# Cambios en week-01/ -> scope: module1
 # Cambios en scripts/ -> scope: scripts
 # Cambios en ejercicios/ -> scope: exercises
 ```

@@ -1,272 +1,513 @@
-# GitHub Copilot Instructions - Bootcamp Bash (bc_bash)
+# 🤖 Instrucciones para GitHub Copilot
 
-## Project Overview
+## 📋 Contexto del Bootcamp
 
-This is a comprehensive 8-module Bash scripting bootcamp project designed for learning shell scripting fundamentals through practical exercises and projects.
+Este es un Bootcamp de Bash Scripting estructurado para llevar a estudiantes de cero a nivel profesional en automatización y scripting de shell.
 
-## Project Structure
+### 📊 Datos del Bootcamp
 
-- **8 modules**: Inside `bootcamp/` directory - `bootcamp/modulo1/` through `bootcamp/modulo8/`
-- **Documentation**: All documentation files go in `_docs/`
-- **Scripts**: All utility and automation scripts go in `_scripts/`
-- **Exercises**: Each module contains `/ejercicios/` subdirectory
-- **Projects**: Each module contains `/proyectos/` subdirectory
+- **Duración**: 8 semanas (~2 meses)
+- **Dedicación semanal**: 4-6 horas
+- **Total de horas**: ~40-48 horas
+- **Nivel de salida**: Desarrollador/SysAdmin con dominio de Bash
+- **Enfoque**: Bash scripting moderno con mejores prácticas
+- **Stack**: Bash puro, herramientas GNU/Linux, sin dependencias externas
 
-## Module Organization
+## 🎯 Objetivos de Aprendizaje
+
+Al finalizar el bootcamp, los estudiantes serán capaces de:
+
+- ✅ Dominar la sintaxis y características de Bash
+- ✅ Automatizar tareas del sistema operativo
+- ✅ Procesar texto con grep, sed, awk
+- ✅ Crear scripts robustos con manejo de errores
+- ✅ Implementar funciones y estructuras de datos
+- ✅ Trabajar con archivos, permisos y procesos
+- ✅ Aplicar patrones de debugging y optimización
+- ✅ Construir herramientas de automatización profesionales
+
+## 📚 Estructura del Bootcamp
+
+### Distribución por Etapas
+
+#### Fundamentos (Semanas 1-2) - 8-12 horas
+
+- Comandos básicos de terminal
+- Variables y sustitución de comandos
+- Redirección y pipes
+- Permisos y navegación del sistema
+
+#### Intermedio (Semanas 3-4) - 8-12 horas
+
+- Control de flujo (if, case, loops)
+- Funciones y parámetros
+- Arrays y strings
+- Procesamiento de texto básico
+
+#### Avanzado (Semanas 5-6) - 8-12 horas
+
+- grep, sed, awk avanzado
+- Expresiones regulares
+- Manipulación de archivos
+- Procesamiento de datos estructurados
+
+#### Maestría (Semanas 7-8) - 8-12 horas
+
+- Debugging y profiling
+- Optimización de scripts
+- Patrones de automatización
+- Proyectos del mundo real
+
+## 🗂️ Estructura de Carpetas
+
+Cada semana sigue esta estructura estándar:
 
 ```
-bc_bash/
-├── _docs/                    # All project documentation
-├── _scripts/                 # All utility and automation scripts
-├── assets/                   # Logos and visual resources
-├── bootcamp/                 # Bootcamp content directory
-│   ├── modulo1/             # Module 1: Bash Basics
-│   │   ├── ejercicios/      # Hands-on exercises
-│   │   ├── proyectos/       # Module projects
-│   │   └── README.md        # Module overview
-│   ├── modulo2/             # Module 2: Advanced Commands and Pipes
-│   ├── modulo3/             # Module 3: Variables and Control Flow
-│   ├── modulo4/             # Module 4: Functions and Arrays
-│   ├── modulo5/             # Module 5: File Operations and Text Processing
-│   ├── modulo6/             # Module 6: Advanced Data Manipulation
-│   ├── modulo7/             # Module 7: Optimization and Debugging
-│   └── modulo8/             # Module 8: Advanced Projects and Automation
-└── README.md                # Main project README
+bootcamp/week-XX/
+├── README.md                 # Descripción y objetivos de la semana
+├── rubrica-evaluacion.md     # Criterios de evaluación detallados
+├── 0-assets/                 # Imágenes, diagramas y recursos visuales
+├── 1-teoria/                 # Material teórico (archivos .md y ejemplos)
+├── 2-practicas/              # Ejercicios guiados paso a paso
+├── 3-proyecto/               # Proyecto semanal integrador
+├── 4-recursos/               # Recursos adicionales
+│   ├── ebooks-free/          # Libros electrónicos gratuitos
+│   ├── videografia/          # Videos y tutoriales recomendados
+│   └── webgrafia/            # Enlaces y documentación
+└── 5-glosario/               # Términos clave de la semana (A-Z)
+    └── README.md
 ```
 
-## Coding Standards and Best Practices
+### 📁 Carpetas Raíz
 
-### Shell Script Guidelines
+- `_assets/`: Recursos visuales globales (logos, headers, etc.)
+- `_docs/`: Documentación general que aplica a todo el bootcamp
+- `_scripts/`: Scripts de automatización y utilidades
+- `bootcamp/`: Contenido semanal del bootcamp
 
-- Use `#!/bin/bash` shebang for all scripts
-- Follow POSIX compliance when possible
-- Use meaningful variable names in lowercase with underscores
-- Add comments explaining complex logic
-- Include error handling with `set -euo pipefail`
-- Make scripts executable with proper permissions
+## 🎓 Componentes de Cada Semana
 
-### File Naming Conventions
+### 1. Teoría (1-teoria/)
 
-- Scripts: `snake_case.sh`
-- Documentation: `kebab-case.md`
-- Directories: `lowercase` or `snake_case`
-- Examples: `user_input.sh`, `file-operations.md`, `ejercicios/`
+- Archivos markdown con explicaciones conceptuales
+- Ejemplos de código con comentarios claros
+- Diagramas y visualizaciones cuando sea necesario
+- Referencias a documentación oficial
 
-### Code Style
+### 2. Prácticas (2-practicas/)
 
-- Indent with 2 spaces (no tabs)
-- Use double quotes for variables: `"$variable"`
-- Prefer `[[ ]]` over `[ ]` for conditionals
-- Use `$(command)` instead of backticks
-- End lines with LF (Unix line endings)
+- Ejercicios guiados paso a paso
+- Incremento progresivo de dificultad
+- Soluciones comentadas
+- Casos de uso del mundo real
 
-### Error Handling Pattern
+#### 📋 Formato de Ejercicios (Referencia)
+
+Los ejercicios son tutoriales guiados. El estudiante aprende descomentando código:
+
+**README.md del ejercicio:**
+
+```markdown
+### Paso 1: Nombre del Concepto
+
+Explicación del concepto con ejemplo:
+
+\`\`\`bash
+
+# Ejemplo explicativo
+
+result=$(echo "hello" | tr 'a-z' 'A-Z')
+\`\`\`
+
+**Abre `starter/script.sh`** y descomenta la sección correspondiente.
+```
+
+**starter/script.sh:**
+
+```bash
+# ============================================
+# PASO 1: Nombre del Concepto
+# ============================================
+echo "--- Paso 1: Nombre del Concepto ---"
+
+# Explicación breve del concepto
+# Descomenta las siguientes líneas:
+# result=$(echo "hello" | tr 'a-z' 'A-Z')
+# echo "Resultado: $result"
+
+echo ""
+```
+
+**solution/script.sh:**
+
+```bash
+# ============================================
+# PASO 1: Nombre del Concepto
+# ============================================
+echo "--- Paso 1: Nombre del Concepto ---"
+
+result=$(echo "hello" | tr 'a-z' 'A-Z')
+echo "Resultado: $result"
+```
+
+#### ❌ NO usar este formato en ejercicios:
+
+```bash
+# ❌ INCORRECTO - Este formato es para PROYECTOS, no ejercicios
+result="" # TODO: Implementar
+```
+
+#### ✅ Usar este formato en ejercicios:
+
+```bash
+# ✅ CORRECTO - Código comentado para descomentar
+# Descomenta las siguientes líneas:
+# result=$(echo "hello" | tr 'a-z' 'A-Z')
+# echo "Resultado: $result"
+```
+
+### 3. Proyecto (3-proyecto/)
+
+- Proyecto integrador que consolida lo aprendido
+- README.md con instrucciones claras
+- Código inicial o plantillas cuando sea apropiado
+- Criterios de evaluación específicos
+
+#### 📋 Formato de Proyecto (con TODOs)
+
+A diferencia de los ejercicios, el proyecto SÍ usa TODOs:
+
+**starter/script.sh:**
+
+```bash
+#!/bin/bash
+# ============================================
+# FUNCIÓN: process_file
+# Descripción de lo que debe hacer
+# ============================================
+
+# Procesa un archivo y retorna estadísticas
+# Parámetros:
+#   $1 - Ruta del archivo
+# Retorna:
+#   Número de líneas procesadas
+process_file() {
+  local file="$1"
+  # TODO: Implementar lógica
+  return 0
+}
+```
+
+### 4. Recursos (4-recursos/)
+
+- **ebooks-free/**: Libros gratuitos relevantes
+- **videografia/**: Videos tutoriales complementarios
+- **webgrafia/**: Enlaces a documentación y artículos
+
+### 5. Glosario (5-glosario/)
+
+- Términos técnicos ordenados alfabéticamente
+- Definiciones claras y concisas
+- Ejemplos de código cuando aplique
+
+## 📝 Convenciones de Código
+
+### Estilo Bash Moderno
 
 ```bash
 #!/bin/bash
 set -euo pipefail
 
-# Error handling function
-error_exit() {
-    echo "Error: $1" >&2
-    exit 1
+# ✅ BIEN - usar variables con comillas
+file_path="/path/to/file"
+echo "Processing: $file_path"
+
+# ✅ BIEN - usar [[ ]] para condicionales
+if [[ -f "$file_path" ]]; then
+  echo "File exists"
+fi
+
+# ✅ BIEN - usar $() para sustitución de comandos
+current_date=$(date +%Y-%m-%d)
+
+# ✅ BIEN - usar funciones con local
+process_data() {
+  local input="$1"
+  local output=""
+  output=$(echo "$input" | tr 'a-z' 'A-Z')
+  echo "$output"
 }
 
-# Usage
-[[ -f "$file" ]] || error_exit "File not found: $file"
+# ✅ BIEN - manejo de errores
+error_exit() {
+  echo "ERROR: $1" >&2
+  exit 1
+}
+
+# ✅ BIEN - arrays modernos
+declare -a files=("file1.txt" "file2.txt" "file3.txt")
+for file in "${files[@]}"; do
+  echo "Processing: $file"
+done
+
+# ❌ MAL - no usar backticks
+old_style=`date`  # Evitar
+
+# ❌ MAL - no usar [ ] simple
+if [ -f "$file" ]; then  # Preferir [[ ]]
+  echo "exists"
+fi
 ```
 
-## Documentation Standards
+### Nomenclatura
 
-### README.md Structure
+- Variables y funciones: `snake_case`
+- Constantes: `UPPER_SNAKE_CASE`
+- Archivos de script: `kebab-case.sh` o `snake_case.sh`
+- Documentación: `kebab-case.md`
 
-Each module and project should include:
+## 📖 Documentación
 
-- Clear description and learning objectives
-- Prerequisites and requirements
-- Step-by-step instructions
-- Expected output examples
-- Common troubleshooting tips
+### README.md de Semana
 
-### Code Documentation
+Debe incluir:
 
-- Comment complex algorithms and business logic
-- Include usage examples in script headers
-- Document function parameters and return values
-- Add inline comments for non-obvious code
+1. Título y descripción
+2. 🎯 Objetivos de aprendizaje
+3. 📚 Requisitos previos
+4. 🗂️ Estructura de la semana
+5. 📝 Contenidos (con enlaces a teoría/prácticas)
+6. ⏱️ Distribución del tiempo (4-6 horas)
+7. 📌 Entregables
+8. 🔗 Navegación (anterior/siguiente semana)
 
-## Module-Specific Guidelines
+### Archivos de Teoría
 
-### Module 1: Bash Basics
+```markdown
+# Título del Tema
 
-- Focus on fundamental commands and syntax
-- Simple scripts with basic I/O operations
-- Introduction to variables and command substitution
-- Basic error handling concepts
+## 🎯 Objetivos
 
-### Module 2: Advanced Commands and Pipes
+- Objetivo 1
+- Objetivo 2
 
-- Command chaining and redirection
-- Text processing tools and filters
-- Wildcards and pattern matching
-- Complex pipe operations
+## 📋 Contenido
 
-### Module 3: Variables and Control Flow
+### 1. Introducción
 
-- Environment variables and parameter expansion
-- Conditional statements (if/else, case)
-- Loops (for, while, until)
-- Script arguments and option parsing
+### 2. Conceptos Clave
 
-### Module 4: Functions and Arrays
+### 3. Ejemplos Prácticos
 
-- Function definition and parameter passing
-- Local vs global variables
-- Array operations and string manipulation
-- Function libraries and sourcing
+### 4. Ejercicios
 
-### Module 5: File Operations and Text Processing
+## 📚 Recursos Adicionales
 
-- File system operations and permissions
-- Text processing with grep, sed, awk
-- Regular expressions in Bash
-- Data parsing and transformation
+## ✅ Checklist de Verificación
+```
 
-### Module 6: Advanced Data Manipulation
+## 🎨 Recursos Visuales y Estándares de Diseño
 
-- Complex data structures and processing
-- CSV, JSON, and XML handling
-- Advanced parsing techniques
-- Data transformation pipelines
+### Formato de Assets
 
-### Module 7: Optimization and Debugging
+- ✅ Preferir SVG para diagramas, iconos y gráficos
+- ❌ NO usar ASCII art para diagramas complejos
+- ✅ Usar PNG/JPG solo para screenshots
+- ✅ Optimizar imágenes antes de incluirlas
 
-- Performance optimization techniques
-- Debugging and profiling methods
-- Security best practices
-- Code quality and testing
+### Tema Visual
 
-### Module 8: Advanced Projects and Automation
+- 🌙 Tema dark para todos los assets visuales
+- ❌ Sin degradés (gradients) en diseños
+- ✅ Colores sólidos y contrastes claros
+- ✅ Paleta consistente basada en verde terminal (#4EAA25 - color de Bash)
 
-- Process management and job control
-- Debugging and profiling techniques
-- Automation patterns and best practices
-- Integration with system services
+### Tipografía
 
-## Exercise Design Principles
+- ✅ Fuentes monospace para código
+- ✅ Sans-serif para documentación
+- ❌ NO usar fuentes serif
 
-### Learning Progression
+## 🌐 Idioma y Nomenclatura
 
-- Start with simple, single-concept exercises
-- Build complexity gradually across modules
-- Include both guided and independent exercises
-- Provide multiple difficulty levels
+### Código y Comentarios Técnicos
 
-### Exercise Structure
+- ✅ Nomenclatura en inglés (variables, funciones)
+- ✅ Comentarios de código en inglés
+- ✅ Usar términos técnicos estándar
 
 ```bash
-#!/bin/bash
-# Exercise: [Title]
-# Module: [X]
-# Objective: [Learning goal]
-# Instructions: [What the student should do]
+# ✅ CORRECTO - inglés
+get_user_data() {
+  local user_id="$1"
+  # Fetch user data from system
+  grep "^${user_id}:" /etc/passwd
+}
 
-# Your solution here
+# ❌ INCORRECTO - español en código
+obtener_datos_usuario() {
+  local id_usuario="$1"
+  # Obtener datos del usuario
+  grep "^${id_usuario}:" /etc/passwd
+}
 ```
 
-### Project Guidelines
+### Documentación
 
-- Each module should have 1-2 substantial projects
-- Projects should integrate multiple concepts from the module
-- Include real-world scenarios and use cases
-- Provide starter templates and expected outcomes
+- ✅ Documentación en español (READMEs, teoría, guías)
+- ✅ Explicaciones y tutoriales en español
+- ✅ Comentarios educativos en español cuando expliquen conceptos
 
-## Automated Commit Guidelines
+```bash
+# ✅ CORRECTO - código en inglés, explicación en español
+calculate_disk_usage() {
+  local path="$1"
+  # En Bash, usamos du para calcular el uso de disco
+  # La opción -sh da un resumen legible
+  du -sh "$path" 2>/dev/null | cut -f1
+}
+```
 
-This project uses automated conventional commits:
+## 🔐 Mejores Prácticas
 
-- **feat**: New features, exercises, or projects
-- **fix**: Bug fixes and corrections
-- **docs**: Documentation updates
-- **style**: Code formatting and style improvements
-- **test**: Adding or updating tests
-- **refactor**: Code restructuring without changing functionality
-- **chore**: Maintenance tasks and dependencies
+### Código Limpio
 
-### Scope Mapping
+- Nombres descriptivos y significativos
+- Funciones pequeñas con una sola responsabilidad
+- Comentarios solo cuando sea necesario explicar el "por qué"
+- Evitar anidamiento profundo
+- Usar early returns
 
-- `module1` through `module8`: Module-specific changes
-- `docs`: Documentation in `_docs/`
-- `scripts`: Utility scripts in `_scripts/`
-- `exercises`: Exercise-related changes
-- `projects`: Project-related changes
+### Seguridad
 
-## AI Assistant Guidelines
+- Validar TODOS los inputs del usuario
+- Usar comillas en variables: `"$var"`
+- Evitar eval y expansiones peligrosas
+- Usar `set -euo pipefail` para detectar errores
 
-### When Creating Exercises
+### Rendimiento
 
-1. Always include clear learning objectives
-2. Provide step-by-step instructions
-3. Include expected output examples
-4. Add common pitfalls and troubleshooting
-5. Ensure exercises build upon previous concepts
+- Evitar subshells innecesarios
+- Usar built-ins de Bash cuando sea posible
+- Procesar archivos grandes con herramientas especializadas
+- Evitar loops para operaciones que grep/sed/awk pueden hacer
 
-### When Writing Scripts
+## 📊 Evaluación
 
-1. Follow the established coding standards
-2. Include proper error handling
-3. Add meaningful comments and documentation
-4. Test scripts for common edge cases
-5. Ensure cross-platform compatibility when possible
+Cada semana incluye tres tipos de evidencias:
 
-### When Updating Documentation
+1. **Conocimiento 🧠 (30%)**: Evaluaciones teóricas, cuestionarios
+2. **Desempeño 💪 (40%)**: Ejercicios prácticos
+3. **Producto 📦 (30%)**: Proyecto entregable funcional
 
-1. Keep language clear and beginner-friendly
-2. Include practical examples and use cases
-3. Update related documentation when making changes
-4. Maintain consistency across modules
-5. Use proper Markdown formatting
+### Criterios de Aprobación
 
-## File Organization Rules
+- Mínimo 70% en cada tipo de evidencia
+- Entrega puntual de proyectos
+- Scripts funcionales y bien documentados
 
-### Documentation Placement
+## 🚀 Metodología de Aprendizaje
 
-- Project-wide docs → `_docs/`
-- Module-specific docs → `moduloX/README.md`
-- Exercise docs → `moduloX/ejercicios/README.md`
-- Project docs → `moduloX/proyectos/[project-name]/README.md`
+### Estrategias Didácticas
 
-### Script Placement
+- **Aprendizaje Basado en Proyectos (ABP)**: Proyectos semanales integradores
+- **Práctica Deliberada**: Ejercicios incrementales
+- **Coding Challenges**: Problemas del mundo real
+- **Code Review**: Revisión de código
 
-- Automation/utility scripts → `_scripts/`
-- Exercise solution scripts → `moduloX/ejercicios/`
-- Project scripts → `moduloX/proyectos/[project-name]/`
-- Module-specific tools → `moduloX/tools/` (if needed)
+### Distribución del Tiempo (4-6h/semana)
 
-### Asset Organization
+- Teoría: 1-1.5 horas
+- Prácticas: 2-2.5 horas
+- Proyecto: 1.5-2 horas
 
-- Images and diagrams → `_docs/assets/`
-- Data files for exercises → `moduloX/data/`
-- Configuration files → `_scripts/config/`
-- Templates → `_docs/templates/`
+## 🤖 Instrucciones para Copilot
 
-## Quality Assurance
+Cuando trabajes en este proyecto:
 
-### Before Committing
+### Límites de Respuesta
 
-- Test all scripts on multiple environments
-- Verify documentation links and references
-- Check code style and formatting
-- Ensure exercises have clear solutions
-- Validate markdown syntax
+1. **Divide respuestas largas**
 
-### Review Checklist
+   - ❌ NUNCA generar respuestas que superen los límites de tokens
+   - ✅ SIEMPRE dividir contenido extenso en múltiples entregas
+   - ✅ Crear contenido por secciones
+   - ✅ Priorizar calidad sobre cantidad
 
-- [ ] Follows established naming conventions
-- [ ] Includes proper documentation
-- [ ] Scripts are executable and error-free
-- [ ] Educational value is clear
-- [ ] Fits within module progression
-- [ ] Uses conventional commit format
+2. **Estrategia de División**
+   - Para semanas completas: dividir por carpetas (teoria → practicas → proyecto)
+   - Para archivos grandes: dividir por secciones lógicas
+   - Siempre indicar qué parte se entrega y qué falta
 
-Remember: This is an educational project focused on practical Bash scripting skills. Every script, exercise, and project should contribute to the learning journey while maintaining professional coding standards.
+### Generación de Código
+
+1. **Usa siempre sintaxis Bash moderna**
+
+   - `[[ ]]` para condicionales
+   - `$()` para sustitución de comandos
+   - Arrays con `declare -a`
+   - Funciones con `local`
+
+2. **Comenta el código de manera educativa**
+
+   - Explica conceptos para principiantes
+   - Incluye referencias a documentación
+   - Usa comentarios que enseñen
+
+3. **Proporciona ejemplos completos y funcionales**
+   - Código que se pueda copiar y ejecutar
+   - Incluye casos de uso realistas
+   - Muestra tanto lo correcto como lo incorrecto
+
+### Creación de Contenido
+
+1. **Estructura clara y progresiva**
+
+   - De lo simple a lo complejo
+   - Conceptos sobre conocimientos previos
+   - Repetición espaciada de conceptos clave
+
+2. **Ejemplos del mundo real**
+
+   - Casos de uso prácticos
+   - Proyectos para portfolios
+   - Problemas reales de SysAdmin
+
+3. **Enfoque moderno**
+   - Mejores prácticas actuales
+   - Herramientas y patrones modernos
+
+## 📚 Referencias Oficiales
+
+- GNU Bash Manual: https://www.gnu.org/software/bash/manual/
+- TLDP Advanced Bash: https://tldp.org/LDP/abs/html/
+- ShellCheck: https://www.shellcheck.net/
+- Bash Hackers Wiki: https://wiki.bash-hackers.org/
+
+## ✅ Checklist para Nuevas Semanas
+
+Cuando crees contenido para una nueva semana:
+
+- [ ] Crear estructura de carpetas completa
+- [ ] README.md con objetivos y estructura
+- [ ] Material teórico en 1-teoria/
+- [ ] Ejercicios prácticos en 2-practicas/
+- [ ] Proyecto integrador en 3-proyecto/
+- [ ] Recursos adicionales en 4-recursos/
+- [ ] Glosario de términos en 5-glosario/
+- [ ] Rúbrica de evaluación
+- [ ] Verificar coherencia con semanas anteriores
+- [ ] Revisar progresión de dificultad
+- [ ] Probar código de ejemplos
+
+## 💡 Notas Finales
+
+- **Prioridad**: Claridad sobre brevedad
+- **Enfoque**: Aprendizaje práctico sobre teoría abstracta
+- **Objetivo**: Preparar profesionales listos para automatizar
+- **Filosofía**: Bash moderno desde el día 1
+
+---
+
+_Última actualización: Diciembre 2025_
+_Versión: 2.0_

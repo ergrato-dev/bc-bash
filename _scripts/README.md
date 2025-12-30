@@ -204,7 +204,7 @@ Following conventional commit standards:
 ### Automatic Detection
 
 ```bash
-# Changes to modulo1/README.md -> docs(module1): update README.md
+# Changes to week-01/README.md -> docs(module1): update README.md
 # Changes to _scripts/deploy.sh -> script(scripts): update deploy.sh
 # Multiple files -> feat: add new features and components
 ```

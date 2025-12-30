@@ -67,7 +67,7 @@ for i in {1..8}; do [ -d "modulo$i" ] && echo "✓ modulo$i" || echo "✗ modulo
 # Usar nomenclatura descriptiva
 git checkout -b feature/nuevo-ejercicio-arrays
 git checkout -b fix/corregir-permisos-script
-git checkout -b docs/actualizar-readme-modulo3
+git checkout -b docs/actualizar-readme-week-03
 ```
 
 ### 4. Hacer Cambios
@@ -143,7 +143,7 @@ bc_bash/
 ├── _scripts/                # 🔧 Automatización
 ├── assets/                  # 🎨 Logos y recursos visuales
 ├── bootcamp/                # 🎓 Contenido del bootcamp
-│   ├── modulo1-8/          # 📖 Módulos educativos
+│   ├── week-01 a week-08/  # 📖 Módulos educativos
 │   │   ├── ejercicios/     # 💪 Ejercicios
 │   │   ├── proyectos/      # 🚀 Proyectos
 │   │   └── README.md       # 📋 Descripción

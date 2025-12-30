@@ -163,7 +163,7 @@ echo ""
 echo "💡 Próximos pasos:"
 if [ $missing_tools -eq 0 ]; then
     echo "   • ¡Todo listo para comenzar el bootcamp!"
-    echo "   • Ejecutar: cd bootcamp/modulo1 && cat README.md"
+    echo "   • Ejecutar: cd bootcamp/week-01 && cat README.md"
 else
     echo "   • Revisar herramientas faltantes marcadas como CRÍTICO"
     echo "   • Considerar instalar herramientas RECOMENDADAS"

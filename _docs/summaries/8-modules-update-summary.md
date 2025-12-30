@@ -8,7 +8,7 @@ Se ha actualizado toda la documentación del proyecto bc_bash para reflejar corr
 
 ### 1. README Principal (`/README.md`)
 
-- ✅ **Estructura del proyecto**: Actualizada para mostrar los 8 módulos (modulo1 a modulo8)
+- ✅ **Estructura del proyecto**: Actualizada para mostrar los 8 módulos (week-01 a week-08)
 - ✅ **Tabla de módulos**: Corregida con proyectos principales actualizados:
   - Módulo 1: Sistema de Gestión de Archivos (antes: Calculadora Simple)
   - Módulo 2: Procesador de Logs Avanzado (antes: Procesador de Texto)
@@ -47,7 +47,7 @@ Se ha actualizado toda la documentación del proyecto bc_bash para reflejar corr
 
 ### ✅ Verificación de Estructura Física
 
-- Confirmado que existen los 8 directorios: `modulo1/` a `modulo8/`
+- Confirmado que existen los 8 directorios: `week-01/` a `week-08/`
 - Confirmado que cada módulo tiene su `README.md` correspondiente
 - Verificado que la estructura de subdirectorios (`ejercicios/`, `proyectos/`) esté presente
 

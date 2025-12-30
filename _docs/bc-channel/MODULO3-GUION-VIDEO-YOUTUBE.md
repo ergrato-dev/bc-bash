@@ -82,8 +82,8 @@ Al finalizar este video, los estudiantes podrán:
 
 ```bash
 # Crear directorio para el módulo 3
-mkdir modulo3_scripts
-cd modulo3_scripts
+mkdir week-03_scripts
+cd week-03_scripts
 
 # Crear nuestro primer script profesional
 nano info_sistema.sh

@@ -69,14 +69,14 @@ alias bashcheck='shellcheck'
 alias bcbash='cd /workspace'
 alias docs='cd /workspace/_docs'
 alias scripts='cd /workspace/_scripts'
-alias m1='cd /workspace/bootcamp/modulo1'
-alias m2='cd /workspace/bootcamp/modulo2'
-alias m3='cd /workspace/bootcamp/modulo3'
-alias m4='cd /workspace/bootcamp/modulo4'
-alias m5='cd /workspace/bootcamp/modulo5'
-alias m6='cd /workspace/bootcamp/modulo6'
-alias m7='cd /workspace/bootcamp/modulo7'
-alias m8='cd /workspace/bootcamp/modulo8'
+alias m1='cd /workspace/bootcamp/week-01'
+alias m2='cd /workspace/bootcamp/week-02'
+alias m3='cd /workspace/bootcamp/week-03'
+alias m4='cd /workspace/bootcamp/week-04'
+alias m5='cd /workspace/bootcamp/week-05'
+alias m6='cd /workspace/bootcamp/week-06'
+alias m7='cd /workspace/bootcamp/week-07'
+alias m8='cd /workspace/bootcamp/week-08'
 
 # Useful functions
 mk() { mkdir -p "$@" && cd "$1"; }
@@ -117,7 +117,7 @@ fi
 
 MODULE="$1"
 EXERCISE="$2"
-EXERCISE_PATH="/workspace/modulo${MODULE}/ejercicios/${EXERCISE}.sh"
+EXERCISE_PATH="/workspace/modulo${MODULE}/2-practicas/${EXERCISE}.sh"
 
 if [[ -f "$EXERCISE_PATH" ]]; then
     echo "🚀 Running exercise: Module $MODULE - $EXERCISE"
@@ -126,7 +126,7 @@ if [[ -f "$EXERCISE_PATH" ]]; then
 else
     echo "❌ Exercise not found: $EXERCISE_PATH"
     echo "Available exercises in module $MODULE:"
-    ls -1 "/workspace/modulo${MODULE}/ejercicios/"*.sh 2>/dev/null | xargs -n1 basename -s .sh || echo "No exercises found"
+    ls -1 "/workspace/modulo${MODULE}/2-practicas/"*.sh 2>/dev/null | xargs -n1 basename -s .sh || echo "No exercises found"
 fi
 EOF
 
@@ -170,8 +170,8 @@ ln -sf /workspace/_scripts ~/scripts 2>/dev/null || true
 # Set executable permissions for all scripts
 echo "🔐 Setting script permissions..."
 find /workspace/_scripts -name "*.sh" -type f -exec chmod +x {} \; 2>/dev/null || true
-find /workspace -path "*/ejercicios/*.sh" -type f -exec chmod +x {} \; 2>/dev/null || true
-find /workspace -path "*/proyectos/*.sh" -type f -exec chmod +x {} \; 2>/dev/null || true
+find /workspace -path "*/2-practicas/*.sh" -type f -exec chmod +x {} \; 2>/dev/null || true
+find /workspace -path "*/3-proyecto/*.sh" -type f -exec chmod +x {} \; 2>/dev/null || true
 
 # Create a welcome message
 echo "🎉 Creating welcome message..."

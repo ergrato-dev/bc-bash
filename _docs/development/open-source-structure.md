@@ -18,7 +18,7 @@ bc_bash/
 ├── _docs/                       # Documentación del proyecto
 ├── _scripts/                    # Scripts de automatización
 ├── assets/                      # Recursos multimedia
-├── modulo1-8/                   # Módulos educativos
+├── week-01-8/                   # Módulos educativos
 ├── CHANGELOG.md                 # Historial de cambios
 ├── CODE_OF_CONDUCT.md          # Código de conducta
 ├── CONTRIBUTING.md             # Guía de contribución

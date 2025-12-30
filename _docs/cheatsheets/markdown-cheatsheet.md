@@ -97,7 +97,7 @@ Párrafo separado (línea en blanco)
 ```markdown
 [Texto del enlace](https://ejemplo.com)
 [Enlace con título](https://ejemplo.com 'Título del enlace')
-[Enlace relativo](../modulo1/README.md)
+[Enlace relativo](../week-01/README.md)
 [Enlace de referencia][1]
 
 [1]: https://ejemplo.com 'URL de referencia'

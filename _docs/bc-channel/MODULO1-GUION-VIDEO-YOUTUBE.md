@@ -260,7 +260,7 @@ cd
 pwd
 
 # Crear estructura de práctica
-mkdir -p bootcamp-bash/modulo1/{ejercicios,proyectos,recursos}
+mkdir -p bootcamp-bash/week-01/{ejercicios,proyectos,recursos}
 
 # Navegar a la estructura
 cd bootcamp-bash

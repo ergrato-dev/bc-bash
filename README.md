@@ -40,19 +40,23 @@ bc_bash/
 ├── _scripts/       # 🔧 Scripts de automatización
 ├── assets/         # 🎨 Logos y recursos visuales
 └── bootcamp/       # 🎓 Contenido del bootcamp
-    ├── modulo1/    # 📖 Fundamentos de Bash
-    ├── modulo2/    # 📖 Comandos Avanzados y Pipes
-    ├── modulo3/    # 📖 Variables y Control de Flujo
-    ├── modulo4/    # 📖 Funciones y Arrays
-    ├── modulo5/    # 📖 Operaciones de Archivos y Texto
-    ├── modulo6/    # 📖 Manipulación Avanzada de Datos
-    ├── modulo7/    # 📖 Optimización y Debugging
-    └── modulo8/    # 📖 Proyectos Avanzados y Automatización
+    └── week-XX/    # 📖 Semana XX
+        ├── README.md             # Descripción y objetivos
+        ├── rubrica-evaluacion.md # Criterios de evaluación
+        ├── 0-assets/             # Imágenes y diagramas
+        ├── 1-teoria/             # Material teórico
+        ├── 2-practicas/          # Ejercicios guiados
+        ├── 3-proyecto/           # Proyecto semanal
+        ├── 4-recursos/           # Recursos adicionales
+        │   ├── ebooks-free/
+        │   ├── videografia/
+        │   └── webgrafia/
+        └── 5-glosario/           # Términos clave
 ```
 
 ### Módulos del Bootcamp
 
-| Módulo | Tema                         | Proyecto Principal                |
+| Semana | Tema                         | Proyecto Principal                |
 | ------ | ---------------------------- | --------------------------------- |
 | **1**  | Fundamentos de Bash          | Sistema de Gestión de Archivos    |
 | **2**  | Comandos Avanzados y Pipes   | Procesador de Logs Avanzado       |
@@ -84,6 +88,16 @@ bc_bash/
 
 - **Módulo 7**: Optimización, debugging y mejores prácticas
 - **Módulo 8**: Proyectos complejos y automatización empresarial
+
+### ⏱️ Dedicación Sugerida
+
+| Actividad             | Tiempo Semanal       |
+| --------------------- | -------------------- |
+| Teoría y conceptos    | 2-3 horas            |
+| Ejercicios prácticos  | 2-3 horas            |
+| **Total recomendado** | **4-6 horas/semana** |
+
+> 💡 **Tip**: La práctica constante es más efectiva que sesiones largas esporádicas. Dedica al menos 30-60 minutos diarios para mejores resultados.
 
 ## 🎯 Características Destacadas
 
@@ -117,7 +131,7 @@ cd bc_bash
 
 ```bash
 # Comenzar con módulo 1
-cd bootcamp/modulo1
+cd bootcamp/week-01
 cat README.md
 ```
 
@@ -125,7 +139,7 @@ cat README.md
 
 ```bash
 # Hacer cambios y commitear automáticamente
-echo "Mi ejercicio" > bootcamp/modulo1/mi_script.sh
+echo "Mi ejercicio" > bootcamp/week-01/mi_script.sh
 ./_scripts/commit.sh auto
 ```
 

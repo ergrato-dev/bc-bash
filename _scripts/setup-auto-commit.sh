@@ -46,9 +46,9 @@ create_config() {
     "deps": "update project dependencies"
   },
   "scope_mapping": {
-    "modulo1": "module1",
-    "modulo2": "module2",
-    "modulo3": "module3",
+    "week-01": "module1",
+    "week-02": "module2",
+    "week-03": "module3",
     "scripts": "scripts",
     "docs": "docs",
     "ejercicios": "exercises",
@@ -289,7 +289,7 @@ Following conventional commit standards:
 
 ### Automatic Detection
 ```bash
-# Changes to modulo1/README.md -> docs(module1): update README.md
+# Changes to week-01/README.md -> docs(module1): update README.md
 # Changes to scripts/deploy.sh -> script(scripts): update deploy.sh
 # Multiple files -> feat: add new features and components
 ```

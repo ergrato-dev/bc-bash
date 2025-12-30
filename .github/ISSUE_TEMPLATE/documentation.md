@@ -20,7 +20,7 @@ assignees: ''
 
 ¿Dónde está el problema de documentación?
 
-- **Archivo**: [ej. README.md, bootcamp/modulo3/README.md]
+- **Archivo**: [ej. README.md, bootcamp/week-03/README.md]
 - **Sección**: [ej. "Instalación", "Módulo 3"]
 - **Línea**: [si es aplicable]
 

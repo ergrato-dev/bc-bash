@@ -99,12 +99,12 @@ Cada módulo tiene un esquema de colores único que refleja su propósito:
 ### 📄 README Files
 
 - **`README.md`** - Logo principal añadido
-- **`modulo1/README.md`** - Logo módulo 1 añadido
-- **`modulo2/README.md`** - Logo módulo 2 añadido (corregido)
-- **`modulo3/README.md`** - Logo módulo 3 añadido
-- **`modulo4/README.md`** - Logo módulo 4 añadido
-- **`modulo5/README.md`** - Logo módulo 5 añadido (corregido)
-- **`modulo7/README.md`** - Logo módulo 7 añadido (corregido)
+- **`week-01/README.md`** - Logo módulo 1 añadido
+- **`week-02/README.md`** - Logo módulo 2 añadido (corregido)
+- **`week-03/README.md`** - Logo módulo 3 añadido
+- **`week-04/README.md`** - Logo módulo 4 añadido
+- **`week-05/README.md`** - Logo módulo 5 añadido (corregido)
+- **`week-07/README.md`** - Logo módulo 7 añadido (corregido)
 
 ### 📚 Documentación
 

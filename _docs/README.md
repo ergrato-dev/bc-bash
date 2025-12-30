@@ -10,17 +10,17 @@ Este es un bootcamp completo de scripting en Bash dividido en 8 módulos progres
 bc_bash/
 ├── _docs/                    # 📚 Toda la documentación del proyecto
 ├── _scripts/                 # 🔧 Scripts de utilidad y automatización
-├── modulo1/                  # 📖 Módulo 1: Fundamentos de Bash
+├── week-01/                  # 📖 Módulo 1: Fundamentos de Bash
 │   ├── ejercicios/           # 💪 Ejercicios prácticos
 │   ├── proyectos/            # 🚀 Proyectos del módulo
 │   └── README.md            # 📋 Descripción del módulo
-├── modulo2/                  # 📖 Módulo 2: Comandos Avanzados y Pipes
-├── modulo3/                  # 📖 Módulo 3: Variables y Control de Flujo
-├── modulo4/                  # 📖 Módulo 4: Funciones y Arrays
-├── modulo5/                  # 📖 Módulo 5: Operaciones de Archivos y Texto
-├── modulo6/                  # 📖 Módulo 6: Manipulación Avanzada de Datos
-├── modulo7/                  # 📖 Módulo 7: Optimización y Debugging
-├── modulo8/                  # 📖 Módulo 8: Proyectos y Automatización
+├── week-02/                  # 📖 Módulo 2: Comandos Avanzados y Pipes
+├── week-03/                  # 📖 Módulo 3: Variables y Control de Flujo
+├── week-04/                  # 📖 Módulo 4: Funciones y Arrays
+├── week-05/                  # 📖 Módulo 5: Operaciones de Archivos y Texto
+├── week-06/                  # 📖 Módulo 6: Manipulación Avanzada de Datos
+├── week-07/                  # 📖 Módulo 7: Optimización y Debugging
+├── week-08/                  # 📖 Módulo 8: Proyectos y Automatización
 └── README.md                # 📖 README principal del proyecto
 ```
 
@@ -117,8 +117,8 @@ bc_bash/
 ### Por Módulo
 
 - Cada módulo tiene su propio `README.md` con objetivos específicos
-- Ejercicios documentados en `moduloX/ejercicios/README.md`
-- Proyectos documentados en `moduloX/proyectos/[proyecto]/README.md`
+- Ejercicios documentados en `moduloX/2-practicas/README.md`
+- Proyectos documentados en `moduloX/3-proyecto/[proyecto]/README.md`
 
 ## Scripts de Automatización
 
