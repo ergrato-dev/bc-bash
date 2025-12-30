@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117"/>
+      <stop offset="100%" style="stop-color:#161b22"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGrad2)"/>
+  
+  <!-- Grid pattern -->
+  <pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#21262d" stroke-width="0.5"/>
+  </pattern>
+  <rect width="800" height="400" fill="url(#grid2)" opacity="0.5"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">Expansión de Parámetros</text>
+  <text x="400" y="55" font-family="Arial, sans-serif" font-size="12" fill="#8b949e" text-anchor="middle">Manipulación avanzada de variables en Bash</text>
+  
+  <!-- Box 1: Valores por defecto -->
+  <rect x="30" y="75" width="360" height="145" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="210" y="100" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#58a6ff" text-anchor="middle">📋 Valores por Defecto</text>
+  
+  <text x="50" y="125" font-family="Monaco, monospace" font-size="11" fill="#7ee787">${var:-default}</text>
+  <text x="200" y="125" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># usa default si var vacía</text>
+  
+  <text x="50" y="150" font-family="Monaco, monospace" font-size="11" fill="#7ee787">${var:=default}</text>
+  <text x="200" y="150" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># asigna default si var vacía</text>
+  
+  <text x="50" y="175" font-family="Monaco, monospace" font-size="11" fill="#7ee787">${var:+valor}</text>
+  <text x="200" y="175" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># usa valor si var existe</text>
+  
+  <text x="50" y="200" font-family="Monaco, monospace" font-size="11" fill="#7ee787">${var:?error}</text>
+  <text x="200" y="200" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># muestra error si var vacía</text>
+  
+  <!-- Box 2: Subcadenas -->
+  <rect x="410" y="75" width="360" height="145" rx="8" fill="#161b22" stroke="#bc8cff" stroke-width="2"/>
+  <text x="590" y="100" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#bc8cff" text-anchor="middle">✂️ Extracción de Subcadenas</text>
+  
+  <text x="430" y="125" font-family="Monaco, monospace" font-size="11" fill="#a5d6ff">texto="HolaMundo"</text>
+  
+  <text x="430" y="155" font-family="Monaco, monospace" font-size="11" fill="#7ee787">${texto:0:4}</text>
+  <text x="560" y="155" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Hola (desde 0, 4 chars)</text>
+  
+  <text x="430" y="180" font-family="Monaco, monospace" font-size="11" fill="#7ee787">${texto:4}</text>
+  <text x="540" y="180" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Mundo (desde posición 4)</text>
+  
+  <text x="430" y="205" font-family="Monaco, monospace" font-size="11" fill="#7ee787">${#texto}</text>
+  <text x="530" y="205" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># 9 (longitud)</text>
+  
+  <!-- Box 3: Reemplazo de patrones -->
+  <rect x="30" y="235" width="360" height="145" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="210" y="260" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#f0883e" text-anchor="middle">🔄 Reemplazo de Patrones</text>
+  
+  <text x="50" y="285" font-family="Monaco, monospace" font-size="11" fill="#a5d6ff">archivo="datos.txt.bak"</text>
+  
+  <text x="50" y="315" font-family="Monaco, monospace" font-size="11" fill="#7ee787">${archivo/txt/csv}</text>
+  <text x="220" y="315" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># datos.csv.bak (primero)</text>
+  
+  <text x="50" y="340" font-family="Monaco, monospace" font-size="11" fill="#7ee787">${archivo//./,}</text>
+  <text x="200" y="340" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># datos,txt,bak (todos)</text>
+  
+  <text x="50" y="365" font-family="Monaco, monospace" font-size="11" fill="#7ee787">${archivo/#datos/info}</text>
+  <text x="240" y="365" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># info.txt.bak (inicio)</text>
+  
+  <!-- Box 4: Eliminación de patrones -->
+  <rect x="410" y="235" width="360" height="145" rx="8" fill="#161b22" stroke="#7ee787" stroke-width="2"/>
+  <text x="590" y="260" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#7ee787" text-anchor="middle">🗑️ Eliminación de Patrones</text>
+  
+  <text x="430" y="285" font-family="Monaco, monospace" font-size="11" fill="#a5d6ff">ruta="/home/user/docs/file.txt"</text>
+  
+  <text x="430" y="315" font-family="Monaco, monospace" font-size="11" fill="#7ee787">${ruta##*/}</text>
+  <text x="550" y="315" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># file.txt (basename)</text>
+  
+  <text x="430" y="340" font-family="Monaco, monospace" font-size="11" fill="#7ee787">${ruta%/*}</text>
+  <text x="540" y="340" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># /home/user/docs (dirname)</text>
+  
+  <text x="430" y="365" font-family="Monaco, monospace" font-size="11" fill="#7ee787">${ruta%.txt}</text>
+  <text x="550" y="365" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># sin extensión</text>
+  
+  <!-- Footer -->
+  <text x="400" y="392" font-family="Arial, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">Semana 3 • Bootcamp Bash Scripting</text>
+</svg>
