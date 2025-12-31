@@ -76,23 +76,23 @@
   
   <!-- Ejemplos -->
   <rect x="20" y="300" width="760" height="135" rx="8" fill="url(#cardGrad)" stroke="#bc8cff" stroke-width="1"/>
-  <text x="400" y="323" font-family="Monaco, monospace" font-size="13" fill="#bc8cff" text-anchor="middle">EJEMPLOS PRACTICOS</text>
+  <text x="400" y="320" font-family="Monaco, monospace" font-size="13" fill="#bc8cff" text-anchor="middle">EJEMPLOS PRACTICOS</text>
   
-  <text x="35" y="348" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Imprimir columnas 1 y 3</text>
-  <text x="35" y="363" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk &apos;{print $1, $3}&apos; datos.txt</text>
+  <text x="35" y="342" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Imprimir columnas 1 y 3</text>
+  <text x="35" y="356" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk &apos;{print $1, $3}&apos; datos.txt</text>
   
-  <text x="35" y="386" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Filtrar por condicion</text>
-  <text x="35" y="401" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk &apos;$3 &gt; 100 {print $1}&apos; datos.txt</text>
+  <text x="35" y="376" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Filtrar por condicion</text>
+  <text x="35" y="390" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk &apos;$3 &gt; 100 {print $1}&apos; datos.txt</text>
   
-  <text x="35" y="424" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Sumar columna</text>
-  <text x="35" y="439" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk &apos;{sum+=$2} END{print sum}&apos; datos.txt</text>
+  <text x="35" y="410" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Sumar columna</text>
+  <text x="35" y="424" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk &apos;{sum+=$2} END{print sum}&apos; datos.txt</text>
   
-  <text x="420" y="348" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># CSV con separador</text>
-  <text x="420" y="363" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk -F&apos;,&apos; &apos;{print $2}&apos; datos.csv</text>
+  <text x="420" y="342" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># CSV con separador</text>
+  <text x="420" y="356" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk -F&apos;,&apos; &apos;{print $2}&apos; datos.csv</text>
   
-  <text x="420" y="386" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Contar lineas por patron</text>
-  <text x="420" y="401" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk &apos;/ERROR/{count++} END{print count}&apos; log</text>
+  <text x="420" y="376" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Contar lineas por patron</text>
+  <text x="420" y="390" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk &apos;/ERROR/{count++} END{print count}&apos; log</text>
   
-  <text x="420" y="424" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Formatear output</text>
-  <text x="420" y="439" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk &apos;{printf &quot;%-10s %5d\n&quot;, $1, $2}&apos; data</text>
+  <text x="420" y="410" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Formatear output</text>
+  <text x="420" y="424" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk &apos;{printf &quot;%-10s %5d\n&quot;, $1, $2}&apos; data</text>
 </svg>
