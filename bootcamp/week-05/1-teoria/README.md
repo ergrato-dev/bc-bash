@@ -2,6 +2,17 @@
 
 > **Objetivo**: Dominar la manipulación de archivos y procesamiento avanzado de texto
 
+## 📊 Recursos Visuales
+
+| Diagrama              | Descripcion               | Ver                                             |
+| --------------------- | ------------------------- | ----------------------------------------------- |
+| Expresiones Regulares | Metacaracteres y patrones | [SVG](../0-assets/01-expresiones-regulares.svg) |
+| grep                  | Opciones y busqueda       | [SVG](../0-assets/02-grep-busqueda.svg)         |
+| sed                   | Comandos y transformacion | [SVG](../0-assets/03-sed-transformacion.svg)    |
+| awk                   | Variables y procesamiento | [SVG](../0-assets/04-awk-columnas.svg)          |
+
+---
+
 ## 🎯 ¿Qué son las Operaciones de Archivos?
 
 Conjunto de técnicas para **crear, modificar, analizar y transformar** archivos y su contenido.

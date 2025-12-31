@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#161b22"/>
+      <stop offset="100%" style="stop-color:#0d1117"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="450" fill="#0d1117"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" font-family="Monaco, monospace" font-size="20" fill="#58a6ff" text-anchor="middle" font-weight="bold">sed - STREAM EDITOR</text>
+  
+  <!-- Sintaxis -->
+  <rect x="20" y="55" width="760" height="55" rx="8" fill="url(#cardGrad)" stroke="#58a6ff" stroke-width="1"/>
+  <text x="400" y="78" font-family="Monaco, monospace" font-size="13" fill="#58a6ff" text-anchor="middle">SINTAXIS BASICA</text>
+  <text x="400" y="98" font-family="Monaco, monospace" font-size="12" fill="#7ee787" text-anchor="middle">sed [opciones] &apos;comando&apos; archivo    |    sed &apos;s/patron/reemplazo/flags&apos; archivo</text>
+  
+  <!-- Comandos -->
+  <rect x="20" y="125" width="245" height="150" rx="8" fill="url(#cardGrad)" stroke="#7ee787" stroke-width="1"/>
+  <text x="142" y="148" font-family="Monaco, monospace" font-size="13" fill="#7ee787" text-anchor="middle">COMANDOS</text>
+  
+  <text x="35" y="173" font-family="Monaco, monospace" font-size="11" fill="#f0883e">s</text>
+  <text x="55" y="173" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Sustituir</text>
+  
+  <text x="35" y="193" font-family="Monaco, monospace" font-size="11" fill="#f0883e">d</text>
+  <text x="55" y="193" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Eliminar linea</text>
+  
+  <text x="35" y="213" font-family="Monaco, monospace" font-size="11" fill="#f0883e">p</text>
+  <text x="55" y="213" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Imprimir</text>
+  
+  <text x="35" y="233" font-family="Monaco, monospace" font-size="11" fill="#f0883e">a</text>
+  <text x="55" y="233" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Agregar despues</text>
+  
+  <text x="35" y="253" font-family="Monaco, monospace" font-size="11" fill="#f0883e">i</text>
+  <text x="55" y="253" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Insertar antes</text>
+  
+  <text x="35" y="268" font-family="Monaco, monospace" font-size="11" fill="#f0883e">c</text>
+  <text x="55" y="268" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Cambiar linea</text>
+  
+  <!-- Flags -->
+  <rect x="277" y="125" width="245" height="150" rx="8" fill="url(#cardGrad)" stroke="#f0883e" stroke-width="1"/>
+  <text x="400" y="148" font-family="Monaco, monospace" font-size="13" fill="#f0883e" text-anchor="middle">FLAGS</text>
+  
+  <text x="292" y="173" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">g</text>
+  <text x="312" y="173" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Global (todas)</text>
+  
+  <text x="292" y="193" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">i</text>
+  <text x="312" y="193" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Case insensitive</text>
+  
+  <text x="292" y="213" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">p</text>
+  <text x="312" y="213" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Print (con -n)</text>
+  
+  <text x="292" y="233" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">n</text>
+  <text x="312" y="233" font-family="Monaco, monospace" font-size="11" fill="#8b949e">n-esima ocurrencia</text>
+  
+  <text x="292" y="253" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">w</text>
+  <text x="312" y="253" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Escribir a archivo</text>
+  
+  <!-- Opciones -->
+  <rect x="535" y="125" width="245" height="150" rx="8" fill="url(#cardGrad)" stroke="#bc8cff" stroke-width="1"/>
+  <text x="657" y="148" font-family="Monaco, monospace" font-size="13" fill="#bc8cff" text-anchor="middle">OPCIONES</text>
+  
+  <text x="550" y="173" font-family="Monaco, monospace" font-size="11" fill="#7ee787">-i</text>
+  <text x="580" y="173" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Editar in-place</text>
+  
+  <text x="550" y="193" font-family="Monaco, monospace" font-size="11" fill="#7ee787">-n</text>
+  <text x="580" y="193" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Silencioso</text>
+  
+  <text x="550" y="213" font-family="Monaco, monospace" font-size="11" fill="#7ee787">-e</text>
+  <text x="580" y="213" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Multiples scripts</text>
+  
+  <text x="550" y="233" font-family="Monaco, monospace" font-size="11" fill="#7ee787">-r</text>
+  <text x="580" y="233" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Extended regex</text>
+  
+  <text x="550" y="253" font-family="Monaco, monospace" font-size="11" fill="#7ee787">-f</text>
+  <text x="580" y="253" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Script desde archivo</text>
+  
+  <!-- Ejemplos -->
+  <rect x="20" y="290" width="760" height="145" rx="8" fill="url(#cardGrad)" stroke="#58a6ff" stroke-width="1"/>
+  <text x="400" y="313" font-family="Monaco, monospace" font-size="13" fill="#58a6ff" text-anchor="middle">EJEMPLOS PRACTICOS</text>
+  
+  <text x="35" y="338" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Reemplazar primera ocurrencia</text>
+  <text x="35" y="353" font-family="Monaco, monospace" font-size="11" fill="#7ee787">sed &apos;s/foo/bar/&apos; archivo.txt</text>
+  
+  <text x="35" y="376" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Reemplazar todas (global)</text>
+  <text x="35" y="391" font-family="Monaco, monospace" font-size="11" fill="#7ee787">sed &apos;s/foo/bar/g&apos; archivo.txt</text>
+  
+  <text x="35" y="414" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Eliminar lineas vacias</text>
+  <text x="35" y="429" font-family="Monaco, monospace" font-size="11" fill="#7ee787">sed &apos;/^$/d&apos; archivo.txt</text>
+  
+  <text x="400" y="338" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Imprimir rango de lineas</text>
+  <text x="400" y="353" font-family="Monaco, monospace" font-size="11" fill="#7ee787">sed -n &apos;10,20p&apos; archivo.txt</text>
+  
+  <text x="400" y="376" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Editar archivo in-place</text>
+  <text x="400" y="391" font-family="Monaco, monospace" font-size="11" fill="#7ee787">sed -i &apos;s/old/new/g&apos; config.conf</text>
+  
+  <text x="400" y="414" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Eliminar comentarios</text>
+  <text x="400" y="429" font-family="Monaco, monospace" font-size="11" fill="#7ee787">sed &apos;/^#/d&apos; config.conf</text>
+</svg>
