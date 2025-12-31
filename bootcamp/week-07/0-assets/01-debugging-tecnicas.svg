@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <defs>
+    <linearGradient id="headerGrad7a" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#58a6ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1f6feb;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="420" fill="#0d1117"/>
+  
+  <!-- Header -->
+  <rect x="20" y="15" width="760" height="50" rx="8" fill="url(#headerGrad7a)"/>
+  <text x="400" y="48" font-family="Monaco, monospace" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">🐛 TÉCNICAS DE DEBUGGING</text>
+  
+  <!-- Section 1: Echo/Printf Debug -->
+  <rect x="20" y="80" width="370" height="150" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="205" y="102" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#58a6ff" text-anchor="middle">📝 ECHO/PRINTF DEBUG</text>
+  
+  <text x="35" y="125" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Debug básico con echo</text>
+  <text x="35" y="142" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">echo "DEBUG: var=$var" &gt;&amp;2</text>
+  <text x="35" y="162" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Debug con función</text>
+  <text x="35" y="179" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">debug() { [[ $DEBUG ]] &amp;&amp; \</text>
+  <text x="35" y="196" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">  echo "[DEBUG] $*" &gt;&amp;2; }</text>
+  <text x="35" y="216" font-family="Monaco, monospace" font-size="10" fill="#f0883e">DEBUG=1 ./script.sh</text>
+  
+  <!-- Section 2: Set Options -->
+  <rect x="410" y="80" width="370" height="150" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="595" y="102" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#f0883e" text-anchor="middle">⚙️ SET OPTIONS</text>
+  
+  <text x="425" y="125" font-family="Monaco, monospace" font-size="10" fill="#f0883e">set -x</text>
+  <text x="500" y="125" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Mostrar comandos</text>
+  <text x="425" y="145" font-family="Monaco, monospace" font-size="10" fill="#f0883e">set -v</text>
+  <text x="500" y="145" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Verbose mode</text>
+  <text x="425" y="165" font-family="Monaco, monospace" font-size="10" fill="#f0883e">set -e</text>
+  <text x="500" y="165" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Exit on error</text>
+  <text x="425" y="185" font-family="Monaco, monospace" font-size="10" fill="#f0883e">set -u</text>
+  <text x="500" y="185" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Error vars no set</text>
+  <text x="425" y="205" font-family="Monaco, monospace" font-size="10" fill="#f0883e">set -o pipefail</text>
+  <text x="560" y="205" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Pipe errors</text>
+  <text x="425" y="222" font-family="Monaco, monospace" font-size="10" fill="#7ee787">set -euo pipefail  # Combo</text>
+
+  <!-- Section 3: Trap Debug -->
+  <rect x="20" y="245" width="370" height="160" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="205" y="267" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#7ee787" text-anchor="middle">🪤 TRAP DEBUGGING</text>
+  
+  <text x="35" y="290" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Trap para debug de líneas</text>
+  <text x="35" y="307" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">trap 'echo "LINE:$LINENO"' DEBUG</text>
+  <text x="35" y="330" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Trap para errores</text>
+  <text x="35" y="347" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">trap 'echo "Error $? at $LINENO"' ERR</text>
+  <text x="35" y="370" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Trap de limpieza</text>
+  <text x="35" y="387" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">trap 'cleanup' EXIT</text>
+
+  <!-- Section 4: Tools -->
+  <rect x="410" y="245" width="370" height="160" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="595" y="267" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#bc8cff" text-anchor="middle">🔧 HERRAMIENTAS</text>
+  
+  <text x="425" y="290" font-family="Monaco, monospace" font-size="10" fill="#bc8cff">bash -x script.sh</text>
+  <text x="575" y="290" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Trace mode</text>
+  <text x="425" y="310" font-family="Monaco, monospace" font-size="10" fill="#bc8cff">bash -n script.sh</text>
+  <text x="575" y="310" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Syntax check</text>
+  <text x="425" y="330" font-family="Monaco, monospace" font-size="10" fill="#bc8cff">shellcheck script.sh</text>
+  <text x="600" y="330" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Lint</text>
+  <text x="425" y="353" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Variables especiales</text>
+  <text x="425" y="370" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">$LINENO $FUNCNAME $BASH_SOURCE</text>
+  <text x="425" y="387" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">$? (exit code) $$ (PID)</text>
+</svg>

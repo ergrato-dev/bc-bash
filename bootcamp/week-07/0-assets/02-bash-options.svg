@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <defs>
+    <linearGradient id="headerGrad7b" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f0883e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#db6d28;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="420" fill="#0d1117"/>
+  
+  <!-- Header -->
+  <rect x="20" y="15" width="760" height="50" rx="8" fill="url(#headerGrad7b)"/>
+  <text x="400" y="48" font-family="Monaco, monospace" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">⚙️ OPCIONES DE BASH (set)</text>
+  
+  <!-- Section 1: Error Handling -->
+  <rect x="20" y="80" width="370" height="155" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="205" y="102" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#f85149" text-anchor="middle">🛑 MANEJO DE ERRORES</text>
+  
+  <text x="35" y="125" font-family="Monaco, monospace" font-size="10" fill="#f0883e">set -e</text>
+  <text x="100" y="125" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">(errexit)</text>
+  <text x="35" y="142" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Exit si comando falla (retorna !=0)</text>
+  
+  <text x="35" y="165" font-family="Monaco, monospace" font-size="10" fill="#f0883e">set -u</text>
+  <text x="100" y="165" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">(nounset)</text>
+  <text x="35" y="182" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Error si variable no definida</text>
+  
+  <text x="35" y="205" font-family="Monaco, monospace" font-size="10" fill="#f0883e">set -o pipefail</text>
+  <text x="35" y="222" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Propaga errores en pipes</text>
+
+  <!-- Section 2: Debugging -->
+  <rect x="410" y="80" width="370" height="155" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="595" y="102" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#58a6ff" text-anchor="middle">🐛 DEBUGGING</text>
+  
+  <text x="425" y="125" font-family="Monaco, monospace" font-size="10" fill="#58a6ff">set -x</text>
+  <text x="490" y="125" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">(xtrace)</text>
+  <text x="425" y="142" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Imprime cada comando antes de ejecutar</text>
+  
+  <text x="425" y="165" font-family="Monaco, monospace" font-size="10" fill="#58a6ff">set -v</text>
+  <text x="490" y="165" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">(verbose)</text>
+  <text x="425" y="182" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Imprime líneas tal como se leen</text>
+  
+  <text x="425" y="205" font-family="Monaco, monospace" font-size="10" fill="#58a6ff">set -n</text>
+  <text x="490" y="205" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">(noexec)</text>
+  <text x="425" y="222" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Chequea sintaxis sin ejecutar</text>
+
+  <!-- Section 3: Combo Recomendado -->
+  <rect x="20" y="250" width="370" height="155" rx="6" fill="#161b22" stroke="#7ee787" stroke-width="2"/>
+  <text x="205" y="272" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#7ee787" text-anchor="middle">✅ COMBO RECOMENDADO</text>
+  
+  <text x="35" y="298" font-family="Monaco, monospace" font-size="11" fill="#c9d1d9">#!/bin/bash</text>
+  <text x="35" y="318" font-family="Monaco, monospace" font-size="11" fill="#7ee787">set -euo pipefail</text>
+  <text x="35" y="345" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Equivalente a:</text>
+  <text x="35" y="362" font-family="Monaco, monospace" font-size="10" fill="#f0883e">set -e  </text>
+  <text x="95" y="362" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># errexit</text>
+  <text x="35" y="379" font-family="Monaco, monospace" font-size="10" fill="#f0883e">set -u  </text>
+  <text x="95" y="379" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># nounset</text>
+  <text x="35" y="396" font-family="Monaco, monospace" font-size="10" fill="#f0883e">set -o pipefail</text>
+
+  <!-- Section 4: Toggle -->
+  <rect x="410" y="250" width="370" height="155" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="595" y="272" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#bc8cff" text-anchor="middle">🔄 ACTIVAR/DESACTIVAR</text>
+  
+  <text x="425" y="298" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Activar opción</text>
+  <text x="425" y="315" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">set -x         # con guion</text>
+  <text x="425" y="335" font-family="Monaco, monospace" font-size="10" fill="#f85149"># Desactivar opción</text>
+  <text x="425" y="352" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">set +x         # con plus</text>
+  <text x="425" y="378" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Debug solo una sección:</text>
+  <text x="425" y="395" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">set -x; codigo; set +x</text>
+</svg>

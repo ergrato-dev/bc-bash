@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <defs>
+    <linearGradient id="headerGrad7c" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7ee787;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#238636;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="420" fill="#0d1117"/>
+  
+  <!-- Header -->
+  <rect x="20" y="15" width="760" height="50" rx="8" fill="url(#headerGrad7c)"/>
+  <text x="400" y="48" font-family="Monaco, monospace" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">⚡ PROFILING Y OPTIMIZACIÓN</text>
+  
+  <!-- Section 1: Timing -->
+  <rect x="20" y="80" width="370" height="150" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="205" y="102" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#7ee787" text-anchor="middle">⏱️ MEDIR TIEMPO</text>
+  
+  <text x="35" y="125" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Tiempo total</text>
+  <text x="35" y="142" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">time ./script.sh</text>
+  <text x="35" y="165" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Tiempo de secciones</text>
+  <text x="35" y="182" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">start=$SECONDS</text>
+  <text x="35" y="199" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9"># ... código ...</text>
+  <text x="35" y="216" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">echo "Duración: $((SECONDS-start))s"</text>
+
+  <!-- Section 2: Profiling -->
+  <rect x="410" y="80" width="370" height="150" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="595" y="102" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#58a6ff" text-anchor="middle">📊 PROFILING</text>
+  
+  <text x="425" y="125" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Timestamp por línea</text>
+  <text x="425" y="142" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">PS4='+$SECONDS:$LINENO: '</text>
+  <text x="425" y="159" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">set -x</text>
+  <text x="425" y="182" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Con fecha/hora</text>
+  <text x="425" y="199" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">PS4='+$(date "+%s.%N"): '</text>
+  <text x="425" y="216" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">bash -x script.sh 2&gt;trace.log</text>
+
+  <!-- Section 3: Optimizaciones -->
+  <rect x="20" y="245" width="370" height="160" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="205" y="267" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#f0883e" text-anchor="middle">🚀 OPTIMIZACIONES</text>
+  
+  <text x="35" y="290" font-family="Monaco, monospace" font-size="10" fill="#f85149">❌ Lento: subshells</text>
+  <text x="35" y="307" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">result=$(echo $var | cut -d: -f1)</text>
+  <text x="35" y="327" font-family="Monaco, monospace" font-size="10" fill="#7ee787">✅ Rápido: built-ins</text>
+  <text x="35" y="344" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">result=${var%%:*}</text>
+  <text x="35" y="367" font-family="Monaco, monospace" font-size="10" fill="#f85149">❌ cat file | grep</text>
+  <text x="35" y="384" font-family="Monaco, monospace" font-size="10" fill="#7ee787">✅ grep pattern file</text>
+
+  <!-- Section 4: Tips -->
+  <rect x="410" y="245" width="370" height="160" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="595" y="267" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#bc8cff" text-anchor="middle">💡 TIPS DE PERFORMANCE</text>
+  
+  <text x="425" y="292" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">• Evitar loops para texto grande</text>
+  <text x="425" y="312" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">• Usar awk/sed en lugar de while</text>
+  <text x="425" y="332" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">• Preferir [[ ]] sobre [ ]</text>
+  <text x="425" y="352" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">• Usar ${var} sobre $(echo $var)</text>
+  <text x="425" y="372" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">• Reducir forks/subshells</text>
+  <text x="425" y="392" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">• Usar arrays para datos</text>
+</svg>
