@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bgGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117"/>
+      <stop offset="100%" style="stop-color:#161b22"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="450" fill="url(#bgGrad4)"/>
+  
+  <text x="400" y="35" font-family="Monaco, monospace" font-size="20" fill="#bc8cff" text-anchor="middle" font-weight="bold">Arrays Asociativos (Diccionarios)</text>
+  
+  <rect x="20" y="60" width="370" height="180" rx="8" fill="#21262d" stroke="#bc8cff" stroke-width="2"/>
+  <text x="205" y="85" font-family="Monaco, monospace" font-size="14" fill="#bc8cff" text-anchor="middle" font-weight="bold">Declaración (declare -A)</text>
+  
+  <text x="40" y="115" font-family="Monaco, monospace" font-size="12" fill="#7ee787"># Obligatorio: declare -A</text>
+  <text x="40" y="135" font-family="Monaco, monospace" font-size="12" fill="#bc8cff">declare -A</text>
+  <text x="125" y="135" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">usuario</text>
+  
+  <text x="40" y="165" font-family="Monaco, monospace" font-size="12" fill="#7ee787"># Asignar valores</text>
+  <text x="40" y="185" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">usuario[nombre]=&quot;Juan&quot;</text>
+  <text x="40" y="205" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">usuario[edad]=</text>
+  <text x="155" y="205" font-family="Monaco, monospace" font-size="12" fill="#ffa657">25</text>
+  <text x="40" y="225" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">usuario[email]=&quot;juan@mail.com&quot;</text>
+  
+  <rect x="410" y="60" width="370" height="180" rx="8" fill="#21262d" stroke="#7ee787" stroke-width="2"/>
+  <text x="595" y="85" font-family="Monaco, monospace" font-size="14" fill="#7ee787" text-anchor="middle" font-weight="bold">Sintaxis Compacta</text>
+  
+  <text x="430" y="115" font-family="Monaco, monospace" font-size="12" fill="#7ee787"># Declaración en una línea</text>
+  <text x="430" y="135" font-family="Monaco, monospace" font-size="12" fill="#bc8cff">declare -A</text>
+  <text x="515" y="135" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">colores=(</text>
+  <text x="445" y="155" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">[rojo]=&quot;#FF0000&quot;</text>
+  <text x="445" y="175" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">[verde]=&quot;#00FF00&quot;</text>
+  <text x="445" y="195" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">[azul]=&quot;#0000FF&quot;</text>
+  <text x="430" y="215" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">)</text>
+  
+  <text x="430" y="235" font-family="Monaco, monospace" font-size="11" fill="#c9d1d9">echo ${colores[rojo]}</text>
+  <text x="600" y="235" font-family="Monaco, monospace" font-size="11" fill="#8b949e"># #FF0000</text>
+  
+  <rect x="20" y="255" width="370" height="180" rx="8" fill="#21262d" stroke="#f0883e" stroke-width="2"/>
+  <text x="205" y="280" font-family="Monaco, monospace" font-size="14" fill="#f0883e" text-anchor="middle" font-weight="bold">Acceso y Operaciones</text>
+  
+  <text x="40" y="310" font-family="Monaco, monospace" font-size="12" fill="#ffa657">${usuario[nombre]}</text>
+  <text x="195" y="310" font-family="Monaco, monospace" font-size="12" fill="#8b949e">Juan (valor)</text>
+  
+  <text x="40" y="335" font-family="Monaco, monospace" font-size="12" fill="#ffa657">${!usuario[@]}</text>
+  <text x="175" y="335" font-family="Monaco, monospace" font-size="12" fill="#8b949e">nombre edad email (claves)</text>
+  
+  <text x="40" y="360" font-family="Monaco, monospace" font-size="12" fill="#ffa657">${usuario[@]}</text>
+  <text x="165" y="360" font-family="Monaco, monospace" font-size="12" fill="#8b949e">Juan 25 juan@... (valores)</text>
+  
+  <text x="40" y="385" font-family="Monaco, monospace" font-size="12" fill="#ffa657">${#usuario[@]}</text>
+  <text x="175" y="385" font-family="Monaco, monospace" font-size="12" fill="#8b949e">3 (cantidad)</text>
+  
+  <text x="40" y="415" font-family="Monaco, monospace" font-size="12" fill="#7ee787"># Verificar si existe clave</text>
+  <text x="40" y="432" font-family="Monaco, monospace" font-size="11" fill="#c9d1d9">[[ -v usuario[nombre] ]] &amp;&amp; echo &quot;existe&quot;</text>
+  
+  <rect x="410" y="255" width="370" height="180" rx="8" fill="#21262d" stroke="#58a6ff" stroke-width="2"/>
+  <text x="595" y="280" font-family="Monaco, monospace" font-size="14" fill="#58a6ff" text-anchor="middle" font-weight="bold">Iterar Asociativos</text>
+  
+  <text x="430" y="310" font-family="Monaco, monospace" font-size="12" fill="#7ee787"># Por claves</text>
+  <text x="430" y="330" font-family="Monaco, monospace" font-size="12" fill="#bc8cff">for</text>
+  <text x="460" y="330" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">clave</text>
+  <text x="510" y="330" font-family="Monaco, monospace" font-size="12" fill="#bc8cff">in</text>
+  <text x="535" y="330" font-family="Monaco, monospace" font-size="12" fill="#ffa657">&quot;${!usuario[@]}&quot;</text>
+  <text x="670" y="330" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">; do</text>
+  <text x="445" y="350" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">echo &quot;$clave: ${usuario[$clave]}&quot;</text>
+  <text x="430" y="370" font-family="Monaco, monospace" font-size="12" fill="#bc8cff">done</text>
+  
+  <text x="430" y="400" font-family="Monaco, monospace" font-size="12" fill="#7ee787"># Salida:</text>
+  <text x="430" y="420" font-family="Monaco, monospace" font-size="12" fill="#8b949e">nombre: Juan  edad: 25  email: ...</text>
+</svg>

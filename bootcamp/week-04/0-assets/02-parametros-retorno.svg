@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117"/>
+      <stop offset="100%" style="stop-color:#161b22"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="450" fill="url(#bgGrad2)"/>
+  
+  <text x="400" y="35" font-family="Monaco, monospace" font-size="20" fill="#f0883e" text-anchor="middle" font-weight="bold">Parámetros y Retorno de Funciones</text>
+  
+  <rect x="20" y="60" width="370" height="180" rx="8" fill="#21262d" stroke="#f0883e" stroke-width="2"/>
+  <text x="205" y="85" font-family="Monaco, monospace" font-size="14" fill="#f0883e" text-anchor="middle" font-weight="bold">Paso de Parámetros</text>
+  
+  <text x="40" y="115" font-family="Monaco, monospace" font-size="12" fill="#f0883e">procesar</text>
+  <text x="105" y="115" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">() {</text>
+  <text x="50" y="135" font-family="Monaco, monospace" font-size="12" fill="#bc8cff">local</text>
+  <text x="90" y="135" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">archivo=</text>
+  <text x="160" y="135" font-family="Monaco, monospace" font-size="12" fill="#ffa657">&quot;$1&quot;</text>
+  <text x="200" y="135" font-family="Monaco, monospace" font-size="12" fill="#8b949e"># primer arg</text>
+  <text x="50" y="155" font-family="Monaco, monospace" font-size="12" fill="#bc8cff">local</text>
+  <text x="90" y="155" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">modo=</text>
+  <text x="140" y="155" font-family="Monaco, monospace" font-size="12" fill="#ffa657">&quot;${2:-lectura}&quot;</text>
+  <text x="280" y="155" font-family="Monaco, monospace" font-size="12" fill="#8b949e"># default</text>
+  <text x="50" y="175" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">echo &quot;Procesando $archivo&quot;</text>
+  <text x="40" y="195" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">}</text>
+  
+  <text x="40" y="225" font-family="Monaco, monospace" font-size="12" fill="#7ee787"># Llamadas:</text>
+  <text x="40" y="235" font-family="Monaco, monospace" font-size="11" fill="#c9d1d9">procesar &quot;datos.txt&quot; &quot;escritura&quot;</text>
+  
+  <rect x="410" y="60" width="370" height="180" rx="8" fill="#21262d" stroke="#7ee787" stroke-width="2"/>
+  <text x="595" y="85" font-family="Monaco, monospace" font-size="14" fill="#7ee787" text-anchor="middle" font-weight="bold">Return vs Echo</text>
+  
+  <text x="430" y="115" font-family="Monaco, monospace" font-size="12" fill="#7ee787"># return: código de salida (0-255)</text>
+  <text x="430" y="135" font-family="Monaco, monospace" font-size="12" fill="#f0883e">es_par</text>
+  <text x="485" y="135" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">() {</text>
+  <text x="445" y="155" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">(( $1 % 2 == 0 )) &amp;&amp;</text>
+  <text x="630" y="155" font-family="Monaco, monospace" font-size="12" fill="#bc8cff">return</text>
+  <text x="690" y="155" font-family="Monaco, monospace" font-size="12" fill="#ffa657">0</text>
+  <text x="445" y="175" font-family="Monaco, monospace" font-size="12" fill="#bc8cff">return</text>
+  <text x="500" y="175" font-family="Monaco, monospace" font-size="12" fill="#ffa657">1</text>
+  <text x="430" y="195" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">}</text>
+  
+  <text x="430" y="220" font-family="Monaco, monospace" font-size="12" fill="#7ee787"># echo: capturar salida</text>
+  <text x="430" y="235" font-family="Monaco, monospace" font-size="11" fill="#c9d1d9">resultado=$(calcular 5 3)</text>
+  
+  <rect x="20" y="255" width="370" height="180" rx="8" fill="#21262d" stroke="#58a6ff" stroke-width="2"/>
+  <text x="205" y="280" font-family="Monaco, monospace" font-size="14" fill="#58a6ff" text-anchor="middle" font-weight="bold">Capturar Resultado</text>
+  
+  <text x="40" y="310" font-family="Monaco, monospace" font-size="12" fill="#f0883e">calcular_suma</text>
+  <text x="150" y="310" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">() {</text>
+  <text x="50" y="330" font-family="Monaco, monospace" font-size="12" fill="#bc8cff">local</text>
+  <text x="90" y="330" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">total=$(( $1 + $2 ))</text>
+  <text x="50" y="350" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">echo</text>
+  <text x="85" y="350" font-family="Monaco, monospace" font-size="12" fill="#ffa657">$total</text>
+  <text x="140" y="350" font-family="Monaco, monospace" font-size="12" fill="#8b949e"># retorna valor</text>
+  <text x="40" y="370" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">}</text>
+  
+  <text x="40" y="400" font-family="Monaco, monospace" font-size="12" fill="#7ee787"># Capturar con $(...)</text>
+  <text x="40" y="420" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">suma=$(calcular_suma 10 20)</text>
+  <text x="40" y="435" font-family="Monaco, monospace" font-size="11" fill="#c9d1d9">echo &quot;Resultado: $suma&quot;</text>
+  
+  <rect x="410" y="255" width="370" height="180" rx="8" fill="#21262d" stroke="#bc8cff" stroke-width="2"/>
+  <text x="595" y="280" font-family="Monaco, monospace" font-size="14" fill="#bc8cff" text-anchor="middle" font-weight="bold">Exit Status ($?)</text>
+  
+  <text x="430" y="310" font-family="Monaco, monospace" font-size="12" fill="#f0883e">validar_archivo</text>
+  <text x="550" y="310" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">() {</text>
+  <text x="445" y="330" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">[[ -f &quot;$1&quot; ]]</text>
+  <text x="560" y="330" font-family="Monaco, monospace" font-size="12" fill="#8b949e"># return implícito</text>
+  <text x="430" y="350" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">}</text>
+  
+  <text x="430" y="380" font-family="Monaco, monospace" font-size="12" fill="#7ee787"># Uso con condicional</text>
+  <text x="430" y="400" font-family="Monaco, monospace" font-size="12" fill="#bc8cff">if</text>
+  <text x="455" y="400" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">validar_archivo &quot;config.txt&quot;; </text>
+  <text x="660" y="400" font-family="Monaco, monospace" font-size="12" fill="#bc8cff">then</text>
+  <text x="445" y="420" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">echo &quot;Archivo válido&quot;</text>
+  <text x="430" y="435" font-family="Monaco, monospace" font-size="11" fill="#bc8cff">fi</text>
+</svg>
