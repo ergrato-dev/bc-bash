@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117"/>
+      <stop offset="100%" style="stop-color:#161b22"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" font-family="Monaco, monospace" font-size="20" fill="#58a6ff" text-anchor="middle" font-weight="bold">Funciones en Bash - Anatomía Completa</text>
+  
+  <!-- Box 1: Sintaxis básica -->
+  <rect x="20" y="60" width="370" height="170" rx="8" fill="#21262d" stroke="#58a6ff" stroke-width="2"/>
+  <text x="205" y="85" font-family="Monaco, monospace" font-size="14" fill="#58a6ff" text-anchor="middle" font-weight="bold">📝 Sintaxis de Definición</text>
+  
+  <text x="40" y="115" font-family="Monaco, monospace" font-size="12" fill="#7ee787"># Forma 1: Recomendada</text>
+  <text x="40" y="135" font-family="Monaco, monospace" font-size="12" fill="#f0883e">nombre_funcion</text>
+  <text x="165" y="135" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">() {</text>
+  <text x="50" y="155" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">comandos...</text>
+  <text x="40" y="175" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">}</text>
+  
+  <text x="40" y="200" font-family="Monaco, monospace" font-size="12" fill="#7ee787"># Forma 2: Con keyword</text>
+  <text x="40" y="220" font-family="Monaco, monospace" font-size="12" fill="#bc8cff">function</text>
+  <text x="110" y="220" font-family="Monaco, monospace" font-size="12" fill="#f0883e">nombre</text>
+  <text x="170" y="220" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">{ ... }</text>
+  
+  <!-- Box 2: Ejemplo completo -->
+  <rect x="410" y="60" width="370" height="170" rx="8" fill="#21262d" stroke="#7ee787" stroke-width="2"/>
+  <text x="595" y="85" font-family="Monaco, monospace" font-size="14" fill="#7ee787" text-anchor="middle" font-weight="bold">✅ Ejemplo Completo</text>
+  
+  <text x="430" y="115" font-family="Monaco, monospace" font-size="12" fill="#7ee787"># Función que saluda</text>
+  <text x="430" y="135" font-family="Monaco, monospace" font-size="12" fill="#f0883e">saludar</text>
+  <text x="495" y="135" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">() {</text>
+  <text x="445" y="155" font-family="Monaco, monospace" font-size="12" fill="#bc8cff">local</text>
+  <text x="485" y="155" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">nombre=</text>
+  <text x="555" y="155" font-family="Monaco, monospace" font-size="12" fill="#ffa657">"$1"</text>
+  <text x="445" y="175" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">echo</text>
+  <text x="480" y="175" font-family="Monaco, monospace" font-size="12" fill="#a5d6ff">"Hola, $nombre!"</text>
+  <text x="430" y="195" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">}</text>
+  <text x="430" y="220" font-family="Monaco, monospace" font-size="12" fill="#c9d1d9">saludar</text>
+  <text x="490" y="220" font-family="Monaco, monospace" font-size="12" fill="#a5d6ff">"Juan"</text>
+  <text x="545" y="220" font-family="Monaco, monospace" font-size="12" fill="#8b949e"># → Hola, Juan!</text>
+  
+  <!-- Box 3: Parámetros posicionales -->
+  <rect x="20" y="245" width="370" height="190" rx="8" fill="#21262d" stroke="#f0883e" stroke-width="2"/>
+  <text x="205" y="270" font-family="Monaco, monospace" font-size="14" fill="#f0883e" text-anchor="middle" font-weight="bold">📥 Parámetros Posicionales</text>
+  
+  <text x="40" y="300" font-family="Monaco, monospace" font-size="12" fill="#ffa657">$0</text>
+  <text x="80" y="300" font-family="Monaco, monospace" font-size="12" fill="#8b949e">→ Nombre del script</text>
+  <text x="40" y="325" font-family="Monaco, monospace" font-size="12" fill="#ffa657">$1, $2...</text>
+  <text x="115" y="325" font-family="Monaco, monospace" font-size="12" fill="#8b949e">→ Argumentos 1, 2, etc.</text>
+  <text x="40" y="350" font-family="Monaco, monospace" font-size="12" fill="#ffa657">$#</text>
+  <text x="80" y="350" font-family="Monaco, monospace" font-size="12" fill="#8b949e">→ Número de argumentos</text>
+  <text x="40" y="375" font-family="Monaco, monospace" font-size="12" fill="#ffa657">$@</text>
+  <text x="80" y="375" font-family="Monaco, monospace" font-size="12" fill="#8b949e">→ Todos los argumentos (lista)</text>
+  <text x="40" y="400" font-family="Monaco, monospace" font-size="12" fill="#ffa657">$*</text>
+  <text x="80" y="400" font-family="Monaco, monospace" font-size="12" fill="#8b949e">→ Todos como string único</text>
+  <text x="40" y="425" font-family="Monaco, monospace" font-size="12" fill="#ffa657">${10}</text>
+  <text x="100" y="425" font-family="Monaco, monospace" font-size="12" fill="#8b949e">→ Argumento 10+ (con llaves)</text>
+  
+  <!-- Box 4: Buenas prácticas -->
+  <rect x="410" y="245" width="370" height="190" rx="8" fill="#21262d" stroke="#bc8cff" stroke-width="2"/>
+  <text x="595" y="270" font-family="Monaco, monospace" font-size="14" fill="#bc8cff" text-anchor="middle" font-weight="bold">💡 Buenas Prácticas</text>
+  
+  <text x="430" y="300" font-family="Monaco, monospace" font-size="11" fill="#7ee787">✓</text>
+  <text x="450" y="300" font-family="Monaco, monospace" font-size="11" fill="#c9d1d9">Usar</text>
+  <text x="485" y="300" font-family="Monaco, monospace" font-size="11" fill="#bc8cff">local</text>
+  <text x="525" y="300" font-family="Monaco, monospace" font-size="11" fill="#c9d1d9">para variables internas</text>
+  
+  <text x="430" y="325" font-family="Monaco, monospace" font-size="11" fill="#7ee787">✓</text>
+  <text x="450" y="325" font-family="Monaco, monospace" font-size="11" fill="#c9d1d9">Nombres descriptivos:</text>
+  <text x="615" y="325" font-family="Monaco, monospace" font-size="11" fill="#f0883e">procesar_archivo</text>
+  
+  <text x="430" y="350" font-family="Monaco, monospace" font-size="11" fill="#7ee787">✓</text>
+  <text x="450" y="350" font-family="Monaco, monospace" font-size="11" fill="#c9d1d9">Validar parámetros al inicio</text>
+  
+  <text x="430" y="375" font-family="Monaco, monospace" font-size="11" fill="#7ee787">✓</text>
+  <text x="450" y="375" font-family="Monaco, monospace" font-size="11" fill="#c9d1d9">Documentar con comentarios</text>
+  
+  <text x="430" y="400" font-family="Monaco, monospace" font-size="11" fill="#f85149">✗</text>
+  <text x="450" y="400" font-family="Monaco, monospace" font-size="11" fill="#c9d1d9">Evitar variables globales</text>
+  
+  <text x="430" y="425" font-family="Monaco, monospace" font-size="11" fill="#f85149">✗</text>
+  <text x="450" y="425" font-family="Monaco, monospace" font-size="11" fill="#c9d1d9">No usar</text>
+  <text x="520" y="425" font-family="Monaco, monospace" font-size="11" fill="#bc8cff">function</text>
+  <text x="590" y="425" font-family="Monaco, monospace" font-size="11" fill="#c9d1d9">keyword (POSIX)</text>
+</svg>
