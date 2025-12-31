@@ -11,7 +11,9 @@
 | Arrays Indexados     | Declaración, acceso, iteración         | [SVG](../0-assets/03-arrays-indexados.svg)   |
 | Arrays Asociativos   | Diccionarios con claves                | [SVG](../0-assets/04-arrays-asociativos.svg) |
 
-## �🎯 ¿Qué son las Funciones y Arrays?
+---
+
+## 🎯 ¿Qué son las Funciones y Arrays?
 
 Las **funciones** son bloques de código reutilizables y los **arrays** son colecciones de valores.
 
