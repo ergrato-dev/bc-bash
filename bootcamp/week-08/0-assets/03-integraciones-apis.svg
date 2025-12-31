@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <defs>
+    <linearGradient id="headerGrad8_3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7ee787;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#238636;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="420" fill="#0d1117"/>
+  
+  <!-- Header -->
+  <rect x="20" y="15" width="760" height="50" rx="8" fill="url(#headerGrad8_3)"/>
+  <text x="400" y="48" font-family="Monaco, monospace" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">🔌 INTEGRACIONES Y APIs</text>
+  
+  <!-- Column 1: REST API -->
+  <rect x="20" y="80" width="245" height="320" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="142" y="105" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#58a6ff" text-anchor="middle">REST APIs + curl</text>
+  
+  <text x="35" y="130" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># GET request</text>
+  <text x="35" y="148" font-family="Monaco, monospace" font-size="10" fill="#ff7b72">curl</text>
+  <text x="60" y="148" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">-s</text>
+  <text x="75" y="148" font-family="Monaco, monospace" font-size="10" fill="#a5d6ff">"$API_URL/users"</text>
+  
+  <text x="35" y="175" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># POST con JSON</text>
+  <text x="35" y="193" font-family="Monaco, monospace" font-size="10" fill="#ff7b72">curl</text>
+  <text x="60" y="193" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">-X POST \</text>
+  <text x="45" y="211" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">-H</text>
+  <text x="60" y="211" font-family="Monaco, monospace" font-size="10" fill="#a5d6ff">"Content-Type: JSON"</text>
+  <text x="45" y="229" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">-d</text>
+  <text x="60" y="229" font-family="Monaco, monospace" font-size="10" fill="#a5d6ff">'{"name":"val"}'</text>
+  
+  <text x="35" y="260" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Auth Bearer token</text>
+  <text x="35" y="278" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">-H</text>
+  <text x="50" y="278" font-family="Monaco, monospace" font-size="10" fill="#a5d6ff">"Authorization:</text>
+  <text x="45" y="296" font-family="Monaco, monospace" font-size="10" fill="#a5d6ff">   Bearer $TOKEN"</text>
+  
+  <text x="35" y="325" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Parsear con jq</text>
+  <text x="35" y="343" font-family="Monaco, monospace" font-size="10" fill="#ff7b72">curl</text>
+  <text x="60" y="343" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">... |</text>
+  <text x="95" y="343" font-family="Monaco, monospace" font-size="10" fill="#ff7b72">jq</text>
+  <text x="112" y="343" font-family="Monaco, monospace" font-size="10" fill="#a5d6ff">'.data[]'</text>
+  
+  <!-- Column 2: jq Processing -->
+  <rect x="277" y="80" width="246" height="320" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="400" y="105" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#7ee787" text-anchor="middle">JSON con jq</text>
+  
+  <text x="292" y="130" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Extraer campo</text>
+  <text x="292" y="148" font-family="Monaco, monospace" font-size="10" fill="#ff7b72">jq</text>
+  <text x="307" y="148" font-family="Monaco, monospace" font-size="10" fill="#a5d6ff">'.name'</text>
+  <text x="355" y="148" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">data.json</text>
+  
+  <text x="292" y="175" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Array iteration</text>
+  <text x="292" y="193" font-family="Monaco, monospace" font-size="10" fill="#ff7b72">jq</text>
+  <text x="307" y="193" font-family="Monaco, monospace" font-size="10" fill="#a5d6ff">'.items[] | .id'</text>
+  
+  <text x="292" y="220" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Filtrar</text>
+  <text x="292" y="238" font-family="Monaco, monospace" font-size="10" fill="#ff7b72">jq</text>
+  <text x="307" y="238" font-family="Monaco, monospace" font-size="10" fill="#a5d6ff">'select(.active)'</text>
+  
+  <text x="292" y="265" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Transformar</text>
+  <text x="292" y="283" font-family="Monaco, monospace" font-size="10" fill="#ff7b72">jq</text>
+  <text x="307" y="283" font-family="Monaco, monospace" font-size="10" fill="#a5d6ff">'{id, name}'</text>
+  
+  <text x="292" y="310" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Output raw</text>
+  <text x="292" y="328" font-family="Monaco, monospace" font-size="10" fill="#ff7b72">jq</text>
+  <text x="307" y="328" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">-r</text>
+  <text x="322" y="328" font-family="Monaco, monospace" font-size="10" fill="#a5d6ff">'.url'</text>
+  
+  <text x="292" y="355" font-family="Monaco, monospace" font-size="10" fill="#8b949e"># Contar elementos</text>
+  <text x="292" y="373" font-family="Monaco, monospace" font-size="10" fill="#ff7b72">jq</text>
+  <text x="307" y="373" font-family="Monaco, monospace" font-size="10" fill="#a5d6ff">'.items | length'</text>
+  
+  <!-- Column 3: Services -->
+  <rect x="535" y="80" width="245" height="320" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="657" y="105" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#bc8cff" text-anchor="middle">SERVICIOS</text>
+  
+  <text x="550" y="135" font-family="Monaco, monospace" font-size="11" fill="#f0883e">☁️ Cloud CLIs</text>
+  <text x="550" y="155" font-family="Monaco, monospace" font-size="10" fill="#8b949e">  aws, gcloud, az</text>
+  <text x="550" y="173" font-family="Monaco, monospace" font-size="10" fill="#8b949e">  S3, GCS, Blob storage</text>
+  
+  <text x="550" y="200" font-family="Monaco, monospace" font-size="11" fill="#f0883e">🐳 Containers</text>
+  <text x="550" y="220" font-family="Monaco, monospace" font-size="10" fill="#8b949e">  docker, podman</text>
+  <text x="550" y="238" font-family="Monaco, monospace" font-size="10" fill="#8b949e">  kubectl, helm</text>
+  
+  <text x="550" y="265" font-family="Monaco, monospace" font-size="11" fill="#f0883e">🔔 Notifications</text>
+  <text x="550" y="285" font-family="Monaco, monospace" font-size="10" fill="#8b949e">  Slack webhooks</text>
+  <text x="550" y="303" font-family="Monaco, monospace" font-size="10" fill="#8b949e">  Email (sendmail)</text>
+  
+  <text x="550" y="330" font-family="Monaco, monospace" font-size="11" fill="#f0883e">🗄️ Databases</text>
+  <text x="550" y="350" font-family="Monaco, monospace" font-size="10" fill="#8b949e">  mysql, psql</text>
+  <text x="550" y="368" font-family="Monaco, monospace" font-size="10" fill="#8b949e">  mongosh, redis-cli</text>
+</svg>
