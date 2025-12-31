@@ -1,0 +1,30 @@
+2024-01-15 10:23:45 INFO [auth] user=admin action=login ip=192.168.1.100 duration=150ms
+2024-01-15 10:24:12 ERROR [auth] user=guest action=access_denied ip=10.0.0.50 error="invalid credentials"
+2024-01-15 10:25:33 INFO [api] user=maria action=upload ip=192.168.1.101 file=report.pdf size=2048kb
+2024-01-15 10:26:01 WARN [api] user=admin action=timeout ip=192.168.1.100 endpoint=/api/data
+2024-01-15 10:27:45 ERROR [api] user=juan action=invalid_request ip=10.0.0.51 error="malformed json"
+2024-01-15 10:28:22 INFO [api] user=maria action=download ip=192.168.1.101 file=backup.zip
+2024-01-15 10:29:10 ERROR [auth] user=guest action=auth_failed ip=10.0.0.50 attempts=3
+2024-01-15 10:30:55 INFO [auth] user=admin action=logout ip=192.168.1.100 session=abc123
+2024-01-15 10:31:12 INFO [db] user=system action=backup ip=127.0.0.1 tables=15
+2024-01-15 10:32:45 WARN [api] user=carlos action=rate_limited ip=192.168.1.102 requests=1000
+2024-01-15 10:33:22 INFO [auth] user=laura action=login ip=192.168.1.103 duration=89ms
+2024-01-15 10:34:01 ERROR [db] user=system action=query_failed ip=127.0.0.1 error="connection timeout"
+2024-01-15 10:35:33 INFO [api] user=laura action=search ip=192.168.1.103 query="logs 2024"
+2024-01-15 10:36:45 CRITICAL [security] user=unknown action=brute_force ip=10.0.0.99 attempts=50
+2024-01-15 10:37:12 ERROR [auth] user=guest action=auth_failed ip=10.0.0.50 attempts=4
+2024-01-15 10:38:22 INFO [api] user=maria action=export ip=192.168.1.101 format=csv rows=5000
+2024-01-15 10:39:45 WARN [system] user=admin action=disk_warning ip=192.168.1.100 usage=85%
+2024-01-15 10:40:01 INFO [auth] user=pedro action=login ip=192.168.1.104 duration=120ms
+2024-01-15 10:41:33 ERROR [api] user=carlos action=permission_denied ip=192.168.1.102 resource=/admin
+2024-01-15 10:42:12 INFO [db] user=system action=optimize ip=127.0.0.1 tables=3
+2024-01-15 10:43:45 CRITICAL [security] user=unknown action=sql_injection ip=10.0.0.99 pattern="'; DROP TABLE"
+2024-01-15 10:44:22 ERROR [auth] user=guest action=auth_failed ip=10.0.0.50 attempts=5
+2024-01-15 10:45:01 INFO [api] user=pedro action=update ip=192.168.1.104 record=user_profile
+2024-01-15 10:46:33 WARN [db] user=system action=slow_query ip=127.0.0.1 duration=5200ms
+2024-01-15 10:47:45 INFO [auth] user=admin action=login ip=192.168.1.100 duration=95ms
+2024-01-15 10:48:12 ERROR [api] user=juan action=validation_error ip=10.0.0.51 field=email
+2024-01-15 10:49:22 INFO [api] user=laura action=create ip=192.168.1.103 entity=report
+2024-01-15 10:50:01 WARN [security] user=guest action=blocked ip=10.0.0.50 reason="too many failures"
+2024-01-15 10:51:33 INFO [auth] user=ana action=login ip=192.168.1.105 duration=110ms
+2024-01-15 10:52:45 ERROR [db] user=system action=replication_lag ip=127.0.0.1 lag=15s

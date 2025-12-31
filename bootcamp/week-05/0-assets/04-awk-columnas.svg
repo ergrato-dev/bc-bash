@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#161b22"/>
+      <stop offset="100%" style="stop-color:#0d1117"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="450" fill="#0d1117"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" font-family="Monaco, monospace" font-size="20" fill="#bc8cff" text-anchor="middle" font-weight="bold">awk - PROCESAMIENTO COLUMNAR</text>
+  
+  <!-- Sintaxis -->
+  <rect x="20" y="55" width="760" height="55" rx="8" fill="url(#cardGrad)" stroke="#bc8cff" stroke-width="1"/>
+  <text x="400" y="78" font-family="Monaco, monospace" font-size="13" fill="#bc8cff" text-anchor="middle">SINTAXIS BASICA</text>
+  <text x="400" y="98" font-family="Monaco, monospace" font-size="12" fill="#7ee787" text-anchor="middle">awk &apos;patron { accion }&apos; archivo    |    awk -F&apos;:&apos; &apos;{print $1}&apos; /etc/passwd</text>
+  
+  <!-- Variables Built-in -->
+  <rect x="20" y="125" width="245" height="160" rx="8" fill="url(#cardGrad)" stroke="#7ee787" stroke-width="1"/>
+  <text x="142" y="148" font-family="Monaco, monospace" font-size="13" fill="#7ee787" text-anchor="middle">VARIABLES BUILT-IN</text>
+  
+  <text x="35" y="173" font-family="Monaco, monospace" font-size="11" fill="#f0883e">$0</text>
+  <text x="65" y="173" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Linea completa</text>
+  
+  <text x="35" y="193" font-family="Monaco, monospace" font-size="11" fill="#f0883e">$1,$2...</text>
+  <text x="95" y="193" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Campos</text>
+  
+  <text x="35" y="213" font-family="Monaco, monospace" font-size="11" fill="#f0883e">NF</text>
+  <text x="65" y="213" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Num de campos</text>
+  
+  <text x="35" y="233" font-family="Monaco, monospace" font-size="11" fill="#f0883e">NR</text>
+  <text x="65" y="233" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Num de registro</text>
+  
+  <text x="35" y="253" font-family="Monaco, monospace" font-size="11" fill="#f0883e">FS</text>
+  <text x="65" y="253" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Separador input</text>
+  
+  <text x="35" y="273" font-family="Monaco, monospace" font-size="11" fill="#f0883e">OFS</text>
+  <text x="70" y="273" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Separador output</text>
+  
+  <!-- Bloques Especiales -->
+  <rect x="277" y="125" width="245" height="160" rx="8" fill="url(#cardGrad)" stroke="#f0883e" stroke-width="1"/>
+  <text x="400" y="148" font-family="Monaco, monospace" font-size="13" fill="#f0883e" text-anchor="middle">BLOQUES ESPECIALES</text>
+  
+  <text x="292" y="178" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">BEGIN { }</text>
+  <text x="292" y="198" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Ejecuta antes de procesar</text>
+  
+  <text x="292" y="228" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">{ }</text>
+  <text x="292" y="248" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Ejecuta por cada linea</text>
+  
+  <text x="292" y="278" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">END { }</text>
+  <text x="292" y="298" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Ejecuta al final</text>
+  
+  <!-- Operadores -->
+  <rect x="535" y="125" width="245" height="160" rx="8" fill="url(#cardGrad)" stroke="#58a6ff" stroke-width="1"/>
+  <text x="657" y="148" font-family="Monaco, monospace" font-size="13" fill="#58a6ff" text-anchor="middle">OPERADORES</text>
+  
+  <text x="550" y="173" font-family="Monaco, monospace" font-size="11" fill="#7ee787">==, !=</text>
+  <text x="610" y="173" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Igualdad</text>
+  
+  <text x="550" y="193" font-family="Monaco, monospace" font-size="11" fill="#7ee787">&gt;, &lt;, &gt;=, &lt;=</text>
+  <text x="640" y="193" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Comparacion</text>
+  
+  <text x="550" y="213" font-family="Monaco, monospace" font-size="11" fill="#7ee787">~, !~</text>
+  <text x="600" y="213" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Match regex</text>
+  
+  <text x="550" y="233" font-family="Monaco, monospace" font-size="11" fill="#7ee787">&amp;&amp;, ||</text>
+  <text x="610" y="233" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Logicos</text>
+  
+  <text x="550" y="253" font-family="Monaco, monospace" font-size="11" fill="#7ee787">+, -, *, /</text>
+  <text x="620" y="253" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Aritmeticos</text>
+  
+  <text x="550" y="273" font-family="Monaco, monospace" font-size="11" fill="#7ee787">++, --</text>
+  <text x="605" y="273" font-family="Monaco, monospace" font-size="11" fill="#8b949e">Incremento</text>
+  
+  <!-- Ejemplos -->
+  <rect x="20" y="300" width="760" height="135" rx="8" fill="url(#cardGrad)" stroke="#bc8cff" stroke-width="1"/>
+  <text x="400" y="323" font-family="Monaco, monospace" font-size="13" fill="#bc8cff" text-anchor="middle">EJEMPLOS PRACTICOS</text>
+  
+  <text x="35" y="348" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Imprimir columnas 1 y 3</text>
+  <text x="35" y="363" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk &apos;{print $1, $3}&apos; datos.txt</text>
+  
+  <text x="35" y="386" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Filtrar por condicion</text>
+  <text x="35" y="401" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk &apos;$3 &gt; 100 {print $1}&apos; datos.txt</text>
+  
+  <text x="35" y="424" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Sumar columna</text>
+  <text x="35" y="439" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk &apos;{sum+=$2} END{print sum}&apos; datos.txt</text>
+  
+  <text x="420" y="348" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># CSV con separador</text>
+  <text x="420" y="363" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk -F&apos;,&apos; &apos;{print $2}&apos; datos.csv</text>
+  
+  <text x="420" y="386" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Contar lineas por patron</text>
+  <text x="420" y="401" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk &apos;/ERROR/{count++} END{print count}&apos; log</text>
+  
+  <text x="420" y="424" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Formatear output</text>
+  <text x="420" y="439" font-family="Monaco, monospace" font-size="11" fill="#7ee787">awk &apos;{printf &quot;%-10s %5d\n&quot;, $1, $2}&apos; data</text>
+</svg>
