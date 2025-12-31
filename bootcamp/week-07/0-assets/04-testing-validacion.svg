@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <defs>
+    <linearGradient id="headerGrad7d" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#bc8cff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8957e5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="420" fill="#0d1117"/>
+  
+  <!-- Header -->
+  <rect x="20" y="15" width="760" height="50" rx="8" fill="url(#headerGrad7d)"/>
+  <text x="400" y="48" font-family="Monaco, monospace" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">🧪 TESTING Y VALIDACIÓN</text>
+  
+  <!-- Section 1: Assertions -->
+  <rect x="20" y="80" width="370" height="150" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="205" y="102" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#bc8cff" text-anchor="middle">✅ ASSERTIONS</text>
+  
+  <text x="35" y="125" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Función assert básica</text>
+  <text x="35" y="142" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">assert() {</text>
+  <text x="35" y="159" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">  local msg="$1"; shift</text>
+  <text x="35" y="176" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">  "$@" || { echo "FAIL: $msg"; exit 1; }</text>
+  <text x="35" y="193" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">}</text>
+  <text x="35" y="216" font-family="Monaco, monospace" font-size="10" fill="#f0883e">assert "2+2=4" [ $((2+2)) -eq 4 ]</text>
+
+  <!-- Section 2: Test Structure -->
+  <rect x="410" y="80" width="370" height="150" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="595" y="102" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#58a6ff" text-anchor="middle">🏗️ ESTRUCTURA DE TEST</text>
+  
+  <text x="425" y="125" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">test_suma() {</text>
+  <text x="425" y="142" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">  local result=$(suma 2 3)</text>
+  <text x="425" y="159" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">  [[ "$result" -eq 5 ]] || return 1</text>
+  <text x="425" y="176" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">}</text>
+  <text x="425" y="199" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Ejecutar todos los tests</text>
+  <text x="425" y="216" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">run_tests test_*</text>
+
+  <!-- Section 3: Input Validation -->
+  <rect x="20" y="245" width="370" height="160" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="205" y="267" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#f0883e" text-anchor="middle">🔒 VALIDACIÓN DE INPUT</text>
+  
+  <text x="35" y="290" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Verificar argumento existe</text>
+  <text x="35" y="307" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">[[ -z "$1" ]] &amp;&amp; die "Falta arg"</text>
+  <text x="35" y="330" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Verificar es número</text>
+  <text x="35" y="347" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">[[ "$1" =~ ^[0-9]+$ ]] || die "NaN"</text>
+  <text x="35" y="370" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Verificar archivo existe</text>
+  <text x="35" y="387" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">[[ -f "$1" ]] || die "No existe"</text>
+
+  <!-- Section 4: Tools -->
+  <rect x="410" y="245" width="370" height="160" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="595" y="267" font-family="Monaco, monospace" font-size="12" font-weight="bold" fill="#7ee787" text-anchor="middle">🔧 HERRAMIENTAS DE TEST</text>
+  
+  <text x="425" y="292" font-family="Monaco, monospace" font-size="10" fill="#58a6ff">shellcheck</text>
+  <text x="520" y="292" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Análisis estático</text>
+  <text x="425" y="315" font-family="Monaco, monospace" font-size="10" fill="#58a6ff">bats-core</text>
+  <text x="520" y="315" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Framework de test</text>
+  <text x="425" y="338" font-family="Monaco, monospace" font-size="10" fill="#58a6ff">shunit2</text>
+  <text x="520" y="338" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Unit testing</text>
+  <text x="425" y="365" font-family="Monaco, monospace" font-size="10" fill="#7ee787"># Ejemplo bats</text>
+  <text x="425" y="382" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">@test "suma works" {</text>
+  <text x="425" y="399" font-family="Monaco, monospace" font-size="10" fill="#c9d1d9">  run suma 2 3; [ "$output" = "5" ]</text>
+</svg>
