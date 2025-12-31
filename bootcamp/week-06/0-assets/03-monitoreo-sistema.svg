@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <defs>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#161b22"/>
+      <stop offset="100%" style="stop-color:#0d1117"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="420" fill="#0d1117"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" font-family="Monaco, monospace" font-size="20" fill="#7ee787" text-anchor="middle" font-weight="bold">MONITOREO DE SISTEMA</text>
+  
+  <!-- Disco -->
+  <rect x="20" y="55" width="185" height="160" rx="8" fill="url(#cardGrad)" stroke="#7ee787" stroke-width="1"/>
+  <text x="112" y="78" font-family="Monaco, monospace" font-size="13" fill="#7ee787" text-anchor="middle">DISCO</text>
+  
+  <text x="35" y="103" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">df -h</text>
+  <text x="35" y="118" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Uso de particiones</text>
+  
+  <text x="35" y="143" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">du -sh *</text>
+  <text x="35" y="158" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Tamaño directorios</text>
+  
+  <text x="35" y="183" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">lsblk</text>
+  <text x="35" y="198" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Lista de bloques</text>
+  
+  <!-- Memoria -->
+  <rect x="215" y="55" width="185" height="160" rx="8" fill="url(#cardGrad)" stroke="#58a6ff" stroke-width="1"/>
+  <text x="307" y="78" font-family="Monaco, monospace" font-size="13" fill="#58a6ff" text-anchor="middle">MEMORIA</text>
+  
+  <text x="230" y="103" font-family="Monaco, monospace" font-size="11" fill="#f0883e">free -h</text>
+  <text x="230" y="118" font-family="Monaco, monospace" font-size="10" fill="#8b949e">RAM y swap</text>
+  
+  <text x="230" y="143" font-family="Monaco, monospace" font-size="11" fill="#f0883e">vmstat 1</text>
+  <text x="230" y="158" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Stats en tiempo real</text>
+  
+  <text x="230" y="183" font-family="Monaco, monospace" font-size="11" fill="#f0883e">cat /proc/meminfo</text>
+  <text x="230" y="198" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Info detallada</text>
+  
+  <!-- CPU -->
+  <rect x="410" y="55" width="185" height="160" rx="8" fill="url(#cardGrad)" stroke="#f0883e" stroke-width="1"/>
+  <text x="502" y="78" font-family="Monaco, monospace" font-size="13" fill="#f0883e" text-anchor="middle">CPU</text>
+  
+  <text x="425" y="103" font-family="Monaco, monospace" font-size="11" fill="#7ee787">uptime</text>
+  <text x="425" y="118" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Load average</text>
+  
+  <text x="425" y="143" font-family="Monaco, monospace" font-size="11" fill="#7ee787">mpstat 1</text>
+  <text x="425" y="158" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Stats por CPU</text>
+  
+  <text x="425" y="183" font-family="Monaco, monospace" font-size="11" fill="#7ee787">nproc</text>
+  <text x="425" y="198" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Número de CPUs</text>
+  
+  <!-- Red -->
+  <rect x="605" y="55" width="175" height="160" rx="8" fill="url(#cardGrad)" stroke="#bc8cff" stroke-width="1"/>
+  <text x="692" y="78" font-family="Monaco, monospace" font-size="13" fill="#bc8cff" text-anchor="middle">RED</text>
+  
+  <text x="620" y="103" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">ss -tuln</text>
+  <text x="620" y="118" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Puertos abiertos</text>
+  
+  <text x="620" y="143" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">netstat -i</text>
+  <text x="620" y="158" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Interfaces</text>
+  
+  <text x="620" y="183" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">ip addr</text>
+  <text x="620" y="198" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Direcciones IP</text>
+  
+  <!-- Ejemplos -->
+  <rect x="20" y="230" width="760" height="175" rx="8" fill="url(#cardGrad)" stroke="#7ee787" stroke-width="1"/>
+  <text x="400" y="253" font-family="Monaco, monospace" font-size="13" fill="#7ee787" text-anchor="middle">SCRIPTS DE MONITOREO</text>
+  
+  <text x="35" y="278" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Alerta disco &gt; 80%</text>
+  <text x="35" y="293" font-family="Monaco, monospace" font-size="11" fill="#7ee787">df -h | awk &apos;$5+0 &gt; 80 {print $6, $5}&apos;</text>
+  
+  <text x="35" y="318" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Memoria disponible</text>
+  <text x="35" y="333" font-family="Monaco, monospace" font-size="11" fill="#7ee787">free -m | awk &apos;/Mem:/{print $7}&apos;</text>
+  
+  <text x="35" y="358" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Load average</text>
+  <text x="35" y="373" font-family="Monaco, monospace" font-size="11" fill="#7ee787">uptime | awk -F&apos;load average:&apos; &apos;{print $2}&apos;</text>
+  
+  <text x="420" y="278" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Procesos zombies</text>
+  <text x="420" y="293" font-family="Monaco, monospace" font-size="11" fill="#7ee787">ps aux | awk &apos;$8=="Z"&apos; | wc -l</text>
+  
+  <text x="420" y="318" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Conexiones activas</text>
+  <text x="420" y="333" font-family="Monaco, monospace" font-size="11" fill="#7ee787">ss -s | grep estab</text>
+  
+  <text x="420" y="358" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Archivos abiertos</text>
+  <text x="420" y="373" font-family="Monaco, monospace" font-size="11" fill="#7ee787">lsof | wc -l</text>
+</svg>

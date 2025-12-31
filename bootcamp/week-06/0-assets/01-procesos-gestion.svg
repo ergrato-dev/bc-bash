@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <defs>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#161b22"/>
+      <stop offset="100%" style="stop-color:#0d1117"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="420" fill="#0d1117"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" font-family="Monaco, monospace" font-size="20" fill="#58a6ff" text-anchor="middle" font-weight="bold">GESTIÓN DE PROCESOS</text>
+  
+  <!-- ps command -->
+  <rect x="20" y="55" width="245" height="165" rx="8" fill="url(#cardGrad)" stroke="#58a6ff" stroke-width="1"/>
+  <text x="142" y="78" font-family="Monaco, monospace" font-size="13" fill="#58a6ff" text-anchor="middle">ps - LISTAR PROCESOS</text>
+  
+  <text x="35" y="103" font-family="Monaco, monospace" font-size="11" fill="#7ee787">ps aux</text>
+  <text x="100" y="103" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Todos los procesos</text>
+  
+  <text x="35" y="123" font-family="Monaco, monospace" font-size="11" fill="#7ee787">ps -ef</text>
+  <text x="100" y="123" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Formato extendido</text>
+  
+  <text x="35" y="143" font-family="Monaco, monospace" font-size="11" fill="#7ee787">ps -u user</text>
+  <text x="120" y="143" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Por usuario</text>
+  
+  <text x="35" y="163" font-family="Monaco, monospace" font-size="11" fill="#7ee787">ps --forest</text>
+  <text x="130" y="163" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Árbol de procesos</text>
+  
+  <text x="35" y="183" font-family="Monaco, monospace" font-size="11" fill="#7ee787">ps -p PID</text>
+  <text x="115" y="183" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Proceso específico</text>
+  
+  <text x="35" y="203" font-family="Monaco, monospace" font-size="11" fill="#7ee787">ps -C cmd</text>
+  <text x="115" y="203" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Por comando</text>
+  
+  <!-- top/htop -->
+  <rect x="277" y="55" width="245" height="165" rx="8" fill="url(#cardGrad)" stroke="#7ee787" stroke-width="1"/>
+  <text x="400" y="78" font-family="Monaco, monospace" font-size="13" fill="#7ee787" text-anchor="middle">top/htop - TIEMPO REAL</text>
+  
+  <text x="292" y="103" font-family="Monaco, monospace" font-size="11" fill="#f0883e">top</text>
+  <text x="330" y="103" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Monitor interactivo</text>
+  
+  <text x="292" y="123" font-family="Monaco, monospace" font-size="11" fill="#f0883e">htop</text>
+  <text x="340" y="123" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Versión mejorada</text>
+  
+  <text x="292" y="148" font-family="Monaco, monospace" font-size="10" fill="#6e7681">Teclas en top:</text>
+  <text x="292" y="168" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">k</text>
+  <text x="310" y="168" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Kill proceso</text>
+  <text x="400" y="168" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">r</text>
+  <text x="418" y="168" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Renice</text>
+  
+  <text x="292" y="188" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">M</text>
+  <text x="310" y="188" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Ordenar memoria</text>
+  <text x="400" y="188" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">P</text>
+  <text x="418" y="188" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Ordenar CPU</text>
+  
+  <text x="292" y="208" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">q</text>
+  <text x="310" y="208" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Salir</text>
+  <text x="400" y="208" font-family="Monaco, monospace" font-size="11" fill="#58a6ff">h</text>
+  <text x="418" y="208" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Ayuda</text>
+  
+  <!-- kill/signals -->
+  <rect x="535" y="55" width="245" height="165" rx="8" fill="url(#cardGrad)" stroke="#f0883e" stroke-width="1"/>
+  <text x="657" y="78" font-family="Monaco, monospace" font-size="13" fill="#f0883e" text-anchor="middle">kill - SEÑALES</text>
+  
+  <text x="550" y="103" font-family="Monaco, monospace" font-size="11" fill="#bc8cff">SIGTERM (15)</text>
+  <text x="660" y="103" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Terminar limpio</text>
+  
+  <text x="550" y="123" font-family="Monaco, monospace" font-size="11" fill="#bc8cff">SIGKILL (9)</text>
+  <text x="655" y="123" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Forzar muerte</text>
+  
+  <text x="550" y="143" font-family="Monaco, monospace" font-size="11" fill="#bc8cff">SIGSTOP (19)</text>
+  <text x="665" y="143" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Pausar</text>
+  
+  <text x="550" y="163" font-family="Monaco, monospace" font-size="11" fill="#bc8cff">SIGCONT (18)</text>
+  <text x="665" y="163" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Continuar</text>
+  
+  <text x="550" y="183" font-family="Monaco, monospace" font-size="11" fill="#bc8cff">SIGHUP (1)</text>
+  <text x="655" y="183" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Reload config</text>
+  
+  <text x="550" y="203" font-family="Monaco, monospace" font-size="11" fill="#bc8cff">SIGUSR1 (10)</text>
+  <text x="665" y="203" font-family="Monaco, monospace" font-size="10" fill="#8b949e">Usuario 1</text>
+  
+  <!-- Ejemplos prácticos -->
+  <rect x="20" y="235" width="760" height="170" rx="8" fill="url(#cardGrad)" stroke="#bc8cff" stroke-width="1"/>
+  <text x="400" y="258" font-family="Monaco, monospace" font-size="13" fill="#bc8cff" text-anchor="middle">EJEMPLOS PRÁCTICOS</text>
+  
+  <text x="35" y="283" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Encontrar PID por nombre</text>
+  <text x="35" y="298" font-family="Monaco, monospace" font-size="11" fill="#7ee787">pgrep -f "proceso"</text>
+  
+  <text x="35" y="323" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Matar proceso por nombre</text>
+  <text x="35" y="338" font-family="Monaco, monospace" font-size="11" fill="#7ee787">pkill -9 nginx</text>
+  
+  <text x="35" y="363" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Matar todos de usuario</text>
+  <text x="35" y="378" font-family="Monaco, monospace" font-size="11" fill="#7ee787">pkill -u usuario</text>
+  
+  <text x="300" y="283" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Proceso en background</text>
+  <text x="300" y="298" font-family="Monaco, monospace" font-size="11" fill="#7ee787">comando &amp;    jobs    fg %1    bg %1</text>
+  
+  <text x="300" y="323" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Top procesos por CPU</text>
+  <text x="300" y="338" font-family="Monaco, monospace" font-size="11" fill="#7ee787">ps aux --sort=-%cpu | head -10</text>
+  
+  <text x="300" y="363" font-family="Monaco, monospace" font-size="10" fill="#6e7681"># Top procesos por memoria</text>
+  <text x="300" y="378" font-family="Monaco, monospace" font-size="11" fill="#7ee787">ps aux --sort=-%mem | head -10</text>
+</svg>

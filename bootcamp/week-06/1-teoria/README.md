@@ -1,348 +1,291 @@
 # 📚 Teoría - Semana 6: Herramientas del Sistema
 
-> **Objetivo**: Procesar formatos de datos complejos y crear pipelines de transformación
+> **Objetivo**: Dominar herramientas de administración de sistemas, procesos, automatización y monitoreo
 
-## 🎯 ¿Qué es la Manipulación Avanzada de Datos?
+---
 
-Técnicas para **procesar, transformar y analizar** datos en formatos estructurados (JSON, XML, YAML) y realizar operaciones complejas.
+## 🎨 Recursos Visuales
+
+| Recurso                                            | Descripción                                   |
+| -------------------------------------------------- | --------------------------------------------- |
+| ![Procesos](../0-assets/01-procesos-gestion.svg)   | Gestión de procesos: ps, top, kill, señales   |
+| ![Cron](../0-assets/02-cron-automatizacion.svg)    | Sintaxis cron y automatización temporal       |
+| ![Monitoreo](../0-assets/03-monitoreo-sistema.svg) | Métricas de sistema: disco, memoria, CPU, red |
+| ![Logging](../0-assets/04-logging-servicios.svg)   | Logs, journalctl, systemctl                   |
+
+---
+
+## 🎯 ¿Qué son las Herramientas del Sistema?
+
+Técnicas para **controlar, monitorear y automatizar** sistemas Linux de manera profesional.
 
 ## 🤔 ¿Para qué sirve?
 
 ### Casos de Uso Profesionales
 
-- 🔄 **Integración de APIs**: Consumir y transformar datos JSON
-- 📊 **ETL Empresarial**: Extraer, transformar, cargar datos
-- 📈 **Análisis de Datos**: Generar reportes y métricas
-- 🔧 **DevOps**: Procesar configuraciones y deployments
-- 🧪 **Testing**: Validar formatos y estructuras de datos
-
-## 📖 Conceptos Clave
-
-### 1. JSON Processing
-
-**¿Qué es?** Manejo del formato de datos más usado en APIs.
-
-**¿Para qué?** Extraer datos, transformar estructuras, validar.
-
-```bash
-# Con jq (herramienta especializada)
-jq '.' datos.json                    # Pretty print
-jq '.usuarios[0].nombre' datos.json  # Extraer campo
-jq '.[] | select(.edad > 18)' datos.json  # Filtrar
-
-# Sin jq (métodos básicos)
-grep -o '"nombre":"[^"]*"' datos.json | cut -d'"' -f4
-```
-
-### 2. Arrays Multidimensionales
-
-**¿Qué son?** Estructuras de datos complejas en Bash.
-
-**¿Para qué?** Almacenar y procesar datos relacionales.
-
-```bash
-# Simulación de array 2D
-declare -A matriz
-
-matriz[0,0]="A1"
-matriz[0,1]="A2"
-matriz[1,0]="B1"
-matriz[1,1]="B2"
-
-# Acceder
-echo ${matriz[0,1]}  # A2
-```
-
-### 3. Data Pipelines
-
-**¿Qué son?** Secuencias de transformaciones de datos.
-
-**¿Para qué?** Procesar datos en múltiples etapas.
-
-```bash
-# Pipeline completo
-cat datos_raw.txt | \
-    # 1. Limpiar
-    sed 's/[[:space:]]*$//' | \
-    # 2. Filtrar
-    grep -v "^#" | \
-    # 3. Transformar
-    awk '{print toupper($0)}' | \
-    # 4. Ordenar
-    sort -u \
-    > datos_procesados.txt
-```
-
-### 4. Agregaciones y Estadísticas
-
-**¿Qué es?** Calcular métricas sobre conjuntos de datos.
-
-**¿Para qué?** Reportes, análisis, monitoreo.
-
-```bash
-# Estadísticas básicas
-awk '{
-    sum+=$1
-    count++
-    if($1>max) max=$1
-    if(min=="" || $1<min) min=$1
-}
-END {
-    print "Suma:", sum
-    print "Promedio:", sum/count
-    print "Máximo:", max
-    print "Mínimo:", min
-}' numeros.txt
-```
-
-### 5. Joins y Merges
-
-**¿Qué son?** Combinar datos de múltiples fuentes.
-
-**¿Para qué?** Relacionar información de diferentes archivos.
-
-```bash
-# Join por campo común
-join -t',' -1 1 -2 1 usuarios.csv pedidos.csv
-
-# Merge de archivos
-paste -d',' archivo1.txt archivo2.txt
-```
-
-### 6. Transformaciones Complejas
-
-**¿Qué son?** Conversiones entre formatos y estructuras.
-
-**¿Para qué?** Adaptar datos entre sistemas.
-
-```bash
-# CSV to JSON
-awk -F',' 'NR>1 {
-    printf "{\\"id\\":%d,\\"nombre\\":\\"%s\\",\\"edad\\":%d},\n",
-           $1, $2, $3
-}' datos.csv | sed '$ s/,$//'
-
-# JSON to CSV
-jq -r '.[] | [.id, .nombre, .edad] | @csv' datos.json
-```
-
-## 🎨 Ejemplos Prácticos
-
-### 1. Procesador de Datos de Ventas
-
-```bash
-#!/bin/bash
-
-# Archivo: ventas.csv (fecha,producto,cantidad,precio)
-
-echo "=== Análisis de Ventas ==="
-
-# Total de ventas por producto
-echo -e "\nVentas por Producto:"
-awk -F',' 'NR>1 {
-    producto[$2]+=$3
-}
-END {
-    for(p in producto) {
-        printf "%s: %d unidades\n", p, producto[p]
-    }
-}' ventas.csv | sort -t':' -k2 -nr
-
-# Ingresos por día
-echo -e "\nIngresos Diarios:"
-awk -F',' 'NR>1 {
-    ingresos[$1]+=$3*$4
-}
-END {
-    for(fecha in ingresos) {
-        printf "%s: $%.2f\n", fecha, ingresos[fecha]
-    }
-}' ventas.csv | sort
-```
-
-### 2. Integración de API
-
-```bash
-#!/bin/bash
-
-# Obtener datos de API
-response=$(curl -s "https://api.ejemplo.com/usuarios")
-
-# Procesar JSON
-echo "$response" | jq -r '.usuarios[] |
-    select(.activo == true) |
-    "\(.id),\(.nombre),\(.email)"' > usuarios_activos.csv
-
-echo "Usuarios activos exportados"
-```
-
-### 3. Conversor de Formatos
-
-```bash
-#!/bin/bash
-
-# CSV a formato de tabla Markdown
-csv_to_markdown() {
-    local archivo=$1
-
-    # Header
-    head -1 "$archivo" | awk -F',' '{
-        for(i=1; i<=NF; i++) printf "| %s ", $i
-        printf "|\n"
-        for(i=1; i<=NF; i++) printf "|---"
-        printf "|\n"
-    }'
-
-    # Datos
-    tail -n +2 "$archivo" | awk -F',' '{
-        for(i=1; i<=NF; i++) printf "| %s ", $i
-        printf "|\n"
-    }'
-}
-
-csv_to_markdown datos.csv > tabla.md
-```
-
-### 4. Validador de Datos
-
-```bash
-#!/bin/bash
-
-validar_csv() {
-    local archivo=$1
-    local errores=0
-
-    # Verificar columnas
-    columnas=$(head -1 "$archivo" | awk -F',' '{print NF}')
-
-    tail -n +2 "$archivo" | while IFS=',' read -r campos; do
-        local num=$(echo "$campos" | awk -F',' '{print NF}')
-
-        if [ "$num" -ne "$columnas" ]; then
-            echo "Error: Línea con $num columnas (esperadas: $columnas)"
-            ((errores++))
-        fi
-    done
-
-    if [ $errores -eq 0 ]; then
-        echo "✓ Validación exitosa"
-    else
-        echo "✗ $errores errores encontrados"
-    fi
-}
-```
-
-## 🔧 Técnicas Avanzadas
-
-### 1. Memoización
-
-```bash
-# Cache de resultados
-declare -A cache
-
-calcular_con_cache() {
-    local key=$1
-
-    if [ -n "${cache[$key]}" ]; then
-        echo "${cache[$key]}"
-    else
-        # Cálculo costoso
-        local resultado=$(operacion_compleja "$key")
-        cache[$key]=$resultado
-        echo "$resultado"
-    fi
-}
-```
-
-### 2. Procesamiento Paralelo
-
-```bash
-# Procesar archivos en paralelo
-for archivo in *.csv; do
-    procesar_archivo "$archivo" &
-done
-wait
-echo "Todos los archivos procesados"
-```
-
-### 3. Stream Processing
-
-```bash
-# Procesar datos en tiempo real
-tail -f log.txt | while read linea; do
-    if [[ "$linea" =~ ERROR ]]; then
-        echo "[ALERTA] $linea" | mail -s "Error" admin@ejemplo.com
-    fi
-done
-```
-
-## 📊 Patrones de Diseño
-
-### ETL Pattern
-
-```bash
-# Extract
-extraer_datos() {
-    curl -s "$API_URL" > raw_data.json
-}
-
-# Transform
-transformar_datos() {
-    jq '.resultados[] | {id, nombre, valor}' raw_data.json > transformed.json
-}
-
-# Load
-cargar_datos() {
-    jq -r '.[] | [.id, .nombre, .valor] | @csv' transformed.json > final.csv
-}
-
-# Pipeline
-extraer_datos && transformar_datos && cargar_datos
-```
-
-### Data Aggregation Pattern
-
-```bash
-agregar_por_categoria() {
-    awk -F',' '{
-        categoria=$2
-        suma[categoria]+=$3
-        count[categoria]++
-    }
-    END {
-        for(cat in suma) {
-            promedio=suma[cat]/count[cat]
-            printf "%s: total=%d, promedio=%.2f\n",
-                   cat, suma[cat], promedio
-        }
-    }' "$1"
-}
-```
-
-## 🎓 Mejores Prácticas
-
-1. **Valida entrada**: Siempre verifica formato de datos
-2. **Maneja errores**: Usa `set -e` y validaciones
-3. **Documenta transformaciones**: Comenta cada paso
-4. **Usa herramientas especializadas**: jq para JSON, xmllint para XML
-5. **Testing**: Prueba con datos reales y edge cases
-6. **Performance**: Considera volumen de datos
-
-## 🔍 Herramientas Especializadas
-
-- **jq**: Procesador JSON (imprescindible)
-- **xmllint**: Procesador XML
-- **yq**: Procesador YAML
-- **csvkit**: Suite completa para CSV
-- **miller**: Procesador de datos similar a sed/awk
-
-## ➡️ Siguiente Paso
-
-- **[ejemplos/](./ejemplos/)**: Scripts de procesamiento avanzado
-- **[recursos/](./recursos/)**: Datasets de práctica
-- **[2-practicas](../2-practicas/README.md)**: Ejercicios con datos reales
-- **[3-proyecto](../3-proyecto/README.md)**: Sistema ETL empresarial
+- 🔄 **DevOps**: Gestión de procesos y servicios
+- 📊 **SysAdmin**: Monitoreo proactivo de recursos
+- ⏰ **Automatización**: Tareas programadas con cron
+- 🔧 **Mantenimiento**: Limpieza y backups automáticos
+- 🚨 **Alertas**: Detección temprana de problemas
 
 ---
 
-**💡 Tip**: La manipulación avanzada de datos es lo que diferencia scripts simples de herramientas profesionales. Dominar JSON y pipelines complejos abre las puertas al mundo DevOps.
+## 📖 Conceptos Clave
+
+### 1. Gestión de Procesos
+
+**¿Qué es?** Control y monitoreo de procesos del sistema.
+
+**¿Para qué?** Identificar problemas, optimizar recursos, automatizar.
+
+```bash
+# Listar procesos
+ps aux                    # Todos los procesos
+ps -ef --forest           # Árbol de procesos
+pgrep -f "nombre"         # Buscar por nombre
+
+# Matar procesos
+kill PID                  # SIGTERM (limpio)
+kill -9 PID               # SIGKILL (forzado)
+pkill -f "patrón"         # Por patrón
+
+# Proceso en background
+comando &                 # Ejecutar en background
+jobs                      # Listar jobs
+fg %1                     # Traer al foreground
+bg %1                     # Enviar a background
+```
+
+### Señales Importantes
+
+| Señal   | Número | Descripción                    |
+| ------- | ------ | ------------------------------ |
+| SIGTERM | 15     | Terminar limpiamente (default) |
+| SIGKILL | 9      | Forzar muerte inmediata        |
+| SIGSTOP | 19     | Pausar proceso                 |
+| SIGCONT | 18     | Continuar proceso pausado      |
+| SIGHUP  | 1      | Recargar configuración         |
+
+---
+
+### 2. Automatización con Cron
+
+**¿Qué es?** Programación de tareas temporales.
+
+**¿Para qué?** Backups, limpieza, monitoreo periódico.
+
+#### Sintaxis Crontab
+
+```
+┌─────── minuto (0-59)
+│ ┌───── hora (0-23)
+│ │ ┌─── día del mes (1-31)
+│ │ │ ┌─ mes (1-12)
+│ │ │ │ ┌ día de la semana (0-7, dom=0,7)
+│ │ │ │ │
+* * * * * comando
+```
+
+#### Operadores
+
+| Operador | Significado       | Ejemplo                     |
+| -------- | ----------------- | --------------------------- |
+| `*`      | Todos los valores | `* * * * *` (cada minuto)   |
+| `,`      | Lista de valores  | `0,30 * * * *` (min 0 y 30) |
+| `-`      | Rango             | `9-17 * * * *` (9am a 5pm)  |
+| `/`      | Intervalo         | `*/5 * * * *` (cada 5 min)  |
+
+#### Ejemplos Comunes
+
+```bash
+# Cada 5 minutos
+*/5 * * * * /scripts/check.sh
+
+# Diario a las 3am
+0 3 * * * /scripts/backup.sh
+
+# Lunes a viernes 9am
+0 9 * * 1-5 /scripts/report.sh
+
+# Día 1 de cada mes
+0 0 1 * * /scripts/monthly.sh
+
+# Al reiniciar
+@reboot /scripts/startup.sh
+```
+
+#### Gestión de Crontab
+
+```bash
+crontab -e                # Editar mi crontab
+crontab -l                # Listar mis tareas
+crontab -r                # Eliminar crontab
+sudo crontab -u user -l   # Ver crontab de usuario
+```
+
+---
+
+### 3. Monitoreo de Sistema
+
+**¿Qué es?** Recolección de métricas del sistema.
+
+**¿Para qué?** Detectar problemas antes de que ocurran.
+
+#### Disco
+
+```bash
+df -h                     # Uso de particiones
+df -i                     # Inodos disponibles
+du -sh /path              # Tamaño de directorio
+du -sh * | sort -h        # Ordenar por tamaño
+lsblk                     # Lista de bloques
+```
+
+#### Memoria
+
+```bash
+free -h                   # RAM y swap
+free -m                   # En megabytes
+vmstat 1                  # Stats cada segundo
+cat /proc/meminfo         # Info detallada
+```
+
+#### CPU
+
+```bash
+uptime                    # Load average
+nproc                     # Número de CPUs
+top -bn1 | head -20       # Snapshot
+mpstat 1                  # Stats por CPU
+```
+
+#### Red
+
+```bash
+ss -tuln                  # Puertos escuchando
+ss -s                     # Resumen de sockets
+netstat -i                # Estadísticas interfaces
+ip addr                   # Direcciones IP
+```
+
+#### Scripts de Monitoreo
+
+```bash
+# Alerta si disco > 80%
+df -h | awk '$5+0 > 80 {print "ALERTA:", $6, $5}'
+
+# Memoria disponible en MB
+free -m | awk '/Mem:/{print $7}'
+
+# Load average (1 min)
+uptime | awk -F'load average:' '{print $2}' | cut -d',' -f1
+
+# Procesos zombie
+ps aux | awk '$8=="Z"' | wc -l
+```
+
+---
+
+### 4. Logs y Servicios
+
+**¿Qué es?** Gestión de logs y servicios del sistema.
+
+**¿Para qué?** Debugging, auditoría, control de servicios.
+
+#### Journalctl (systemd)
+
+```bash
+journalctl -f                      # Follow en tiempo real
+journalctl -u nginx                # Logs de servicio
+journalctl -u nginx --since today  # Desde hoy
+journalctl -p err                  # Solo errores
+journalctl -k                      # Kernel messages
+journalctl --disk-usage            # Espacio usado
+journalctl --vacuum-time=7d        # Limpiar >7 días
+```
+
+#### Systemctl
+
+```bash
+systemctl status nginx     # Estado del servicio
+systemctl start nginx      # Iniciar
+systemctl stop nginx       # Detener
+systemctl restart nginx    # Reiniciar
+systemctl reload nginx     # Recargar config
+systemctl enable nginx     # Habilitar al boot
+systemctl disable nginx    # Deshabilitar
+systemctl --failed         # Servicios fallidos
+systemctl list-units       # Listar unidades
+```
+
+#### Archivos de Log Tradicionales
+
+| Archivo             | Contenido                 |
+| ------------------- | ------------------------- |
+| `/var/log/syslog`   | Log general del sistema   |
+| `/var/log/auth.log` | Autenticación y seguridad |
+| `/var/log/kern.log` | Mensajes del kernel       |
+| `/var/log/dmesg`    | Boot messages             |
+| `/var/log/apache2/` | Logs de Apache            |
+| `/var/log/nginx/`   | Logs de Nginx             |
+
+```bash
+# Seguir log en vivo
+tail -f /var/log/syslog
+
+# Filtrar errores
+grep -i error /var/log/syslog
+
+# Últimas 100 líneas
+tail -100 /var/log/auth.log
+```
+
+---
+
+## 🔧 Buenas Prácticas
+
+### Procesos
+
+- Usar SIGTERM antes de SIGKILL
+- Documentar procesos críticos
+- Implementar reinicio automático para servicios críticos
+
+### Cron
+
+- Usar rutas absolutas en scripts
+- Redirigir output a logs
+- Documentar cada tarea
+- Probar scripts manualmente antes de programar
+
+```bash
+# Ejemplo con logging
+0 3 * * * /scripts/backup.sh >> /var/log/backup.log 2>&1
+```
+
+### Monitoreo
+
+- Establecer umbrales de alerta
+- Automatizar respuestas a problemas comunes
+- Mantener histórico de métricas
+
+### Logs
+
+- Rotar logs automáticamente
+- Centralizar logs críticos
+- Configurar alertas por errores
+
+---
+
+## 📚 Referencias
+
+- [GNU Coreutils](https://www.gnu.org/software/coreutils/manual/)
+- [Systemd Documentation](https://www.freedesktop.org/wiki/Software/systemd/)
+- [Cron Guru](https://crontab.guru/) - Generador de expresiones cron
+- [Linux Performance](http://www.brendangregg.com/linuxperf.html)
+
+---
+
+## 🔗 Navegación
+
+← [README](../README.md) | [Prácticas →](../2-practicas/)
