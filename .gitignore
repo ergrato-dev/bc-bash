@@ -2,6 +2,9 @@
 **/solution/
 **/solutions/
 
+# Documentación interna
+_docs/
+
 # Archivos de sistema
 .DS_Store
 .DS_Store?
