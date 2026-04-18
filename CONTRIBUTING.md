@@ -55,7 +55,7 @@ cd bc-bash
 
 ```bash
 # Configurar auto-commit (opcional pero recomendado)
-./_scripts/setup-auto-commit.sh
+./scripts/setup-auto-commit.sh
 
 # Verificar estructura
 for i in {1..8}; do
@@ -77,7 +77,7 @@ git checkout -b docs/actualizar-readme-week-03
 
 ```bash
 # Usar el sistema de auto-commit
-./_scripts/commit.sh auto
+./scripts/commit.sh auto
 
 # O hacer commits manuales siguiendo Conventional Commits
 git commit -m "feat(week-04): add array manipulation exercise"
@@ -143,8 +143,8 @@ bc_bash/
 ├── _docs/                    # 📚 Documentación
 │   ├── templates/           # 📋 Plantillas
 │   └── assets/              # 🖼️ Recursos
-├── _scripts/                # 🔧 Automatización
-├── _assets/                 # 🎨 Logos y recursos visuales
+├── scripts/                # 🔧 Automatización
+├── assets/                 # 🎨 Logos y recursos visuales
 ├── bootcamp/                # 🎓 Contenido del bootcamp
 │   └── week-01 a week-08/   # 📖 Semanas educativas
 │       ├── 0-assets/        # 🖼️ Recursos visuales
@@ -160,9 +160,9 @@ bc_bash/
 ### Reglas de Organización
 
 - **Documentación global** → `_docs/`
-- **Scripts de utilidad** → `_scripts/`
+- **Scripts de utilidad** → `scripts/`
 - **Contenido educativo** → `bootcamp/week-XX/`
-- **Assets globales** → `_assets/`
+- **Assets globales** → `assets/`
 
 ## 🔄 Sistema de Commits
 
@@ -182,7 +182,7 @@ Este proyecto usa **Conventional Commits** con auto-detección:
 
 - `week-01` a `week-08`: Cambios específicos por semana
 - `docs`: Documentación en `_docs/`
-- `scripts`: Scripts en `_scripts/`
+- `scripts`: Scripts en `scripts/`
 - `practicas`: Prácticas
 - `proyecto`: Proyectos semanales
 
@@ -199,13 +199,13 @@ style(week-04): improve code formatting in examples
 
 ```bash
 # Automático (recomendado)
-./_scripts/commit.sh auto
+./scripts/commit.sh auto
 
 # Interactivo
-./_scripts/commit.sh quick
+./scripts/commit.sh quick
 
 # Ver estado
-./_scripts/commit.sh status
+./scripts/commit.sh status
 ```
 
 ## 🐛 Reporte de Issues

@@ -19,10 +19,10 @@ Este proyecto incluye un **sistema de commits automáticos profesional** que pue
 
 ```bash
 # Commits automáticos (recomendado)
-./_scripts/commit.sh auto
+./scripts/commit.sh auto
 
 # Ver estado
-./_scripts/commit.sh status
+./scripts/commit.sh status
 ```
 
 ### 📋 Replicar en Otros Proyectos
@@ -37,7 +37,7 @@ Este proyecto incluye un **sistema de commits automáticos profesional** que pue
 ```text
 bc_bash/
 ├── _docs/          # 📚 Documentación completa
-├── _scripts/       # 🔧 Scripts de automatización
+├── scripts/       # 🔧 Scripts de automatización
 ├── assets/         # 🎨 Logos y recursos visuales
 └── bootcamp/       # 🎓 Contenido del bootcamp
     └── week-XX/    # 📖 Semana XX
@@ -124,7 +124,7 @@ bc_bash/
 ```bash
 git clone <repository-url>
 cd bc_bash
-./_scripts/setup-auto-commit.sh
+./scripts/setup-auto-commit.sh
 ```
 
 ### 2. Explorar Semanas
@@ -140,7 +140,7 @@ cat README.md
 ```bash
 # Hacer cambios y commitear automáticamente
 echo "Mi ejercicio" > bootcamp/week-01/mi_script.sh
-./_scripts/commit.sh auto
+./scripts/commit.sh auto
 ```
 
 ## 📖 Documentación
@@ -166,10 +166,10 @@ Cada semana incluye:
 
 | Script            | Propósito            | Uso                          |
 | ----------------- | -------------------- | ---------------------------- |
-| `commit.sh`       | Entrada principal    | `./_scripts/commit.sh auto`  |
-| `auto-commit.sh`  | Commits automáticos  | `./_scripts/auto-commit.sh`  |
-| `quick-commit.sh` | Commits interactivos | `./_scripts/quick-commit.sh` |
-| `demo.sh`         | Demostración         | `./_scripts/demo.sh`         |
+| `commit.sh`       | Entrada principal    | `./scripts/commit.sh auto`  |
+| `auto-commit.sh`  | Commits automáticos  | `./scripts/auto-commit.sh`  |
+| `quick-commit.sh` | Commits interactivos | `./scripts/quick-commit.sh` |
+| `demo.sh`         | Demostración         | `./scripts/demo.sh`         |
 
 ## 🎨 Ejemplos de Commits Generados
 
@@ -208,7 +208,7 @@ test(week-03): add function validation tests
 
 ### Para Contribuir
 
-1. Usar el sistema de commits: `./_scripts/commit.sh auto`
+1. Usar el sistema de commits: `./scripts/commit.sh auto`
 2. Seguir las convenciones de código establecidas
 3. Documentar todos los cambios
 4. Probar en múltiples entornos
@@ -217,7 +217,7 @@ test(week-03): add function validation tests
 
 ```bash
 # Automático (recomendado)
-./_scripts/commit.sh auto
+./scripts/commit.sh auto
 
 # Manual si necesitas control específico
 git commit -m "feat(week-02): add advanced loop examples"
@@ -227,9 +227,9 @@ git commit -m "feat(week-02): add advanced loop examples"
 
 ### ¿Problemas con Auto-Commit?
 
-1. Verificar permisos: `chmod +x _scripts/*.sh`
-2. Re-ejecutar setup: `./_scripts/setup-auto-commit.sh`
-3. Revisar configuración: `./_scripts/commit.sh config`
+1. Verificar permisos: `chmod +x scripts/*.sh`
+2. Re-ejecutar setup: `./scripts/setup-auto-commit.sh`
+3. Revisar configuración: `./scripts/commit.sh config`
 
 ### ¿Preguntas sobre Bash?
 

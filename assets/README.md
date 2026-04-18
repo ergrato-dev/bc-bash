@@ -101,7 +101,7 @@ Este directorio contiene todos los recursos gráficos del proyecto Bootcamp Bash
 ### README de Semanas
 
 ```markdown
-![Semana X](../_assets/week-0X-logo.svg)
+![Semana X](../assets/week-0X-logo.svg)
 
 # Semana X: [Título]
 ```

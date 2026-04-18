@@ -72,7 +72,7 @@ docs/_build/
 # Archivos específicos del proyecto
 # (descomenta según necesites)
 # _docs/private/
-# _scripts/secrets/
+# scripts/secrets/
 # local/
 
 # Node modules si usas herramientas de Node.js con pnpm
@@ -144,7 +144,7 @@ config/private.json
 
 
 _docs/*
-_scripts/*
+scripts/*
 epti/*
 # Video content - Bootcamp Bash (LOCAL ONLY)
 _docs/video-bash-bootcamp/
