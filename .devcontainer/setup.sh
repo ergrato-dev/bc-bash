@@ -68,7 +68,7 @@ alias ...='cd ../..'
 alias bashcheck='shellcheck'
 alias bcbash='cd /workspace'
 alias docs='cd /workspace/_docs'
-alias scripts='cd /workspace/_scripts'
+alias scripts='cd /workspace/scripts'
 alias m1='cd /workspace/bootcamp/week-01'
 alias m2='cd /workspace/bootcamp/week-02'
 alias m3='cd /workspace/bootcamp/week-03'
@@ -165,11 +165,11 @@ done
 
 # Create symbolic links for easy access
 ln -sf /workspace/_docs ~/docs 2>/dev/null || true
-ln -sf /workspace/_scripts ~/scripts 2>/dev/null || true
+ln -sf /workspace/scripts ~/scripts 2>/dev/null || true
 
 # Set executable permissions for all scripts
 echo "🔐 Setting script permissions..."
-find /workspace/_scripts -name "*.sh" -type f -exec chmod +x {} \; 2>/dev/null || true
+find /workspace/scripts -name "*.sh" -type f -exec chmod +x {} \; 2>/dev/null || true
 find /workspace -path "*/2-practicas/*.sh" -type f -exec chmod +x {} \; 2>/dev/null || true
 find /workspace -path "*/3-proyecto/*.sh" -type f -exec chmod +x {} \; 2>/dev/null || true
 
@@ -196,7 +196,7 @@ echo "  run-exercise 1 hello-world"
 echo "  check-project 1"
 echo ""
 echo "📖 Documentation: /workspace/_docs/"
-echo "🔧 Scripts: /workspace/_scripts/"
+echo "🔧 Scripts: /workspace/scripts/"
 echo ""
 echo "Happy coding! 🎉"
 echo ""
@@ -230,7 +230,7 @@ done
 # Check workspace structure
 echo ""
 echo "📁 Checking workspace structure..."
-DIRS=("_docs" "_scripts" "assets")
+DIRS=("_docs" "scripts" "assets")
 for i in {1..8}; do
     DIRS+=("modulo$i" "modulo$i/ejercicios" "modulo$i/proyectos")
 done
