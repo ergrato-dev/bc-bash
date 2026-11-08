@@ -21,3 +21,7 @@ tmp/
 .env.*
 *.pem
 *.key
+
+# Carpetas de trabajo que crean los labs
+bootcamp/*/2-practicas/*/zona/
+bootcamp/*/3-proyecto/zona/

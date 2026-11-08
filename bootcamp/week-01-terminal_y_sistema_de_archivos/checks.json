@@ -1,0 +1,111 @@
+{
+  "semana": "01",
+  "titulo": "Terminal y sistema de archivos",
+  "checks": [
+    {
+      "id": "kit-carpetas",
+      "descripcion": "bashkit tiene las carpetas bin, lib, tests y docs",
+      "cmd": "cd {proyecto} && [[ -d bin && -d lib && -d tests && -d docs ]]",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 1"
+    },
+    {
+      "id": "kit-gitkeep",
+      "descripcion": "bin, lib y tests tienen un .gitkeep para que git las guarde",
+      "cmd": "cd {proyecto} && [[ -f bin/.gitkeep && -f lib/.gitkeep && -f tests/.gitkeep ]]",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "kit-mapa-movido",
+      "descripcion": "mapa.txt está en docs/ y ya no en la raíz del kit",
+      "cmd": "cd {proyecto} && [[ -f docs/mapa.txt && ! -e mapa.txt ]]",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 3"
+    },
+    {
+      "id": "kit-borrador-borrado",
+      "descripcion": "borrador-viejo.txt ya no existe",
+      "cmd": "cd {proyecto} && [[ ! -e borrador-viejo.txt ]]",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 3"
+    },
+    {
+      "id": "scaffold-carpetas",
+      "descripcion": "scaffold.sh crea bashkit/ con bin, lib, tests y docs",
+      "cmd": "bash {proyecto}/scaffold.sh && [[ -d bashkit/bin && -d bashkit/lib && -d bashkit/tests && -d bashkit/docs ]]",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 4"
+    },
+    {
+      "id": "scaffold-gitkeep",
+      "descripcion": "scaffold.sh deja un .gitkeep en bin, lib, tests y docs",
+      "cmd": "bash {proyecto}/scaffold.sh && [[ -f bashkit/bin/.gitkeep && -f bashkit/lib/.gitkeep && -f bashkit/tests/.gitkeep && -f bashkit/docs/.gitkeep ]]",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 5"
+    },
+    {
+      "id": "scaffold-readme",
+      "descripcion": "scaffold.sh escribe bashkit/README.md con el título # bashkit",
+      "cmd": "bash {proyecto}/scaffold.sh && cat bashkit/README.md",
+      "assert": "stdout~^# bashkit$",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "scaffold-solo-su-carpeta",
+      "descripcion": "scaffold.sh no crea nada fuera de bashkit/",
+      "cmd": "bash {proyecto}/scaffold.sh >/dev/null && [[ \"$(ls -A)\" == bashkit ]]",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 4"
+    },
+    {
+      "id": "scaffold-dos-veces",
+      "descripcion": "scaffold.sh se puede ejecutar dos veces seguidas sin error",
+      "cmd": "bash {proyecto}/scaffold.sh && bash {proyecto}/scaffold.sh && [[ -f bashkit/bin/.gitkeep ]]",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 4"
+    },
+    {
+      "id": "scaffold-no-borra",
+      "descripcion": "scaffold.sh no borra lo que ya había en bashkit/",
+      "cmd": "mkdir -p bashkit/bin && echo mio > bashkit/bin/mio.txt && bash {proyecto}/scaffold.sh && grep -qx mio bashkit/bin/mio.txt && [[ -f bashkit/lib/.gitkeep ]]",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 4"
+    },
+    {
+      "id": "scaffold-limpio",
+      "descripcion": "scaffold.sh no tiene TODOs y pasa shellcheck",
+      "cmd": "! grep -n TODO {proyecto}/scaffold.sh && shellcheck {proyecto}/scaffold.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "inventario-archivos",
+      "descripcion": "docs/inventario.txt lista los archivos del kit con find",
+      "cmd": "cat {proyecto}/docs/inventario.txt",
+      "assert": "stdout~^\\./bin/\\.gitkeep$",
+      "pista": "3-proyecto/README.md, paso 8"
+    },
+    {
+      "id": "inventario-al-dia",
+      "descripcion": "docs/inventario.txt incluye scaffold.sh y docs/mapa.txt",
+      "cmd": "grep -qx './scaffold.sh' {proyecto}/docs/inventario.txt && grep -qx './docs/mapa.txt' {proyecto}/docs/inventario.txt",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 8"
+    },
+    {
+      "id": "inventario-solo-archivos",
+      "descripcion": "docs/inventario.txt solo tiene archivos, no carpetas",
+      "cmd": "grep -qxE '\\.(/bin|/lib|/tests|/docs)?' {proyecto}/docs/inventario.txt; [[ $? -eq 1 ]]",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 8"
+    },
+    {
+      "id": "readme-completo",
+      "descripcion": "README.md del kit sin TODOs y explica bin/, lib/, tests/ y docs/",
+      "cmd": "cd {proyecto} && ! grep -n TODO README.md && grep -q 'bin/' README.md && grep -q 'lib/' README.md && grep -q 'tests/' README.md && grep -q 'docs/' README.md",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 9"
+    }
+  ]
+}

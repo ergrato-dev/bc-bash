@@ -14,7 +14,7 @@ está en construcción (sin enlace hasta que exista la carpeta).
 
 | Semana | Tema | Estado |
 |:--:|---|:--:|
-| 01 | Terminal y sistema de archivos | ⬜ |
+| [01](week-01-terminal_y_sistema_de_archivos/README.md) | Terminal y sistema de archivos | ✅ |
 | 02 | Permisos, procesos y primer script | ⬜ |
 | 03 | Redirección, pipes y códigos de salida | ⬜ |
 | 04 | Filtros de texto y regex | ⬜ |
