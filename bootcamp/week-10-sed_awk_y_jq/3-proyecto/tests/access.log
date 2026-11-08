@@ -1,0 +1,9 @@
+10.0.0.5 - - [31/Oct/2026:23:59:58 +0000] "GET / HTTP/1.1" 200 512 "-" "curl/8.5.0"
+10.0.0.7 - - [01/Nov/2026:00:00:03 +0000] "POST /login HTTP/1.1" 302 0 "-" "Mozilla/5.0 (X11; Linux x86_64)"
+::1 - - [08/Nov/2026:10:07:00 +0000] "GET /health HTTP/1.1" 200 2 "-" "kube-probe/1.31"
+10.0.0.5 - - [08/Nov/2026:10:09:30 +0000] "GET /static/app.css HTTP/1.1" 304 - "https://example.com/" "Mozilla/5.0"
+203.0.113.9 - - [08/Nov/2026:10:12:45 +0000] "GET /buscar?q=sed,awk HTTP/1.1" 200 1834 "-" "Mozilla/5.0"
+nginx: [warn] the "ssl" directive is deprecated
+198.51.100.4 - - [08/Nov/2026:10:14:02 +0000] "-" 400 0 "-" "-"
+203.0.113.9 - - [08/Nov/2026:10:15:00 +0000] "GET /admin HTTP/1.1" 403 153 "-" "sqlmap/1.8"
+10.0.0.7 - - [08/Nov/2026:10:20:01 +0000] "GET /api/pedidos HTTP/1.1" 500 87 "-" "curl/8.5.0"

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>awk ejecuta BEGIN una vez antes de leer, después parte cada línea en campos de $1 a $NF y le aplica cada regla patrón acción, y al terminar ejecuta END una vez</title>
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="440" fill="#0d1117"/>
+  <text x="500" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">awk 'BEGIN { ... }  patrón { acción }  END { ... }' access.log</text>
+
+  <rect x="30" y="65" width="200" height="90" rx="10" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="130" y="97" fill="#d2a8ff" font-size="17" font-weight="600" text-anchor="middle">BEGIN</text>
+  <text x="130" y="122" fill="#f0f6fc" font-size="14" text-anchor="middle">una vez, antes</text>
+  <text x="130" y="142" fill="#8b949e" font-size="13" text-anchor="middle">de leer nada</text>
+  <line x1="230" y1="110" x2="268" y2="110" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+
+  <rect x="272" y="65" width="456" height="300" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="500" y="97" fill="#3fb950" font-size="17" font-weight="600" text-anchor="middle">cada línea</text>
+  <text x="292" y="132" fill="#f0f6fc" font-size="14">10.0.0.5 - - [08/Nov...] "GET /app.js HTTP/1.1" 200 81920</text>
+  <line x1="500" y1="142" x2="500" y2="165" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <text x="512" y="159" fill="#8b949e" font-size="13">se parte en campos</text>
+  <rect x="292" y="172" width="80" height="44" rx="6" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+  <text x="332" y="190" fill="#79c0ff" font-size="13" text-anchor="middle">$1</text>
+  <text x="332" y="208" fill="#f0f6fc" font-size="13" text-anchor="middle">10.0.0.5</text>
+  <text x="392" y="200" fill="#8b949e" font-size="14">...</text>
+  <rect x="420" y="172" width="80" height="44" rx="6" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+  <text x="460" y="190" fill="#79c0ff" font-size="13" text-anchor="middle">$7</text>
+  <text x="460" y="208" fill="#f0f6fc" font-size="13" text-anchor="middle">/app.js</text>
+  <text x="520" y="200" fill="#8b949e" font-size="14">...</text>
+  <rect x="548" y="172" width="70" height="44" rx="6" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+  <text x="583" y="190" fill="#79c0ff" font-size="13" text-anchor="middle">$9</text>
+  <text x="583" y="208" fill="#f0f6fc" font-size="13" text-anchor="middle">200</text>
+  <rect x="628" y="172" width="80" height="44" rx="6" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+  <text x="668" y="190" fill="#79c0ff" font-size="13" text-anchor="middle">$10 = $NF</text>
+  <text x="668" y="208" fill="#f0f6fc" font-size="13" text-anchor="middle">81920</text>
+  <text x="292" y="245" fill="#8b949e" font-size="13">NF = 10 campos · NR = número de línea · $0 = la línea entera</text>
+  <rect x="292" y="262" width="416" height="44" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
+  <text x="308" y="290" fill="#f78166" font-size="14">$9 == 200</text>
+  <text x="400" y="290" fill="#f0f6fc" font-size="14">{ count[$7]++; bytes[$7] += $10 }</text>
+  <text x="292" y="335" fill="#8b949e" font-size="13">la acción se ejecuta si el patrón es verdad; sin patrón, siempre</text>
+  <path d="M708,284 L750,284 L750,126 L732,126" fill="none" stroke="#8b949e" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#flecha)"/>
+
+  <line x1="728" y1="320" x2="768" y2="320" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <rect x="772" y="275" width="200" height="90" rx="10" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="872" y="307" fill="#d2a8ff" font-size="17" font-weight="600" text-anchor="middle">END</text>
+  <text x="872" y="332" fill="#f0f6fc" font-size="14" text-anchor="middle">una vez, al final</text>
+  <text x="872" y="352" fill="#8b949e" font-size="13" text-anchor="middle">las sumas ya están</text>
+
+  <text x="500" y="410" fill="#8b949e" font-size="14" text-anchor="middle">Los arrays de awk no se declaran: una casilla nueva vale vacío, que en una cuenta es 0.</text>
+</svg>

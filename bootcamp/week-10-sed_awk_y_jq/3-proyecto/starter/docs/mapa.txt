@@ -1,0 +1,5 @@
+Mapa de bashkit
+bin/    los comandos que ejecutas: bk-info, bk-run... (desde la semana 02)
+lib/    funciones compartidas que cargan los comandos (desde la semana 08)
+tests/  pruebas automáticas con bats (desde la semana 12)
+docs/   documentación del kit, como este mapa

@@ -1,0 +1,111 @@
+{
+  "semana": "10",
+  "titulo": "sed, awk y jq",
+  "checks": [
+    {
+      "id": "logs-ejecutable",
+      "descripcion": "bin/bk-logs existe, tiene permiso de ejecución y empieza por el shebang del kit",
+      "cmd": "f={proyecto}/bin/bk-logs; test -x $f && head -n1 $f | grep -qx '#!/usr/bin/env bash'",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 1"
+    },
+    {
+      "id": "logs-usa-core",
+      "descripcion": "bk-logs carga lib/core.sh, comprueba sus herramientas con require, avisa con die y usa sed, awk y jq",
+      "cmd": "cd {proyecto} && grep -qE '^(source|\\.) .*lib/core\\.sh' bin/bk-logs && grep -qE '^require .*jq' bin/bk-logs && grep -q 'die ' bin/bk-logs && grep -q 'sed -' bin/bk-logs && grep -q 'awk -' bin/bk-logs && grep -q 'jq -' bin/bk-logs",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, pasos 2 a 7"
+    },
+    {
+      "id": "logs-uso",
+      "descripcion": "sin argumentos o con un formato que no es csv ni json, escribe el uso en stderr y sale con código 2",
+      "cmd": "{proyecto}/bin/bk-logs > /dev/null 2>&1; c=$?; err=$({proyecto}/bin/bk-logs xml a.log 2>&1 >/dev/null); echo \"codigo=$c,$? $err\"",
+      "assert": "stdout~^codigo=2,2 .*uso: bk-logs csv\\|json",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "logs-sin-log",
+      "descripcion": "con un log que no se puede leer, avisa en stderr con su nombre y sale con código 1",
+      "cmd": "err=$({proyecto}/bin/bk-logs csv no-existe.log 2>&1 >/dev/null); echo \"codigo=$? $err\"",
+      "assert": "stdout~^codigo=1 bk-logs: .*no-existe\\.log",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "csv-filas",
+      "descripcion": "el CSV empieza por la cabecera y tiene una fila por petición: 7 con el log de prueba, sin el aviso de nginx ni la petición vacía",
+      "cmd": "cp {semana}/3-proyecto/tests/access.log . && {proyecto}/bin/bk-logs csv access.log | sed -n '1p;$=' | paste -sd'|'",
+      "assert": "stdout~^ip,fecha,metodo,ruta,codigo,bytes\\|8$",
+      "pista": "3-proyecto/README.md, pasos 3 y 5"
+    },
+    {
+      "id": "csv-fecha",
+      "descripcion": "la fecha sale en ISO 8601 (2026-10-31T23:59:58+00:00) y los campos separados por comas",
+      "cmd": "cp {semana}/3-proyecto/tests/access.log . && {proyecto}/bin/bk-logs csv access.log | sed -n 2p",
+      "assert": "stdout~^10\\.0\\.0\\.5,2026-10-31T23:59:58\\+00:00,GET,/,200,512$",
+      "pista": "3-proyecto/README.md, pasos 4 y 5"
+    },
+    {
+      "id": "csv-bytes",
+      "descripcion": "una respuesta sin cuerpo (bytes \"-\" en el log) sale con 0 bytes",
+      "cmd": "cp {semana}/3-proyecto/tests/access.log . && {proyecto}/bin/bk-logs csv access.log | grep ',304,'",
+      "assert": "stdout~^10\\.0\\.0\\.5,2026-11-08T10:09:30\\+00:00,GET,/static/app\\.css,304,0$",
+      "pista": "3-proyecto/README.md, paso 8"
+    },
+    {
+      "id": "csv-comillas",
+      "descripcion": "una ruta con comas va entre comillas, como pide el formato CSV",
+      "cmd": "cp {semana}/3-proyecto/tests/access.log . && {proyecto}/bin/bk-logs csv access.log | grep buscar",
+      "assert": "stdout~^203\\.0\\.113\\.9,2026-11-08T10:12:45\\+00:00,GET,\"/buscar\\?q=sed,awk\",200,1834$",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "json-array",
+      "descripcion": "el JSON es un array de 7 objetos, con el código y los bytes como números",
+      "cmd": "cp {semana}/3-proyecto/tests/access.log . && {proyecto}/bin/bk-logs json access.log | jq -r 'type, length, ([.[] | .codigo, .bytes | type] | unique | join(\",\"))' | paste -sd' '",
+      "assert": "stdout~^array 7 number$",
+      "pista": "3-proyecto/README.md, pasos 7 y 8"
+    },
+    {
+      "id": "json-objeto",
+      "descripcion": "cada objeto tiene ip, fecha, metodo, ruta, codigo y bytes, con los mismos valores que el CSV",
+      "cmd": "cp {semana}/3-proyecto/tests/access.log . && {proyecto}/bin/bk-logs json access.log | jq -c '.[0]'",
+      "assert": "stdout~^\\{\"ip\":\"10\\.0\\.0\\.5\",\"fecha\":\"2026-10-31T23:59:58\\+00:00\",\"metodo\":\"GET\",\"ruta\":\"/\",\"codigo\":200,\"bytes\":512\\}$",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "logs-vacio",
+      "descripcion": "con un log vacío, el CSV es solo la cabecera y el JSON un array vacío",
+      "cmd": ": > vacio.log; a=$({proyecto}/bin/bk-logs csv vacio.log); b=$({proyecto}/bin/bk-logs json vacio.log | jq -c .); echo \"$a|$b\"",
+      "assert": "stdout~^ip,fecha,metodo,ruta,codigo,bytes\\|\\[\\]$",
+      "pista": "3-proyecto/README.md, paso 9"
+    },
+    {
+      "id": "logs-con-bashkit",
+      "descripcion": "bashkit help ofrece logs, y bashkit logs json da el mismo array que bk-logs",
+      "cmd": "cp {semana}/3-proyecto/tests/access.log . && {proyecto}/bin/bashkit help | grep -qx '  logs' && {proyecto}/bin/bashkit logs json access.log | jq '[.[] | select(.codigo >= 400)] | length'",
+      "assert": "stdout~^2$",
+      "pista": "3-proyecto/README.md, paso 9"
+    },
+    {
+      "id": "kit-limpio",
+      "descripcion": "el kit sin TODOs y limpio para shellcheck -x",
+      "cmd": "cd {proyecto} && ! grep -rn TODO bin lib scaffold.sh && shellcheck -x bin/bashkit bin/bk-info bin/bk-run bin/bk-top-ips bin/bk-rename bin/bk-check bin/bk-clean bin/bk-report bin/bk-logs lib/core.sh scaffold.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 10"
+    },
+    {
+      "id": "inventario-al-dia",
+      "descripcion": "docs/inventario.txt incluye ./bin/bk-logs",
+      "cmd": "grep -qx ./bin/bk-logs {proyecto}/docs/inventario.txt",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 11"
+    },
+    {
+      "id": "readme-completo",
+      "descripcion": "README.md sin TODOs, documenta bk-logs y tiene la bitácora de la semana 10",
+      "cmd": "cd {proyecto} && ! grep -n TODO README.md && grep -q 'bin/bk-logs' README.md && grep -q '^- Semana 10: ' README.md",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 12"
+    }
+  ]
+}

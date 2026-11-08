@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# bk-run — ejecuta un comando, te enseña su salida y la guarda en un log con su código de salida.
+# Para qué: dejar constancia de lo que hiciste en una máquina y de si salió bien.
+set -euo pipefail
+
+# Sin comando no hay nada que registrar. El aviso va a stderr y el 2 es el código habitual
+# de "uso incorrecto": quien llame a bk-run puede distinguirlo de un fallo del comando.
+test "$#" -gt 0 || { echo "uso: bk-run <comando> [argumentos...]" >&2; exit 2; }
+
+# La variable BK_LOG cambia el log; si no existe, bk-run.log en la carpeta actual.
+# ${VAR:-valor} se explica en la semana 05. Sin el :-, set -u pararía el script.
+log="${BK_LOG:-bk-run.log}"
+
+# >> añade al final: cada ejecución suma su bloque sin borrar las anteriores.
+echo "== $(date '+%F %T') $* ==" >> "$log"
+
+# 2>&1 junta los errores con la salida para que también lleguen al log.
+# tee -a los enseña en pantalla y los añade al log a la vez.
+# Con pipefail, el pipe devuelve el código del comando y no el de tee. El || lo guarda
+# en status: sin él, set -e pararía bk-run antes de escribir el código en el log.
+status=0
+"$@" 2>&1 | tee -a "$log" || status=$?
+
+echo "== código: $status ==" >> "$log"
+
+# El aviso de fallo va a stderr: así no se mezcla con la salida del comando.
+test "$status" -eq 0 || echo "bk-run: '$*' salió con código $status" >&2
+
+# El mismo código que el comando: quien use bk-run en un script sabrá si funcionó.
+exit "$status"

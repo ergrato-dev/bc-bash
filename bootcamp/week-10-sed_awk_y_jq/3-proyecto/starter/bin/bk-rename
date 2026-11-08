@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# bk-rename — cambia el nombre de un archivo por uno sin espacios, tildes ni mayúsculas.
+# Para qué: los nombres como "Mi Foto (1).JPG" obligan a citar en cada comando y se rompen
+# en scripts, URLs y servidores que distinguen mayúsculas.
+set -euo pipefail
+
+# --dry-run enseña qué haría sin tocar nada: se mira antes de renombrar de verdad.
+# shift lo quita de los argumentos, y el archivo pasa a ser $1 en los dos casos.
+dry_run=""
+test "${1:-}" != "--dry-run" || { dry_run=1; shift; }
+
+test "$#" -gt 0 || { echo "uso: bk-rename [--dry-run] <archivo>" >&2; exit 2; }
+src="$1"
+test -e "$src" || { echo "bk-rename: no existe '$src'" >&2; exit 1; }
+
+# Solo cambia el nombre, no las carpetas de la ruta: renombrar una carpeta
+# rompería la ruta de todo lo que hay dentro.
+name="${src##*/}"
+dir="${src%"$name"}"
+
+new="${name,,}"
+new="${new// /-}"
+# Las tildes pasan a su letra sin tilde; si no, el filtro de abajo las borraría
+# y "canción" quedaría en "cancin".
+new="${new//[áà]/a}"
+new="${new//[éè]/e}"
+new="${new//[íì]/i}"
+new="${new//[óò]/o}"
+new="${new//[úùü]/u}"
+new="${new//ñ/n}"
+# Fuera todo lo que no sea letra, cifra, punto, guion o guion bajo: (), comas, ¡!...
+new="${new//[^a-z0-9._-]/}"
+
+test "$new" != "$name" || { echo "sin cambios: $src"; exit 0; }
+dst="$dir$new"
+# mv pisaría sin avisar un archivo que ya se llame así: se pierde para siempre.
+test ! -e "$dst" || { echo "bk-rename: ya existe '$dst', no lo piso" >&2; exit 1; }
+
+echo "${dry_run:+(dry-run) }$src -> $dst"
+# -- marca el final de las opciones: un archivo que empiece por - no se toma por una.
+test -n "$dry_run" || mv -- "$src" "$dst"
