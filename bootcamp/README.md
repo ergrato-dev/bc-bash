@@ -26,7 +26,7 @@ está en construcción (sin enlace hasta que exista la carpeta).
 | [05](week-05-variables_comillas_y_expansiones/README.md) | Variables, comillas y expansiones | ✅ |
 | [06](week-06-condicionales_case_y_regex/README.md) | Condicionales, case y regex | ✅ |
 | [07](week-07-bucles_read_y_archivos_seguros/README.md) | Bucles, read y archivos seguros | ✅ |
-| 08 | Funciones, alcance y librerías | ⬜ |
+| [08](week-08-funciones_alcance_y_librerias/README.md) | Funciones, alcance y librerías | ✅ |
 | 09 | Arrays y printf | ⬜ |
 
 ### Fase 3 — Scripts profesionales (S10-13, 48 h)

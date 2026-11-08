@@ -67,6 +67,6 @@ Comprueba tu proyecto (`3-proyecto/starter/`) contra los 15 requisitos verificab
 
 | Anterior | Actual | Siguiente |
 |---|---|---|
-| [← Semana 06 — Condicionales, case y regex](../week-06-condicionales_case_y_regex/README.md) | **Semana 07 — Bucles, read y archivos seguros** | — |
+| [← Semana 06 — Condicionales, case y regex](../week-06-condicionales_case_y_regex/README.md) | **Semana 07 — Bucles, read y archivos seguros** | [Semana 08 — Funciones, alcance y librerías →](../week-08-funciones_alcance_y_librerias/README.md) |
 
 [← Volver al índice del bootcamp](../README.md)

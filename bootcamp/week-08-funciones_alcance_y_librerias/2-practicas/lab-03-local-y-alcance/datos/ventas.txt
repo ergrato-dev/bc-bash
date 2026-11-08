@@ -1,0 +1,5 @@
+lunes 3
+martes 1
+miercoles 4
+jueves 2
+viernes 6

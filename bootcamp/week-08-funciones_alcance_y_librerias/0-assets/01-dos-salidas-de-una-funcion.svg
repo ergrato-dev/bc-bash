@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Una función tiene dos salidas: lo que imprime por stdout, que recoge $( ) en una variable, y su código de salida de 0 a 255, que miran if, || y $?. Los avisos van por stderr, salen en la terminal y no entran en la variable</title>
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="440" fill="#0d1117"/>
+  <text x="500" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Una función, dos salidas (y los avisos aparte)</text>
+
+  <rect x="40" y="150" width="280" height="140" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="180" y="182" fill="#3fb950" font-size="16" font-weight="600" text-anchor="middle">port_of postgres</text>
+  <text x="60" y="214" fill="#f78166" font-size="14">echo "5432"</text>
+  <text x="60" y="240" fill="#f78166" font-size="14">echo "buscando..." &gt;&amp;2</text>
+  <text x="60" y="266" fill="#f78166" font-size="14">return 0</text>
+
+  <!-- stdout -->
+  <line x1="320" y1="180" x2="560" y2="110" stroke="#58a6ff" stroke-width="2" marker-end="url(#flecha)"/>
+  <text x="420" y="124" fill="#79c0ff" font-size="14" text-anchor="middle">stdout: el dato</text>
+  <rect x="565" y="70" width="395" height="80" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="585" y="102" fill="#f78166" font-size="15">port=$(port_of postgres)</text>
+  <text x="585" y="130" fill="#f0f6fc" font-size="14">port vale 5432: solo lo de stdout</text>
+
+  <!-- código -->
+  <line x1="320" y1="220" x2="560" y2="220" stroke="#d2a8ff" stroke-width="2" marker-end="url(#flecha)"/>
+  <text x="440" y="208" fill="#d2a8ff" font-size="14" text-anchor="middle">código: 0 a 255</text>
+  <rect x="565" y="180" width="395" height="80" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="585" y="212" fill="#f78166" font-size="15">if ... ; then   ||   $?</text>
+  <text x="585" y="240" fill="#f0f6fc" font-size="14">0 es sí; de 1 a 255, no. No es un dato</text>
+
+  <!-- stderr -->
+  <line x1="320" y1="262" x2="560" y2="330" stroke="#f85149" stroke-width="2" marker-end="url(#flecha)"/>
+  <text x="420" y="320" fill="#f85149" font-size="14" text-anchor="middle">stderr: avisos</text>
+  <rect x="565" y="290" width="395" height="80" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="585" y="322" fill="#f0f6fc" font-size="15">la terminal: buscando...</text>
+  <text x="585" y="350" fill="#8b949e" font-size="14">$( ) no lo recoge: no ensucia port</text>
+
+  <text x="500" y="414" fill="#e3b341" font-size="14" text-anchor="middle">Un echo de depuración sin &gt;&amp;2 va por stdout y acaba dentro de la variable</text>
+</svg>
