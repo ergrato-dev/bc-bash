@@ -1,0 +1,7 @@
+./README.md
+./scaffold.sh
+./docs/mapa.txt
+./docs/inventario.txt
+./tests/.gitkeep
+./bin/.gitkeep
+./lib/.gitkeep

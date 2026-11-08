@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Árbol de directorios con una ruta absoluta y una relativa al mismo archivo</title>
+  <rect width="900" height="470" fill="#0d1117"/>
+  <defs>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3fb950"/></marker>
+    <marker id="u" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#58a6ff"/></marker>
+  </defs>
+  <text x="450" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Dos rutas al mismo archivo</text>
+
+  <g stroke="#30363d" stroke-width="2">
+    <line x1="300" y1="95" x2="160" y2="150"/>
+    <line x1="300" y1="95" x2="300" y2="150"/>
+    <line x1="300" y1="95" x2="440" y2="150"/>
+    <line x1="300" y1="175" x2="300" y2="230"/>
+    <line x1="300" y1="255" x2="200" y2="310"/>
+    <line x1="300" y1="255" x2="420" y2="310"/>
+    <line x1="420" y1="335" x2="420" y2="390"/>
+  </g>
+  <rect x="265" y="70" width="70" height="30" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="300" y="91" fill="#3fb950" font-size="16" font-weight="600" text-anchor="middle">/</text>
+  <rect x="120" y="150" width="80" height="28" rx="6" fill="#161b22" stroke="#30363d"/>
+  <text x="160" y="169" fill="#f0f6fc" font-size="14" text-anchor="middle">etc</text>
+  <rect x="260" y="150" width="80" height="28" rx="6" fill="#161b22" stroke="#30363d"/>
+  <text x="300" y="169" fill="#f0f6fc" font-size="14" text-anchor="middle">home</text>
+  <rect x="400" y="150" width="80" height="28" rx="6" fill="#161b22" stroke="#30363d"/>
+  <text x="440" y="169" fill="#f0f6fc" font-size="14" text-anchor="middle">tmp</text>
+  <rect x="250" y="230" width="100" height="28" rx="6" fill="#161b22" stroke="#30363d"/>
+  <text x="300" y="249" fill="#f0f6fc" font-size="14" text-anchor="middle">alumno  (~)</text>
+  <rect x="140" y="310" width="120" height="28" rx="6" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="200" y="329" fill="#e3b341" font-size="14" text-anchor="middle">proyecto</text>
+  <text x="200" y="358" fill="#e3b341" font-size="13" text-anchor="middle">estás aquí (pwd)</text>
+  <rect x="370" y="310" width="100" height="28" rx="6" fill="#161b22" stroke="#30363d"/>
+  <text x="420" y="329" fill="#f0f6fc" font-size="14" text-anchor="middle">docs</text>
+  <rect x="355" y="390" width="130" height="28" rx="6" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="420" y="409" fill="#d2a8ff" font-size="14" text-anchor="middle">notas.txt</text>
+
+  <path d="M335 85 C 560 100, 560 330, 490 398" fill="none" stroke="#3fb950" stroke-width="3" stroke-dasharray="8 5" marker-end="url(#g)"/>
+  <path d="M190 305 C 200 270, 240 262, 262 262 M338 262 C 380 262, 400 280, 410 305" fill="none" stroke="#58a6ff" stroke-width="3" stroke-dasharray="8 5"/>
+  <path d="M410 340 L414 384" fill="none" stroke="#58a6ff" stroke-width="3" stroke-dasharray="8 5" marker-end="url(#u)"/>
+
+  <rect x="600" y="90" width="280" height="130" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="740" y="120" fill="#3fb950" font-size="17" font-weight="600" text-anchor="middle">Ruta absoluta</text>
+  <text x="740" y="150" fill="#f78166" font-size="15" text-anchor="middle">/home/alumno/docs/notas.txt</text>
+  <text x="740" y="178" fill="#8b949e" font-size="14" text-anchor="middle">empieza por / y baja desde la raíz</text>
+  <text x="740" y="200" fill="#8b949e" font-size="14" text-anchor="middle">vale igual estés donde estés</text>
+
+  <rect x="600" y="250" width="280" height="150" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="740" y="280" fill="#58a6ff" font-size="17" font-weight="600" text-anchor="middle">Ruta relativa</text>
+  <text x="740" y="310" fill="#f78166" font-size="15" text-anchor="middle">../docs/notas.txt</text>
+  <text x="740" y="338" fill="#8b949e" font-size="14" text-anchor="middle">sale de donde estás (proyecto):</text>
+  <text x="740" y="360" fill="#8b949e" font-size="14" text-anchor="middle">.. sube a alumno, luego baja</text>
+  <text x="740" y="382" fill="#8b949e" font-size="14" text-anchor="middle">a docs y a notas.txt</text>
+</svg>
