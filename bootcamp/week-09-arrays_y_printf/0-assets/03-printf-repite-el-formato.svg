@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>printf '%-8s %3s\n' web 3 db 12 usa el formato dos veces: cada vuelta toma dos argumentos, rellena el primero por la derecha hasta 8 caracteres y el segundo por la izquierda hasta 3, y las dos líneas salen alineadas</title>
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="440" fill="#0d1117"/>
+  <text x="500" y="36" fill="#f78166" font-size="20" font-weight="600" text-anchor="middle">printf '%-8s %3s\n' web 3 db 12</text>
+
+  <!-- formato y argumentos -->
+  <text x="40" y="90" fill="#8b949e" font-size="14">formato</text>
+  <rect x="140" y="66" width="140" height="40" rx="6" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="210" y="92" fill="#f0f6fc" font-size="16" text-anchor="middle">%-8s</text>
+  <rect x="290" y="66" width="110" height="40" rx="6" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="345" y="92" fill="#f0f6fc" font-size="16" text-anchor="middle">%3s</text>
+  <rect x="410" y="66" width="60" height="40" rx="6" fill="#161b22" stroke="#30363d"/>
+  <text x="440" y="92" fill="#8b949e" font-size="16" text-anchor="middle">\n</text>
+
+  <text x="40" y="160" fill="#8b949e" font-size="14">argumentos</text>
+  <rect x="140" y="136" width="80" height="40" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="180" y="162" fill="#f0f6fc" font-size="16" text-anchor="middle">web</text>
+  <rect x="230" y="136" width="60" height="40" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="260" y="162" fill="#f0f6fc" font-size="16" text-anchor="middle">3</text>
+  <rect x="330" y="136" width="80" height="40" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="370" y="162" fill="#f0f6fc" font-size="16" text-anchor="middle">db</text>
+  <rect x="420" y="136" width="60" height="40" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="450" y="162" fill="#f0f6fc" font-size="16" text-anchor="middle">12</text>
+  <text x="215" y="200" fill="#58a6ff" font-size="13" text-anchor="middle">vuelta 1</text>
+  <text x="405" y="200" fill="#3fb950" font-size="13" text-anchor="middle">vuelta 2: el formato vuelve a empezar</text>
+
+  <line x1="560" y1="155" x2="620" y2="155" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <text x="640" y="150" fill="#f0f6fc" font-size="15">mientras queden argumentos,</text>
+  <text x="640" y="172" fill="#f0f6fc" font-size="15">una vuelta por cada dos</text>
+
+  <!-- salida -->
+  <text x="40" y="250" fill="#8b949e" font-size="14">salida: cada casilla es un carácter; las grises, espacios de relleno</text>
+  <g font-size="16" text-anchor="middle" fill="#f0f6fc">
+    <rect x="140" y="270" width="36" height="40" fill="#161b22" stroke="#58a6ff"/><text x="158" y="296">w</text>
+    <rect x="176" y="270" width="36" height="40" fill="#161b22" stroke="#58a6ff"/><text x="194" y="296">e</text>
+    <rect x="212" y="270" width="36" height="40" fill="#161b22" stroke="#58a6ff"/><text x="230" y="296">b</text>
+    <rect x="248" y="270" width="36" height="40" fill="#30363d" stroke="#58a6ff"/>
+    <rect x="284" y="270" width="36" height="40" fill="#30363d" stroke="#58a6ff"/>
+    <rect x="320" y="270" width="36" height="40" fill="#30363d" stroke="#58a6ff"/>
+    <rect x="356" y="270" width="36" height="40" fill="#30363d" stroke="#58a6ff"/>
+    <rect x="392" y="270" width="36" height="40" fill="#30363d" stroke="#58a6ff"/>
+    <rect x="428" y="270" width="36" height="40" fill="#0d1117" stroke="#30363d"/>
+    <rect x="464" y="270" width="36" height="40" fill="#30363d" stroke="#58a6ff"/>
+    <rect x="500" y="270" width="36" height="40" fill="#30363d" stroke="#58a6ff"/>
+    <rect x="536" y="270" width="36" height="40" fill="#161b22" stroke="#58a6ff"/><text x="554" y="296">3</text>
+
+    <rect x="140" y="320" width="36" height="40" fill="#161b22" stroke="#3fb950"/><text x="158" y="346">d</text>
+    <rect x="176" y="320" width="36" height="40" fill="#161b22" stroke="#3fb950"/><text x="194" y="346">b</text>
+    <rect x="212" y="320" width="36" height="40" fill="#30363d" stroke="#3fb950"/>
+    <rect x="248" y="320" width="36" height="40" fill="#30363d" stroke="#3fb950"/>
+    <rect x="284" y="320" width="36" height="40" fill="#30363d" stroke="#3fb950"/>
+    <rect x="320" y="320" width="36" height="40" fill="#30363d" stroke="#3fb950"/>
+    <rect x="356" y="320" width="36" height="40" fill="#30363d" stroke="#3fb950"/>
+    <rect x="392" y="320" width="36" height="40" fill="#30363d" stroke="#3fb950"/>
+    <rect x="428" y="320" width="36" height="40" fill="#0d1117" stroke="#30363d"/>
+    <rect x="464" y="320" width="36" height="40" fill="#30363d" stroke="#3fb950"/>
+    <rect x="500" y="320" width="36" height="40" fill="#161b22" stroke="#3fb950"/><text x="518" y="346">1</text>
+    <rect x="536" y="320" width="36" height="40" fill="#161b22" stroke="#3fb950"/><text x="554" y="346">2</text>
+  </g>
+  <text x="284" y="390" fill="#d2a8ff" font-size="14" text-anchor="middle">%-8s: texto a la izquierda, 8 casillas</text>
+  <text x="500" y="410" fill="#d2a8ff" font-size="14" text-anchor="middle">%3s: a la derecha, 3 casillas</text>
+  <text x="620" y="300" fill="#8b949e" font-size="14">las dos líneas miden 12:</text>
+  <text x="620" y="322" fill="#8b949e" font-size="14">las columnas quedan alineadas</text>
+</svg>

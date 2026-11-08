@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# bk-report — resume el log de bk-run en una tabla: cuántas veces se ejecutó cada comando y cuántas falló.
+# Para qué: ver de un vistazo qué se ejecuta en esta máquina y qué es lo que más falla.
+set -euo pipefail
+
+# shellcheck source=SCRIPTDIR/../lib/core.sh
+source "$(dirname "${BASH_SOURCE[0]}")/../lib/core.sh"
+
+# TODO 1: un log como mucho (die con código 2 si hay más), el de BK_LOG o bk-run.log
+# si no lo dices, y die si no se puede leer (paso 2).
+log="bk-run.log"
+
+# TODO 2: los tres arrays asociativos runs, ok y failed (paso 3).
+total_runs=0
+total_ok=0
+total_failed=0
+
+# bk-run escribe "== fecha hora comando argumentos ==" antes de la salida y "== código: N ==" después.
+header_re='^== [0-9-]+ [0-9:]+ (.+) ==$'
+footer_re='^== código: ([0-9]+) ==$'
+cmd=""
+while IFS= read -r line; do
+  if [[ $line =~ $header_re ]]; then
+    cmd="${BASH_REMATCH[1]}" # TODO 4: solo la primera palabra del comando (paso 5).
+  # TODO 7: que un "== código" sin comando delante no pare el script (paso 8).
+  elif [[ $line =~ $footer_re ]]; then
+    : # TODO 3: sumar la ejecución a runs y a ok o failed, y a los totales (paso 4).
+  fi
+done < "$log"
+
+# La primera columna, tan ancha como el nombre más largo (y nunca menos que "COMANDO").
+width=7
+# TODO 5: width, tan ancho como el nombre más largo (paso 6).
+
+# TODO 6: la tabla (paso 7). Borra esta línea, que mientras tanto enseña los contadores.
+declare -p runs ok failed width 2>&1 || true

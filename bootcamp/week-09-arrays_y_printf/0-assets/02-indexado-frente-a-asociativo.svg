@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>m[web]=1 y m[db]=2 sin declare -A van las dos a la casilla 0, porque web y db se calculan como cuentas y valen 0, y la segunda pisa la primera; con declare -A, cada clave tiene su propia casilla</title>
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="420" fill="#0d1117"/>
+  <text x="500" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">m[web]=1; m[db]=2</text>
+
+  <!-- sin -A -->
+  <rect x="40" y="65" width="440" height="320" rx="10" fill="none" stroke="#f85149" stroke-width="2"/>
+  <text x="60" y="95" fill="#f85149" font-size="16" font-weight="600">sin declare -A: array indexado</text>
+  <text x="60" y="130" fill="#f78166" font-size="15">m[web]=1</text>
+  <text x="200" y="130" fill="#8b949e" font-size="14">web es una cuenta: vale 0</text>
+  <text x="60" y="160" fill="#f78166" font-size="15">m[db]=2</text>
+  <text x="200" y="160" fill="#8b949e" font-size="14">db también vale 0</text>
+  <line x1="110" y1="175" x2="190" y2="230" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <line x1="290" y1="175" x2="250" y2="230" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <rect x="140" y="240" width="200" height="70" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="156" y="268" fill="#d2a8ff" font-size="14">[0]</text>
+  <text x="240" y="290" fill="#f0f6fc" font-size="20" text-anchor="middle">2</text>
+  <text x="290" y="290" fill="#8b949e" font-size="15" text-decoration="line-through">1</text>
+  <text x="60" y="350" fill="#8b949e" font-size="14">una sola casilla: el 2 pisa el 1, sin aviso</text>
+
+  <!-- con -A -->
+  <rect x="520" y="65" width="440" height="320" rx="10" fill="none" stroke="#3fb950" stroke-width="2"/>
+  <text x="540" y="95" fill="#3fb950" font-size="16" font-weight="600">declare -A m: array asociativo</text>
+  <text x="540" y="130" fill="#f78166" font-size="15">m[web]=1</text>
+  <text x="680" y="130" fill="#8b949e" font-size="14">web es un texto: la clave</text>
+  <text x="540" y="160" fill="#f78166" font-size="15">m[db]=2</text>
+  <text x="680" y="160" fill="#8b949e" font-size="14">db, otra clave</text>
+  <line x1="590" y1="175" x2="620" y2="230" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <line x1="770" y1="175" x2="820" y2="230" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <rect x="550" y="240" width="170" height="70" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="566" y="268" fill="#d2a8ff" font-size="14">[web]</text>
+  <text x="635" y="290" fill="#f0f6fc" font-size="20" text-anchor="middle">1</text>
+  <rect x="760" y="240" width="170" height="70" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="776" y="268" fill="#d2a8ff" font-size="14">[db]</text>
+  <text x="845" y="290" fill="#f0f6fc" font-size="20" text-anchor="middle">2</text>
+  <text x="540" y="350" fill="#8b949e" font-size="14">una casilla por clave</text>
+</svg>

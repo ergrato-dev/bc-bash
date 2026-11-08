@@ -67,6 +67,6 @@ Comprueba tu proyecto (`3-proyecto/starter/`) contra los 16 requisitos verificab
 
 | Anterior | Actual | Siguiente |
 |---|---|---|
-| [← Semana 07 — Bucles, read y archivos seguros](../week-07-bucles_read_y_archivos_seguros/README.md) | **Semana 08 — Funciones, alcance y librerías** | — |
+| [← Semana 07 — Bucles, read y archivos seguros](../week-07-bucles_read_y_archivos_seguros/README.md) | **Semana 08 — Funciones, alcance y librerías** | [Semana 09 — Arrays y printf →](../week-09-arrays_y_printf/README.md) |
 
 [← Volver al índice del bootcamp](../README.md)

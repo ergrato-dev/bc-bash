@@ -1,0 +1,10 @@
+renovar certificado de web-01
+revisar backups de db-01
+subir nginx a 1.26
+borrar usuarios de prueba
+rotar claves ssh
+ampliar disco de cache-01
+documentar el despliegue
+probar la restauración
+limpiar /tmp de web-02
+actualizar el inventario

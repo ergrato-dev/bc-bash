@@ -1,0 +1,7 @@
+desplegando web-02
+== código: 0 ==
+== 2026-11-05 12:00:00 tar -czf copia.tgz datos ==
+tar: datos/grande.iso: archivo cambiado mientras se leía
+== 2026-11-05 12:05:00 ls datos ==
+grande.iso
+== código: 0 ==

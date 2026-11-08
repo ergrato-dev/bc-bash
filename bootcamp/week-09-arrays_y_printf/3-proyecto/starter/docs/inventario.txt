@@ -1,0 +1,14 @@
+./README.md
+./scaffold.sh
+./docs/mapa.txt
+./docs/inventario.txt
+./tests/.gitkeep
+./bin/bashkit
+./bin/bk-info
+./bin/bk-check
+./bin/bk-run
+./bin/bk-top-ips
+./bin/.gitkeep
+./bin/bk-rename
+./bin/bk-clean
+./lib/core.sh

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Con files=("mis notas.txt" informe.pdf), ${files[@]} sin comillas da tres argumentos porque parte el nombre con espacio, "${files[@]}" da dos argumentos enteros y "${files[*]}" da uno solo con todo junto</title>
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="470" fill="#0d1117"/>
+  <text x="500" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">files=("mis notas.txt" informe.pdf)</text>
+
+  <!-- el array -->
+  <text x="40" y="86" fill="#8b949e" font-size="14">el array: dos casillas</text>
+  <rect x="220" y="62" width="200" height="40" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="232" y="87" fill="#d2a8ff" font-size="13">[0]</text>
+  <text x="330" y="88" fill="#f0f6fc" font-size="15" text-anchor="middle">mis notas.txt</text>
+  <rect x="430" y="62" width="160" height="40" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="442" y="87" fill="#d2a8ff" font-size="13">[1]</text>
+  <text x="520" y="88" fill="#f0f6fc" font-size="15" text-anchor="middle">informe.pdf</text>
+
+  <text x="40" y="150" fill="#8b949e" font-size="14">se expande como</text>
+  <text x="560" y="150" fill="#8b949e" font-size="14">el comando recibe</text>
+
+  <!-- fila 1 -->
+  <rect x="40" y="170" width="920" height="80" rx="10" fill="none" stroke="#30363d"/>
+  <text x="60" y="206" fill="#f78166" font-size="17">${files[@]}</text>
+  <text x="60" y="230" fill="#8b949e" font-size="13">sin comillas</text>
+  <line x1="250" y1="210" x2="350" y2="210" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <rect x="370" y="190" width="90" height="40" rx="6" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="415" y="216" fill="#f0f6fc" font-size="15" text-anchor="middle">mis</text>
+  <rect x="470" y="190" width="120" height="40" rx="6" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="530" y="216" fill="#f0f6fc" font-size="15" text-anchor="middle">notas.txt</text>
+  <rect x="600" y="190" width="130" height="40" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="665" y="216" fill="#f0f6fc" font-size="15" text-anchor="middle">informe.pdf</text>
+  <text x="750" y="206" fill="#f85149" font-size="15" font-weight="600">3 argumentos</text>
+  <text x="750" y="228" fill="#8b949e" font-size="13">el nombre, partido</text>
+
+  <!-- fila 2 -->
+  <rect x="40" y="265" width="920" height="80" rx="10" fill="none" stroke="#3fb950" stroke-width="2"/>
+  <text x="60" y="301" fill="#f78166" font-size="17">"${files[@]}"</text>
+  <text x="60" y="325" fill="#8b949e" font-size="13">la que se usa casi siempre</text>
+  <line x1="250" y1="305" x2="350" y2="305" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <rect x="370" y="285" width="220" height="40" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="480" y="311" fill="#f0f6fc" font-size="15" text-anchor="middle">mis notas.txt</text>
+  <rect x="600" y="285" width="130" height="40" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="665" y="311" fill="#f0f6fc" font-size="15" text-anchor="middle">informe.pdf</text>
+  <text x="750" y="301" fill="#3fb950" font-size="15" font-weight="600">2 argumentos</text>
+  <text x="750" y="323" fill="#8b949e" font-size="13">uno por elemento, enteros</text>
+
+  <!-- fila 3 -->
+  <rect x="40" y="360" width="920" height="80" rx="10" fill="none" stroke="#30363d"/>
+  <text x="60" y="396" fill="#f78166" font-size="17">"${files[*]}"</text>
+  <text x="60" y="420" fill="#8b949e" font-size="13">para escribir una lista</text>
+  <line x1="250" y1="400" x2="350" y2="400" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <rect x="370" y="380" width="360" height="40" rx="6" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="550" y="406" fill="#f0f6fc" font-size="15" text-anchor="middle">mis notas.txt informe.pdf</text>
+  <text x="750" y="396" fill="#e3b341" font-size="15" font-weight="600">1 argumento</text>
+  <text x="750" y="418" fill="#8b949e" font-size="13">todo junto, con un espacio</text>
+</svg>

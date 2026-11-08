@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# bk-clean — borra los archivos de una o varias carpetas que llevan más de N días sin cambiar.
+# Para qué: los logs, volcados y temporales viejos llenan el disco poco a poco; este
+# script los quita sin tocar nada más, y con --dry-run enseña antes la lista.
+set -euo pipefail
+
+# La librería se busca junto al script, no en la carpeta actual: así bk-clean
+# funciona desde cualquier sitio, también llamado por bashkit.
+# shellcheck source=SCRIPTDIR/../lib/core.sh
+source "$(dirname "${BASH_SOURCE[0]}")/../lib/core.sh"
+
+usage="uso: bk-clean [--dry-run] <días> <carpeta>..."
+
+case "${1:-}" in
+  -h | --help)
+    echo "$usage"
+    exit 0
+    ;;
+esac
+
+# Con --dry-run se ve qué se borraría sin borrar nada: se mira antes de borrar de verdad.
+dry_run=""
+if [[ "${1:-}" == "--dry-run" ]]; then
+  dry_run=1
+  shift
+fi
+
+if [[ $# -lt 2 ]]; then
+  echo "$usage" >&2
+  exit 2
+fi
+
+days="$1"
+shift
+# Al menos 1 día: con 0, "más viejo que 0 minutos" sería todo lo que hay en la carpeta.
+[[ $days =~ ^[1-9][0-9]*$ ]] || die "'$days' no es un número de días (1 o más)" 2
+
+# Primero se comprueban todas las carpetas y después se borra: si una está mal
+# escrita, no queda la limpieza a medias.
+for dir in "$@"; do
+  [[ -d $dir ]] || die "'$dir' no es una carpeta"
+done
+
+require find
+
+count=0
+for dir in "$@"; do
+  # -print0 separa las rutas con el byte nulo, el único que no puede ir en un nombre:
+  # así un archivo con espacios o con un salto de línea sigue siendo una sola ruta.
+  # -type f deja fuera las carpetas y los enlaces: borrar un enlace no libera nada, y
+  # find no los sigue, así que nunca llega a archivos de fuera de la carpeta.
+  # -mmin en minutos, porque -mtime redondea a días enteros y "+7" significaría 8 o más.
+  # < <(...) y no un pipe: con find | while, el bucle iría en un subshell y count
+  # volvería a 0 al terminar.
+  while IFS= read -r -d '' file; do
+    echo "${dry_run:+(dry-run) }borrar: $file"
+    # -- marca el final de las opciones: un archivo que empiece por - no se toma por una.
+    [[ -n $dry_run ]] || rm -- "$file"
+    count=$((count + 1))
+  done < <(find "$dir" -type f -mmin +$((days * 24 * 60)) -print0)
+done
+
+echo "${dry_run:+(dry-run) }total: $count archivos"

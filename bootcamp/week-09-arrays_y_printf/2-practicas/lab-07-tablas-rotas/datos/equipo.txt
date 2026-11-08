@@ -1,0 +1,4 @@
+Ana María:backend:3
+José:sistemas:5
+Begoña:100% remoto:2
+Luis:frontend:4
