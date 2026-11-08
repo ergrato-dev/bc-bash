@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Un pipe con tee: getent passwd, tee cuentas.txt y wc -l</title>
+  <rect width="900" height="380" fill="#0d1117"/>
+  <text x="450" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Un pipe conecta stdout con stdin; stderr va aparte</text>
+  <text x="450" y="70" fill="#f78166" font-size="17" text-anchor="middle">getent passwd | tee cuentas.txt | wc -l</text>
+
+  <rect x="40" y="110" width="170" height="70" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="125" y="151" fill="#3fb950" font-size="17" font-weight="600" text-anchor="middle">getent passwd</text>
+  <rect x="300" y="110" width="170" height="70" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="385" y="151" fill="#3fb950" font-size="17" font-weight="600" text-anchor="middle">tee cuentas.txt</text>
+  <rect x="560" y="110" width="130" height="70" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="625" y="151" fill="#3fb950" font-size="17" font-weight="600" text-anchor="middle">wc -l</text>
+  <rect x="760" y="110" width="110" height="70" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="815" y="140" fill="#f0f6fc" font-size="15" text-anchor="middle">terminal</text>
+  <text x="815" y="164" fill="#79c0ff" font-size="15" text-anchor="middle">20</text>
+
+  <line x1="210" y1="145" x2="290" y2="145" stroke="#79c0ff" stroke-width="3"/>
+  <polygon points="290,138 300,145 290,152" fill="#79c0ff"/>
+  <text x="255" y="134" fill="#79c0ff" font-size="13" text-anchor="middle">1 → 0</text>
+  <line x1="470" y1="145" x2="550" y2="145" stroke="#79c0ff" stroke-width="3"/>
+  <polygon points="550,138 560,145 550,152" fill="#79c0ff"/>
+  <text x="515" y="134" fill="#79c0ff" font-size="13" text-anchor="middle">1 → 0</text>
+  <line x1="690" y1="145" x2="750" y2="145" stroke="#79c0ff" stroke-width="2"/>
+  <polygon points="750,139 760,145 750,151" fill="#79c0ff"/>
+
+  <line x1="385" y1="180" x2="385" y2="215" stroke="#79c0ff" stroke-width="2"/>
+  <polygon points="379,215 385,225 391,215" fill="#79c0ff"/>
+  <rect x="320" y="225" width="130" height="44" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="2"/>
+  <text x="385" y="253" fill="#79c0ff" font-size="15" text-anchor="middle">cuentas.txt</text>
+  <text x="470" y="210" fill="#8b949e" font-size="13">la copia de tee</text>
+
+  <line x1="125" y1="180" x2="125" y2="310" stroke="#f85149" stroke-width="2" stroke-dasharray="6 5"/>
+  <line x1="625" y1="180" x2="625" y2="310" stroke="#f85149" stroke-width="2" stroke-dasharray="6 5"/>
+  <line x1="125" y1="310" x2="815" y2="310" stroke="#f85149" stroke-width="2" stroke-dasharray="6 5"/>
+  <line x1="815" y1="310" x2="815" y2="190" stroke="#f85149" stroke-width="2" stroke-dasharray="6 5"/>
+  <polygon points="809,190 815,180 821,190" fill="#f85149"/>
+  <text x="450" y="340" fill="#f85149" font-size="14" text-anchor="middle">2 stderr de cada comando: directo a la terminal, sin pasar por el pipe</text>
+  <text x="450" y="364" fill="#8b949e" font-size="14" text-anchor="middle">los tres arrancan a la vez y los datos fluyen mientras se producen</text>
+</svg>

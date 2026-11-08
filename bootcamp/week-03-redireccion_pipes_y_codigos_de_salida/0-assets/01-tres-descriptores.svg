@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Los tres descriptores de un proceso: por defecto y con redirecciones</title>
+  <rect width="900" height="430" fill="#0d1117"/>
+  <text x="450" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Cada proceso tiene tres descriptores</text>
+
+  <!-- panel izquierdo -->
+  <text x="225" y="76" fill="#8b949e" font-size="15" text-anchor="middle">por defecto</text>
+  <text x="225" y="100" fill="#f78166" font-size="16" text-anchor="middle">ls /etc/hostname /no-existe</text>
+  <rect x="40" y="190" width="110" height="50" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="95" y="221" fill="#f0f6fc" font-size="15" text-anchor="middle">teclado</text>
+  <line x1="150" y1="215" x2="180" y2="215" stroke="#79c0ff" stroke-width="2"/>
+  <polygon points="180,209 190,215 180,221" fill="#79c0ff"/>
+  <text x="168" y="205" fill="#79c0ff" font-size="13" text-anchor="middle">0</text>
+  <rect x="190" y="150" width="110" height="130" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="245" y="220" fill="#3fb950" font-size="17" font-weight="600" text-anchor="middle">ls</text>
+  <line x1="300" y1="180" x2="330" y2="180" stroke="#79c0ff" stroke-width="2"/>
+  <polygon points="330,174 340,180 330,186" fill="#79c0ff"/>
+  <text x="318" y="170" fill="#79c0ff" font-size="13" text-anchor="middle">1</text>
+  <line x1="300" y1="250" x2="330" y2="250" stroke="#f85149" stroke-width="2"/>
+  <polygon points="330,244 340,250 330,256" fill="#f85149"/>
+  <text x="318" y="240" fill="#f85149" font-size="13" text-anchor="middle">2</text>
+  <rect x="340" y="150" width="90" height="130" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="385" y="220" fill="#f0f6fc" font-size="15" text-anchor="middle">terminal</text>
+  <text x="225" y="330" fill="#79c0ff" font-size="14" text-anchor="middle">1 stdout: /etc/hostname</text>
+  <text x="225" y="354" fill="#f85149" font-size="14" text-anchor="middle">2 stderr: cannot access '/no-existe'</text>
+  <text x="225" y="390" fill="#8b949e" font-size="14" text-anchor="middle">los dos acaban en la misma pantalla</text>
+
+  <line x1="450" y1="70" x2="450" y2="400" stroke="#30363d" stroke-width="1"/>
+
+  <!-- panel derecho -->
+  <text x="675" y="76" fill="#8b949e" font-size="15" text-anchor="middle">con redirecciones</text>
+  <text x="675" y="100" fill="#f78166" font-size="16" text-anchor="middle">ls ... &gt; salida.txt 2&gt; errores.txt</text>
+  <rect x="480" y="190" width="110" height="50" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="535" y="221" fill="#f0f6fc" font-size="15" text-anchor="middle">teclado</text>
+  <line x1="590" y1="215" x2="610" y2="215" stroke="#79c0ff" stroke-width="2"/>
+  <polygon points="610,209 620,215 610,221" fill="#79c0ff"/>
+  <text x="602" y="205" fill="#79c0ff" font-size="13" text-anchor="middle">0</text>
+  <rect x="620" y="150" width="90" height="130" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="665" y="220" fill="#3fb950" font-size="17" font-weight="600" text-anchor="middle">ls</text>
+  <line x1="710" y1="180" x2="735" y2="180" stroke="#79c0ff" stroke-width="2"/>
+  <polygon points="735,174 745,180 735,186" fill="#79c0ff"/>
+  <text x="725" y="170" fill="#79c0ff" font-size="13" text-anchor="middle">1</text>
+  <line x1="710" y1="250" x2="735" y2="250" stroke="#f85149" stroke-width="2"/>
+  <polygon points="735,244 745,250 735,256" fill="#f85149"/>
+  <text x="725" y="240" fill="#f85149" font-size="13" text-anchor="middle">2</text>
+  <rect x="745" y="155" width="125" height="50" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="2"/>
+  <text x="807" y="186" fill="#79c0ff" font-size="15" text-anchor="middle">salida.txt</text>
+  <rect x="745" y="225" width="125" height="50" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="807" y="256" fill="#f85149" font-size="15" text-anchor="middle">errores.txt</text>
+  <text x="675" y="330" fill="#8b949e" font-size="14" text-anchor="middle">bash cambia el 1 y el 2 antes de arrancar ls</text>
+  <text x="675" y="354" fill="#8b949e" font-size="14" text-anchor="middle">ls escribe igual que siempre, sin saberlo</text>
+  <text x="675" y="390" fill="#8b949e" font-size="14" text-anchor="middle">la pantalla no muestra nada</text>
+</svg>

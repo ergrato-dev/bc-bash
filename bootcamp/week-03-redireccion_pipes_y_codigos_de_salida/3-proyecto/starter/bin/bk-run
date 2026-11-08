@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# bk-run — ejecuta un comando, te enseña su salida y la guarda en un log con su código de salida.
+# Para qué: dejar constancia de lo que hiciste en una máquina y de si salió bien.
+# TODO 1: sustituye esta línea por el modo estricto (paso 2)
+
+# TODO 2: sin argumentos, mensaje de uso a stderr y código 2 (paso 3)
+
+# La variable BK_LOG cambia el log; si no existe, bk-run.log en la carpeta actual.
+# ${VAR:-valor} se explica en la semana 05. Sin el :-, set -u pararía el script.
+log="${BK_LOG:-bk-run.log}"
+
+# TODO 3: añade al log la cabecera con la fecha y el comando (paso 4)
+
+# TODO 4: ejecuta el comando, enséñalo y añádelo al log, y guarda su código en status (paso 5)
+
+# TODO 5: añade al log la línea del código, avisa por stderr si falló y sal con ese código (paso 6)
+echo "sin implementar" >&2
+exit 1
