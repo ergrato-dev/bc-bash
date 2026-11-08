@@ -1,0 +1,111 @@
+{
+  "semana": "09",
+  "titulo": "Arrays y printf",
+  "checks": [
+    {
+      "id": "report-ejecutable",
+      "descripcion": "bin/bk-report existe, tiene permiso de ejecución y empieza por el shebang del kit",
+      "cmd": "f={proyecto}/bin/bk-report; test -x $f && head -n1 $f | grep -qx '#!/usr/bin/env bash'",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 1"
+    },
+    {
+      "id": "report-usa-core",
+      "descripcion": "bk-report carga lib/core.sh, avisa con die y cuenta con arrays asociativos (declare -A)",
+      "cmd": "cd {proyecto} && grep -qE '^(source|\\.) .*lib/core\\.sh' bin/bk-report && grep -q 'die ' bin/bk-report && grep -q 'declare -A' bin/bk-report",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, pasos 2 y 3"
+    },
+    {
+      "id": "report-sin-log",
+      "descripcion": "con un log que no se puede leer, avisa en stderr con su nombre y sale con código 1",
+      "cmd": "err=$({proyecto}/bin/bk-report no-existe.log 2>&1 >/dev/null); echo \"codigo=$? $err\"",
+      "assert": "stdout~^codigo=1 bk-report: .*no-existe\\.log",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "report-uso",
+      "descripcion": "con más de un argumento, escribe el uso en stderr y sale con código 2",
+      "cmd": "err=$({proyecto}/bin/bk-report a.log b.log 2>&1 >/dev/null); echo \"codigo=$? $err\"",
+      "assert": "stdout~^codigo=2 .*uso: bk-report",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "report-cabecera",
+      "descripcion": "la primera línea es la cabecera COMANDO VECES BIEN FALLOS",
+      "cmd": "{proyecto}/bin/bk-report {semana}/3-proyecto/tests/bk-run.log | head -n1",
+      "assert": "stdout~^COMANDO +VECES +BIEN +FALLOS$",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "report-cuenta",
+      "descripcion": "una fila por comando (su primera palabra), ordenadas por nombre, con sus ejecuciones, las que salieron bien y las que fallaron, y una fila TOTAL",
+      "cmd": "{proyecto}/bin/bk-report {semana}/3-proyecto/tests/bk-run.log | tr -s ' ' | paste -sd'|'",
+      "assert": "stdout~^COMANDO VECES BIEN FALLOS\\|\\./deploy\\.sh 2 1 1\\|df 2 2 0\\|ping 1 0 1\\|systemctl 1 1 0\\|TOTAL 6 4 2$",
+      "pista": "3-proyecto/README.md, pasos 4, 5 y 7"
+    },
+    {
+      "id": "report-alineado",
+      "descripcion": "todas las líneas de la tabla miden lo mismo: la primera columna mide lo que el nombre más largo y los números van alineados",
+      "cmd": "{proyecto}/bin/bk-report {semana}/3-proyecto/tests/bk-run.log | awk '{print length}' | sort -u | paste -sd' '",
+      "assert": "stdout~^30$",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "report-ancho",
+      "descripcion": "con un nombre de comando largo, la primera columna se ensancha y la tabla sigue alineada",
+      "cmd": "printf '== 2026-11-06 07:00:00 ./sincronizar-copias-remotas.sh --todo ==\\n== código: 0 ==\\n' > largo.log && {proyecto}/bin/bk-report largo.log | awk '{print length}' | sort -u | paste -sd' '",
+      "assert": "stdout~^50$",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "report-vacio",
+      "descripcion": "con un log vacío, solo la cabecera y TOTAL 0 0 0, y código 0",
+      "cmd": ": > vacio.log; out=$({proyecto}/bin/bk-report vacio.log 2>&1); echo \"codigo=$? $(echo $out)\"",
+      "assert": "stdout~^codigo=0 COMANDO VECES BIEN FALLOS TOTAL 0 0 0$",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "report-cortado",
+      "descripcion": "un log recortado que empieza a mitad de un bloque, o con un bloque sin su línea de código (bk-run cortado), no rompe la cuenta",
+      "cmd": "{proyecto}/bin/bk-report {semana}/3-proyecto/tests/cortado.log | tr -s ' ' | paste -sd'|'",
+      "assert": "stdout~^COMANDO VECES BIEN FALLOS\\|ls 1 1 0\\|TOTAL 1 1 0$",
+      "pista": "3-proyecto/README.md, paso 8"
+    },
+    {
+      "id": "report-con-bk-run",
+      "descripcion": "bashkit report resume el log que escribe bk-run, el que dice BK_LOG",
+      "cmd": "export BK_LOG=r.log; for c in true false false; do {proyecto}/bin/bk-run $c 2>/dev/null; done; {proyecto}/bin/bashkit report | tr -s ' ' | paste -sd'|'",
+      "assert": "stdout~^COMANDO VECES BIEN FALLOS\\|false 2 0 2\\|true 1 1 0\\|TOTAL 3 1 2$",
+      "pista": "3-proyecto/README.md, paso 9"
+    },
+    {
+      "id": "report-por-defecto",
+      "descripcion": "sin argumento ni BK_LOG, lee bk-run.log de la carpeta en la que estás, como bk-run",
+      "cmd": "unset BK_LOG; {proyecto}/bin/bk-run echo hola > /dev/null; {proyecto}/bin/bk-report | tail -n1 | tr -s ' '",
+      "assert": "stdout~^TOTAL 1 1 0$",
+      "pista": "3-proyecto/README.md, paso 9"
+    },
+    {
+      "id": "kit-limpio",
+      "descripcion": "el kit sin TODOs y limpio para shellcheck -x",
+      "cmd": "cd {proyecto} && ! grep -rn TODO bin lib scaffold.sh && shellcheck -x bin/bashkit bin/bk-info bin/bk-run bin/bk-top-ips bin/bk-rename bin/bk-check bin/bk-clean bin/bk-report lib/core.sh scaffold.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 10"
+    },
+    {
+      "id": "inventario-al-dia",
+      "descripcion": "docs/inventario.txt incluye ./bin/bk-report",
+      "cmd": "grep -qx ./bin/bk-report {proyecto}/docs/inventario.txt",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 11"
+    },
+    {
+      "id": "readme-completo",
+      "descripcion": "README.md sin TODOs, documenta bk-report y tiene la bitácora de la semana 09",
+      "cmd": "cd {proyecto} && ! grep -n TODO README.md && grep -q 'bin/bk-report' README.md && grep -q '^- Semana 09: ' README.md",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 12"
+    }
+  ]
+}

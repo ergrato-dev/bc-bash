@@ -1,0 +1,4 @@
+/ 59 21
+/var 120 101
+/home 250 40
+/var/lib/docker 500 470
