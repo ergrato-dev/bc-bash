@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Qué queda de ruta=/var/log/nginx/access.log.2.gz y de su nombre con ##, %, y %% en las expansiones de parámetros</title>
+  <rect width="1000" height="500" fill="#0d1117"/>
+  <text x="500" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Recortar una ruta: # quita del principio, % del final</text>
+  <text x="40" y="104" fill="#f0f6fc" font-size="16" font-weight="600">ruta</text>
+  <rect x="180" y="80" width="220" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="290" y="104" fill="#79c0ff" font-size="16" text-anchor="middle">/var/log/nginx</text>
+  <rect x="405" y="80" width="26" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="418" y="104" fill="#79c0ff" font-size="16" text-anchor="middle">/</text>
+  <rect x="436" y="80" width="100" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="486" y="104" fill="#79c0ff" font-size="16" text-anchor="middle">access</text>
+  <rect x="541" y="80" width="22" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="552" y="104" fill="#79c0ff" font-size="16" text-anchor="middle">.</text>
+  <rect x="568" y="80" width="60" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="598" y="104" fill="#79c0ff" font-size="16" text-anchor="middle">log</text>
+  <rect x="633" y="80" width="22" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="644" y="104" fill="#79c0ff" font-size="16" text-anchor="middle">.</text>
+  <rect x="660" y="80" width="34" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="677" y="104" fill="#79c0ff" font-size="16" text-anchor="middle">2</text>
+  <rect x="699" y="80" width="22" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="710" y="104" fill="#79c0ff" font-size="16" text-anchor="middle">.</text>
+  <rect x="726" y="80" width="48" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="750" y="104" fill="#79c0ff" font-size="16" text-anchor="middle">gz</text>
+  <line x1="436" y1="128" x2="774" y2="128" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="605" y="148" fill="#d2a8ff" font-size="13" text-anchor="middle">nombre=${ruta##*/}</text>
+  <text x="800" y="104" fill="#8b949e" font-size="13">verde: lo que queda</text>
+  <text x="800" y="122" fill="#8b949e" font-size="13">gris: lo que se quita</text>
+  <text x="40" y="200" fill="#f78166" font-size="16" font-weight="600">${ruta##*/}</text>
+  <rect x="180" y="176" width="220" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="290" y="200" fill="#8b949e" font-size="16" text-anchor="middle">/var/log/nginx</text>
+  <rect x="405" y="176" width="26" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="418" y="200" fill="#8b949e" font-size="16" text-anchor="middle">/</text>
+  <rect x="436" y="176" width="100" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="486" y="200" fill="#79c0ff" font-size="16" text-anchor="middle">access</text>
+  <rect x="541" y="176" width="22" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="552" y="200" fill="#79c0ff" font-size="16" text-anchor="middle">.</text>
+  <rect x="568" y="176" width="60" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="598" y="200" fill="#79c0ff" font-size="16" text-anchor="middle">log</text>
+  <rect x="633" y="176" width="22" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="644" y="200" fill="#79c0ff" font-size="16" text-anchor="middle">.</text>
+  <rect x="660" y="176" width="34" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="677" y="200" fill="#79c0ff" font-size="16" text-anchor="middle">2</text>
+  <rect x="699" y="176" width="22" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="710" y="200" fill="#79c0ff" font-size="16" text-anchor="middle">.</text>
+  <rect x="726" y="176" width="48" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="750" y="200" fill="#79c0ff" font-size="16" text-anchor="middle">gz</text>
+  <text x="800" y="193" fill="#f0f6fc" font-size="15" font-weight="600">access.log.2.gz</text>
+  <text x="800" y="210" fill="#8b949e" font-size="13">hasta la última /: el nombre</text>
+  <text x="40" y="260" fill="#f78166" font-size="16" font-weight="600">${ruta%/*}</text>
+  <rect x="180" y="236" width="220" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="290" y="260" fill="#79c0ff" font-size="16" text-anchor="middle">/var/log/nginx</text>
+  <rect x="405" y="236" width="26" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="418" y="260" fill="#8b949e" font-size="16" text-anchor="middle">/</text>
+  <rect x="436" y="236" width="100" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="486" y="260" fill="#8b949e" font-size="16" text-anchor="middle">access</text>
+  <rect x="541" y="236" width="22" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="552" y="260" fill="#8b949e" font-size="16" text-anchor="middle">.</text>
+  <rect x="568" y="236" width="60" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="598" y="260" fill="#8b949e" font-size="16" text-anchor="middle">log</text>
+  <rect x="633" y="236" width="22" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="644" y="260" fill="#8b949e" font-size="16" text-anchor="middle">.</text>
+  <rect x="660" y="236" width="34" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="677" y="260" fill="#8b949e" font-size="16" text-anchor="middle">2</text>
+  <rect x="699" y="236" width="22" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="710" y="260" fill="#8b949e" font-size="16" text-anchor="middle">.</text>
+  <rect x="726" y="236" width="48" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="750" y="260" fill="#8b949e" font-size="16" text-anchor="middle">gz</text>
+  <text x="800" y="253" fill="#f0f6fc" font-size="15" font-weight="600">/var/log/nginx</text>
+  <text x="800" y="270" fill="#8b949e" font-size="13">desde la última /: la carpeta</text>
+  <text x="40" y="320" fill="#f78166" font-size="16" font-weight="600">${nombre%.*}</text>
+  <rect x="436" y="296" width="100" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="486" y="320" fill="#79c0ff" font-size="16" text-anchor="middle">access</text>
+  <rect x="541" y="296" width="22" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="552" y="320" fill="#79c0ff" font-size="16" text-anchor="middle">.</text>
+  <rect x="568" y="296" width="60" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="598" y="320" fill="#79c0ff" font-size="16" text-anchor="middle">log</text>
+  <rect x="633" y="296" width="22" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="644" y="320" fill="#79c0ff" font-size="16" text-anchor="middle">.</text>
+  <rect x="660" y="296" width="34" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="677" y="320" fill="#79c0ff" font-size="16" text-anchor="middle">2</text>
+  <rect x="699" y="296" width="22" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="710" y="320" fill="#8b949e" font-size="16" text-anchor="middle">.</text>
+  <rect x="726" y="296" width="48" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="750" y="320" fill="#8b949e" font-size="16" text-anchor="middle">gz</text>
+  <text x="800" y="313" fill="#f0f6fc" font-size="15" font-weight="600">access.log.2</text>
+  <text x="800" y="330" fill="#8b949e" font-size="13">lo más corto desde el final</text>
+  <text x="40" y="380" fill="#f78166" font-size="16" font-weight="600">${nombre%%.*}</text>
+  <rect x="436" y="356" width="100" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="486" y="380" fill="#79c0ff" font-size="16" text-anchor="middle">access</text>
+  <rect x="541" y="356" width="22" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="552" y="380" fill="#8b949e" font-size="16" text-anchor="middle">.</text>
+  <rect x="568" y="356" width="60" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="598" y="380" fill="#8b949e" font-size="16" text-anchor="middle">log</text>
+  <rect x="633" y="356" width="22" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="644" y="380" fill="#8b949e" font-size="16" text-anchor="middle">.</text>
+  <rect x="660" y="356" width="34" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="677" y="380" fill="#8b949e" font-size="16" text-anchor="middle">2</text>
+  <rect x="699" y="356" width="22" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="710" y="380" fill="#8b949e" font-size="16" text-anchor="middle">.</text>
+  <rect x="726" y="356" width="48" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="750" y="380" fill="#8b949e" font-size="16" text-anchor="middle">gz</text>
+  <text x="800" y="373" fill="#f0f6fc" font-size="15" font-weight="600">access</text>
+  <text x="800" y="390" fill="#8b949e" font-size="13">lo más largo desde el final</text>
+  <text x="40" y="440" fill="#f78166" font-size="16" font-weight="600">${nombre##*.}</text>
+  <rect x="436" y="416" width="100" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="486" y="440" fill="#8b949e" font-size="16" text-anchor="middle">access</text>
+  <rect x="541" y="416" width="22" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="552" y="440" fill="#8b949e" font-size="16" text-anchor="middle">.</text>
+  <rect x="568" y="416" width="60" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="598" y="440" fill="#8b949e" font-size="16" text-anchor="middle">log</text>
+  <rect x="633" y="416" width="22" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="644" y="440" fill="#8b949e" font-size="16" text-anchor="middle">.</text>
+  <rect x="660" y="416" width="34" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="677" y="440" fill="#8b949e" font-size="16" text-anchor="middle">2</text>
+  <rect x="699" y="416" width="22" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="710" y="440" fill="#8b949e" font-size="16" text-anchor="middle">.</text>
+  <rect x="726" y="416" width="48" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="750" y="440" fill="#79c0ff" font-size="16" text-anchor="middle">gz</text>
+  <text x="800" y="433" fill="#f0f6fc" font-size="15" font-weight="600">gz</text>
+  <text x="800" y="450" fill="#8b949e" font-size="13">hasta el último punto</text>
+  <text x="500" y="484" fill="#8b949e" font-size="13" text-anchor="middle">Una # o una %: lo más corto que encaje con el patrón. Dos: lo más largo.</text>
+</svg>

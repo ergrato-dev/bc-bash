@@ -25,6 +25,6 @@
 
 | Anterior | Siguiente |
 |---|---|
-| ← [Recursos — web](../4-recursos/webgrafia/README.md) | — |
+| ← [Recursos — web](../4-recursos/webgrafia/README.md) | [Semana 05 — Variables, comillas y expansiones](../../week-05-variables_comillas_y_expansiones/README.md) → |
 
 [↑ Semana 04](../README.md)

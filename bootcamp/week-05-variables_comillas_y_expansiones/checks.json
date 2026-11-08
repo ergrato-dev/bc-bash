@@ -1,0 +1,111 @@
+{
+  "semana": "05",
+  "titulo": "Variables, comillas y expansiones",
+  "checks": [
+    {
+      "id": "rename-ejecutable",
+      "descripcion": "bin/bk-rename tiene permisos 755 y el shebang #!/usr/bin/env bash",
+      "cmd": "stat -c %a {proyecto}/bin/bk-rename | grep -qx 755 && head -1 {proyecto}/bin/bk-rename | grep -qx '#!/usr/bin/env bash'",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 1"
+    },
+    {
+      "id": "rename-uso",
+      "descripcion": "sin argumentos, bk-rename escribe 'uso: bk-rename ...' en stderr y sale con código 2",
+      "cmd": "err=$({proyecto}/bin/bk-rename 2>&1 >/dev/null); echo \"codigo=$? $err\"",
+      "assert": "stdout~^codigo=2 uso: bk-rename ",
+      "pista": "3-proyecto/README.md, paso 1"
+    },
+    {
+      "id": "rename-no-existe",
+      "descripcion": "con un archivo que no existe, avisa en stderr con su nombre y sale con código 1",
+      "cmd": "err=$({proyecto}/bin/bk-rename nada.txt 2>&1 >/dev/null); echo \"codigo=$? $err\"",
+      "assert": "stdout~^codigo=1 .*nada\\.txt",
+      "pista": "3-proyecto/README.md, paso 1"
+    },
+    {
+      "id": "rename-mueve",
+      "descripcion": "'Mi Foto (1).JPG' pasa a llamarse mi-foto-1.jpg",
+      "cmd": "cp -r {semana}/3-proyecto/tests/fixtures/. . && {proyecto}/bin/bk-rename 'Mi Foto (1).JPG' > /dev/null && test -e mi-foto-1.jpg && test ! -e 'Mi Foto (1).JPG'",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, pasos 3 a 6 y 10"
+    },
+    {
+      "id": "rename-salida",
+      "descripcion": "imprime una línea 'origen -> destino'",
+      "cmd": "cp -r {semana}/3-proyecto/tests/fixtures/. . && {proyecto}/bin/bk-rename 'Mi Foto (1).JPG'",
+      "assert": "stdout~^Mi Foto \\(1\\)\\.JPG -> mi-foto-1\\.jpg$",
+      "pista": "3-proyecto/README.md, paso 9"
+    },
+    {
+      "id": "rename-dry-run",
+      "descripcion": "con --dry-run enseña el cambio con '(dry-run) ' delante y no renombra",
+      "cmd": "cp -r {semana}/3-proyecto/tests/fixtures/. . && out=$({proyecto}/bin/bk-rename --dry-run 'Mi Foto (1).JPG') && test -e 'Mi Foto (1).JPG' && test ! -e mi-foto-1.jpg && echo \"$out\"",
+      "assert": "stdout~^\\(dry-run\\) Mi Foto \\(1\\)\\.JPG -> mi-foto-1\\.jpg$",
+      "pista": "3-proyecto/README.md, pasos 2, 9 y 10"
+    },
+    {
+      "id": "rename-tildes",
+      "descripcion": "'Canción del Verano.MP3' pasa a cancion-del-verano.mp3",
+      "cmd": "cp -r {semana}/3-proyecto/tests/fixtures/. . && {proyecto}/bin/bk-rename 'Canción del Verano.MP3' > /dev/null && ls",
+      "assert": "stdout~^cancion-del-verano\\.mp3$",
+      "pista": "3-proyecto/README.md, paso 5"
+    },
+    {
+      "id": "rename-simbolos",
+      "descripcion": "'¡Oferta, Ya!.txt' pasa a oferta-ya.txt",
+      "cmd": "cp -r {semana}/3-proyecto/tests/fixtures/. . && {proyecto}/bin/bk-rename '¡Oferta, Ya!.txt' > /dev/null && ls",
+      "assert": "stdout~^oferta-ya\\.txt$",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "rename-carpeta",
+      "descripcion": "solo cambia el nombre del archivo, no el de su carpeta",
+      "cmd": "cp -r {semana}/3-proyecto/tests/fixtures/. . && {proyecto}/bin/bk-rename 'Fotos Viaje/IMG 0042.png' > /dev/null && find . -name '*.png'",
+      "assert": "stdout~^\\./Fotos Viaje/img-0042\\.png$",
+      "pista": "3-proyecto/README.md, paso 3"
+    },
+    {
+      "id": "rename-sin-cambios",
+      "descripcion": "un nombre que ya está bien: 'sin cambios: ...' y código 0",
+      "cmd": "cp -r {semana}/3-proyecto/tests/fixtures/. . && out=$({proyecto}/bin/bk-rename notas-2026.txt 2>&1); echo \"codigo=$? $out\"",
+      "assert": "stdout~^codigo=0 sin cambios: notas-2026\\.txt$",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "rename-no-pisa",
+      "descripcion": "si el destino ya existe, avisa en stderr, sale con código 1 y no toca ninguno de los dos",
+      "cmd": "cp -r {semana}/3-proyecto/tests/fixtures/. . && echo vieja > mi-foto-1.jpg; err=$({proyecto}/bin/bk-rename 'Mi Foto (1).JPG' 2>&1 >/dev/null); c=$?; test -e 'Mi Foto (1).JPG' && echo \"codigo=$c [${err:+aviso}] $(cat mi-foto-1.jpg)\"",
+      "assert": "stdout~^codigo=1 \\[aviso\\] vieja$",
+      "pista": "3-proyecto/README.md, paso 8"
+    },
+    {
+      "id": "rename-con-find",
+      "descripcion": "con find -exec renombra todos los archivos de prueba",
+      "cmd": "cp -r {semana}/3-proyecto/tests/fixtures/. . && find . -type f -exec {proyecto}/bin/bk-rename {} \\; > /dev/null && find . -type f | sort | paste -sd' '",
+      "assert": "stdout~^\\./Fotos Viaje/img-0042\\.png \\./cancion-del-verano\\.mp3 \\./mi-foto-1\\.jpg \\./notas-2026\\.txt \\./oferta-ya\\.txt$",
+      "pista": "3-proyecto/README.md, paso 11"
+    },
+    {
+      "id": "kit-limpio",
+      "descripcion": "los scripts del kit sin TODOs, con set -euo pipefail y limpios para shellcheck",
+      "cmd": "cd {proyecto} && ! grep -n TODO bin/bk-info bin/bk-run bin/bk-top-ips bin/bk-rename scaffold.sh && grep -qx 'set -euo pipefail' bin/bk-rename && shellcheck bin/bk-info bin/bk-run bin/bk-top-ips bin/bk-rename scaffold.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 12"
+    },
+    {
+      "id": "inventario-al-dia",
+      "descripcion": "docs/inventario.txt incluye ./bin/bk-rename",
+      "cmd": "grep -qx ./bin/bk-rename {proyecto}/docs/inventario.txt",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 13"
+    },
+    {
+      "id": "readme-completo",
+      "descripcion": "README.md sin TODOs, documenta bk-rename y tiene la bitácora de la semana 05",
+      "cmd": "cd {proyecto} && ! grep -n TODO README.md && grep -q 'bk-rename' README.md && grep -q '^- Semana 05: ' README.md",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 14"
+    }
+  ]
+}

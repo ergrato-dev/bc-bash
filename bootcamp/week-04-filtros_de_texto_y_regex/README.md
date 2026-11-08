@@ -67,6 +67,6 @@ Comprueba tu proyecto (`3-proyecto/starter/`) contra los 15 requisitos verificab
 
 | Anterior | Actual | Siguiente |
 |---|---|---|
-| [← Semana 03 — Redirección, pipes y códigos de salida](../week-03-redireccion_pipes_y_codigos_de_salida/README.md) | **Semana 04 — Filtros de texto y regex** | — |
+| [← Semana 03 — Redirección, pipes y códigos de salida](../week-03-redireccion_pipes_y_codigos_de_salida/README.md) | **Semana 04 — Filtros de texto y regex** | [Semana 05 — Variables, comillas y expansiones →](../week-05-variables_comillas_y_expansiones/README.md) |
 
 [← Volver al índice del bootcamp](../README.md)
