@@ -1,0 +1,42 @@
+name: Verificar contenido
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Principio de mínimo privilegio: solo lectura
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Construir el laboratorio
+        run: docker compose build
+
+      - name: Estructura, enlaces, SVG e idioma
+        run: docker compose run --rm -T lab ./scripts/verificar-enlaces.sh
+
+      - name: shellcheck de scripts/ y de las soluciones
+        run: |
+          docker compose run --rm -T lab bash -c '
+            shopt -s globstar nullglob
+            files=(scripts/*.sh)
+            for f in bootcamp/week-*/**/solucion/**/*; do
+              [[ -f $f ]] && head -1 "$f" | grep -q bash && files+=("$f")
+            done
+            shellcheck -S warning "${files[@]}"'
+
+      # Cada solución de referencia tiene que pasar el autograding de su semana.
+      # Cuando las soluciones se muden al repo del instructor, este paso va con ellas.
+      - name: Las soluciones pasan su checks.json
+        run: |
+          shopt -s nullglob
+          for f in bootcamp/week-*/checks.json; do
+            semana=$(basename "$(dirname "$f")" | cut -d- -f2)
+            ENTREGA=solucion ./scripts/verificar-semana.sh "$semana"
+          done

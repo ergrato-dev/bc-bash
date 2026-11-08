@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" role="img" aria-labelledby="t">
+  <title id="t">Bootcamp Bash — Zero to Advanced: de la primera terminal a scripts de producción</title>
+  <rect width="1200" height="280" fill="#0d1117"/>
+  <rect x="0" y="0" width="5" height="280" fill="#3fb950"/>
+
+  <rect x="44" y="40" width="470" height="200" rx="6" fill="#161b22" stroke="#30363d"/>
+  <circle cx="70" cy="62" r="5" fill="#f85149"/>
+  <circle cx="88" cy="62" r="5" fill="#e3b341"/>
+  <circle cx="106" cy="62" r="5" fill="#3fb950"/>
+  <text x="136" y="67" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" fill="#8b949e">alumno@bc-bash-lab</text>
+  <rect x="44" y="78" width="470" height="1" fill="#30363d"/>
+
+  <g font-family="Inter, system-ui, -apple-system, sans-serif" font-size="16">
+    <text x="64" y="110"><tspan fill="#3fb950">$</tspan><tspan fill="#f78166"> bashkit</tspan><tspan fill="#f0f6fc"> backup --db bashkit</tspan></text>
+    <text x="64" y="138" fill="#8b949e">[info] pg_dump bashkit → backups/2026-11-07.dump</text>
+    <text x="64" y="166" fill="#8b949e">[info] rotación: 7 copias, 2 borradas</text>
+    <text x="64" y="194"><tspan fill="#3fb950">$</tspan><tspan fill="#f78166"> echo</tspan><tspan fill="#79c0ff"> $?</tspan></text>
+    <text x="64" y="222" fill="#f0f6fc">0</text>
+  </g>
+
+  <g font-family="Inter, system-ui, -apple-system, sans-serif">
+    <text x="580" y="118" font-size="56" font-weight="700" fill="#f0f6fc">Bootcamp Bash</text>
+    <text x="580" y="162" font-size="26" fill="#3fb950">Zero to Advanced</text>
+    <text x="580" y="204" font-size="18" fill="#8b949e">14 semanas · 168 horas · 100% práctico</text>
+  </g>
+</svg>
