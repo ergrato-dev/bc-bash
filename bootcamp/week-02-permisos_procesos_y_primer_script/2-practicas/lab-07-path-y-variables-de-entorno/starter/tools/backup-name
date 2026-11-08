@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Propone un nombre de copia de seguridad con la fecha de hoy: backup-AAAA-MM-DD.tar.gz
+date +backup-%F.tar.gz

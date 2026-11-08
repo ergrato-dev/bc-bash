@@ -25,6 +25,6 @@
 
 | Anterior | Siguiente |
 |---|---|
-| ← [Recursos — web](../4-recursos/webgrafia/README.md) | — |
+| ← [Recursos — web](../4-recursos/webgrafia/README.md) | [Semana 02 — Permisos, procesos y primer script](../../week-02-permisos_procesos_y_primer_script/README.md) → |
 
 [↑ Semana 01](../README.md)

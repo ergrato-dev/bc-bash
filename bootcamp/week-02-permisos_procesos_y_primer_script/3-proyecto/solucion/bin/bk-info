@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# bk-info — ficha del sistema: quién eres, en qué equipo estás y con qué bash trabajas.
+# Para qué: lo primero que miras al entrar en una máquina que no conoces.
+# Sin set -euo pipefail todavía: llega en la semana 03.
+
+echo "== bashkit info =="
+
+# id lee el usuario del proceso. USER no sirve: en el laboratorio está vacía.
+echo "usuario: $(id -un)"
+echo "grupos: $(id -Gn)"
+
+echo "equipo: $(hostname)"
+
+# Variables de entorno: cada ejecución ve las del proceso que la lanzó, no unas fijas.
+echo "home: $HOME"
+echo "bash: $BASH_VERSION"
+echo "path: $PATH"

@@ -1,0 +1,29 @@
+# bashkit
+
+Mi CLI de operaciones en bash: la empiezo como un árbol de carpetas y crece cada semana del bootcamp hasta hacer backups de PostgreSQL en Docker.
+
+## Estructura
+
+| Carpeta | Para qué sirve |
+|---|---|
+| `bin/` | los comandos del kit, uno por archivo (`bk-info`, `bk-run`...) |
+| `lib/` | funciones compartidas que cargan los comandos |
+| `tests/` | pruebas automáticas del kit |
+| `docs/` | documentación: el mapa del kit y el inventario de archivos |
+
+## Recrear la estructura
+
+`./scaffold.sh` crea `bashkit/` con las cuatro carpetas, un `.gitkeep` en cada una y un `README.md`, dentro de la carpeta desde la que lo ejecutas. Se puede repetir sin perder lo que ya hay en las carpetas.
+
+## Comandos
+
+| Comando | Qué hace |
+|---|---|
+| `bin/bk-info` | imprime tu usuario, tus grupos, el equipo, tu home, la versión de bash y el PATH: lo primero que miras al entrar en una máquina |
+
+Con `bin/` en el `PATH` basta con escribir `bk-info`: `PATH="$PWD/bin:$PATH"` desde la raíz del kit.
+
+## Bitácora
+
+- Semana 01: aprendí a moverme por el árbol con rutas relativas y absolutas, a crear, mover y borrar archivos, y a listar el kit con `find`. Lo que más me costó: acordarme de que `rm` no tiene papelera.
+- Semana 02: aprendí a leer y cambiar permisos con `chmod`, a ver y parar procesos con `ps` y `kill`, y a convertir un archivo en un comando con el shebang, el bit de ejecución y el `PATH`. Lo que más me costó: entender que una variable sin `export` no llega a los programas que lanzo.
