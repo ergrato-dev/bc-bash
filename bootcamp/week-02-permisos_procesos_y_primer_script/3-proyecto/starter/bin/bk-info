@@ -1,0 +1,13 @@
+# TODO 1: sustituye esta línea por el shebang de bashkit (paso 2)
+# bk-info — ficha del sistema: quién eres, en qué equipo estás y con qué bash trabajas.
+# Para qué: lo primero que miras al entrar en una máquina que no conoces.
+# Sin set -euo pipefail todavía: llega en la semana 03.
+
+echo "== bashkit info =="
+
+# TODO 2: una línea "usuario: ..." con id -un y otra "grupos: ..." con id -Gn (paso 4)
+
+# TODO 3: una línea "equipo: ..." con hostname y otra "home: ..." con la variable HOME (paso 5)
+
+# TODO 4: una línea "bash: ..." con BASH_VERSION y otra "path: ..." con PATH (paso 6)
+echo "sin implementar"

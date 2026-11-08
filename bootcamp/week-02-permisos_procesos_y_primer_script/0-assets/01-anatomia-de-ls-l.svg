@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Anatomía de los permisos -rwxr-x--- en ls -l y su valor octal 750</title>
+  <rect width="900" height="420" fill="#0d1117"/>
+  <text x="450" y="38" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Los diez caracteres de ls -l</text>
+  <text x="450" y="64" fill="#8b949e" font-size="14" text-anchor="middle">-rwxr-x---  1  alumno  alumno  0  Nov  8 04:45  deploy.sh</text>
+
+  <!-- tipo -->
+  <rect x="80" y="90" width="60" height="70" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="110" y="137" fill="#e3b341" font-size="32" font-weight="600" text-anchor="middle">-</text>
+
+  <!-- dueño -->
+  <rect x="170" y="90" width="210" height="70" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="205" y="137" fill="#3fb950" font-size="32" font-weight="600" text-anchor="middle">r</text>
+  <text x="275" y="137" fill="#3fb950" font-size="32" font-weight="600" text-anchor="middle">w</text>
+  <text x="345" y="137" fill="#3fb950" font-size="32" font-weight="600" text-anchor="middle">x</text>
+
+  <!-- grupo -->
+  <rect x="400" y="90" width="210" height="70" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="435" y="137" fill="#58a6ff" font-size="32" font-weight="600" text-anchor="middle">r</text>
+  <text x="505" y="137" fill="#58a6ff" font-size="32" font-weight="600" text-anchor="middle">-</text>
+  <text x="575" y="137" fill="#58a6ff" font-size="32" font-weight="600" text-anchor="middle">x</text>
+
+  <!-- demás -->
+  <rect x="630" y="90" width="210" height="70" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="665" y="137" fill="#d2a8ff" font-size="32" font-weight="600" text-anchor="middle">-</text>
+  <text x="735" y="137" fill="#d2a8ff" font-size="32" font-weight="600" text-anchor="middle">-</text>
+  <text x="805" y="137" fill="#d2a8ff" font-size="32" font-weight="600" text-anchor="middle">-</text>
+
+  <!-- etiquetas -->
+  <text x="110" y="186" fill="#e3b341" font-size="15" font-weight="600" text-anchor="middle">tipo</text>
+  <text x="110" y="206" fill="#8b949e" font-size="13" text-anchor="middle">- archivo</text>
+  <text x="110" y="224" fill="#8b949e" font-size="13" text-anchor="middle">d carpeta</text>
+  <text x="110" y="242" fill="#8b949e" font-size="13" text-anchor="middle">l enlace</text>
+  <text x="275" y="186" fill="#3fb950" font-size="15" font-weight="600" text-anchor="middle">dueño (u)</text>
+  <text x="505" y="186" fill="#58a6ff" font-size="15" font-weight="600" text-anchor="middle">grupo (g)</text>
+  <text x="735" y="186" fill="#d2a8ff" font-size="15" font-weight="600" text-anchor="middle">los demás (o)</text>
+
+  <!-- valores -->
+  <text x="205" y="236" fill="#8b949e" font-size="15" text-anchor="middle">4</text>
+  <text x="275" y="236" fill="#8b949e" font-size="15" text-anchor="middle">2</text>
+  <text x="345" y="236" fill="#8b949e" font-size="15" text-anchor="middle">1</text>
+  <text x="435" y="236" fill="#8b949e" font-size="15" text-anchor="middle">4</text>
+  <text x="505" y="236" fill="#8b949e" font-size="15" text-anchor="middle">0</text>
+  <text x="575" y="236" fill="#8b949e" font-size="15" text-anchor="middle">1</text>
+  <text x="665" y="236" fill="#8b949e" font-size="15" text-anchor="middle">0</text>
+  <text x="735" y="236" fill="#8b949e" font-size="15" text-anchor="middle">0</text>
+  <text x="805" y="236" fill="#8b949e" font-size="15" text-anchor="middle">0</text>
+
+  <line x1="275" y1="250" x2="275" y2="280" stroke="#3fb950" stroke-width="2"/>
+  <line x1="505" y1="250" x2="505" y2="280" stroke="#58a6ff" stroke-width="2"/>
+  <line x1="735" y1="250" x2="735" y2="280" stroke="#d2a8ff" stroke-width="2"/>
+
+  <text x="275" y="312" fill="#3fb950" font-size="26" font-weight="600" text-anchor="middle">4+2+1 = 7</text>
+  <text x="505" y="312" fill="#58a6ff" font-size="26" font-weight="600" text-anchor="middle">4+0+1 = 5</text>
+  <text x="735" y="312" fill="#d2a8ff" font-size="26" font-weight="600" text-anchor="middle">0+0+0 = 0</text>
+
+  <rect x="200" y="340" width="500" height="56" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="330" y="375" fill="#f0f6fc" font-size="18" text-anchor="middle">r = 4 · w = 2 · x = 1</text>
+  <text x="560" y="375" fill="#f78166" font-size="18" font-weight="600" text-anchor="middle">chmod 750 deploy.sh</text>
+</svg>

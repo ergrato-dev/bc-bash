@@ -1,0 +1,111 @@
+{
+  "semana": "02",
+  "titulo": "Permisos, procesos y primer script",
+  "checks": [
+    {
+      "id": "info-shebang",
+      "descripcion": "bin/bk-info empieza por el shebang #!/usr/bin/env bash",
+      "cmd": "head -1 {proyecto}/bin/bk-info",
+      "assert": "stdout~^#!/usr/bin/env bash$",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "info-permisos",
+      "descripcion": "bin/bk-info tiene permisos 755 (rwxr-xr-x)",
+      "cmd": "stat -c %a {proyecto}/bin/bk-info",
+      "assert": "stdout~^755$",
+      "pista": "3-proyecto/README.md, paso 3"
+    },
+    {
+      "id": "info-cabecera",
+      "descripcion": "bin/bk-info se ejecuta directamente e imprime la cabecera",
+      "cmd": "{proyecto}/bin/bk-info",
+      "assert": "stdout~^== bashkit info ==$",
+      "pista": "3-proyecto/README.md, paso 3"
+    },
+    {
+      "id": "info-usuario",
+      "descripcion": "bk-info imprime la línea usuario: con tu nombre de usuario",
+      "cmd": "{proyecto}/bin/bk-info | grep -qx \"usuario: $(id -un)\"",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 4"
+    },
+    {
+      "id": "info-grupos",
+      "descripcion": "bk-info imprime la línea grupos: con todos tus grupos",
+      "cmd": "{proyecto}/bin/bk-info | grep -qx \"grupos: $(id -Gn)\"",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 4"
+    },
+    {
+      "id": "info-equipo",
+      "descripcion": "bk-info imprime la línea equipo: con el nombre del equipo",
+      "cmd": "{proyecto}/bin/bk-info | grep -qx \"equipo: $(hostname)\"",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 5"
+    },
+    {
+      "id": "info-home",
+      "descripcion": "bk-info lee el home de la variable HOME, no lo escribe a mano",
+      "cmd": "{proyecto}/bin/bk-info | grep -qx \"home: $HOME\"",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 5"
+    },
+    {
+      "id": "info-bash",
+      "descripcion": "bk-info imprime la versión de bash con BASH_VERSION",
+      "cmd": "{proyecto}/bin/bk-info | grep -qx \"bash: $BASH_VERSION\"",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "info-path",
+      "descripcion": "bk-info imprime el PATH que recibe al ejecutarse",
+      "cmd": "PATH=/usr/bin:/bin {proyecto}/bin/bk-info | grep -qx 'path: /usr/bin:/bin'",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "info-sin-implementar",
+      "descripcion": "bk-info ya no imprime 'sin implementar'",
+      "cmd": "bash {proyecto}/bin/bk-info",
+      "assert": "stdout!~sin implementar",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "info-desde-path",
+      "descripcion": "con bin/ en el PATH, bk-info funciona por su nombre, sin ruta",
+      "cmd": "PATH=\"{proyecto}/bin:$PATH\" && bk-info",
+      "assert": "stdout~^usuario: ",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "info-limpio",
+      "descripcion": "bin/bk-info no tiene TODOs y shellcheck no da avisos",
+      "cmd": "! grep -n TODO {proyecto}/bin/bk-info && shellcheck {proyecto}/bin/bk-info",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 8"
+    },
+    {
+      "id": "scaffold-ejecutable",
+      "descripcion": "scaffold.sh es ejecutable y crea bashkit/ con ./scaffold.sh",
+      "cmd": "[[ -x {proyecto}/scaffold.sh ]] && {proyecto}/scaffold.sh && [[ -f bashkit/bin/.gitkeep ]]",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 9"
+    },
+    {
+      "id": "inventario-al-dia",
+      "descripcion": "docs/inventario.txt incluye ./bin/bk-info",
+      "cmd": "grep -qx './bin/bk-info' {proyecto}/docs/inventario.txt",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 10"
+    },
+    {
+      "id": "readme-completo",
+      "descripcion": "README.md sin TODOs, documenta bk-info y tiene la bitácora de la semana 02",
+      "cmd": "cd {proyecto} && ! grep -n TODO README.md && grep -q 'bk-info' README.md && grep -q 'Semana 02' README.md",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 11"
+    }
+  ]
+}
