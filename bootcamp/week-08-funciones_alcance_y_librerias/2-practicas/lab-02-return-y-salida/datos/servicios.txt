@@ -1,0 +1,5 @@
+ssh 22
+http 80
+https 443
+postgres 5432
+legacy 99999

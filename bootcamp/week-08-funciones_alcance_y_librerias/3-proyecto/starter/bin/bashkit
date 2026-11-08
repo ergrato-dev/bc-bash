@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# bashkit — un solo comando para todo el kit: "bashkit clean 7 logs" ejecuta bin/bk-clean.
+# Para qué: que solo haga falta recordar un nombre, y que "bashkit help" enseñe el resto.
+set -euo pipefail
+
+# TODO(semana 08) 4: bin_dir con la carpeta de este archivo (BASH_SOURCE[0]) y source de lib/core.sh.
+
+# Los subcomandos salen de los archivos bk-* que hay en bin/.
+list_subcommands() {
+  # TODO(semana 08) 6: un for local por "$bin_dir"/bk-*; si es ejecutable, "  nombre" sin bk-.
+  echo "  (sin implementar)"
+}
+
+usage() {
+  echo "uso: bashkit <subcomando> [argumentos...]"
+  echo "subcomandos:"
+  list_subcommands
+}
+
+main() {
+  # TODO(semana 08) 5: case con help/-h/--help (uso por stdout, exit 0) y "" (uso por stderr, exit 2).
+
+  # TODO(semana 08) 7: sub local con $1 y shift; si no encaja con ^[a-z][a-z-]*$, die con código 2.
+
+  # TODO(semana 08) 8: si "$bin_dir/bk-$sub" no es ejecutable, die con código 2; si lo es, exec con "$@".
+  echo "sin implementar: $*"
+}
+
+main "$@"

@@ -1,0 +1,118 @@
+{
+  "semana": "08",
+  "titulo": "Funciones, alcance y librerías",
+  "checks": [
+    {
+      "id": "core-libreria",
+      "descripcion": "lib/core.sh existe, sin bit de ejecución, y cargarlo con source no imprime nada ni cambia las opciones de la shell",
+      "cmd": "f={proyecto}/lib/core.sh; test -f $f && test ! -x $f && out=$(bash -c \"o1=\\$-; source $f; echo \\$o1 \\$-\" 2>&1) && echo \"[$out]\"",
+      "assert": "stdout~^\\[(\\S+) \\1\\]$",
+      "pista": "3-proyecto/README.md, paso 1"
+    },
+    {
+      "id": "core-log",
+      "descripcion": "log escribe 'nombre-del-script: mensaje' en stderr y nada en stdout",
+      "cmd": "printf 'source %s\\nlog \"hola  mundo\"\\n' {proyecto}/lib/core.sh > prueba.sh && out=$(bash prueba.sh 2>/dev/null) && err=$(bash prueba.sh 2>&1 >/dev/null) && echo \"out=[$out] err=[$err]\"",
+      "assert": "stdout~^out=\\[\\] err=\\[prueba\\.sh: hola  mundo\\]$",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "core-die",
+      "descripcion": "die avisa en stderr y para el script con código 1, o con el código que recibe",
+      "cmd": "printf 'source %s\\ndie \"no hay datos\"\\necho sigue\\n' {proyecto}/lib/core.sh > a.sh; printf 'source %s\\ndie \"uso malo\" 2\\n' {proyecto}/lib/core.sh > b.sh; a=$(bash a.sh 2>&1); ca=$?; b=$(bash b.sh 2>&1); cb=$?; echo \"$ca [$a] $cb [$b]\"",
+      "assert": "stdout~^1 \\[a\\.sh: no hay datos\\] 2 \\[b\\.sh: uso malo\\]$",
+      "pista": "3-proyecto/README.md, paso 3"
+    },
+    {
+      "id": "core-require",
+      "descripcion": "require no dice nada si los comandos existen; si falta uno, avisa con su nombre y sale con código 1",
+      "cmd": "printf 'source %s\\nrequire bash find\\necho bien\\nrequire grep no-existe-xyz\\necho mal\\n' {proyecto}/lib/core.sh > r.sh; out=$(bash r.sh 2>&1); echo \"$? [$(echo $out)]\"",
+      "assert": "stdout~^1 \\[bien r\\.sh: .*no-existe-xyz[^]]*\\]$",
+      "pista": "3-proyecto/README.md, paso 4"
+    },
+    {
+      "id": "core-local",
+      "descripcion": "require no deja variables suyas en el script que la llama: usa local",
+      "cmd": "printf 'cmd=mio\\nsource %s\\nrequire bash\\necho \"cmd=$cmd\"\\n' {proyecto}/lib/core.sh > l.sh; bash l.sh",
+      "assert": "stdout~^cmd=mio$",
+      "pista": "3-proyecto/README.md, paso 4"
+    },
+    {
+      "id": "bashkit-ejecutable",
+      "descripcion": "bin/bashkit tiene permisos 755 y el shebang #!/usr/bin/env bash",
+      "cmd": "stat -c %a {proyecto}/bin/bashkit | grep -qx 755 && head -1 {proyecto}/bin/bashkit | grep -qx '#!/usr/bin/env bash'",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 5"
+    },
+    {
+      "id": "bashkit-ayuda",
+      "descripcion": "help, -h y --help escriben el uso en stdout, con la lista de subcomandos sacada de bin/, y salen con código 0",
+      "cmd": "r=''; for a in help -h --help; do out=$({proyecto}/bin/bashkit $a 2>/dev/null); r=\"$r codigo=$? $(echo $out) |\"; done; echo \"$r\"",
+      "assert": "stdout~^( codigo=0 uso: bashkit .*check.*clean.*info.*rename.*run.*top-ips \\|){3}$",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "bashkit-uso",
+      "descripcion": "sin argumentos, bashkit escribe el uso en stderr y sale con código 2",
+      "cmd": "err=$({proyecto}/bin/bashkit 2>&1 >/dev/null); echo \"codigo=$? $err\"",
+      "assert": "stdout~^codigo=2 uso: bashkit ",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "bashkit-desconocido",
+      "descripcion": "con un subcomando que no existe, o con un nombre con / o mayúsculas, avisa en stderr con el nombre y sale con código 2",
+      "cmd": "for a in nada ../bin/bk-info INFO; do err=$({proyecto}/bin/bashkit \"$a\" 2>&1 >/dev/null); c=$?; n=no; [[ $err == *\"'$a'\"* ]] && n=si; echo \"codigo=$c nombre=$n\"; done",
+      "assert": "stdout!~^codigo=([013-9]|2[0-9]|2 nombre=no)",
+      "pista": "3-proyecto/README.md, pasos 8 y 9"
+    },
+    {
+      "id": "bashkit-ejecuta",
+      "descripcion": "bashkit check ip ... ejecuta bk-check con sus argumentos y sale con su mismo código",
+      "cmd": "a=$({proyecto}/bin/bashkit check ip 10.0.0.1); ca=$?; {proyecto}/bin/bashkit check ip 999.1.1.1 2>/dev/null; cb=$?; {proyecto}/bin/bashkit clean abc . 2>/dev/null; echo \"$ca $cb $? [$a]\"",
+      "assert": "stdout~^0 1 2 \\[ok",
+      "pista": "3-proyecto/README.md, paso 9"
+    },
+    {
+      "id": "bashkit-argumentos",
+      "descripcion": "los argumentos llegan enteros al subcomando: uno con espacios sigue siendo uno",
+      "cmd": "BK_LOG=r.log {proyecto}/bin/bashkit run printf '[%s]' 'a  b' '' c",
+      "assert": "stdout~^\\[a  b\\]\\[\\]\\[c\\]$",
+      "pista": "3-proyecto/README.md, paso 9"
+    },
+    {
+      "id": "bashkit-por-path",
+      "descripcion": "bashkit funciona desde cualquier carpeta, llamado por el PATH",
+      "cmd": "mkdir -p otra/sitio && cd otra/sitio && PATH={proyecto}/bin:$PATH bashkit check semver 1.2.3",
+      "assert": "stdout~^ok",
+      "pista": "3-proyecto/README.md, paso 10"
+    },
+    {
+      "id": "clean-usa-core",
+      "descripcion": "bk-clean carga lib/core.sh, avisa con die y sigue funcionando igual, también llamado por bashkit",
+      "cmd": "cd {proyecto} && grep -qE '^(source|\\.) .*lib/core\\.sh' bin/bk-clean && grep -q 'die ' bin/bk-clean && cd {tmp} && err=$({proyecto}/bin/bashkit clean 7 no-existe 2>&1); echo \"codigo=$? $err\"",
+      "assert": "stdout~^codigo=1 bk-clean: .*no-existe",
+      "pista": "3-proyecto/README.md, paso 11"
+    },
+    {
+      "id": "kit-limpio",
+      "descripcion": "el kit sin TODOs y limpio para shellcheck -x, que sigue el source hasta lib/core.sh",
+      "cmd": "cd {proyecto} && ! grep -rn TODO bin lib scaffold.sh && shellcheck -x bin/bashkit bin/bk-info bin/bk-run bin/bk-top-ips bin/bk-rename bin/bk-check bin/bk-clean lib/core.sh scaffold.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 12"
+    },
+    {
+      "id": "inventario-al-dia",
+      "descripcion": "docs/inventario.txt incluye ./bin/bashkit y ./lib/core.sh",
+      "cmd": "grep -qx ./bin/bashkit {proyecto}/docs/inventario.txt && grep -qx ./lib/core.sh {proyecto}/docs/inventario.txt",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 13"
+    },
+    {
+      "id": "readme-completo",
+      "descripcion": "README.md sin TODOs, documenta bashkit y core.sh y tiene la bitácora de la semana 08",
+      "cmd": "cd {proyecto} && ! grep -n TODO README.md && grep -q 'bin/bashkit' README.md && grep -q 'core.sh' README.md && grep -q '^- Semana 08: ' README.md",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 14"
+    }
+  ]
+}
