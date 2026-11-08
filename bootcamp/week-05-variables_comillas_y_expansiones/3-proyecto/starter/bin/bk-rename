@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# bk-rename — cambia el nombre de un archivo por uno sin espacios, tildes ni mayúsculas.
+# Para qué: los nombres como "Mi Foto (1).JPG" obligan a citar en cada comando y se rompen
+# en scripts, URLs y servidores que distinguen mayúsculas.
+set -euo pipefail
+
+# TODO 1: si $1 es --dry-run, guarda 1 en dry_run y quítalo con shift (paso 2)
+dry_run=""
+
+test "$#" -gt 0 || { echo "uso: bk-rename [--dry-run] <archivo>" >&2; exit 2; }
+src="$1"
+test -e "$src" || { echo "bk-rename: no existe '$src'" >&2; exit 1; }
+
+# TODO 2: separa de "$src" el nombre (name) y la carpeta (dir) (paso 3)
+
+# TODO 3: el nombre nuevo, en minúsculas y con - en lugar de espacios (paso 4)
+# TODO 4: las tildes y la ñ, a su letra sin tilde (paso 5)
+# TODO 5: borra todo lo que no sea a-z, 0-9, punto, guion o guion bajo (paso 6)
+
+# TODO 6: si el nombre no cambia, "sin cambios: ..." y código 0 (paso 7)
+# TODO 7: si el destino ya existe, mensaje a stderr y código 1 (paso 8)
+
+# TODO 8: imprime "origen -> destino", con "(dry-run) " delante si toca (paso 9)
+# TODO 9: renombra con mv, salvo en --dry-run (paso 10)
+echo "sin implementar" >&2
+exit 1

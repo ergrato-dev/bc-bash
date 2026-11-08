@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Lo que hace bash con rm $f y con rm "$f" cuando f vale viejo *.log: sustituir, partir por espacios, expandir globs y quitar comillas</title>
+  <rect width="1000" height="520" fill="#0d1117"/>
+  <text x="500" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Con f='viejo *.log' y una carpeta con a.log y b.log</text>
+
+  <text x="470" y="76" fill="#f85149" font-size="16" font-weight="600" text-anchor="middle">sin comillas</text>
+  <text x="790" y="76" fill="#3fb950" font-size="16" font-weight="600" text-anchor="middle">con comillas</text>
+
+  <text x="40" y="118" fill="#f0f6fc" font-size="15" font-weight="600">Escribes</text>
+  <rect x="320" y="92" width="300" height="40" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="470" y="118" fill="#f78166" font-size="16" text-anchor="middle">rm $f</text>
+  <rect x="640" y="92" width="300" height="40" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="790" y="118" fill="#f78166" font-size="16" text-anchor="middle">rm "$f"</text>
+
+  <text x="40" y="190" fill="#f0f6fc" font-size="15" font-weight="600">1. Sustituye</text>
+  <text x="40" y="210" fill="#8b949e" font-size="13">$var, ${ }, $( ) y $(( ))</text>
+  <rect x="320" y="172" width="300" height="40" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="470" y="198" fill="#79c0ff" font-size="16" text-anchor="middle">rm viejo *.log</text>
+  <rect x="640" y="172" width="300" height="40" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="790" y="198" fill="#79c0ff" font-size="16" text-anchor="middle">rm "viejo *.log"</text>
+
+  <text x="40" y="270" fill="#f0f6fc" font-size="15" font-weight="600">2. Parte por espacios</text>
+  <text x="40" y="290" fill="#8b949e" font-size="13">word splitting</text>
+  <rect x="320" y="252" width="60" height="40" rx="8" fill="#161b22" stroke="#e3b341"/>
+  <text x="350" y="278" fill="#79c0ff" font-size="16" text-anchor="middle">rm</text>
+  <rect x="390" y="252" width="100" height="40" rx="8" fill="#161b22" stroke="#e3b341"/>
+  <text x="440" y="278" fill="#79c0ff" font-size="16" text-anchor="middle">viejo</text>
+  <rect x="500" y="252" width="120" height="40" rx="8" fill="#161b22" stroke="#e3b341"/>
+  <text x="560" y="278" fill="#79c0ff" font-size="16" text-anchor="middle">*.log</text>
+  <rect x="640" y="252" width="60" height="40" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="670" y="278" fill="#79c0ff" font-size="16" text-anchor="middle">rm</text>
+  <rect x="710" y="252" width="230" height="40" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="825" y="278" fill="#79c0ff" font-size="16" text-anchor="middle">viejo *.log</text>
+
+  <text x="40" y="350" fill="#f0f6fc" font-size="15" font-weight="600">3. Expande los globs</text>
+  <text x="40" y="370" fill="#8b949e" font-size="13">* ? [ ] por los archivos que encajan</text>
+  <rect x="320" y="332" width="60" height="40" rx="8" fill="#161b22" stroke="#e3b341"/>
+  <text x="350" y="358" fill="#79c0ff" font-size="16" text-anchor="middle">rm</text>
+  <rect x="390" y="332" width="100" height="40" rx="8" fill="#161b22" stroke="#e3b341"/>
+  <text x="440" y="358" fill="#79c0ff" font-size="16" text-anchor="middle">viejo</text>
+  <rect x="500" y="332" width="55" height="40" rx="8" fill="#161b22" stroke="#e3b341"/>
+  <text x="527" y="358" fill="#79c0ff" font-size="15" text-anchor="middle">a.log</text>
+  <rect x="565" y="332" width="55" height="40" rx="8" fill="#161b22" stroke="#e3b341"/>
+  <text x="592" y="358" fill="#79c0ff" font-size="15" text-anchor="middle">b.log</text>
+  <rect x="640" y="332" width="60" height="40" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="670" y="358" fill="#79c0ff" font-size="16" text-anchor="middle">rm</text>
+  <rect x="710" y="332" width="230" height="40" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="825" y="358" fill="#79c0ff" font-size="16" text-anchor="middle">viejo *.log</text>
+
+  <text x="40" y="430" fill="#f0f6fc" font-size="15" font-weight="600">4. Quita las comillas</text>
+  <text x="40" y="450" fill="#8b949e" font-size="13">y ejecuta el comando</text>
+  <rect x="320" y="408" width="300" height="56" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="470" y="432" fill="#f85149" font-size="15" font-weight="600" text-anchor="middle">rm recibe 3 archivos</text>
+  <text x="470" y="452" fill="#8b949e" font-size="13" text-anchor="middle">borra a.log y b.log, que nadie nombró</text>
+  <rect x="640" y="408" width="300" height="56" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="790" y="432" fill="#3fb950" font-size="15" font-weight="600" text-anchor="middle">rm recibe 1 archivo</text>
+  <text x="790" y="452" fill="#8b949e" font-size="13" text-anchor="middle">el que se llama viejo *.log, y nada más</text>
+
+  <text x="500" y="500" fill="#8b949e" font-size="13" text-anchor="middle">El paso 2 parte lo que sale de una expansión sin comillas; el 3, toda palabra sin comillas. Entre comillas, bash se salta los dos.</text>
+</svg>
