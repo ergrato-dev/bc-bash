@@ -1,0 +1,31 @@
+# Laboratorio de bc-bash. Uso: docs/setup-entorno.md
+#   docker compose build
+#   docker compose run --rm lab          # shell dentro del laboratorio
+#   ./scripts/verificar-semana.sh NN     # usa este contenedor por defecto
+#   docker compose --profile db up -d db # PostgreSQL para la semana 14
+services:
+  lab:
+    build: lab
+    image: bc-bash-lab:5.2
+    hostname: bc-bash-lab
+    tty: true
+    stdin_open: true
+    environment:
+      PGHOST: db
+      PGUSER: bashkit
+      PGPASSWORD: bashkit
+      PGDATABASE: bashkit
+    volumes:
+      - .:/bc-bash
+
+  db:
+    image: postgres:17
+    profiles: [db]
+    environment:
+      POSTGRES_USER: bashkit
+      POSTGRES_PASSWORD: bashkit
+      POSTGRES_DB: bashkit
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "bashkit"]
+      interval: 2s
+      retries: 15
