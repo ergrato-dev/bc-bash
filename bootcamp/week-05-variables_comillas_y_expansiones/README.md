@@ -67,6 +67,6 @@ Comprueba tu proyecto (`3-proyecto/starter/`) contra los 15 requisitos verificab
 
 | Anterior | Actual | Siguiente |
 |---|---|---|
-| [← Semana 04 — Filtros de texto y regex](../week-04-filtros_de_texto_y_regex/README.md) | **Semana 05 — Variables, comillas y expansiones** | — |
+| [← Semana 04 — Filtros de texto y regex](../week-04-filtros_de_texto_y_regex/README.md) | **Semana 05 — Variables, comillas y expansiones** | [Semana 06 — Condicionales, case y regex →](../week-06-condicionales_case_y_regex/README.md) |
 
 [← Volver al índice del bootcamp](../README.md)

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# bk-check — comprueba que un valor es una IP v4, un email o una versión semántica.
+# Para qué: un script que recibe datos de fuera los valida antes de usarlos; un dato
+# mal formado que pasa hoy es un error raro, y difícil de rastrear, mañana.
+set -euo pipefail
+
+usage="uso: bk-check <ip|email|semver> <valor>"
+
+# TODO 1: con -h o --help, imprime el uso en stdout y sale con 0 (paso 2)
+
+# TODO 2: si no hay exactamente 2 argumentos, el uso a stderr y código 2 (paso 3)
+kind="$1"
+value="$2"
+
+# TODO 3: un case sobre "$kind" con la rama *) del tipo desconocido (paso 4)
+# TODO 4: la rama ip (paso 5)
+# TODO 5: la rama email (paso 6)
+# TODO 6: la rama semver (paso 7)
+
+# TODO 7: si "$value" no encaja con $re, avisa en stderr y sale con 1 (paso 8)
+
+# TODO 8: imprime "ok: ..." y, con semver, los números de BASH_REMATCH (paso 9)
+echo "sin implementar: $kind $value"
+exit 1
