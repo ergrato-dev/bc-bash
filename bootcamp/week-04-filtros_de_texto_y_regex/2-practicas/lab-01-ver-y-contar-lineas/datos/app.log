@@ -1,0 +1,25 @@
+2026-11-07 08:00:01 INFO web: servicio arrancado en el puerto 8080
+2026-11-07 08:00:02 INFO db: conexión abierta con postgres
+2026-11-07 08:03:17 INFO web: GET /index.html 200
+2026-11-07 08:05:40 WARN web: respuesta lenta en /api/orders (1840 ms)
+2026-11-07 08:07:02 INFO web: GET /login 200
+2026-11-07 08:12:55 ERROR db: timeout al consultar pedidos
+2026-11-07 08:13:01 INFO db: reintento correcto
+2026-11-07 08:20:44 WARN disk: Disco al 85% en /var
+2026-11-07 08:31:09 INFO web: GET /api/users 200
+2026-11-07 08:45:23 ERROR web: POST /api/orders 500
+2026-11-07 09:02:11 INFO cron: copia nocturna terminada
+2026-11-07 09:05:12 INFO webhook: aviso enviado al canal de guardias
+2026-11-07 09:10:37 WARN disk: disco al 91% en /var
+2026-11-07 09:15:00 INFO web: GET /static/app.css 304
+2026-11-07 09:22:48 ERROR disk: disco lleno en /var, no se puede escribir
+2026-11-07 09:22:49 ERROR web: POST /api/orders 500
+2026-11-07 09:30:00 INFO admin: limpieza manual de /var/tmp
+2026-11-07 09:31:12 INFO disk: disco al 64% en /var
+2026-11-07 09:40:05 INFO web: GET /index.html 200
+2026-11-07 09:55:31 WARN db: 3 conexiones en espera
+2026-11-07 10:01:00 INFO web: GET /api/users 200
+2026-11-07 10:14:27 ERROR db: autenticación fallida para el usuario report
+2026-11-07 10:20:03 INFO web: GET /login 200
+2026-11-07 10:33:48 WARN web: respuesta lenta en /api/users (2210 ms)
+2026-11-07 10:45:00 INFO web: servicio detenido

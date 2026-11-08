@@ -67,6 +67,6 @@ Comprueba tu proyecto (`3-proyecto/starter/`) contra los 16 requisitos verificab
 
 | Anterior | Actual | Siguiente |
 |---|---|---|
-| [← Semana 02 — Permisos, procesos y primer script](../week-02-permisos_procesos_y_primer_script/README.md) | **Semana 03 — Redirección, pipes y códigos de salida** | — |
+| [← Semana 02 — Permisos, procesos y primer script](../week-02-permisos_procesos_y_primer_script/README.md) | **Semana 03 — Redirección, pipes y códigos de salida** | [Semana 04 — Filtros de texto y regex →](../week-04-filtros_de_texto_y_regex/README.md) |
 
 [← Volver al índice del bootcamp](../README.md)

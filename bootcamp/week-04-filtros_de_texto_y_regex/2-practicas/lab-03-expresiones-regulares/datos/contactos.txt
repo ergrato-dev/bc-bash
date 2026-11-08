@@ -1,0 +1,7 @@
+ana;ana.garcia@ejemplo.com;612 345 678
+luis;luis@ejemplo.com;612345678
+marta;marta@ejemplo-com;+34 699 111 222
+pablo;pablo.ruiz@correo.es;699 111 22
+sofía;sofia@ejemploscom.net;611 222 333
+jorge;jorge@@ejemplo.com;622 333 444
+lucía;LUCIA@EJEMPLO.COM;633 444 555

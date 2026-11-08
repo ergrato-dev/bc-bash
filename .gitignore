@@ -25,3 +25,7 @@ tmp/
 # Carpetas de trabajo que crean los labs
 bootcamp/*/2-practicas/*/zona/
 bootcamp/*/3-proyecto/zona/
+
+# Datos de los labs y del proyecto: logs de ejemplo que sí van al repo
+!bootcamp/*/2-practicas/*/datos/*.log
+!bootcamp/*/3-proyecto/tests/*.log

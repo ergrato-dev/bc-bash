@@ -25,6 +25,6 @@
 
 | Anterior | Siguiente |
 |---|---|
-| ← [Recursos — web](../4-recursos/webgrafia/README.md) | — |
+| ← [Recursos — web](../4-recursos/webgrafia/README.md) | [Semana 04 — Filtros de texto y regex](../../week-04-filtros_de_texto_y_regex/README.md) → |
 
 [↑ Semana 03](../README.md)
