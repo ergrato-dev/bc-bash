@@ -16,7 +16,7 @@ está en construcción (sin enlace hasta que exista la carpeta).
 |:--:|---|:--:|
 | [01](week-01-terminal_y_sistema_de_archivos/README.md) | Terminal y sistema de archivos | ✅ |
 | [02](week-02-permisos_procesos_y_primer_script/README.md) | Permisos, procesos y primer script | ✅ |
-| 03 | Redirección, pipes y códigos de salida | ⬜ |
+| [03](week-03-redireccion_pipes_y_codigos_de_salida/README.md) | Redirección, pipes y códigos de salida | ✅ |
 | 04 | Filtros de texto y regex | ⬜ |
 
 ### Fase 2 — Programar en bash (S05-09, 60 h)

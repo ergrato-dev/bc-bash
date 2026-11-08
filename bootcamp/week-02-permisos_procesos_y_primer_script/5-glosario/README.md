@@ -25,6 +25,6 @@
 
 | Anterior | Siguiente |
 |---|---|
-| ← [Recursos — web](../4-recursos/webgrafia/README.md) | — |
+| ← [Recursos — web](../4-recursos/webgrafia/README.md) | [Semana 03 — Redirección, pipes y códigos de salida](../../week-03-redireccion_pipes_y_codigos_de_salida/README.md) → |
 
 [↑ Semana 02](../README.md)

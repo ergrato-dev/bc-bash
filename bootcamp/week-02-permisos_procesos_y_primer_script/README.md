@@ -67,6 +67,6 @@ Comprueba tu proyecto (`3-proyecto/starter/`) contra los 15 requisitos verificab
 
 | Anterior | Actual | Siguiente |
 |---|---|---|
-| [← Semana 01 — Terminal y sistema de archivos](../week-01-terminal_y_sistema_de_archivos/README.md) | **Semana 02 — Permisos, procesos y primer script** | — |
+| [← Semana 01 — Terminal y sistema de archivos](../week-01-terminal_y_sistema_de_archivos/README.md) | **Semana 02 — Permisos, procesos y primer script** | [Semana 03 — Redirección, pipes y códigos de salida →](../week-03-redireccion_pipes_y_codigos_de_salida/README.md) |
 
 [← Volver al índice del bootcamp](../README.md)

@@ -1,0 +1,9 @@
+./README.md
+./scaffold.sh
+./docs/mapa.txt
+./docs/inventario.txt
+./tests/.gitkeep
+./bin/bk-info
+./bin/bk-run
+./bin/.gitkeep
+./lib/.gitkeep
