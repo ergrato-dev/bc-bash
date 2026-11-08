@@ -1,0 +1,2 @@
+# El CSV del lab 04 de la semana 04 trae finales de línea de Windows a propósito: no convertirlos
+bootcamp/*/2-practicas/*/datos/*.csv -text

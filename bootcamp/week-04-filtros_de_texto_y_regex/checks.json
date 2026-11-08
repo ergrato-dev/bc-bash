@@ -1,0 +1,111 @@
+{
+  "semana": "04",
+  "titulo": "Filtros de texto y regex",
+  "checks": [
+    {
+      "id": "top-ejecutable",
+      "descripcion": "bin/bk-top-ips tiene permisos 755 y el shebang #!/usr/bin/env bash",
+      "cmd": "stat -c %a {proyecto}/bin/bk-top-ips | grep -qx 755 && head -1 {proyecto}/bin/bk-top-ips | grep -qx '#!/usr/bin/env bash'",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 1"
+    },
+    {
+      "id": "top-uso",
+      "descripcion": "sin argumentos, bk-top-ips escribe 'uso: bk-top-ips ...' en stderr y sale con código 2",
+      "cmd": "err=$({proyecto}/bin/bk-top-ips 2>&1 >/dev/null); echo \"codigo=$? $err\"",
+      "assert": "stdout~^codigo=2 uso: bk-top-ips ",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "top-no-legible",
+      "descripcion": "con un log que no existe, avisa en stderr con su nombre y sale con código 1",
+      "cmd": "err=$({proyecto}/bin/bk-top-ips nada.log 2>&1 >/dev/null); echo \"codigo=$? $err\"",
+      "assert": "stdout~^codigo=1 .*nada\\.log",
+      "pista": "3-proyecto/README.md, paso 3"
+    },
+    {
+      "id": "top-primero",
+      "descripcion": "la primera línea es la IP con más peticiones: 9 203.0.113.7",
+      "cmd": "{proyecto}/bin/bk-top-ips {semana}/3-proyecto/tests/access.log | head -1",
+      "assert": "stdout~^ *9 203\\.0\\.113\\.7$",
+      "pista": "3-proyecto/README.md, pasos 4 y 5"
+    },
+    {
+      "id": "top-solo-inicio",
+      "descripcion": "solo cuenta la IP del principio de la línea, no las del referer ni ::1",
+      "cmd": "out=$({proyecto}/bin/bk-top-ips {semana}/3-proyecto/tests/access.log 50 2>&1) && test -n \"$out\" && ! grep -vE '^ *[0-9]+ ([0-9]{1,3}\\.){3}[0-9]{1,3}$' <<< \"$out\"",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 4"
+    },
+    {
+      "id": "top-total",
+      "descripcion": "los recuentos suman las 41 peticiones que empiezan por una IP",
+      "cmd": "echo $(( $({proyecto}/bin/bk-top-ips {semana}/3-proyecto/tests/access.log 50 | tr -s ' ' | cut -d' ' -f2 | paste -sd+) ))",
+      "assert": "stdout~^41$",
+      "pista": "3-proyecto/README.md, paso 5"
+    },
+    {
+      "id": "top-orden",
+      "descripcion": "ordena de más a menos peticiones, como número",
+      "cmd": "{proyecto}/bin/bk-top-ips {semana}/3-proyecto/tests/access.log 50 > top.txt && test -s top.txt && sort -rn -c top.txt",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 5"
+    },
+    {
+      "id": "top-diez",
+      "descripcion": "sin N, enseña 10 líneas",
+      "cmd": "{proyecto}/bin/bk-top-ips {semana}/3-proyecto/tests/access.log | wc -l",
+      "assert": "stdout~^10$",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "top-n",
+      "descripcion": "con N=3, la tercera línea es 5 192.0.2.15",
+      "cmd": "{proyecto}/bin/bk-top-ips {semana}/3-proyecto/tests/access.log 3 | tail -1",
+      "assert": "stdout~^ *5 192\\.0\\.2\\.15$",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "top-n-lineas",
+      "descripcion": "con N=3, enseña exactamente 3 líneas",
+      "cmd": "{proyecto}/bin/bk-top-ips {semana}/3-proyecto/tests/access.log 3 | wc -l",
+      "assert": "stdout~^3$",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "top-sin-ips",
+      "descripcion": "un log sin ninguna IP sale con código 0 y sin salida",
+      "cmd": "printf -- '- - - basura\\n::1 - - salud\\n' > v.log; out=$({proyecto}/bin/bk-top-ips v.log 2>&1); echo \"codigo=$? [$out]\"",
+      "assert": "stdout~^codigo=0 \\[\\]$",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "top-con-bk-run",
+      "descripcion": "bk-run registra en su log el resultado de bk-top-ips",
+      "cmd": "{proyecto}/bin/bk-run {proyecto}/bin/bk-top-ips {semana}/3-proyecto/tests/access.log 1 > /dev/null; grep -E '^ *9 203\\.0\\.113\\.7$' bk-run.log && grep -qx '== código: 0 ==' bk-run.log",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 8"
+    },
+    {
+      "id": "kit-limpio",
+      "descripcion": "los scripts del kit sin TODOs, con set -euo pipefail y limpios para shellcheck",
+      "cmd": "cd {proyecto} && ! grep -n TODO bin/bk-info bin/bk-run bin/bk-top-ips scaffold.sh && grep -qx 'set -euo pipefail' bin/bk-top-ips && shellcheck bin/bk-info bin/bk-run bin/bk-top-ips scaffold.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 9"
+    },
+    {
+      "id": "inventario-al-dia",
+      "descripcion": "docs/inventario.txt incluye ./bin/bk-top-ips",
+      "cmd": "grep -qx ./bin/bk-top-ips {proyecto}/docs/inventario.txt",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 10"
+    },
+    {
+      "id": "readme-completo",
+      "descripcion": "README.md sin TODOs, documenta bk-top-ips y tiene la bitácora de la semana 04",
+      "cmd": "cd {proyecto} && ! grep -n TODO README.md && grep -q 'bk-top-ips' README.md && grep -q '^- Semana 04: ' README.md",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 11"
+    }
+  ]
+}

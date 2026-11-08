@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>La regex ^([0-9]{1,3}\.){3}[0-9]{1,3} pieza a pieza, y con qué líneas de un access log encaja</title>
+  <rect width="900" height="420" fill="#0d1117"/>
+  <text x="450" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Una IP al principio de la línea, pieza a pieza</text>
+
+  <rect x="40" y="70" width="110" height="80" rx="10" fill="#161b22" stroke="#f78166" stroke-width="2"/>
+  <text x="95" y="108" fill="#f78166" font-size="22" font-weight="600" text-anchor="middle">^</text>
+  <text x="95" y="134" fill="#8b949e" font-size="13" text-anchor="middle">inicio de línea</text>
+
+  <rect x="170" y="70" width="270" height="80" rx="10" fill="#161b22" stroke="#f78166" stroke-width="2"/>
+  <text x="305" y="108" fill="#f78166" font-size="22" font-weight="600" text-anchor="middle">([0-9]{1,3}\.)</text>
+  <text x="305" y="134" fill="#8b949e" font-size="13" text-anchor="middle">grupo: de 1 a 3 dígitos y un punto</text>
+
+  <rect x="460" y="70" width="120" height="80" rx="10" fill="#161b22" stroke="#f78166" stroke-width="2"/>
+  <text x="520" y="108" fill="#f78166" font-size="22" font-weight="600" text-anchor="middle">{3}</text>
+  <text x="520" y="134" fill="#8b949e" font-size="13" text-anchor="middle">el grupo, 3 veces</text>
+
+  <rect x="600" y="70" width="260" height="80" rx="10" fill="#161b22" stroke="#f78166" stroke-width="2"/>
+  <text x="730" y="108" fill="#f78166" font-size="22" font-weight="600" text-anchor="middle">[0-9]{1,3}</text>
+  <text x="730" y="134" fill="#8b949e" font-size="13" text-anchor="middle">de 1 a 3 dígitos más</text>
+
+  <text x="40" y="186" fill="#8b949e" font-size="14">203.0.113.7 - - [07/Nov/2026:08:34:38 +0000] "GET /login HTTP/1.1" 304 0</text>
+  <rect x="40" y="200" width="110" height="40" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="95" y="226" fill="#79c0ff" font-size="15" text-anchor="middle">(nada antes)</text>
+  <rect x="170" y="200" width="410" height="40" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="375" y="226" fill="#79c0ff" font-size="17" text-anchor="middle">203.   0.   113.</text>
+  <rect x="600" y="200" width="260" height="40" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="730" y="226" fill="#79c0ff" font-size="17" text-anchor="middle">7</text>
+  <text x="450" y="268" fill="#3fb950" font-size="15" font-weight="600" text-anchor="middle">encaja: grep -oE saca 203.0.113.7 y deja fuera el resto de la línea</text>
+
+  <rect x="40" y="295" width="400" height="100" rx="10" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="60" y="324" fill="#f0f6fc" font-size="15">::1 - - [07/Nov/2026:08:40:02 +0000] ...</text>
+  <text x="60" y="350" fill="#8b949e" font-size="13">tras el inicio viene «:», que no es [0-9]</text>
+  <text x="60" y="376" fill="#f85149" font-size="14" font-weight="600">no encaja: esta línea no cuenta</text>
+
+  <rect x="460" y="295" width="400" height="100" rx="10" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="480" y="324" fill="#f0f6fc" font-size="15">10.0.0.5 - - ... http://203.0.113.7/</text>
+  <text x="480" y="350" fill="#8b949e" font-size="13">la IP del referer no está al principio</text>
+  <text x="480" y="376" fill="#e3b341" font-size="14" font-weight="600">sin ^, se contarían las dos IP</text>
+</svg>
