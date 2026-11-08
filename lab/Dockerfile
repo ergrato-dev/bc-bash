@@ -28,7 +28,7 @@ RUN sed -i 's|^path-exclude=/usr/share/man|#&|' /etc/dpkg/dpkg.cfg.d/excludes \
 
 # ubuntu:24.04 ya trae el usuario "ubuntu" con UID 1000: se renombra para que
 # los archivos creados en el volumen sean del estudiante en el host.
-RUN usermod -l alumno -d /home/alumno -m ubuntu && groupmod -n alumno ubuntu
+RUN usermod -l alumno -d /home/alumno -m -c "Alumno bc-bash" -G "" ubuntu && groupmod -n alumno ubuntu
 USER alumno
 WORKDIR /bc-bash
 
