@@ -24,7 +24,7 @@ está en construcción (sin enlace hasta que exista la carpeta).
 | Semana | Tema | Estado |
 |:--:|---|:--:|
 | [05](week-05-variables_comillas_y_expansiones/README.md) | Variables, comillas y expansiones | ✅ |
-| 06 | Condicionales, case y regex | ⬜ |
+| [06](week-06-condicionales_case_y_regex/README.md) | Condicionales, case y regex | ✅ |
 | 07 | Bucles, read y archivos seguros | ⬜ |
 | 08 | Funciones, alcance y librerías | ⬜ |
 | 09 | Arrays y printf | ⬜ |

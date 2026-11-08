@@ -25,6 +25,6 @@
 
 | Anterior | Siguiente |
 |---|---|
-| ← [Recursos — web](../4-recursos/webgrafia/README.md) | — |
+| ← [Recursos — web](../4-recursos/webgrafia/README.md) | [Semana 06 — Condicionales, case y regex](../../week-06-condicionales_case_y_regex/README.md) → |
 
 [↑ Semana 05](../README.md)
