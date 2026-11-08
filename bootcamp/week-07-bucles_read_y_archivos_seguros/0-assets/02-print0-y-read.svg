@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Tres archivos, uno con un salto de línea en el nombre. find separa las rutas con saltos de línea y read -r las corta en cada uno: salen cuatro trozos. find -print0 las separa con el byte nulo y read -r -d '' corta solo ahí: salen las tres rutas enteras</title>
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="500" fill="#0d1117"/>
+  <text x="500" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Tres archivos; el segundo lleva un salto de línea en el nombre</text>
+
+  <!-- find -->
+  <text x="40" y="80" fill="#f85149" font-size="15" font-weight="600">find logs   +   while read -r f</text>
+  <rect x="40" y="94" width="170" height="44" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="125" y="121" fill="#79c0ff" font-size="15" text-anchor="middle">logs/app web.log</text>
+  <rect x="214" y="94" width="40" height="44" rx="6" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="234" y="121" fill="#e3b341" font-size="15" text-anchor="middle">\n</text>
+  <rect x="258" y="94" width="100" height="44" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="308" y="121" fill="#79c0ff" font-size="15" text-anchor="middle">logs/linea</text>
+  <rect x="362" y="94" width="40" height="44" rx="6" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="382" y="121" fill="#e3b341" font-size="15" text-anchor="middle">\n</text>
+  <rect x="406" y="94" width="90" height="44" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="451" y="121" fill="#79c0ff" font-size="15" text-anchor="middle">rota.log</text>
+  <rect x="500" y="94" width="40" height="44" rx="6" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="520" y="121" fill="#e3b341" font-size="15" text-anchor="middle">\n</text>
+  <rect x="544" y="94" width="120" height="44" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="604" y="121" fill="#79c0ff" font-size="15" text-anchor="middle">logs/db.log</text>
+  <rect x="668" y="94" width="40" height="44" rx="6" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="688" y="121" fill="#e3b341" font-size="15" text-anchor="middle">\n</text>
+  <text x="730" y="114" fill="#e3b341" font-size="13">\n = salto de línea:</text>
+  <text x="730" y="132" fill="#e3b341" font-size="13">read corta en cada uno</text>
+
+  <line x1="370" y1="140" x2="370" y2="168" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <rect x="40" y="172" width="170" height="40" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="125" y="197" fill="#f0f6fc" font-size="14" text-anchor="middle">logs/app web.log</text>
+  <rect x="258" y="172" width="100" height="40" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="308" y="197" fill="#f0f6fc" font-size="14" text-anchor="middle">logs/linea</text>
+  <rect x="406" y="172" width="90" height="40" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="451" y="197" fill="#f0f6fc" font-size="14" text-anchor="middle">rota.log</text>
+  <rect x="544" y="172" width="120" height="40" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="604" y="197" fill="#f0f6fc" font-size="14" text-anchor="middle">logs/db.log</text>
+  <text x="40" y="238" fill="#f85149" font-size="14">4 vueltas: "logs/linea" y "rota.log" no existen</text>
+
+  <line x1="40" y1="262" x2="960" y2="262" stroke="#30363d"/>
+
+  <!-- find -print0 -->
+  <text x="40" y="298" fill="#3fb950" font-size="15" font-weight="600">find logs -print0   +   while IFS= read -r -d '' f</text>
+  <rect x="40" y="312" width="170" height="44" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="125" y="339" fill="#79c0ff" font-size="15" text-anchor="middle">logs/app web.log</text>
+  <rect x="214" y="312" width="40" height="44" rx="6" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="234" y="339" fill="#d2a8ff" font-size="15" text-anchor="middle">\0</text>
+  <rect x="258" y="312" width="238" height="44" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="377" y="339" fill="#79c0ff" font-size="15" text-anchor="middle">logs/linea \n rota.log</text>
+  <rect x="500" y="312" width="40" height="44" rx="6" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="520" y="339" fill="#d2a8ff" font-size="15" text-anchor="middle">\0</text>
+  <rect x="544" y="312" width="120" height="44" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="604" y="339" fill="#79c0ff" font-size="15" text-anchor="middle">logs/db.log</text>
+  <rect x="668" y="312" width="40" height="44" rx="6" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="688" y="339" fill="#d2a8ff" font-size="15" text-anchor="middle">\0</text>
+  <text x="730" y="332" fill="#d2a8ff" font-size="13">\0 = byte nulo:</text>
+  <text x="730" y="350" fill="#d2a8ff" font-size="13">read corta solo ahí</text>
+
+  <line x1="370" y1="358" x2="370" y2="386" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <rect x="40" y="390" width="170" height="40" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="125" y="415" fill="#f0f6fc" font-size="14" text-anchor="middle">logs/app web.log</text>
+  <rect x="258" y="390" width="238" height="40" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="377" y="415" fill="#f0f6fc" font-size="14" text-anchor="middle">logs/linea \n rota.log</text>
+  <rect x="544" y="390" width="120" height="40" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="604" y="415" fill="#f0f6fc" font-size="14" text-anchor="middle">logs/db.log</text>
+  <text x="40" y="456" fill="#3fb950" font-size="14">3 vueltas, una por archivo: el \n se queda dentro del nombre</text>
+  <text x="40" y="482" fill="#8b949e" font-size="13">El byte nulo es el único carácter que no puede ir en un nombre: por eso es el separador seguro</text>
+</svg>

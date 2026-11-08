@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Con find | while, el while corre en un subshell con su propia copia de count, que llega a 3 y desaparece: la shell sigue con count en 0. Con while ... done &lt; &lt;(find), el while corre en la shell y count se queda en 3</title>
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="470" fill="#0d1117"/>
+  <text x="500" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">¿Dónde corre el while? Ahí vive count</text>
+
+  <!-- Izquierda: pipe -->
+  <text x="250" y="76" fill="#f85149" font-size="15" font-weight="600" text-anchor="middle">find ... | while ...</text>
+  <rect x="40" y="90" width="420" height="300" rx="10" fill="none" stroke="#3fb950" stroke-width="2"/>
+  <text x="56" y="114" fill="#3fb950" font-size="14" font-weight="600">tu shell</text>
+  <text x="440" y="114" fill="#f0f6fc" font-size="14" text-anchor="end">count=0</text>
+
+  <rect x="60" y="135" width="150" height="54" rx="8" fill="#161b22" stroke="#f78166" stroke-width="2"/>
+  <text x="135" y="167" fill="#f78166" font-size="15" text-anchor="middle">find</text>
+  <line x1="210" y1="162" x2="248" y2="162" stroke="#58a6ff" stroke-width="2" marker-end="url(#flecha)"/>
+  <text x="229" y="152" fill="#79c0ff" font-size="13" text-anchor="middle">|</text>
+
+  <rect x="250" y="128" width="190" height="150" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="345" y="150" fill="#d2a8ff" font-size="13" text-anchor="middle">subshell (una copia)</text>
+  <text x="345" y="180" fill="#f0f6fc" font-size="15" text-anchor="middle">while ...</text>
+  <text x="345" y="206" fill="#f0f6fc" font-size="14" text-anchor="middle">count: 0 → 1 → 2 → 3</text>
+  <text x="345" y="240" fill="#f85149" font-size="13" text-anchor="middle">al terminar, la copia</text>
+  <text x="345" y="258" fill="#f85149" font-size="13" text-anchor="middle">desaparece con su count</text>
+
+  <rect x="60" y="310" width="380" height="54" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="250" y="342" fill="#f0f6fc" font-size="15" text-anchor="middle">echo "$count"  →  0</text>
+
+  <!-- Derecha: < <() -->
+  <text x="750" y="76" fill="#3fb950" font-size="15" font-weight="600" text-anchor="middle">while ... done &lt; &lt;(find ...)</text>
+  <rect x="540" y="90" width="420" height="300" rx="10" fill="none" stroke="#3fb950" stroke-width="2"/>
+  <text x="556" y="114" fill="#3fb950" font-size="14" font-weight="600">tu shell</text>
+  <text x="940" y="114" fill="#f0f6fc" font-size="14" text-anchor="end">count=0</text>
+
+  <rect x="560" y="128" width="190" height="150" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="655" y="150" fill="#3fb950" font-size="13" text-anchor="middle">en la shell, sin copia</text>
+  <text x="655" y="180" fill="#f0f6fc" font-size="15" text-anchor="middle">while ...</text>
+  <text x="655" y="206" fill="#f0f6fc" font-size="14" text-anchor="middle">count: 0 → 1 → 2 → 3</text>
+  <text x="655" y="240" fill="#3fb950" font-size="13" text-anchor="middle">es el count de la shell:</text>
+  <text x="655" y="258" fill="#3fb950" font-size="13" text-anchor="middle">se queda en 3</text>
+
+  <rect x="800" y="135" width="140" height="54" rx="8" fill="#161b22" stroke="#f78166" stroke-width="2"/>
+  <text x="870" y="167" fill="#f78166" font-size="15" text-anchor="middle">find</text>
+  <line x1="800" y1="162" x2="752" y2="162" stroke="#58a6ff" stroke-width="2" marker-end="url(#flecha)"/>
+  <text x="776" y="152" fill="#79c0ff" font-size="13" text-anchor="middle">&lt;(...)</text>
+
+  <rect x="560" y="310" width="380" height="54" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="750" y="342" fill="#f0f6fc" font-size="15" text-anchor="middle">echo "$count"  →  3</text>
+
+  <line x1="40" y1="410" x2="960" y2="410" stroke="#30363d"/>
+  <text x="500" y="444" fill="#8b949e" font-size="14" text-anchor="middle">Lo mismo pasa con cat archivo | while: done &lt; archivo deja el bucle en la shell</text>
+</svg>
