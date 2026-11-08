@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Con for f in $(ls fotos), bash recibe un texto y lo parte por los espacios: "mi foto.jpg" da dos vueltas. Con for f in fotos/*, bash expande el glob y cada nombre llega entero</title>
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="440" fill="#0d1117"/>
+  <text x="500" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Una carpeta con dos archivos: "mi foto.jpg" y "notas.txt"</text>
+
+  <!-- Izquierda: $(ls) -->
+  <text x="250" y="80" fill="#f85149" font-size="15" font-weight="600" text-anchor="middle">mal: recorrer la salida de ls</text>
+  <rect x="60" y="95" width="380" height="50" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="250" y="126" fill="#f78166" font-size="16" text-anchor="middle">for f in $(ls fotos)</text>
+
+  <line x1="250" y1="145" x2="250" y2="178" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <text x="262" y="168" fill="#8b949e" font-size="13">ls devuelve un texto</text>
+  <rect x="60" y="180" width="380" height="44" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="250" y="208" fill="#79c0ff" font-size="15" text-anchor="middle">mi foto.jpg notas.txt</text>
+
+  <line x1="250" y1="224" x2="250" y2="258" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <text x="262" y="248" fill="#8b949e" font-size="13">bash lo parte por los espacios</text>
+
+  <rect x="60" y="262" width="110" height="44" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="115" y="290" fill="#f0f6fc" font-size="15" text-anchor="middle">mi</text>
+  <rect x="185" y="262" width="120" height="44" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="245" y="290" fill="#f0f6fc" font-size="15" text-anchor="middle">foto.jpg</text>
+  <rect x="320" y="262" width="120" height="44" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="380" y="290" fill="#f0f6fc" font-size="15" text-anchor="middle">notas.txt</text>
+
+  <text x="250" y="340" fill="#f85149" font-size="15" text-anchor="middle">3 vueltas: "mi" y "foto.jpg" no existen</text>
+
+  <line x1="500" y1="70" x2="500" y2="360" stroke="#30363d" stroke-width="2"/>
+
+  <!-- Derecha: glob -->
+  <text x="750" y="80" fill="#3fb950" font-size="15" font-weight="600" text-anchor="middle">bien: un glob</text>
+  <rect x="560" y="95" width="380" height="50" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="750" y="126" fill="#f78166" font-size="16" text-anchor="middle">for f in fotos/*</text>
+
+  <line x1="750" y1="145" x2="750" y2="258" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <text x="762" y="190" fill="#8b949e" font-size="13">bash busca los nombres</text>
+  <text x="762" y="208" fill="#8b949e" font-size="13">y da cada uno entero:</text>
+  <text x="762" y="226" fill="#8b949e" font-size="13">no hay texto que partir</text>
+
+  <rect x="560" y="262" width="200" height="44" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="660" y="290" fill="#f0f6fc" font-size="15" text-anchor="middle">fotos/mi foto.jpg</text>
+  <rect x="775" y="262" width="165" height="44" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="857" y="290" fill="#f0f6fc" font-size="15" text-anchor="middle">fotos/notas.txt</text>
+
+  <text x="750" y="340" fill="#3fb950" font-size="15" text-anchor="middle">2 vueltas, una por archivo</text>
+
+  <line x1="40" y1="372" x2="960" y2="372" stroke="#30363d"/>
+  <text x="500" y="408" fill="#8b949e" font-size="14" text-anchor="middle">Dentro del bucle, "$f" con comillas: el nombre llegó entero, y sin comillas se volvería a partir</text>
+</svg>

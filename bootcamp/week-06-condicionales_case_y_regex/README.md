@@ -67,6 +67,6 @@ Comprueba tu proyecto (`3-proyecto/starter/`) contra los 15 requisitos verificab
 
 | Anterior | Actual | Siguiente |
 |---|---|---|
-| [← Semana 05 — Variables, comillas y expansiones](../week-05-variables_comillas_y_expansiones/README.md) | **Semana 06 — Condicionales, case y regex** | — |
+| [← Semana 05 — Variables, comillas y expansiones](../week-05-variables_comillas_y_expansiones/README.md) | **Semana 06 — Condicionales, case y regex** | [Semana 07 — Bucles, read y archivos seguros →](../week-07-bucles_read_y_archivos_seguros/README.md) |
 
 [← Volver al índice del bootcamp](../README.md)

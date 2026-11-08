@@ -1,0 +1,111 @@
+{
+  "semana": "07",
+  "titulo": "Bucles, read y archivos seguros",
+  "checks": [
+    {
+      "id": "clean-ejecutable",
+      "descripcion": "bin/bk-clean tiene permisos 755 y el shebang #!/usr/bin/env bash",
+      "cmd": "stat -c %a {proyecto}/bin/bk-clean | grep -qx 755 && head -1 {proyecto}/bin/bk-clean | grep -qx '#!/usr/bin/env bash'",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 1"
+    },
+    {
+      "id": "clean-ayuda",
+      "descripcion": "con --help y con -h, bk-clean escribe 'uso: bk-clean ...' en stdout y sale con código 0",
+      "cmd": "a=$({proyecto}/bin/bk-clean --help 2>/dev/null); c1=$?; b=$({proyecto}/bin/bk-clean -h 2>/dev/null); echo \"codigo=$c1$? $a | $b\"",
+      "assert": "stdout~^codigo=00 uso: bk-clean .* \\| uso: bk-clean ",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "clean-uso",
+      "descripcion": "sin argumentos, solo con los días o solo con --dry-run y los días, escribe el uso en stderr y sale con código 2",
+      "cmd": "for a in '' '7' '--dry-run 7'; do err=$({proyecto}/bin/bk-clean $a 2>&1 >/dev/null); echo \"codigo=$? $err\"; done",
+      "assert": "stdout!~^codigo=([013-9]|2[0-9]|2 [^u])",
+      "pista": "3-proyecto/README.md, pasos 3 y 4"
+    },
+    {
+      "id": "clean-dias-invalidos",
+      "descripcion": "con 'abc', '0', '-3', '7d' o '1.5' como días, avisa en stderr y sale con código 2",
+      "cmd": "mkdir d && for a in abc 0 -3 7d 1.5; do err=$({proyecto}/bin/bk-clean \"$a\" d 2>&1 >/dev/null); echo \"codigo=$? $err\"; done",
+      "assert": "stdout!~^codigo=([013-9]|2[0-9]|2 [^b])",
+      "pista": "3-proyecto/README.md, paso 5"
+    },
+    {
+      "id": "clean-carpeta-mala",
+      "descripcion": "si una de las carpetas no existe, avisa en stderr con su nombre, sale con código 1 y no borra nada de las otras",
+      "cmd": "{semana}/3-proyecto/tests/make-fixtures.sh && err=$({proyecto}/bin/bk-clean 7 basura no-existe 2>&1 >/dev/null); c=$?; test -e basura/viejo.log && echo \"codigo=$c $err\"",
+      "assert": "stdout~^codigo=1 .*no-existe",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "clean-dry-run",
+      "descripcion": "con --dry-run, lista los 6 archivos viejos de basura/ con '(dry-run) borrar: ' y no borra ninguno",
+      "cmd": "{semana}/3-proyecto/tests/make-fixtures.sh && n=$({proyecto}/bin/bk-clean --dry-run 7 basura | grep -c '^(dry-run) borrar: basura/'); m=$(find basura -type f -printf . | wc -c); echo \"listados=$n quedan=$m\"",
+      "assert": "stdout~^listados=6 quedan=7$",
+      "pista": "3-proyecto/README.md, pasos 7 y 8"
+    },
+    {
+      "id": "clean-borra-viejos",
+      "descripcion": "'bk-clean 7 basura' borra viejo.log y 'con espacios.log', y deja nuevo.log",
+      "cmd": "{semana}/3-proyecto/tests/make-fixtures.sh && {proyecto}/bin/bk-clean 7 basura >/dev/null && test ! -e basura/viejo.log && test ! -e 'basura/con espacios.log' && test -e basura/nuevo.log",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, pasos 7 y 8"
+    },
+    {
+      "id": "clean-nombres-raros",
+      "descripcion": "borra los archivos viejos que empiezan por -, que se llaman * o que tienen un salto de línea en el nombre",
+      "cmd": "{semana}/3-proyecto/tests/make-fixtures.sh && {proyecto}/bin/bk-clean 7 basura >/dev/null; test ! -e basura/-empieza-por-guion.log && test ! -e 'basura/*' && test ! -e \"basura/linea\"$'\\n'\"nueva.log\"",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, pasos 7 y 8"
+    },
+    {
+      "id": "clean-subcarpetas",
+      "descripcion": "entra en las subcarpetas: borra basura/sub/dentro.tmp, pero deja la carpeta basura/sub",
+      "cmd": "{semana}/3-proyecto/tests/make-fixtures.sh && {proyecto}/bin/bk-clean 7 basura >/dev/null; test ! -e basura/sub/dentro.tmp && test -d basura/sub",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "clean-no-sale",
+      "descripcion": "no borra el enlace basura/enlace ni el archivo de fuera al que apunta, ni nada de otra/",
+      "cmd": "{semana}/3-proyecto/tests/make-fixtures.sh && {proyecto}/bin/bk-clean 7 basura >/dev/null; test -L basura/enlace && test -e fuera.txt && test -e otra/viejo.txt",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "clean-varias-carpetas",
+      "descripcion": "'bk-clean 7 basura otra' limpia las dos carpetas: borra otra/viejo.txt y deja otra/nuevo.txt",
+      "cmd": "{semana}/3-proyecto/tests/make-fixtures.sh && {proyecto}/bin/bk-clean 7 basura otra >/dev/null && test ! -e otra/viejo.txt && test -e otra/nuevo.txt",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "clean-total",
+      "descripcion": "la última línea de 'bk-clean 7 basura otra' es 'total: 7 archivos'",
+      "cmd": "{semana}/3-proyecto/tests/make-fixtures.sh && {proyecto}/bin/bk-clean 7 basura otra | tail -1",
+      "assert": "stdout~^total: 7 archivos$",
+      "pista": "3-proyecto/README.md, paso 9"
+    },
+    {
+      "id": "kit-limpio",
+      "descripcion": "los scripts del kit sin TODOs; bk-clean con set -euo pipefail, find -print0, read -r -d '' y rm --, sin $(ls) ni pipes a while; todo limpio para shellcheck",
+      "cmd": "cd {proyecto} && ! grep -n TODO bin/bk-info bin/bk-run bin/bk-top-ips bin/bk-rename bin/bk-check bin/bk-clean scaffold.sh && grep -qx 'set -euo pipefail' bin/bk-clean && grep -q -- '-print0' bin/bk-clean && grep -q \"read -r -d ''\" bin/bk-clean && grep -q 'rm -- ' bin/bk-clean && ! grep -v '^ *#' bin/bk-clean | grep -qE '\\$\\(ls|\\| *while' && shellcheck bin/bk-info bin/bk-run bin/bk-top-ips bin/bk-rename bin/bk-check bin/bk-clean scaffold.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 10"
+    },
+    {
+      "id": "inventario-al-dia",
+      "descripcion": "docs/inventario.txt incluye ./bin/bk-clean",
+      "cmd": "grep -qx ./bin/bk-clean {proyecto}/docs/inventario.txt",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 11"
+    },
+    {
+      "id": "readme-completo",
+      "descripcion": "README.md sin TODOs, documenta bk-clean y tiene la bitácora de la semana 07",
+      "cmd": "cd {proyecto} && ! grep -n TODO README.md && grep -q 'bk-clean' README.md && grep -q '^- Semana 07: ' README.md",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 12"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# bk-clean — borra los archivos de una o varias carpetas que llevan más de N días sin cambiar.
+# Para qué: los logs, volcados y temporales viejos llenan el disco poco a poco; este
+# script los quita sin tocar nada más, y con --dry-run enseña antes la lista.
+set -euo pipefail
+
+usage="uso: bk-clean [--dry-run] <días> <carpeta>..."
+
+# TODO 1: con -h o --help, imprime el uso en stdout y sale con 0 (paso 2)
+
+# TODO 2: si el primer argumento es --dry-run, apúntalo en dry_run y quítalo con shift (paso 3)
+dry_run=""
+
+# TODO 3: con menos de 2 argumentos, el uso a stderr y código 2 (paso 4)
+
+days="$1"
+shift
+# TODO 4: si "$days" no es un número entero de 1 o más, avisa en stderr y sale con 2 (paso 5)
+
+# TODO 5: un for sobre "$@" que, si alguna carpeta no existe, avisa y sale con 1 (paso 6)
+
+count=0
+# TODO 6: un for sobre "$@" y, dentro, un while que lea con read -r -d '' lo que
+#         encuentra find ... -print0 (paso 7)
+# TODO 7: borra cada archivo con rm --, salvo con --dry-run (paso 8)
+# TODO 8: suma 1 a count por archivo (paso 9)
+echo "sin implementar: $days $*"
+
+echo "${dry_run:+(dry-run) }total: $count archivos"
