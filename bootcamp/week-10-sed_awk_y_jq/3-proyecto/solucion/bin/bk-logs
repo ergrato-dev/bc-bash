@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# bk-logs — convierte un access log (el formato "combined" de nginx y Apache) en CSV o en JSON.
+# Para qué: llevar las peticiones a una hoja de cálculo, a jq o a otro programa sin volver a parsear el log.
+set -euo pipefail
+
+# shellcheck source=SCRIPTDIR/../lib/core.sh
+source "$(dirname "${BASH_SOURCE[0]}")/../lib/core.sh"
+
+# jq no viene en todas las máquinas: mejor avisar al principio que a mitad de la salida.
+require sed awk jq
+
+[[ $# -eq 2 && $1 =~ ^(csv|json)$ ]] || die "uso: bk-logs csv|json <access.log>" 2
+format="$1"
+log="$2"
+[[ -r $log ]] || die "no puedo leer '$log'"
+
+# fields: una línea por petición, con ip, fecha, método, ruta, código y bytes separados por tabuladores.
+# Tabulador y no coma: una ruta puede llevar comas, nunca un tabulador.
+fields() {
+  # -n y /p: solo salen las líneas en las que la sustitución encaja. Un aviso de nginx
+  # o una petición vacía ("-") se quedan fuera en lugar de llegar con campos a medias.
+  sed -nE 's/^([^ ]+) [^ ]+ [^ ]+ \[([^]]+)\] "([A-Z]+) ([^ ]+) [^"]*" ([0-9]{3}) ([0-9]+|-)( .*)?$/\1\t\2\t\3\t\4\t\5\t\6/p' "$log"
+}
+
+# normalize: la fecha en ISO 8601 y los bytes siempre como número.
+normalize() {
+  awk -F'\t' -v OFS='\t' '
+    BEGIN {
+      # El log escribe el mes con sus letras en inglés: month["Oct"] es "10".
+      split("Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec", names, " ")
+      for (i = 1; i <= 12; i++) month[names[i]] = sprintf("%02d", i)
+    }
+    {
+      # 31/Oct/2026:23:59:58 +0000 pasa a 2026-10-31T23:59:58+00:00: así las fechas
+      # se ordenan como texto y cualquier programa las entiende.
+      split($2, d, "[/: ]")
+      $2 = d[3] "-" month[d[2]] "-" d[1] "T" d[4] ":" d[5] ":" d[6] substr(d[7], 1, 3) ":" substr(d[7], 4)
+      # "-" es una respuesta sin cuerpo: 0 bytes. Sin esto, tonumber de jq falla.
+      if ($6 == "-") $6 = 0
+      print
+    }'
+}
+
+to_csv() {
+  awk -F'\t' -v OFS=, '
+    # Un campo con comas o comillas va entre comillas, y sus comillas se doblan (RFC 4180):
+    # sin esto, /buscar?q=sed,awk se leería como dos columnas.
+    function quote(s) {
+      if (s ~ /[",]/) {
+        gsub(/"/, "\"\"", s)
+        s = "\"" s "\""
+      }
+      return s
+    }
+    BEGIN { print "ip,fecha,metodo,ruta,codigo,bytes" }
+    # Cambiar un campo rehace la línea con OFS: los tabuladores pasan a ser comas.
+    { $4 = quote($4); print }'
+}
+
+to_json() {
+  # -R: cada línea es un texto, no JSON. -n con inputs las junta en un solo array (y [] si no hay ninguna).
+  # tonumber: el código y los bytes como números, para poder sumarlos y compararlos después.
+  jq -nR '[inputs | split("\t") | {ip: .[0], fecha: .[1], metodo: .[2], ruta: .[3], codigo: (.[4] | tonumber), bytes: (.[5] | tonumber)}]'
+}
+
+case "$format" in
+  csv) fields | normalize | to_csv ;;
+  json) fields | normalize | to_json ;;
+esac

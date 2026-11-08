@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# bk-logs — convierte un access log (el formato "combined" de nginx y Apache) en CSV o en JSON.
+# Para qué: llevar las peticiones a una hoja de cálculo, a jq o a otro programa sin volver a parsear el log.
+set -euo pipefail
+
+# shellcheck source=SCRIPTDIR/../lib/core.sh
+source "$(dirname "${BASH_SOURCE[0]}")/../lib/core.sh"
+
+# TODO 1: require de sed, awk y jq; exactamente dos argumentos, el primero csv o json
+# (si no, die con "uso: bk-logs csv|json <access.log>" y código 2); un log ilegible, die con código 1.
+format="${1:-csv}"
+log="${2:-/dev/null}"
+
+# fields: una línea por petición, con ip, fecha, método, ruta, código y bytes separados por tabuladores.
+# Tabulador y no coma: una ruta puede llevar comas, nunca un tabulador.
+fields() {
+  # TODO 2: un sed -nE que saque los seis campos y deje fuera las líneas que no son peticiones.
+  cat "$log"
+}
+
+# normalize: la fecha en ISO 8601 y los bytes siempre como número.
+normalize() {
+  # TODO 3: un awk que pase 31/Oct/2026:23:59:58 +0000 a 2026-10-31T23:59:58+00:00.
+  # TODO 7: los bytes "-", como 0.
+  cat
+}
+
+to_csv() {
+  # TODO 4: la cabecera ip,fecha,metodo,ruta,codigo,bytes y los campos separados por comas.
+  # TODO 5: la ruta entre comillas cuando lleva comas o comillas.
+  cat
+}
+
+to_json() {
+  # TODO 6: un array de objetos con jq, con el código y los bytes como números.
+  cat
+}
+
+case "$format" in
+  csv) fields | normalize | to_csv ;;
+  json) fields | normalize | to_json ;;
+esac

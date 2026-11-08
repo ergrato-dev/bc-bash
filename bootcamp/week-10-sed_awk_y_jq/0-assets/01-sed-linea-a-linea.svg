@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>sed lee el archivo línea a línea: cada línea pasa al espacio de trabajo, se le aplica el programa y se escribe en stdout; con -n solo se escriben las que pide p, y el archivo original no cambia</title>
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="400" fill="#0d1117"/>
+  <text x="500" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">sed -E 's/token=[^&amp; ]+/token=XXX/' access.log</text>
+
+  <rect x="30" y="70" width="270" height="200" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="50" y="100" fill="#58a6ff" font-size="16" font-weight="600">access.log</text>
+  <rect x="45" y="115" width="240" height="36" rx="6" fill="#0d1117" stroke="#3fb950" stroke-width="2"/>
+  <text x="58" y="139" fill="#f0f6fc" font-size="14">línea 1: GET /a?token=a8f3</text>
+  <text x="58" y="180" fill="#8b949e" font-size="14">línea 2: GET /estado</text>
+  <text x="58" y="215" fill="#8b949e" font-size="14">línea 3: ...</text>
+  <text x="50" y="255" fill="#8b949e" font-size="13">no cambia: sed solo lo lee</text>
+
+  <line x1="300" y1="133" x2="370" y2="133" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <text x="335" y="120" fill="#8b949e" font-size="13" text-anchor="middle">lee</text>
+
+  <rect x="375" y="70" width="270" height="200" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="395" y="100" fill="#3fb950" font-size="16" font-weight="600">espacio de trabajo</text>
+  <text x="395" y="135" fill="#f0f6fc" font-size="14">GET /a?token=a8f3</text>
+  <text x="395" y="170" fill="#f78166" font-size="14">s/token=[^&amp; ]+/token=XXX/</text>
+  <line x1="510" y1="180" x2="510" y2="205" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <text x="395" y="230" fill="#f0f6fc" font-size="14">GET /a?token=XXX</text>
+  <text x="395" y="255" fill="#8b949e" font-size="13">el programa, a cada línea</text>
+
+  <line x1="645" y1="133" x2="715" y2="133" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <text x="680" y="120" fill="#8b949e" font-size="13" text-anchor="middle">escribe</text>
+
+  <rect x="720" y="70" width="250" height="200" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="740" y="100" fill="#58a6ff" font-size="16" font-weight="600">stdout</text>
+  <text x="740" y="139" fill="#f0f6fc" font-size="14">GET /a?token=XXX</text>
+  <text x="740" y="180" fill="#f0f6fc" font-size="14">GET /estado</text>
+  <text x="740" y="215" fill="#8b949e" font-size="14">...</text>
+  <text x="740" y="255" fill="#8b949e" font-size="13">las que no encajan, tal cual</text>
+
+  <path d="M510,270 L510,300 L170,300 L170,275" fill="none" stroke="#8b949e" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#flecha)"/>
+  <text x="340" y="320" fill="#8b949e" font-size="13" text-anchor="middle">y la siguiente línea</text>
+
+  <rect x="30" y="340" width="940" height="44" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="50" y="368" font-size="15"><tspan fill="#e3b341" font-weight="600">-n</tspan><tspan fill="#f0f6fc">: sed no escribe nada por su cuenta, solo lo que pide </tspan><tspan fill="#f78166">p</tspan><tspan fill="#f0f6fc">. Con </tspan><tspan fill="#f78166">s/.../.../p</tspan><tspan fill="#f0f6fc">, solo las líneas en que la sustitución encaja.</tspan></text>
+</svg>

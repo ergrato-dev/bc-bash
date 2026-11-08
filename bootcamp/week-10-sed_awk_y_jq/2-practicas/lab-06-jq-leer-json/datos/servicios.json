@@ -1,0 +1,6 @@
+{"host": "web-01", "actualizado": "2026-11-08T10:30:00+00:00", "servicios": [
+  {"nombre": "nginx", "estado": "running", "puertos": [80, 443], "reinicios": 0},
+  {"nombre": "postgres", "estado": "running", "puertos": [5432], "reinicios": 2},
+  {"nombre": "worker", "estado": "exited", "puertos": [], "reinicios": 7},
+  {"nombre": "redis", "estado": "restarting", "puertos": [6379], "reinicios": 31}
+]}

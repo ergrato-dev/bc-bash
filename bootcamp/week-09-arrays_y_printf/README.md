@@ -67,6 +67,6 @@ Comprueba tu proyecto (`3-proyecto/starter/`) contra los 15 requisitos verificab
 
 | Anterior | Actual | Siguiente |
 |---|---|---|
-| [← Semana 08 — Funciones, alcance y librerías](../week-08-funciones_alcance_y_librerias/README.md) | **Semana 09 — Arrays y printf** | — |
+| [← Semana 08 — Funciones, alcance y librerías](../week-08-funciones_alcance_y_librerias/README.md) | **Semana 09 — Arrays y printf** | [Semana 10 — sed, awk y jq →](../week-10-sed_awk_y_jq/README.md) |
 
 [← Volver al índice del bootcamp](../README.md)

@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# bk-check — comprueba que un valor es una IP v4, un email o una versión semántica.
+# Para qué: un script que recibe datos de fuera los valida antes de usarlos; un dato
+# mal formado que pasa hoy es un error raro, y difícil de rastrear, mañana.
+set -euo pipefail
+
+usage="uso: bk-check <ip|email|semver> <valor>"
+
+# Pedir la ayuda no es un error: el uso va a stdout y sale con 0.
+case "${1:-}" in
+  -h | --help)
+    echo "$usage"
+    exit 0
+    ;;
+esac
+
+if [[ $# -ne 2 ]]; then
+  echo "$usage" >&2
+  exit 2
+fi
+kind="$1"
+value="$2"
+
+# Un número de 0 a 255, sin ceros a la izquierda: "010" es ambiguo (¿10, u 8 en octal?).
+octet='(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])'
+
+# ^ y $ anclan la regex al principio y al final: sin ellos, "x1.2.3.4y" también encajaría.
+case "$kind" in
+  ip)
+    re="^$octet\.$octet\.$octet\.$octet\$"
+    what="una IP válida"
+    ;;
+  email)
+    re='^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$'
+    what="un email válido"
+    ;;
+  semver)
+    re='^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-([0-9A-Za-z.-]+))?$'
+    what="una versión semántica válida"
+    ;;
+  *)
+    echo "bk-check: tipo desconocido '$kind' (usa ip, email o semver)" >&2
+    exit 2
+    ;;
+esac
+
+# $re va sin comillas: entre comillas, =~ buscaría el texto literal, con sus
+# corchetes y sus paréntesis, y ningún valor real encajaría.
+if [[ ! $value =~ $re ]]; then
+  echo "bk-check: '$value' no es $what" >&2
+  exit 1
+fi
+
+# BASH_REMATCH guarda lo que encajó con cada paréntesis de la regex, en orden.
+if [[ $kind == semver ]]; then
+  echo "ok: $value (mayor ${BASH_REMATCH[1]}, menor ${BASH_REMATCH[2]}, parche ${BASH_REMATCH[3]}${BASH_REMATCH[5]:+, prerelease ${BASH_REMATCH[5]}})"
+else
+  echo "ok: $value"
+fi
