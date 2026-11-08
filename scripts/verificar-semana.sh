@@ -174,7 +174,7 @@ verificar_semana() {
       printf '  \033[0;31m❌\033[0m %s\n' "$descripcion"
       printf '     \033[0;90mpista: %s\033[0m\n' "$pista"
     fi
-  done < <(jq -r '.checks[] | [.id, .descripcion, .cmd, .assert, .pista] | @tsv' "$archivo")
+  done < <(jq -r '.checks[] | [.id, .descripcion, .cmd, .assert, .pista] | join("\t")' "$archivo")
 
   echo
   if (( pasados == total )); then
