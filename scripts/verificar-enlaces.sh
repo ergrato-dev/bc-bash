@@ -156,7 +156,7 @@ echo "== 8. Los starter/ y solucion/ parsean =="
 while IFS= read -r f; do
   esta_publicada "$f" || continue
   case "$f" in *rot[oa]*|*debug*) continue ;; esac
-  head -1 "$f" | grep -q 'bash' || continue
+  head -1 "$f" | grep -q '^#!.*bash' || continue
   if ! out=$(bash -n "$f" 2>&1); then
     echo "SCRIPT NO PARSEA: $f"; printf '  %s\n' "$(head -1 <<<"$out")"; fail=1
   fi
