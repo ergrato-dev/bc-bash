@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# bk-lint — revisa los scripts del kit con shellcheck (errores) y shfmt (formato).
+# Para qué: que un fallo típico (una variable sin comillas, un cd que falla) salte antes
+# de ejecutar nada, y que todos los archivos se lean con el mismo estilo.
+set -euo pipefail
+
+bin_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=SCRIPTDIR/../lib/core.sh
+source "$bin_dir/../lib/core.sh"
+
+usage="uso: bk-lint [-w] [archivo...]"
+# El estilo del kit: 2 espacios (-i 2), los casos del case sangrados (-ci) y un espacio
+# tras > y < (-sr). En una variable, para que la revisión y -w usen el mismo.
+shfmt_style=(-i 2 -ci -sr)
+
+# TODO(semana 12) 5: lee -w (write=1) y -h (el uso en stdout, código 0) con getopts;
+# una opción desconocida para con código 2. Después, el shift.
+
+require shellcheck shfmt
+
+# TODO(semana 12) 6: los archivos que se revisan en el array files: los argumentos o,
+# sin argumentos, bin/*, lib/*.sh y scaffold.sh del kit. Un archivo que no existe para con código 2.
+
+# TODO(semana 12) 7: con -w, shfmt -w primero. Después shellcheck -x y shfmt -d, los dos
+# siempre, y un resumen: "archivos revisados: N, sin avisos" o, con código 1, con avisos de cuál.

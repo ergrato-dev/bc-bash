@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# bk-top-ips — las IP que más peticiones hacen en un access log, de más a menos.
+# Para qué: ver de un vistazo quién carga el servidor o quién lo está atacando.
+set -euo pipefail
+
+# Sin log no hay nada que contar: el uso va a stderr y el 2 dice "me llamaste mal".
+test "$#" -gt 0 || { echo "uso: bk-top-ips <access.log> [N]" >&2; exit 2; }
+log="$1"
+# Cuántas IP enseñar: el segundo argumento o 10 si no lo das.
+top="${2:-10}"
+
+# Comprobarlo antes da un mensaje claro; sin esto, grep fallaría a mitad del pipe con el suyo.
+test -r "$log" || { echo "bk-top-ips: no puedo leer '$log'" >&2; exit 1; }
+
+# grep -oE saca solo la IP del principio de cada línea (^): ignora las que empiezan
+# por otra cosa (::1, -) y las IP que aparecen más adelante, en el referer.
+# Si no hay ninguna, grep sale con 1 y pipefail pararía el script: un log sin IP
+# no es un error, así que { ... || true; } lo convierte en "0 resultados".
+{ grep -oE '^([0-9]{1,3}\.){3}[0-9]{1,3}' "$log" || true; } |
+  # uniq -c solo junta líneas iguales seguidas: sin el sort previo contaría mal.
+  sort | uniq -c |
+  # -n ordena por número (9 antes que 10 sería orden de texto) y -r de mayor a menor.
+  sort -rn |
+  head -n $top

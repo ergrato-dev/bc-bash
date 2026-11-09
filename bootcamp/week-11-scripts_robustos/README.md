@@ -68,6 +68,6 @@ Comprueba tu proyecto (`3-proyecto/starter/`) contra los 15 requisitos verificab
 
 | Anterior | Actual | Siguiente |
 |---|---|---|
-| [← Semana 10 — sed, awk y jq](../week-10-sed_awk_y_jq/README.md) | **Semana 11 — Scripts robustos** | — |
+| [← Semana 10 — sed, awk y jq](../week-10-sed_awk_y_jq/README.md) | **Semana 11 — Scripts robustos** | [Semana 12 — Calidad, testing y depuración →](../week-12-calidad_testing_y_depuracion/README.md) |
 
 [← Volver al índice del bootcamp](../README.md)

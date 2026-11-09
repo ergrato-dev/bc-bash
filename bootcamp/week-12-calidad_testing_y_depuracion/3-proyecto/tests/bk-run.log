@@ -1,0 +1,11 @@
+== 2026-11-09 08:00:00 ls /tmp ==
+a
+== código: 0 ==
+== 2026-11-09 08:01:00 ls /nada ==
+ls: cannot access '/nada': No such file or directory
+== código: 2 ==
+== 2026-11-09 08:02:00 nocomando ==
+bash: nocomando: command not found
+== código: 127 ==
+== 2026-11-09 08:03:00 sleep 60 ==
+== código: 130 ==

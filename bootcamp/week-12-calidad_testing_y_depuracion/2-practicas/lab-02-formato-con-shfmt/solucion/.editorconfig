@@ -1,0 +1,8 @@
+# .editorconfig — el estilo de los scripts de esta carpeta: shfmt lo lee si no le das opciones.
+root = true
+
+[*.sh]
+indent_style = space
+indent_size = 2
+switch_case_indent = true
+space_redirects = true
