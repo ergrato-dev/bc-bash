@@ -34,7 +34,7 @@ está en construcción (sin enlace hasta que exista la carpeta).
 | Semana | Tema | Estado |
 |:--:|---|:--:|
 | [10](week-10-sed_awk_y_jq/README.md) | sed, awk y jq | ✅ |
-| 11 | Scripts robustos | ⬜ |
+| [11](week-11-scripts_robustos/README.md) | Scripts robustos | ✅ |
 | 12 | Calidad, testing y depuración | ⬜ |
 | 13 | Procesos y concurrencia | ⬜ |
 

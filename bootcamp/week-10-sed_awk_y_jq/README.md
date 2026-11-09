@@ -68,6 +68,6 @@ Comprueba tu proyecto (`3-proyecto/starter/`) contra los 15 requisitos verificab
 
 | Anterior | Actual | Siguiente |
 |---|---|---|
-| [← Semana 09 — Arrays y printf](../week-09-arrays_y_printf/README.md) | **Semana 10 — sed, awk y jq** | — |
+| [← Semana 09 — Arrays y printf](../week-09-arrays_y_printf/README.md) | **Semana 10 — sed, awk y jq** | [Semana 11 — Scripts robustos →](../week-11-scripts_robustos/README.md) |
 
 [← Volver al índice del bootcamp](../README.md)

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Un script puede terminar por la última línea, por un exit, porque set -e lo para o por las señales INT o TERM; todos esos caminos pasan por el trap EXIT, que borra el temporal y deja el código de salida como estaba. KILL mata el proceso sin pasar por el trap y el temporal se queda</title>
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b949e"/>
+    </marker>
+    <marker id="flecha-roja" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#f85149"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="470" fill="#0d1117"/>
+  <text x="500" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Todos los caminos de salida pasan por <tspan fill="#f78166">trap ... EXIT</tspan></text>
+
+  <text x="40" y="78" fill="#8b949e" font-size="14">cómo termina el script</text>
+  <rect x="40" y="90" width="300" height="52" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="58" y="122" fill="#f0f6fc" font-size="15">llega a la última línea</text>
+  <rect x="40" y="156" width="300" height="52" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="58" y="188" fill="#f78166" font-size="15">exit 3</text>
+  <rect x="40" y="222" width="300" height="52" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="58" y="254" fill="#f0f6fc" font-size="15"><tspan fill="#f78166">set -e</tspan>: un comando falla</text>
+  <rect x="40" y="288" width="300" height="52" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="58" y="320" fill="#e3b341" font-size="15">INT o TERM <tspan fill="#8b949e">(Ctrl-C, kill PID)</tspan></text>
+
+  <line x1="340" y1="116" x2="456" y2="200" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <line x1="340" y1="182" x2="456" y2="208" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <line x1="340" y1="248" x2="456" y2="222" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <line x1="340" y1="314" x2="456" y2="232" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+
+  <rect x="460" y="160" width="230" height="100" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="575" y="196" fill="#3fb950" font-size="17" font-weight="600" text-anchor="middle">trap EXIT</text>
+  <text x="575" y="224" fill="#f78166" font-size="14" text-anchor="middle">rm -rf -- "$work"</text>
+  <text x="575" y="246" fill="#8b949e" font-size="13" text-anchor="middle">el temporal desaparece</text>
+
+  <line x1="690" y1="210" x2="738" y2="210" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <rect x="742" y="160" width="220" height="100" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="852" y="196" fill="#79c0ff" font-size="16" font-weight="600" text-anchor="middle">código de salida</text>
+  <text x="852" y="222" fill="#f0f6fc" font-size="14" text-anchor="middle">el mismo de antes:</text>
+  <text x="852" y="244" fill="#f0f6fc" font-size="14" text-anchor="middle">0, 3, 1, 130 o 143</text>
+
+  <rect x="40" y="380" width="300" height="52" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="58" y="412" fill="#f85149" font-size="15">KILL <tspan fill="#8b949e">(kill -9 PID)</tspan></text>
+  <line x1="340" y1="406" x2="738" y2="406" stroke="#f85149" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#flecha-roja)"/>
+  <text x="540" y="394" fill="#f85149" font-size="13" text-anchor="middle">no se puede atrapar: el trap no corre</text>
+  <rect x="742" y="380" width="220" height="52" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="852" y="404" fill="#f0f6fc" font-size="14" text-anchor="middle">muere con 137</text>
+  <text x="852" y="422" fill="#8b949e" font-size="13" text-anchor="middle">el temporal se queda</text>
+</svg>

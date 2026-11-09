@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# bk-run — ejecuta un comando, te enseña su salida y la guarda en un log con su código de salida.
+# Para qué: dejar constancia de lo que hiciste en una máquina y de si salió bien.
+set -euo pipefail
+
+# TODO 2: carga lib/core.sh y lee las opciones -q, -v, -l, -w y -h con getopts.
+# TODO 3: sin comando, die con el uso; -w tiene que ser un número de segundos.
+test "$#" -gt 0 || { echo "uso: bk-run <comando> [argumentos...]" >&2; exit 2; }
+
+# La variable BK_LOG cambia el log; si no existe, bk-run.log en la carpeta actual.
+log="${BK_LOG:-bk-run.log}"
+
+# TODO 4: comprueba que se puede escribir en el log antes de ejecutar nada.
+echo "== $(date '+%F %T') $* ==" >> "$log"
+
+# TODO 5: un temporal con mktemp, que un trap borra al salir.
+# TODO 6: la salida, al temporal; con -q, sin enseñarla en pantalla.
+status=0
+"$@" 2>&1 | tee -a "$log" || status=$?
+
+# TODO 7: el bloque entero al log, con flock; el aviso de fallo, con log_warn.
+echo "== código: $status ==" >> "$log"
+test "$status" -eq 0 || echo "bk-run: '$*' salió con código $status" >&2
+
+# El mismo código que el comando: quien use bk-run en un script sabrá si funcionó.
+exit "$status"

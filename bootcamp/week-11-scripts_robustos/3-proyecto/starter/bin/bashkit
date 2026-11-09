@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# bashkit — un solo comando para todo el kit: "bashkit clean 7 logs" ejecuta bin/bk-clean.
+# Para qué: que solo haga falta recordar un nombre, y que "bashkit help" enseñe el resto.
+set -euo pipefail
+
+# La carpeta donde está este archivo, aunque lo llames desde otra o por el PATH:
+# BASH_SOURCE[0] es su ruta, y cd + pwd la convierte en absoluta.
+bin_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=SCRIPTDIR/../lib/core.sh
+source "$bin_dir/../lib/core.sh"
+
+# Los subcomandos salen de los archivos bk-* que hay en bin/: con un bk-nuevo,
+# bashkit lo ofrece sin cambiar esta función.
+list_subcommands() {
+  local file
+  for file in "$bin_dir"/bk-*; do
+    if [[ -x $file ]]; then
+      echo "  ${file##*/bk-}"
+    fi
+  done
+}
+
+usage() {
+  echo "uso: bashkit <subcomando> [argumentos...]"
+  echo "subcomandos:"
+  list_subcommands
+}
+
+main() {
+  case "${1:-}" in
+    -h | --help | help)
+      usage
+      exit 0
+      ;;
+    "")
+      usage >&2
+      exit 2
+      ;;
+  esac
+
+  local sub="$1"
+  shift
+  # Solo minúsculas y guiones: un subcomando con / podría salir de bin/.
+  [[ $sub =~ ^[a-z][a-z-]*$ ]] || die "'$sub' no es un nombre de subcomando" 2
+  [[ -x "$bin_dir/bk-$sub" ]] || die "subcomando desconocido: '$sub' (mira bashkit help)" 2
+
+  # exec cambia bashkit por bk-<sub>: recibe los argumentos tal cual con "$@" y
+  # su código de salida es el que ve quien llamó a bashkit.
+  exec "$bin_dir/bk-$sub" "$@"
+}
+
+main "$@"

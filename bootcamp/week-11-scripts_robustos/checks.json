@@ -1,0 +1,111 @@
+{
+  "semana": "11",
+  "titulo": "Scripts robustos",
+  "checks": [
+    {
+      "id": "run-piezas",
+      "descripcion": "bk-run lee sus opciones con getopts y usa mktemp, trap y flock",
+      "cmd": "f={proyecto}/bin/bk-run; grep -q 'getopts ' $f && grep -q 'OPTIND' $f && grep -q 'mktemp' $f && grep -q 'trap ' $f && grep -q 'flock ' $f",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, pasos 2, 5 y 7"
+    },
+    {
+      "id": "run-ayuda",
+      "descripcion": "bk-run -h escribe el uso en stdout y sale con código 0",
+      "cmd": "out=$({proyecto}/bin/bk-run -h 2>/dev/null); echo \"codigo=$? $out\"",
+      "assert": "stdout~^codigo=0 uso: bk-run \\[-q\\] \\[-v\\] \\[-l log\\] \\[-w segundos\\]",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "run-opcion-mal",
+      "descripcion": "una opción desconocida o una -l sin valor avisan en stderr y salen con código 2",
+      "cmd": "e1=$({proyecto}/bin/bk-run -x true 2>&1 >/dev/null); c1=$?; e2=$({proyecto}/bin/bk-run -l 2>&1 >/dev/null); echo \"codigo=$c1,$? $e1 | $e2\"",
+      "assert": "stdout~^codigo=2,2 bk-run: opción desconocida: -x.* \\| bk-run: a -l le falta su valor$",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "run-sin-comando",
+      "descripcion": "sin comando, o con un -w que no es un número de segundos, avisa en stderr y sale con código 2",
+      "cmd": "e1=$({proyecto}/bin/bk-run -q 2>&1 >/dev/null); c1=$?; e2=$({proyecto}/bin/bk-run -w ya true 2>&1 >/dev/null); echo \"codigo=$c1,$? $e1 | $e2\"",
+      "assert": "stdout~^codigo=2,2 bk-run: uso: bk-run .* \\| bk-run: 'ya' no es un número de segundos$",
+      "pista": "3-proyecto/README.md, paso 3"
+    },
+    {
+      "id": "run-opcion-l",
+      "descripcion": "-l elige el log: el bloque va a ese archivo y no a bk-run.log",
+      "cmd": "{proyecto}/bin/bk-run -l otro.log echo hola > /dev/null; echo \"$(sed 's/^== [0-9-]* [0-9:]* /== /' otro.log | paste -sd'|') $(ls | paste -sd,)\"",
+      "assert": "stdout~^== echo hola ==\\|hola\\|== código: 0 == otro\\.log$",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "run-quiet",
+      "descripcion": "-q no enseña la salida del comando, pero la guarda en el log",
+      "cmd": "out=$({proyecto}/bin/bk-run -q echo secreto); echo \"[$out] $(grep -c secreto bk-run.log)\"",
+      "assert": "stdout~^\\[\\] 2$",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "run-doble-guion",
+      "descripcion": "las opciones que van detrás del comando (o de --) son del comando, no de bk-run",
+      "cmd": "{proyecto}/bin/bk-run -q -- ls -d . && {proyecto}/bin/bk-run -q ls -d . && grep -c '^== .* ls -d \\. ==$' bk-run.log",
+      "assert": "stdout~^2$",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "run-log-no-escribible",
+      "descripcion": "si no puede escribir en el log, avisa con su nombre, sale con 1 y no ejecuta el comando",
+      "cmd": "err=$({proyecto}/bin/bk-run -l no/existe.log touch hecho 2>&1 >/dev/null); echo \"codigo=$? $err | $(ls | wc -l)\"",
+      "assert": "stdout~^codigo=1 bk-run: no puedo escribir en 'no/existe\\.log' \\| 0$",
+      "pista": "3-proyecto/README.md, paso 4"
+    },
+    {
+      "id": "run-temporal",
+      "descripcion": "-v cuenta en stderr qué temporal usa (de mktemp); al terminar, bien o con un fallo, ya no existe y sale con el código del comando",
+      "cmd": "mkdir t && err=$(TMPDIR=$PWD/t {proyecto}/bin/bk-run -v -q true 2>&1); TMPDIR=$PWD/t {proyecto}/bin/bk-run -q bash -c 'exit 3' 2>/dev/null; echo \"codigo=$? $(grep -c \"^bk-run: debug: salida temporal: $PWD/t/tmp\\.\" <<< \"$err\") $(ls -A t | wc -l)\"",
+      "assert": "stdout~^codigo=3 1 0$",
+      "pista": "3-proyecto/README.md, pasos 2 y 5"
+    },
+    {
+      "id": "run-bloques-enteros",
+      "descripcion": "dos bk-run a la vez con el mismo log no mezclan sus líneas: cada bloque va entero",
+      "cmd": "{proyecto}/bin/bk-run bash -c 'echo a1; sleep 1; echo a2' > /dev/null & {proyecto}/bin/bk-run bash -c 'sleep 0.5; echo b1; sleep 1; echo b2' > /dev/null; wait; awk '/^== [0-9]/ { print \"H\"; next } /^== código/ { print \"F\"; next } { print }' bk-run.log | paste -sd' '",
+      "assert": "stdout~^H a1 a2 F H b1 b2 F$",
+      "pista": "3-proyecto/README.md, pasos 6 y 7"
+    },
+    {
+      "id": "run-bloqueo",
+      "descripcion": "si otro proceso tiene el log bloqueado más de -w segundos, avisa, sale con 1 y dice dónde dejó la salida",
+      "cmd": "touch bk-run.log; flock bk-run.log sleep 3 & sleep 0.3; err=$({proyecto}/bin/bk-run -q -w 1 echo guardado 2>&1); c=$?; wait; f=${err##* }; echo \"codigo=$c $err | $(cat \"$f\")\"",
+      "assert": "stdout~^codigo=1 bk-run: .*bloqueado 'bk-run\\.log'.* \\| guardado$",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "run-niveles",
+      "descripcion": "un fallo avisa con nivel warn, y con BK_LOG_LEVEL=error ese aviso no sale",
+      "cmd": "e1=$({proyecto}/bin/bk-run false 2>&1 >/dev/null); e2=$(BK_LOG_LEVEL=error {proyecto}/bin/bk-run false 2>&1 >/dev/null); echo \"[$e1][$e2]\"",
+      "assert": "stdout~^\\[bk-run: warn: 'false' salió con código 1\\]\\[\\]$",
+      "pista": "3-proyecto/README.md, pasos 1 y 7"
+    },
+    {
+      "id": "run-nivel-invalido",
+      "descripcion": "un BK_LOG_LEVEL que no es debug, info, warn ni error para bk-run con código 2",
+      "cmd": "err=$(BK_LOG_LEVEL=mucho {proyecto}/bin/bk-run true 2>&1 >/dev/null); echo \"codigo=$? $err\"",
+      "assert": "stdout~^codigo=2 bk-run: BK_LOG_LEVEL='mucho' no es un nivel",
+      "pista": "3-proyecto/README.md, paso 1"
+    },
+    {
+      "id": "kit-limpio",
+      "descripcion": "el kit sin TODOs y limpio para shellcheck -x",
+      "cmd": "cd {proyecto} && ! grep -rn TODO bin lib scaffold.sh && shellcheck -x bin/bashkit bin/bk-info bin/bk-run bin/bk-top-ips bin/bk-rename bin/bk-check bin/bk-clean bin/bk-report bin/bk-logs lib/core.sh scaffold.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 8"
+    },
+    {
+      "id": "readme-completo",
+      "descripcion": "README.md sin TODOs, documenta las opciones de bk-run y tiene la bitácora de la semana 11",
+      "cmd": "cd {proyecto} && ! grep -n TODO README.md && grep 'bin/bk-run' README.md | grep -q -- '-q' && grep -q '^- Semana 11: ' README.md",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 9"
+    }
+  ]
+}
