@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+# bk-report — resume el log de bk-run en una tabla: cuántas veces se ejecutó cada comando y cuántas falló.
+# Para qué: ver de un vistazo qué se ejecuta en esta máquina y qué es lo que más falla.
+set -euo pipefail
+
+# shellcheck source=SCRIPTDIR/../lib/core.sh
+source "$(dirname "${BASH_SOURCE[0]}")/../lib/core.sh"
+
+# Un log como mucho. Sin argumento, el mismo que usa bk-run: "bk-run ...; bk-report" cuadra.
+[[ $# -le 1 ]] || die "uso: bk-report [log]" 2
+log="${1:-${BK_LOG:-bk-run.log}}"
+[[ -r $log ]] || die "no puedo leer '$log'"
+
+# Un contador por comando, con el nombre del comando como clave.
+# Sin -A, bash tomaría cada clave como un número (0) y todos los comandos irían a la misma casilla.
+declare -A runs=() ok=() failed=()
+total_runs=0
+total_ok=0
+total_failed=0
+
+# bk-run escribe "== fecha hora comando argumentos ==" antes de la salida y "== código: N ==" después.
+header_re='^== [0-9-]+ [0-9:]+ (.+) ==$'
+footer_re='^== código: ([0-9]) ==$'
+cmd=""
+while IFS= read -r line; do
+  if [[ $line =~ $header_re ]]; then
+    # Solo la primera palabra: "df -h" y "df -h /var" son el mismo comando.
+    cmd="${BASH_REMATCH[1]%% *}"
+  # -n $cmd: un log recortado puede empezar a mitad de un bloque, con un "== código" sin
+  # comando; runs[""] pararía el script con "bad array subscript".
+  elif [[ $line =~ $footer_re && -n $cmd ]]; then
+    # Una asignación y no ((runs[$cmd]++)): eso vale 0 la primera vez y set -e pararía el script.
+    runs[$cmd]=$((${runs[$cmd]:-0} + 1))
+    total_runs=$((total_runs + 1))
+    if [[ ${BASH_REMATCH[1]} == 0 ]]; then
+      ok[$cmd]=$((${ok[$cmd]:-0} + 1))
+      total_ok=$((total_ok + 1))
+    else
+      failed[$cmd]=$((${failed[$cmd]:-0} + 1))
+      total_failed=$((total_failed + 1))
+    fi
+  fi
+done < "$log"
+
+# La primera columna, tan ancha como el nombre más largo (y nunca menos que "COMANDO").
+width=7
+for name in "${!runs[@]}"; do
+  if ((${#name} > width)); then
+    width=${#name}
+  fi
+done
+
+# Un solo formato para todas las filas: así la cabecera, los comandos y el total quedan alineados.
+# %-*s toma el ancho del argumento anterior; %5s alinea los números a la derecha.
+print_row() { printf '%-*s %5s %5s %6s\n' "$width" "$@"; }
+
+print_row COMANDO VECES BIEN FALLOS
+# Las claves de un array asociativo salen sin orden: se ordenan las filas ya escritas.
+for name in "${!runs[@]}"; do
+  print_row "$name" "${runs[$name]}" "${ok[$name]:-0}" "${failed[$name]:-0}"
+done | LC_ALL=C sort
+print_row TOTAL "$total_runs" "$total_ok" "$total_failed"

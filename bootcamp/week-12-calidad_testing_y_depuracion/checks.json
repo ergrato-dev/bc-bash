@@ -1,0 +1,111 @@
+{
+  "semana": "12",
+  "titulo": "Calidad, testing y depuración",
+  "checks": [
+    {
+      "id": "lint-ayuda",
+      "descripcion": "bashkit lint -h enseña el uso con código 0; un archivo que no existe avisa y sale con código 2",
+      "cmd": "out=$({proyecto}/bin/bashkit lint -h); c1=$?; e=$({proyecto}/bin/bk-lint no-existe 2>&1 >/dev/null); echo \"codigo=$c1,$? $out | $e\"",
+      "assert": "stdout~^codigo=0,2 uso: bk-lint \\[-w\\] \\[archivo\\.\\.\\.\\] \\| bk-lint: no existe 'no-existe'$",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "lint-shellcheck",
+      "descripcion": "bk-lint encuentra una variable sin comillas (SC2086) en un script nuevo del kit y sale con código 1",
+      "cmd": "cp -r {proyecto} kit && printf '#!/usr/bin/env bash\\necho $1\\n' > kit/bin/bk-mal && kit/bin/bk-lint > out 2>&1; echo \"codigo=$? $(grep -o SC2086 out | head -n 1) $(tail -n 1 out)\"",
+      "assert": "stdout~^codigo=1 SC2086 bk-lint: archivos revisados: [0-9]+, con avisos de shellcheck$",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "lint-shfmt",
+      "descripcion": "bk-lint enseña el diff de shfmt de un archivo mal sangrado, y bk-lint -w lo arregla",
+      "cmd": "cp -r {proyecto} kit && printf '#!/usr/bin/env bash\\nif true; then\\necho hola\\nfi\\n' > kit/bin/bk-feo && kit/bin/bk-lint kit/bin/bk-feo > out 2>&1; c1=$?; kit/bin/bk-lint -w kit/bin/bk-feo 2>/dev/null; echo \"codigo=$c1,$? $(grep -c '^+  echo hola$' out) $(tail -n 1 out) | $(sed -n 3p kit/bin/bk-feo)\"",
+      "assert": "stdout~^codigo=1,0 1 bk-lint: archivos revisados: 1, con avisos de shfmt \\|   echo hola$",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "lint-limpio",
+      "descripcion": "el kit entero pasa bk-lint: shellcheck y shfmt sin avisos",
+      "cmd": "out=$({proyecto}/bin/bk-lint 2>&1); echo \"codigo=$? $out\"",
+      "assert": "stdout~^codigo=0 bk-lint: archivos revisados: [0-9]+, sin avisos$",
+      "pista": "3-proyecto/README.md, paso 8"
+    },
+    {
+      "id": "trace-archivo",
+      "descripcion": "con BK_TRACE, la traza va a ese archivo con el archivo y la línea delante, y la salida no cambia",
+      "cmd": "cp {semana}/3-proyecto/tests/bk-run.log . && {proyecto}/bin/bk-report > sin.txt 2>&1 && BK_TRACE=traza.txt {proyecto}/bin/bk-report > con.txt 2> err.txt; echo \"$(ls | paste -sd,) err=$(wc -c < err.txt) igual=$(cmp -s sin.txt con.txt && echo si) traza=$(grep -cE '^\\+ bk-report:[0-9]+: ' traza.txt)\"",
+      "assert": "stdout~^bk-run.log,con.txt,err.txt,sin.txt,traza.txt err=0 igual=si traza=[1-9][0-9]*$",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "trace-bashkit",
+      "descripcion": "BK_TRACE llega del dispatcher al subcomando: la traza tiene líneas de bashkit, de bk-report y de core.sh",
+      "cmd": "BK_TRACE=traza.txt {proyecto}/bin/bashkit report no-existe.log 2>/dev/null; sed -E 's/^\\++ //' traza.txt | cut -d: -f1 | sort -u | paste -sd,",
+      "assert": "stdout~^bashkit,bk-report,core\\.sh$",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "report-127",
+      "descripcion": "bk-report cuenta los bloques con códigos de más de un dígito (127, 130)",
+      "cmd": "cp {semana}/3-proyecto/tests/bk-run.log . && {proyecto}/bin/bk-report | tail -n 1 | tr -s ' '",
+      "assert": "stdout~^TOTAL 4 1 3$",
+      "pista": "3-proyecto/README.md, paso 4"
+    },
+    {
+      "id": "tests-pasan",
+      "descripcion": "bats tests pasa entero, con 14 tests o más",
+      "cmd": "cd {proyecto} && if bats tests > $OLDPWD/out; then echo \"ok n=$(bats -c tests)\"; else grep -A3 '^not ok' $OLDPWD/out; fi",
+      "assert": "stdout~^ok n=(1[4-9]|[2-9][0-9])$",
+      "pista": "3-proyecto/README.md, pasos 4 a 6"
+    },
+    {
+      "id": "tests-ficheros",
+      "descripcion": "hay tests de bk-check y bk-run (3 o más en cada uno) y de bk-report (2 o más)",
+      "cmd": "cd {proyecto}/tests && for f in bk-check bk-run bk-report; do echo \"$f=$(bats -c $f.bats)\"; done | paste -sd' '",
+      "assert": "stdout~^bk-check=([3-9]|[1-9][0-9]) bk-run=([3-9]|[1-9][0-9]) bk-report=([2-9]|[1-9][0-9])$",
+      "pista": "3-proyecto/README.md, pasos 4 a 6"
+    },
+    {
+      "id": "mut-check",
+      "descripcion": "los tests de bk-check fallan si bk-check da por bueno un valor malo",
+      "cmd": "bats {proyecto}/tests/bk-check.bats > /dev/null && cp -r {proyecto} kit && sed -i 's/exit 1$/exit 0/' kit/bin/bk-check && bats kit/tests/bk-check.bats",
+      "assert": "stdout~^not ok [0-9]+ ",
+      "pista": "3-proyecto/README.md, paso 5"
+    },
+    {
+      "id": "mut-run",
+      "descripcion": "los tests de bk-run fallan si bk-run sale siempre con 0",
+      "cmd": "bats {proyecto}/tests/bk-run.bats > /dev/null && cp -r {proyecto} kit && sed -i 's/^exit \"$status\"$/exit 0/' kit/bin/bk-run && bats kit/tests/bk-run.bats",
+      "assert": "stdout~^not ok [0-9]+ ",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "mut-report",
+      "descripcion": "el test de regresión de bk-report falla si vuelve el fallo de los códigos de un dígito",
+      "cmd": "bats {proyecto}/tests/bk-report.bats > /dev/null && cp -r {proyecto} kit && sed -i \"s/^footer_re=.*/footer_re='^== código: ([0-9]) ==\\$'/\" kit/bin/bk-report && bats kit/tests/bk-report.bats",
+      "assert": "stdout~^not ok [0-9]+ ",
+      "pista": "3-proyecto/README.md, paso 4"
+    },
+    {
+      "id": "tests-aislados",
+      "descripcion": "los tests no dejan archivos en el kit ni en la carpeta desde la que lanzas bats",
+      "cmd": "cp -r {proyecto} kit && [[ $(bats -c kit/tests/bk-run.bats) -ge 3 ]] && find kit | sort > antes && (cd kit && bats tests > /dev/null); find kit | sort > despues; diff antes despues && echo iguales",
+      "assert": "stdout~^iguales$",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "kit-limpio",
+      "descripcion": "el kit y sus tests sin TODOs",
+      "cmd": "cd {proyecto} && ! grep -rn TODO bin lib tests scaffold.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 9"
+    },
+    {
+      "id": "readme-completo",
+      "descripcion": "README.md sin TODOs, documenta bk-lint y cómo pasar los tests, y tiene la bitácora de la semana 12",
+      "cmd": "cd {proyecto} && ! grep -n TODO README.md && grep 'bin/bk-lint' README.md | grep -q shfmt && grep -q 'bats tests' README.md && grep -q '^- Semana 12: ' README.md",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 10"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Para cada test, bats crea una carpeta temporal vacía, ejecuta setup, el cuerpo del test y teardown, y borra la carpeta. Dentro del test, run guarda el código, la salida y las líneas del comando. Si una línea del test falla, bats salta directamente a teardown y marca el test con una cruz</title>
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/>
+    </marker>
+    <marker id="flecha-roja" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f85149"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="400" fill="#0d1117"/>
+  <text x="500" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Lo que hace <tspan fill="#f78166">bats</tspan> con cada <tspan fill="#f78166">@test</tspan></text>
+
+  <rect x="30" y="80" width="170" height="80" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="115" y="112" fill="#d2a8ff" font-size="14" font-weight="600" text-anchor="middle">crea la carpeta</text>
+  <text x="115" y="136" fill="#8b949e" font-size="13" text-anchor="middle">$BATS_TEST_TMPDIR</text>
+
+  <rect x="240" y="80" width="140" height="80" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="310" y="112" fill="#3fb950" font-size="15" font-weight="600" text-anchor="middle">setup</text>
+  <text x="310" y="136" fill="#8b949e" font-size="13" text-anchor="middle">cd, PATH, source</text>
+
+  <rect x="420" y="70" width="230" height="100" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="535" y="98" fill="#3fb950" font-size="15" font-weight="600" text-anchor="middle">el test</text>
+  <text x="535" y="124" fill="#f78166" font-size="13" text-anchor="middle">run bk-check ip 1.2.3.256</text>
+  <text x="535" y="148" fill="#f0f6fc" font-size="13" text-anchor="middle">[[ $status -eq 1 ]]</text>
+
+  <rect x="690" y="80" width="140" height="80" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="760" y="112" fill="#3fb950" font-size="15" font-weight="600" text-anchor="middle">teardown</text>
+  <text x="760" y="136" fill="#8b949e" font-size="13" text-anchor="middle">siempre</text>
+
+  <rect x="860" y="80" width="120" height="80" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="920" y="112" fill="#d2a8ff" font-size="14" font-weight="600" text-anchor="middle">la borra</text>
+  <text x="920" y="136" fill="#8b949e" font-size="13" text-anchor="middle">sin rastro</text>
+
+  <line x1="200" y1="120" x2="236" y2="120" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <line x1="380" y1="120" x2="416" y2="120" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <line x1="650" y1="120" x2="686" y2="120" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+  <line x1="830" y1="120" x2="856" y2="120" stroke="#8b949e" stroke-width="2" marker-end="url(#flecha)"/>
+
+  <path d="M600 170 C 600 205, 740 205, 755 166" fill="none" stroke="#f85149" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#flecha-roja)"/>
+  <text x="680" y="222" fill="#f85149" font-size="13" text-anchor="middle">una línea falla: salta aquí</text>
+
+  <line x1="535" y1="170" x2="535" y2="250" stroke="#58a6ff" stroke-width="2" marker-end="url(#flecha)"/>
+  <text x="30" y="290" fill="#f0f6fc" font-size="15" font-weight="600">run guarda, sin parar el test:</text>
+  <rect x="30" y="306" width="300" height="70" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="50" y="334" fill="#79c0ff" font-size="14">$status</text>
+  <text x="150" y="334" fill="#8b949e" font-size="13">el código de salida: 1</text>
+  <text x="50" y="360" fill="#79c0ff" font-size="14">$output</text>
+  <text x="150" y="360" fill="#8b949e" font-size="13">stdout y stderr juntos</text>
+  <rect x="350" y="306" width="370" height="70" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="370" y="334" fill="#79c0ff" font-size="14">${lines[0]}</text>
+  <text x="480" y="334" fill="#8b949e" font-size="13">la primera línea de $output</text>
+  <text x="370" y="360" fill="#79c0ff" font-size="14">$stderr</text>
+  <text x="480" y="360" fill="#8b949e" font-size="13">con run --separate-stderr</text>
+
+  <text x="760" y="300" fill="#3fb950" font-size="15" font-weight="600">✓ ninguna línea falló</text>
+  <text x="760" y="330" fill="#f85149" font-size="15" font-weight="600">✗ alguna falló</text>
+  <text x="760" y="360" fill="#8b949e" font-size="13">y el test siguiente empieza de cero</text>
+</svg>
