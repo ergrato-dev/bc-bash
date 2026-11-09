@@ -1,0 +1,7 @@
+2026-11-09T08:00:01 INFO servidor arrancado en el puerto 8080
+2026-11-09T08:00:05 INFO conexión con la base de datos
+2026-11-09T08:12:40 WARN la caché tardó 900 ms
+2026-11-09T08:15:02 ERROR timeout al llamar a pagos
+2026-11-09T08:15:09 error reintento de pagos fallido
+2026-11-09T08:20:00 INFO 120 peticiones en el último minuto
+2026-11-09T08:31:17 ERROR disco al 95%

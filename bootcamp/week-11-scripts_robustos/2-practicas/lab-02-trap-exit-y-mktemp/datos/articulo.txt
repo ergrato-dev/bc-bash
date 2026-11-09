@@ -1,0 +1,6 @@
+Un script de bash empieza siempre por el shebang. Después, set -euo pipefail para que
+el script pare al primer error. Un script que deja archivos temporales llena el disco:
+por eso cada script crea su carpeta temporal con mktemp y la borra con trap al salir.
+Con trap, el script limpia aunque falle, y un script que limpia se puede repetir.
+El script de este lab cuenta palabras: las del texto, de una en una, en un archivo
+temporal; después, cuántas veces sale cada palabra, en otro archivo temporal.

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Tres procesos piden el bloqueo del mismo archivo. A lo consigue en el segundo 0 y lo tiene hasta el 3. B lo pide en el segundo 1 con flock -w 5, espera hasta que A lo suelta y lo tiene del 3 al 4. C lo pide en el segundo 1,5 con flock -n, no espera y sale con código 1</title>
+  <rect width="1000" height="420" fill="#0d1117"/>
+  <text x="500" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Tres procesos, un bloqueo: <tspan fill="#f78166">flock</tspan> sobre informe.lock</text>
+
+  <text x="40" y="112" fill="#f0f6fc" font-size="15" font-weight="600">A</text>
+  <text x="62" y="112" fill="#f78166" font-size="14">flock -n</text>
+  <rect x="200" y="88" width="540" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="470" y="111" fill="#3fb950" font-size="14" text-anchor="middle">tiene el bloqueo: trabaja</text>
+
+  <text x="40" y="192" fill="#f0f6fc" font-size="15" font-weight="600">B</text>
+  <text x="62" y="192" fill="#f78166" font-size="14">flock -w 5</text>
+  <rect x="380" y="168" width="360" height="36" rx="6" fill="#161b22" stroke="#e3b341" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="560" y="191" fill="#e3b341" font-size="14" text-anchor="middle">espera (5 s como mucho)</text>
+  <rect x="740" y="168" width="180" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="830" y="191" fill="#3fb950" font-size="14" text-anchor="middle">ahora es suyo</text>
+
+  <text x="40" y="272" fill="#f0f6fc" font-size="15" font-weight="600">C</text>
+  <text x="62" y="272" fill="#f78166" font-size="14">flock -n</text>
+  <circle cx="470" cy="266" r="12" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="470" y="271" fill="#f85149" font-size="14" font-weight="600" text-anchor="middle">×</text>
+  <text x="494" y="271" fill="#f85149" font-size="14">no espera: sale con código 1</text>
+
+  <line x1="200" y1="330" x2="940" y2="330" stroke="#30363d" stroke-width="2"/>
+  <line x1="200" y1="324" x2="200" y2="336" stroke="#8b949e" stroke-width="2"/>
+  <text x="200" y="356" fill="#8b949e" font-size="13" text-anchor="middle">0 s</text>
+  <line x1="380" y1="324" x2="380" y2="336" stroke="#8b949e" stroke-width="2"/>
+  <text x="380" y="356" fill="#8b949e" font-size="13" text-anchor="middle">1 s</text>
+  <line x1="560" y1="324" x2="560" y2="336" stroke="#8b949e" stroke-width="2"/>
+  <text x="560" y="356" fill="#8b949e" font-size="13" text-anchor="middle">2 s</text>
+  <line x1="740" y1="324" x2="740" y2="336" stroke="#8b949e" stroke-width="2"/>
+  <text x="740" y="356" fill="#8b949e" font-size="13" text-anchor="middle">3 s</text>
+  <line x1="920" y1="324" x2="920" y2="336" stroke="#8b949e" stroke-width="2"/>
+  <text x="920" y="356" fill="#8b949e" font-size="13" text-anchor="middle">4 s</text>
+  <line x1="740" y1="70" x2="740" y2="300" stroke="#58a6ff" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="740" y="392" fill="#79c0ff" font-size="14" text-anchor="middle">A termina: el bloqueo se suelta solo, aunque fuera con kill -9</text>
+</svg>
