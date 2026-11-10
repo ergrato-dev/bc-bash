@@ -19,13 +19,19 @@ services:
       - .:/bc-bash
 
   db:
-    image: postgres:17
+    image: postgres:16
     profiles: [db]
     environment:
       POSTGRES_USER: bashkit
       POSTGRES_PASSWORD: bashkit
       POSTGRES_DB: bashkit
+    # Un volumen con nombre: los datos sobreviven a stop, restart y down (no a down -v).
+    volumes:
+      - pgdata:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "bashkit"]
       interval: 2s
       retries: 15
+
+volumes:
+  pgdata:
