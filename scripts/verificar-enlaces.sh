@@ -93,14 +93,14 @@ while IFS= read -r rm; do
 done < <(find bootcamp -mindepth 2 -maxdepth 2 -iname "README.md")
 # El resto de documentos de la semana (teoría, labs, proyecto, rúbrica,
 # recursos, glosario) llevan al pie la tabla anterior/siguiente que escribe
-# scripts/generar-navegacion.sh; los README de starter/ y solucion/ no.
+# scripts/generar-navegacion.sh; los de starter/, solucion/ y datos/ no.
 while IFS= read -r doc; do
   esta_publicada "$doc" || continue
   if ! grep -q '^<!-- nav -->$' "$doc"; then
     echo "SIN TABLA ANTERIOR/SIGUIENTE (scripts/generar-navegacion.sh NN): $doc"
     fail=1
   fi
-done < <(find bootcamp -mindepth 3 -name "*.md" -not -path "*/starter/*" -not -path "*/solucion/*" -not -path "*/0-assets/*")
+done < <(find bootcamp -mindepth 3 -name "*.md" -not -path "*/starter/*" -not -path "*/solucion/*" -not -path "*/0-assets/*" -not -path "*/datos/*")
 
 echo "== 4. Diagramas SVG en 0-assets/ =="
 while IFS= read -r d; do
