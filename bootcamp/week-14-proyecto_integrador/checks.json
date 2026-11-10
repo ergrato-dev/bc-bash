@@ -1,0 +1,111 @@
+{
+  "semana": "14",
+  "titulo": "Proyecto integrador: backups de PostgreSQL en Docker",
+  "checks": [
+    {
+      "id": "bk-ayuda",
+      "descripcion": "bashkit backup -h y bashkit restore -h enseñan el uso con código 0; -k 0 avisa y sale con código 2",
+      "cmd": "out=$({proyecto}/bin/bashkit backup -h); c1=$?; r=$({proyecto}/bin/bashkit restore -h); c2=$?; e=$({proyecto}/bin/bk-backup -k 0 2>&1 >/dev/null); echo \"codigo=$c1,$c2,$? $out | $r | $e\"",
+      "assert": "stdout~^codigo=0,0,2 uso: bk-backup \\[-d carpeta\\] \\[-k copias\\] \\[-w segundos\\] \\| uso: bk-restore \\[-y\\] archivo \\| bk-backup: -k necesita un número mayor que 0, no '0'$",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "bk-copia",
+      "descripcion": "deja una copia que empieza por PGDMP con la fecha en el nombre, escribe su ruta en stdout y el resumen en stderr",
+      "cmd": "export PATH={semana}/3-proyecto/tests/dobles:$PATH PGDATABASE=tienda; {proyecto}/bin/bk-backup -d copias > out 2> err; echo \"codigo=$? $(cat out) $(head -c 5 copias/tienda-*.dump) archivos=$(ls -A copias | grep -vc '^\\.lock$') | $(cat err)\"",
+      "assert": "stdout~^codigo=0 copias/tienda-[0-9]{8}-[0-9]{6}\\.dump PGDMP archivos=1 \\| bk-backup: copia de 'tienda' guardada; quedan 1, borradas 0$",
+      "pista": "3-proyecto/README.md, paso 3"
+    },
+    {
+      "id": "bk-fallo",
+      "descripcion": "si pg_dump falla, sale con 1 y no deja ni la copia vacía ni el .partial",
+      "cmd": "export PATH={semana}/3-proyecto/tests/dobles:$PATH PGDATABASE=tienda; FAKE_PG_DUMP_FAIL=1 {proyecto}/bin/bk-backup -d copias > out 2> err; echo \"codigo=$? salida=$(wc -c < out) archivos=$(ls -A copias | grep -vc '^\\.lock$') | $(tail -n 1 err)\"",
+      "assert": "stdout~^codigo=1 salida=0 archivos=0 \\| bk-backup: pg_dump falló: no hay copia nueva$",
+      "pista": "3-proyecto/README.md, paso 3"
+    },
+    {
+      "id": "bk-espera",
+      "descripcion": "espera a que PostgreSQL responda, y si no responde en -w segundos se rinde con 1 sin dejar copia",
+      "cmd": "export PATH={semana}/3-proyecto/tests/dobles:$PATH PGDATABASE=tienda; FAKE_PG_READY_AFTER=2 {proyecto}/bin/bk-backup -d a -w 5 > /dev/null 2>&1; c1=$?; n=$(cat .pg_isready-calls); rm .pg_isready-calls; FAKE_PG_READY_AFTER=99 {proyecto}/bin/bk-backup -d b -w 1 > /dev/null 2> err; echo \"codigo=$c1,$? llamadas=$n archivos=$(ls b | wc -l) | $(cat err)\"",
+      "assert": "stdout~^codigo=0,1 llamadas=3 archivos=0 \\| bk-backup: PostgreSQL no responde después de 1 s: no hay copia nueva$",
+      "pista": "3-proyecto/README.md, paso 4"
+    },
+    {
+      "id": "bk-rotacion",
+      "descripcion": "con -k 3 deja las 3 copias más nuevas de la base y no toca las de otra base que empieza igual",
+      "cmd": "export PATH={semana}/3-proyecto/tests/dobles:$PATH PGDATABASE=tienda; mkdir copias && touch copias/tienda-2026010{1,2,3,4}-000000.dump copias/tienda-viejo-20200101-000000.dump && {proyecto}/bin/bk-backup -d copias -k 3 > /dev/null 2> err; echo \"codigo=$? $(ls copias | paste -sd,) | $(cat err)\"",
+      "assert": "stdout~^codigo=0 tienda-20260103-000000\\.dump,tienda-20260104-000000\\.dump,tienda-[0-9]{8}-[0-9]{6}\\.dump,tienda-viejo-20200101-000000\\.dump \\| bk-backup: copia de 'tienda' guardada; quedan 3, borradas 2$",
+      "pista": "3-proyecto/README.md, paso 5"
+    },
+    {
+      "id": "bk-bloqueo",
+      "descripcion": "si otra copia tiene bloqueada la carpeta, no espera: avisa y sale con código 3",
+      "cmd": "export PATH={semana}/3-proyecto/tests/dobles:$PATH PGDATABASE=tienda; mkdir copias && exec 9> copias/.lock && flock 9 && {proyecto}/bin/bk-backup -d copias > /dev/null 2> err; echo \"codigo=$? archivos=$(ls copias | wc -l) | $(cat err)\"",
+      "assert": "stdout~^codigo=3 archivos=0 \\| bk-backup: ya hay otra copia en marcha en 'copias'$",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "rs-confirmar",
+      "descripcion": "bk-restore sin -y y sin terminal no restaura (código 2); un archivo que no existe, tampoco",
+      "cmd": "export PATH={semana}/3-proyecto/tests/dobles:$PATH PGDATABASE=tienda; printf 'PGDMP x\\n' > c.dump; a=$({proyecto}/bin/bk-restore c.dump 2>&1 < /dev/null); c1=$?; b=$({proyecto}/bin/bk-restore -y no-existe.dump 2>&1); echo \"codigo=$c1,$? llamadas=$(cat pg_restore.args 2>/dev/null | wc -l) $a | $b\"",
+      "assert": "stdout~^codigo=2,2 llamadas=0 bk-restore: sin terminal no puedo preguntar: usa -y para confirmar \\| bk-restore: no puedo leer 'no-existe\\.dump'$",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "rs-no-copia",
+      "descripcion": "un archivo que no es una copia de pg_dump -Fc para con 1 antes de tocar la base",
+      "cmd": "export PATH={semana}/3-proyecto/tests/dobles:$PATH PGDATABASE=tienda; echo hola > notas.txt; out=$({proyecto}/bin/bk-restore -y notas.txt 2>&1); echo \"codigo=$? llamadas=$(cat pg_restore.args 2>/dev/null | wc -l) $out\"",
+      "assert": "stdout~^codigo=1 llamadas=0 bk-restore: 'notas\\.txt' no es una copia de pg_dump -Fc$",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "rs-restaura",
+      "descripcion": "con -y llama a pg_restore con --clean y --single-transaction sobre PGDATABASE; si falla, sale con 1",
+      "cmd": "export PATH={semana}/3-proyecto/tests/dobles:$PATH PGDATABASE=tienda; printf 'PGDMP x\\n' > c.dump; {proyecto}/bin/bk-restore -y c.dump 2> err; c1=$?; a=$(cat pg_restore.args); FAKE_PG_RESTORE_FAIL=1 {proyecto}/bin/bk-restore -y c.dump > /dev/null 2> err2; echo \"codigo=$c1,$? clean=$(grep -c -- --clean <<< \"$a\") st=$(grep -c -- --single-transaction <<< \"$a\") base=$(grep -c -- '-d tienda c.dump$' <<< \"$a\") | $(cat err) | $(tail -n 1 err2)\"",
+      "assert": "stdout~^codigo=0,1 clean=1 st=1 base=1 \\| bk-restore: base 'tienda' restaurada desde 'c\\.dump' \\| bk-restore: pg_restore falló: la base 'tienda' se queda como estaba$",
+      "pista": "3-proyecto/README.md, paso 8"
+    },
+    {
+      "id": "compose",
+      "descripcion": "compose.yaml: postgres:16 con healthcheck de pg_isready, el puerto solo en 127.0.0.1 y la contraseña de .env",
+      "cmd": "cd {proyecto} && grep -Eq '^ +image: postgres:16$' compose.yaml && grep -q 'pg_isready' compose.yaml && grep -q '\"127.0.0.1:5432:5432\"' compose.yaml && grep -Eq 'POSTGRES_PASSWORD: \\$\\{POSTGRES_PASSWORD:\\?' compose.yaml && ! grep -n TODO compose.yaml",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 9"
+    },
+    {
+      "id": "ci",
+      "descripcion": "la CI pasa bk-lint y bats tests, y restaura una copia contra un postgres:16 de usar y tirar",
+      "cmd": "cd {proyecto}/.github/workflows && grep -q 'postgres:16' ci.yml && grep -q 'pg_isready' ci.yml && grep -Eq 'run: bin/bk-lint$' ci.yml && grep -Eq 'run: bats tests$' ci.yml && grep -q 'bin/bk-backup' ci.yml && grep -q 'bin/bk-restore -y' ci.yml && ! grep -n TODO ci.yml",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 10"
+    },
+    {
+      "id": "tests-pasan",
+      "descripcion": "bats tests pasa entero, con 3 tests o más de bk-backup y 2 o más de bk-restore",
+      "cmd": "cd {proyecto} && if bats tests > $OLDPWD/out; then echo \"ok n=$(bats -c tests) bk=$(bats -c tests/bk-backup.bats) rs=$(bats -c tests/bk-restore.bats)\"; else grep -A3 '^not ok' $OLDPWD/out; fi",
+      "assert": "stdout~^ok n=(29|[3-9][0-9]) bk=([3-9]|[1-9][0-9]) rs=([2-9]|[1-9][0-9])$",
+      "pista": "3-proyecto/README.md, paso 11"
+    },
+    {
+      "id": "mut-rotacion",
+      "descripcion": "los tests de bk-backup fallan si la rotación no borra ninguna copia",
+      "cmd": "bats {proyecto}/tests/bk-backup.bats > /dev/null && cp -r {proyecto} kit && sed -i 's/ > keep)); do/ > 999)); do/' kit/bin/bk-backup && bats kit/tests/bk-backup.bats",
+      "assert": "stdout~^not ok [0-9]+ ",
+      "pista": "3-proyecto/README.md, paso 11"
+    },
+    {
+      "id": "kit-limpio",
+      "descripcion": "el kit pasa bk-lint (shellcheck y shfmt) y no le quedan TODOs",
+      "cmd": "out=$({proyecto}/bin/bk-lint 2>&1); c=$?; cd {proyecto} && n=$(grep -rn TODO bin lib tests scaffold.sh healthcheck.conf compose.yaml .github | wc -l); echo \"codigo=$c todos=$n $out\"",
+      "assert": "stdout~^codigo=0 todos=0 bk-lint: archivos revisados: [0-9]+, sin avisos$",
+      "pista": "3-proyecto/README.md, paso 12"
+    },
+    {
+      "id": "readme-completo",
+      "descripcion": "README.md sin TODOs, documenta bk-backup con -k, la línea de cron de la copia y la bitácora de la semana 14",
+      "cmd": "cd {proyecto} && ! grep -n TODO README.md && grep 'bin/bk-backup' README.md | grep -q -- '-k' && grep -q 'bin/bk-restore' README.md && grep -qE '^[0-9]+ [0-9]+ (\\* ){3}.*bk-backup' README.md && grep -q '^- Semana 14: ' README.md",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 13"
+    }
+  ]
+}

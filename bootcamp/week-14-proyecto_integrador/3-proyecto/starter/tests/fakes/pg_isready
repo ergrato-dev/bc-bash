@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Doble de pg_isready para los tests: responde como PostgreSQL sin necesitarlo.
+# FAKE_PG_READY_AFTER=N: las N primeras llamadas dice que no hay respuesta (código 2), como
+# un servidor que todavía arranca. Cuenta las llamadas en .pg_isready-calls, en la carpeta actual.
+set -euo pipefail
+
+state=".pg_isready-calls"
+calls=$(($(cat "$state" 2> /dev/null || echo 0) + 1))
+echo "$calls" > "$state"
+
+if ((calls > ${FAKE_PG_READY_AFTER:-0})); then
+  [[ $* == *-q* ]] || echo "db:5432 - accepting connections"
+  exit 0
+fi
+[[ $* == *-q* ]] || echo "db:5432 - no response"
+exit 2

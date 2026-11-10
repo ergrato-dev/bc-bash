@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# bk-restore — deja la base de datos de PGDATABASE como estaba en una copia de bk-backup.
+# Para qué: volver atrás después de un borrado o una migración que salió mal, sin pasos a mano.
+set -euo pipefail
+
+bin_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=SCRIPTDIR/../lib/core.sh
+source "$bin_dir/../lib/core.sh"
+
+usage="uso: bk-restore [-y] archivo"
+yes=""
+
+while getopts ":yh" opt; do
+  case "$opt" in
+    y) yes=1 ;;
+    h)
+      echo "$usage"
+      exit 0
+      ;;
+    *) die "opción desconocida: -$OPTARG ($usage)" 2 ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+file="${1:-}"
+[[ -n $file ]] || die "falta el archivo de la copia ($usage)" 2
+[[ -r $file ]] || die "no puedo leer '$file'" 2
+[[ -n ${PGDATABASE:-} ]] || die "falta PGDATABASE: el nombre de la base que quieres restaurar" 2
+require pg_restore
+
+# TODO(semana 14) 6: antes de tocar la base, para con código 1 si pg_restore -l no sabe
+# leer "$file". Después, sin -y: sin terminal para con código 2; con terminal, pregunta y
+# para con código 1 si la respuesta no es s o S.
+
+# TODO(semana 14) 7: restaura "$file" en "$PGDATABASE" con pg_restore, todo o nada, borrando
+# antes lo que haya; si falla, para con código 1 y di que la base se queda como estaba.

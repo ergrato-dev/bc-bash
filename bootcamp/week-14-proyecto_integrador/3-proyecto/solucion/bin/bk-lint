@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+# bk-lint — revisa los scripts del kit con shellcheck (errores) y shfmt (formato).
+# Para qué: que un fallo típico (una variable sin comillas, un cd que falla) salte antes
+# de ejecutar nada, y que todos los archivos se lean con el mismo estilo.
+set -euo pipefail
+
+bin_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=SCRIPTDIR/../lib/core.sh
+source "$bin_dir/../lib/core.sh"
+
+usage="uso: bk-lint [-w] [archivo...]"
+# El estilo del kit: 2 espacios (-i 2), los casos del case sangrados (-ci) y un espacio
+# tras > y < (-sr). En una variable, para que la revisión y -w usen el mismo.
+shfmt_style=(-i 2 -ci -sr)
+
+write=""
+while getopts ":wh" opt; do
+  case "$opt" in
+    w) write=1 ;;
+    h)
+      echo "$usage"
+      exit 0
+      ;;
+    *) die "opción desconocida: -$OPTARG ($usage)" 2 ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+require shellcheck shfmt
+
+# Sin archivos, todo el kit. Un glob y no ls: bin/* no incluye .gitkeep (empieza por punto).
+# El cd a la raíz del kit hace que los avisos digan bin/bk-run y no la ruta entera.
+if [[ $# -gt 0 ]]; then
+  files=("$@")
+else
+  cd "$bin_dir/.."
+  files=(bin/* lib/*.sh scaffold.sh)
+fi
+for file in "${files[@]}"; do
+  [[ -f $file ]] || die "no existe '$file'" 2
+done
+
+# Con -w, shfmt reescribe los archivos con el estilo del kit antes de revisarlos.
+if [[ -n $write ]]; then
+  shfmt "${shfmt_style[@]}" -w "${files[@]}"
+fi
+
+# Las dos revisiones siempre: con un && la segunda no correría si la primera falla,
+# y verías los avisos a medias. -x sigue los source para revisar también lib/core.sh.
+# shfmt -d enseña, como un diff, qué cambiaría: - la línea de ahora, + la de su estilo.
+problems=""
+shellcheck -x "${files[@]}" || problems="shellcheck"
+shfmt "${shfmt_style[@]}" -d "${files[@]}" || problems="${problems:+$problems y }shfmt"
+
+if [[ -n $problems ]]; then
+  die "archivos revisados: ${#files[@]}, con avisos de $problems"
+fi
+log "archivos revisados: ${#files[@]}, sin avisos"

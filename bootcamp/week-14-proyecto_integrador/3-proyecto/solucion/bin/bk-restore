@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# bk-restore — deja la base de datos de PGDATABASE como estaba en una copia de bk-backup.
+# Para qué: volver atrás después de un borrado o una migración que salió mal, sin pasos a mano.
+set -euo pipefail
+
+bin_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=SCRIPTDIR/../lib/core.sh
+source "$bin_dir/../lib/core.sh"
+
+usage="uso: bk-restore [-y] archivo"
+yes=""
+
+while getopts ":yh" opt; do
+  case "$opt" in
+    y) yes=1 ;;
+    h)
+      echo "$usage"
+      exit 0
+      ;;
+    *) die "opción desconocida: -$OPTARG ($usage)" 2 ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+file="${1:-}"
+[[ -n $file ]] || die "falta el archivo de la copia ($usage)" 2
+[[ -r $file ]] || die "no puedo leer '$file'" 2
+[[ -n ${PGDATABASE:-} ]] || die "falta PGDATABASE: el nombre de la base que quieres restaurar" 2
+require pg_restore
+
+# Antes de tocar la base: pg_restore -l solo lee el índice de la copia. Si no sabe leerlo,
+# el archivo no es una copia de pg_dump -Fc (o está cortado), y se para sin borrar nada.
+pg_restore -l "$file" > /dev/null 2>&1 || die "'$file' no es una copia de pg_dump -Fc"
+
+# Restaurar borra lo que hay ahora: se pregunta, salvo con -y. Sin terminal (cron, un
+# pipe, CI) nadie puede contestar, así que sin -y se para en lugar de suponer un sí.
+if [[ -z $yes ]]; then
+  [[ -t 0 ]] || die "sin terminal no puedo preguntar: usa -y para confirmar" 2
+  read -r -p "Esto reemplaza lo que hay en '$PGDATABASE' por '$file'. ¿Seguir? [s/N] " answer || answer=""
+  [[ $answer == [sS] ]] || die "cancelado: no he tocado la base"
+fi
+
+# --clean --if-exists: borra cada tabla antes de crearla de nuevo, sin error si no existe.
+# --no-owner: las tablas pasan a ser del usuario que restaura, aunque la copia venga de otro.
+# --single-transaction: todo o nada; si algo falla, la base se queda como estaba.
+pg_restore --clean --if-exists --no-owner --single-transaction -d "$PGDATABASE" "$file" ||
+  die "pg_restore falló: la base '$PGDATABASE' se queda como estaba"
+log "base '$PGDATABASE' restaurada desde '$file'"

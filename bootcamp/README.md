@@ -42,7 +42,7 @@ está en construcción (sin enlace hasta que exista la carpeta).
 
 | Semana | Tema | Estado |
 |:--:|---|:--:|
-| 14 | Proyecto integrador: backup de PostgreSQL en Docker | ⬜ |
+| [14](week-14-proyecto_integrador/README.md) | Proyecto integrador: backup de PostgreSQL en Docker | ✅ |
 
 ---
 

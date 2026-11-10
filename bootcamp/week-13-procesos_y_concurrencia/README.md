@@ -69,6 +69,6 @@ Comprueba tu proyecto (`3-proyecto/starter/`) contra los 15 requisitos verificab
 
 | Anterior | Actual | Siguiente |
 |---|---|---|
-| [← Semana 12 — Calidad, testing y depuración](../week-12-calidad_testing_y_depuracion/README.md) | **Semana 13 — Procesos y concurrencia** | — |
+| [← Semana 12 — Calidad, testing y depuración](../week-12-calidad_testing_y_depuracion/README.md) | **Semana 13 — Procesos y concurrencia** | [Semana 14 — Proyecto integrador →](../week-14-proyecto_integrador/README.md) |
 
 [← Volver al índice del bootcamp](../README.md)

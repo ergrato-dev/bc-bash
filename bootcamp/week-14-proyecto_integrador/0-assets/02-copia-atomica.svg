@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Una copia atómica: pg_dump escribe en .tienda-fecha.dump.partial; si sale bien, mv lo renombra a tienda-fecha.dump y después se borran las copias más viejas; si falla, el trap borra el .partial y las copias anteriores no se tocan</title>
+  <rect width="1000" height="440" fill="#0d1117"/>
+  <text x="500" y="34" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Una copia que no deja nada a medias</text>
+
+  <rect x="30" y="70" width="150" height="60" rx="8" fill="#161b22" stroke="#f78166" stroke-width="2"/>
+  <text x="105" y="98" fill="#f78166" font-size="16" text-anchor="middle">pg_dump -Fc</text>
+  <text x="105" y="118" fill="#8b949e" font-size="12" text-anchor="middle">puede tardar minutos</text>
+
+  <line x1="180" y1="100" x2="216" y2="100" stroke="#58a6ff" stroke-width="2"/>
+  <polygon points="228,100 214,92 214,108" fill="#58a6ff"/>
+
+  <rect x="230" y="70" width="380" height="60" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="420" y="98" fill="#e3b341" font-size="15" text-anchor="middle">.tienda-20261110-030000.dump.partial</text>
+  <text x="420" y="118" fill="#8b949e" font-size="12" text-anchor="middle">oculto, con otro nombre: nadie lo toma por bueno</text>
+
+  <line x1="610" y1="100" x2="656" y2="100" stroke="#3fb950" stroke-width="2"/>
+  <polygon points="668,100 654,92 654,108" fill="#3fb950"/>
+  <text x="636" y="88" fill="#3fb950" font-size="14" text-anchor="middle">mv</text>
+
+  <rect x="670" y="70" width="300" height="60" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="820" y="98" fill="#3fb950" font-size="15" text-anchor="middle">tienda-20261110-030000.dump</text>
+  <text x="820" y="118" fill="#8b949e" font-size="12" text-anchor="middle">aparece de golpe, ya entera</text>
+
+  <line x1="420" y1="130" x2="420" y2="178" stroke="#f85149" stroke-width="2"/>
+  <polygon points="420,190 412,176 428,176" fill="#f85149"/>
+  <text x="432" y="160" fill="#f85149" font-size="14">si pg_dump falla</text>
+  <rect x="270" y="192" width="300" height="56" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="420" y="216" fill="#f0f6fc" font-size="14" text-anchor="middle">trap: rm -f del .partial</text>
+  <text x="420" y="236" fill="#8b949e" font-size="12" text-anchor="middle">sale con 1; no se rota nada</text>
+
+  <line x1="820" y1="130" x2="820" y2="178" stroke="#3fb950" stroke-width="2"/>
+  <polygon points="820,190 812,176 828,176" fill="#3fb950"/>
+  <text x="832" y="160" fill="#3fb950" font-size="14">solo si llegó aquí</text>
+
+  <rect x="670" y="192" width="300" height="220" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="820" y="216" fill="#f0f6fc" font-size="15" text-anchor="middle">rotación con -k 3</text>
+  <text x="820" y="236" fill="#8b949e" font-size="12" text-anchor="middle">el glob las da de la más vieja a la más nueva</text>
+  <text x="694" y="268" fill="#f85149" font-size="14" text-decoration="line-through">tienda-20261107-030000.dump</text>
+  <text x="694" y="294" fill="#f85149" font-size="14" text-decoration="line-through">tienda-20261108-030000.dump</text>
+  <text x="694" y="320" fill="#f0f6fc" font-size="14">tienda-20261109-030000.dump</text>
+  <text x="694" y="346" fill="#f0f6fc" font-size="14">tienda-20261109-150000.dump</text>
+  <text x="694" y="372" fill="#3fb950" font-size="14">tienda-20261110-030000.dump</text>
+  <text x="694" y="398" fill="#8b949e" font-size="12">se borran las primeras hasta que quedan 3</text>
+
+  <rect x="30" y="290" width="552" height="122" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="50" y="318" fill="#f0f6fc" font-size="15">Sin .partial ni mv:</text>
+  <text x="50" y="344" fill="#f78166" font-size="14">pg_dump | gzip &gt; copias/tienda.sql.gz</text>
+  <text x="50" y="370" fill="#8b949e" font-size="13">si pg_dump falla, gzip deja 20 bytes encima de la copia</text>
+  <text x="50" y="390" fill="#8b949e" font-size="13">buena de ayer, y sin pipefail el script sale con 0</text>
+</svg>

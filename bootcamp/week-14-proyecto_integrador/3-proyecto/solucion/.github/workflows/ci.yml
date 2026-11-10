@@ -1,0 +1,46 @@
+# CI de bashkit: en cada push y en cada pull request, GitHub ejecuta estos pasos en una
+# máquina limpia. Un paso que sale con un código distinto de 0 pone el commit en rojo.
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    # Un PostgreSQL de usar y tirar para el último paso; GitHub espera a su healthcheck.
+    services:
+      db:
+        image: postgres:16
+        env:
+          POSTGRES_USER: bashkit
+          POSTGRES_PASSWORD: bashkit
+          POSTGRES_DB: bashkit
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U bashkit"
+          --health-interval 2s
+          --health-retries 15
+    # Las mismas variables que usan psql, pg_dump y pg_restore en el laboratorio.
+    env:
+      PGHOST: localhost
+      PGUSER: bashkit
+      PGPASSWORD: bashkit
+      PGDATABASE: bashkit
+    steps:
+      - uses: actions/checkout@v7
+      - name: Instalar bats y shfmt
+        run: sudo apt-get update && sudo apt-get install -y bats shfmt
+      - name: Lint
+        run: bin/bk-lint
+      - name: Tests
+        run: bats tests
+      # Una copia que nunca has restaurado no sabes si sirve: aquí se restaura de verdad.
+      - name: Copia y restauración contra PostgreSQL
+        run: |
+          set -euo pipefail
+          psql -c 'create table t (n int); insert into t values (1), (2), (3)'
+          file="$(bin/bk-backup -d "$RUNNER_TEMP/backups")"
+          psql -c 'drop table t'
+          bin/bk-restore -y "$file"
+          test "$(psql -Atc 'select count(*) from t')" = 3

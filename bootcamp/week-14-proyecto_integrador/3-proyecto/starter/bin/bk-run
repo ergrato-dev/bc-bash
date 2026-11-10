@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+# bk-run — ejecuta un comando, te enseña su salida y la guarda en un log con su código de salida.
+# Para qué: dejar constancia de lo que hiciste en una máquina y de si salió bien, también
+# cuando varios bk-run escriben a la vez en el mismo log (un cron, dos terminales).
+set -euo pipefail
+
+# shellcheck source=SCRIPTDIR/../lib/core.sh
+source "$(dirname "${BASH_SOURCE[0]}")/../lib/core.sh"
+
+usage="uso: bk-run [-q] [-v] [-l log] [-w segundos] [--] <comando> [argumentos...]"
+
+# Los valores por defecto antes de leer las opciones: una opción solo cambia el suyo.
+quiet=""
+log="${BK_LOG:-bk-run.log}"
+wait_secs=10
+
+# getopts lee las opciones una a una: "l:" lleva valor (llega en OPTARG) y la q no.
+# Los dos puntos del principio callan los avisos de getopts: los errores los da die,
+# con el formato y el código de todo el kit.
+while getopts ":qvl:w:h" opt; do
+  case "$opt" in
+    q) quiet=1 ;;
+    v) BK_LOG_LEVEL=debug ;;
+    l) log="$OPTARG" ;;
+    w) wait_secs="$OPTARG" ;;
+    h)
+      echo "$usage"
+      exit 0
+      ;;
+    :) die "a -$OPTARG le falta su valor" 2 ;;
+    *) die "opción desconocida: -$OPTARG ($usage)" 2 ;;
+  esac
+done
+# OPTIND es el número del primer argumento que no es una opción: el shift deja en $@
+# solo el comando. getopts para en "--" o en lo primero que no empieza por "-", así
+# "bk-run -q ls -l" no toma la -l de ls por la suya.
+shift $((OPTIND - 1))
+
+[[ $# -gt 0 ]] || die "$usage" 2
+[[ $wait_secs =~ ^[0-9]+$ ]] || die "'$wait_secs' no es un número de segundos" 2
+
+# Antes de ejecutar nada: un deploy que corre sin poder apuntarse es peor que uno que no corre.
+{ : >> "$log"; } 2> /dev/null || die "no puedo escribir en '$log'"
+
+# La salida va a un temporal y se copia entera al log al final. Directa al log, dos bk-run
+# a la vez mezclarían sus líneas y bk-report contaría mal.
+tmp="$(mktemp)"
+# EXIT corre al salir por cualquier camino (bien, con error, con set -e o con kill):
+# el temporal no se queda en /tmp. Comillas simples: $tmp se lee al salir, no ahora.
+trap 'rm -f -- "$tmp"' EXIT
+log_debug "salida temporal: $tmp"
+
+start="$(date '+%F %T')"
+status=0
+if [[ -n $quiet ]]; then
+  "$@" > "$tmp" 2>&1 || status=$?
+else
+  "$@" 2>&1 | tee "$tmp" || status=$?
+fi
+
+# Se abre el log para añadir y se bloquea: el comando ya ha corrido sin esperar a nadie,
+# solo la copia del bloque va de uno en uno. flock -w se rinde a los N segundos.
+exec {lock_fd}>> "$log"
+if ! flock -w "$wait_secs" "$lock_fd"; then
+  # Sin bloqueo no se escribe, pero la salida es lo único que queda: se quita el trap
+  # para no borrarla, y el aviso dice dónde está.
+  trap - EXIT
+  die "otro proceso tiene bloqueado '$log' desde hace más de $wait_secs s; la salida está en $tmp"
+fi
+log_debug "bloqueo de '$log' conseguido"
+{
+  echo "== $start $* =="
+  cat -- "$tmp"
+  echo "== código: $status =="
+} >&"$lock_fd"
+
+# El aviso de fallo va a stderr: así no se mezcla con la salida del comando.
+[[ $status -eq 0 ]] || log_warn "'$*' salió con código $status"
+
+# El mismo código que el comando: quien use bk-run en un script sabrá si funcionó.
+exit "$status"

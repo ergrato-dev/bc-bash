@@ -1,0 +1,38 @@
+# CI de la tienda: los tests de bin/ contra un PostgreSQL de usar y tirar.
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    # Un contenedor que GitHub arranca antes de los pasos y borra al acabar. Espera a
+    # que su healthcheck diga que está sano antes del primer paso.
+    services:
+      db:
+        image: postgres:16
+        env:
+          POSTGRES_USER: tienda
+          POSTGRES_PASSWORD: tienda
+          POSTGRES_DB: tienda
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U tienda"
+          --health-interval 2s
+          --health-retries 15
+    # Los pasos corren en la máquina, no en un contenedor: el puerto publicado deja
+    # PostgreSQL en localhost.
+    env:
+      PGHOST: localhost
+      PGUSER: tienda
+      PGPASSWORD: tienda
+      PGDATABASE: tienda
+    steps:
+      - uses: actions/checkout@v7
+      - name: Instalar bats
+        run: sudo apt-get update && sudo apt-get install -y bats
+      - name: shellcheck
+        run: shellcheck bin/*.sh
+      - name: Tests
+        run: bats tests

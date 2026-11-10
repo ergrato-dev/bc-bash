@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# bk-backup — copia la base de datos PostgreSQL de PGDATABASE con pg_dump y guarda solo las últimas.
+# Para qué: poder dejar la base como estaba ayer, con una copia que cron hace cada noche sin vigilarla.
+set -euo pipefail
+
+bin_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=SCRIPTDIR/../lib/core.sh
+source "$bin_dir/../lib/core.sh"
+
+usage="uso: bk-backup [-d carpeta] [-k copias] [-w segundos]"
+# Sin -d, la carpeta backups/ del kit: cron lanza los comandos desde tu home.
+dir="$(dirname "$bin_dir")/backups"
+keep=7
+wait_limit=30
+
+while getopts ":d:k:w:h" opt; do
+  case "$opt" in
+    d) dir="$OPTARG" ;;
+    k) keep="$OPTARG" ;;
+    w) wait_limit="$OPTARG" ;;
+    h)
+      echo "$usage"
+      exit 0
+      ;;
+    :) die "a -$OPTARG le falta el valor ($usage)" 2 ;;
+    *) die "opción desconocida: -$OPTARG ($usage)" 2 ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+[[ $keep =~ ^[1-9][0-9]*$ ]] || die "-k necesita un número mayor que 0, no '$keep'" 2
+[[ $wait_limit =~ ^[0-9]+$ ]] || die "-w necesita un número de segundos, no '$wait_limit'" 2
+# pg_dump sabría qué base copiar sin PGDATABASE (la de tu usuario), pero el nombre de
+# la copia y la rotación dependen de él: mejor pararse que copiar la base equivocada.
+[[ -n ${PGDATABASE:-} ]] || die "falta PGDATABASE: el nombre de la base que quieres copiar" 2
+require pg_dump pg_isready
+mkdir -p "$dir"
+
+# Una sola copia a la vez en esta carpeta: si la de anoche aún no ha acabado cuando cron
+# lanza la siguiente, dos rotaciones a la vez podrían borrar la copia que la otra acaba de dejar.
+exec {lock_fd}> "$dir/.lock"
+flock -n "$lock_fd" || die "ya hay otra copia en marcha en '$dir'" 3
+
+# PostgreSQL puede tardar unos segundos en aceptar conexiones (al arrancar el contenedor,
+# después de un reinicio): se pregunta cada segundo con pg_isready, hasta wait_limit.
+# SECONDS: los segundos desde que empezó el script.
+until pg_isready -q; do
+  ((SECONDS < wait_limit)) || die "PostgreSQL no responde después de $wait_limit s: no hay copia nueva"
+  sleep 1
+done
+
+# El nombre lleva la fecha de año a segundo: ordenar por nombre es ordenar por fecha.
+# printf '%(...)T' es la fecha sin lanzar date; -1 significa "ahora".
+name="$PGDATABASE-$(printf '%(%Y%m%d-%H%M%S)T' -1).dump"
+# pg_dump crea el archivo antes de conectar: si falla a medias, deja una copia vacía o
+# cortada. Se escribe en un .partial y solo un mv, que es instantáneo, la convierte en .dump.
+partial="$dir/.$name.partial"
+trap 'rm -f "$partial"' EXIT
+pg_dump -Fc -f "$partial" || die "pg_dump falló: no hay copia nueva"
+mv "$partial" "$dir/$name"
+echo "$dir/$name"
+
+# Rotación: las copias de esta base, de la más vieja a la más nueva (el glob ordena por
+# nombre), y se borran las primeras hasta que queden keep. Cada ? es un carácter: la forma
+# exacta de la fecha deja fuera las de otra base cuyo nombre empiece igual, como
+# tienda-viejo-20260101-000000.dump para "tienda".
+copies=("$dir/$PGDATABASE"-????????-??????.dump)
+deleted=0
+while ((${#copies[@]} - deleted > keep)); do
+  rm -f -- "${copies[deleted]}"
+  deleted=$((deleted + 1))
+done
+log "copia de '$PGDATABASE' guardada; quedan $((${#copies[@]} - deleted)), borradas $deleted"
