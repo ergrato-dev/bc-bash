@@ -1,0 +1,17 @@
+# CI de la tienda: los tests de bin/ contra un PostgreSQL de usar y tirar.
+name: ci
+
+# TODO 1: que se ejecute en cada push y en cada pull request.
+
+jobs:
+  test:
+    # TODO 1: en una máquina ubuntu-24.04.
+
+    # TODO 2: un servicio db con postgres:16 (usuario, contraseña y base "tienda"), el
+    # puerto 5432 publicado y un healthcheck con pg_isready.
+
+    # TODO 2: las variables PGHOST, PGUSER, PGPASSWORD y PGDATABASE para los pasos.
+
+    steps:
+      - uses: actions/checkout@v7
+      # TODO 3: instalar bats, pasar shellcheck a bin/*.sh y ejecutar bats tests.

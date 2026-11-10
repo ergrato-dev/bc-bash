@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Doble de pg_dump para los tests: hace como que copia la base sin necesitar PostgreSQL.
+# Igual que el de verdad, crea el archivo de -f antes de conectar: si falla, lo deja vacío.
+# FAKE_PG_DUMP_FAIL=1 hace que falle como un pg_dump sin conexión.
+set -euo pipefail
+
+file=""
+while getopts "F:f:" opt; do
+  if [[ $opt == f ]]; then
+    file="$OPTARG"
+  fi
+done
+[[ -n $file ]] || {
+  echo "pg_dump (doble): falta -f" >&2
+  exit 1
+}
+
+: > "$file"
+if [[ -n ${FAKE_PG_DUMP_FAIL:-} ]]; then
+  echo "pg_dump: error: connection to server failed" >&2
+  exit 1
+fi
+printf 'PGDMP copia falsa de %s\n' "${PGDATABASE:-}" > "$file"

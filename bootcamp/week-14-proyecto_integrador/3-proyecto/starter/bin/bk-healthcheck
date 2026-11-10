@@ -1,0 +1,109 @@
+#!/usr/bin/env bash
+# bk-healthcheck — ejecuta a la vez las comprobaciones de un archivo y dice cuáles fallan.
+# Para qué: saber en segundos si una máquina está sana (disco, servicios, una URL), aunque
+# alguna comprobación se cuelgue, y poder lanzarlo solo desde cron o un timer de systemd.
+set -euo pipefail
+
+bin_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=SCRIPTDIR/../lib/core.sh
+source "$bin_dir/../lib/core.sh"
+
+usage="uso: bk-healthcheck [-j trabajos] [-t segundos] [archivo]"
+max_jobs=4
+time_limit=10
+
+while getopts ":j:t:h" opt; do
+  case "$opt" in
+    j) max_jobs="$OPTARG" ;;
+    t) time_limit="$OPTARG" ;;
+    h)
+      echo "$usage"
+      exit 0
+      ;;
+    :) die "a -$OPTARG le falta el valor ($usage)" 2 ;;
+    *) die "opción desconocida: -$OPTARG ($usage)" 2 ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+[[ $max_jobs =~ ^[1-9][0-9]*$ ]] || die "-j necesita un número mayor que 0, no '$max_jobs'" 2
+[[ $time_limit =~ ^[1-9][0-9]*$ ]] || die "-t necesita un número mayor que 0, no '$time_limit'" 2
+
+# Sin archivo, el healthcheck.conf de la raíz del kit y no uno de la carpeta actual:
+# cron lanza los comandos desde tu home, y ahí no habría ninguno.
+file="${1:-$bin_dir/../healthcheck.conf}"
+[[ -r $file ]] || die "no puedo leer '$file'" 2
+
+# Cada línea es "nombre comando...". Las vacías y las que empiezan por # no cuentan.
+names=()
+commands=()
+line_number=0
+while IFS= read -r line || [[ -n $line ]]; do
+  line_number=$((line_number + 1))
+  [[ $line =~ ^[[:space:]]*(#|$) ]] && continue
+  read -r name command <<< "$line"
+  [[ -n $command ]] || die "$file, línea $line_number: falta el comando de '$name'" 2
+  names+=("$name")
+  commands+=("$command")
+done < "$file"
+((${#names[@]} > 0)) || die "'$file' no tiene comprobaciones" 2
+
+out_dir="$(mktemp -d)"
+
+# Al salir, por lo que sea: parar las comprobaciones que sigan en marcha y borrar sus salidas.
+# Sin el kill, un Ctrl-C o un kill a bk-healthcheck dejaría vivos a sus hijos: la señal
+# llega a este proceso, no a los que lanzó. A timeout le basta: reenvía la señal a su comando.
+cleanup() {
+  local pids
+  pids="$(jobs -rp)"
+  if [[ -n $pids ]]; then
+    # Sin comillas a propósito: un pid por palabra, para que kill reciba cada uno aparte.
+    # shellcheck disable=SC2086
+    kill $pids 2> /dev/null || true
+    wait || true
+  fi
+  rm -rf "$out_dir"
+}
+trap cleanup EXIT
+# exit dentro del trap hace que corra el de EXIT; 130 y 143 = 128 + el número de la señal.
+trap 'exit 130' INT
+trap 'exit 143' TERM
+
+# Lanzar cada comprobación en segundo plano, sin pasar de max_jobs a la vez.
+# jobs -rp cuenta las que siguen en marcha; wait -n espera a que acabe alguna para dejar sitio.
+# El código de cada una se recoge después con wait <pid>: en bash 5.2, wait -n no ve un
+# trabajo que terminó mientras el script hacía otra cosa, y wait <pid> sí lo guarda.
+pids=()
+for i in "${!names[@]}"; do
+  while (($(jobs -rp | wc -l) >= max_jobs)); do
+    wait -n || true
+  done
+  # bash -c: el comando del archivo puede llevar pipes y [[ ]]. El archivo es tuyo y el
+  # comando se ejecuta como tú: no uses un healthcheck.conf que no hayas escrito.
+  # < /dev/null: una comprobación que lee el teclado no se queda esperando.
+  timeout "$time_limit" bash -c "${commands[i]}" > "$out_dir/$i" 2>&1 < /dev/null &
+  pids[i]=$!
+done
+
+# El informe va en el orden del archivo, no en el que terminan: así se compara de un día a otro.
+failed=0
+for i in "${!names[@]}"; do
+  code=0
+  wait "${pids[i]}" || code=$?
+  case "$code" in
+    0)
+      printf 'ok    %s\n' "${names[i]}"
+      continue
+      ;;
+    124) printf 'FAIL  %s (tiempo agotado: %s s)\n' "${names[i]}" "$time_limit" ;;
+    *) printf 'FAIL  %s (código %s)\n' "${names[i]}" "$code" ;;
+  esac
+  failed=$((failed + 1))
+  # Las últimas líneas de lo que escribió, sangradas: suelen decir por qué falló.
+  tail -n 3 "$out_dir/$i" | sed 's/^/      /'
+done
+
+if ((failed > 0)); then
+  die "${#names[@]} comprobaciones, $failed con fallos"
+fi
+log "${#names[@]} comprobaciones, todas bien"

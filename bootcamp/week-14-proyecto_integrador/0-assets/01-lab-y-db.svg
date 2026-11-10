@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>El host lanza dos contenedores en la red de compose: lab, con psql, pg_dump y pg_restore, se conecta a db:5432 por el nombre del servicio; db guarda sus datos en un volumen y su healthcheck pregunta con pg_isready</title>
+  <rect width="1000" height="470" fill="#0d1117"/>
+  <text x="500" y="34" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">El laboratorio y su PostgreSQL</text>
+
+  <text x="40" y="72" fill="#8b949e" font-size="14">Tu equipo:</text>
+  <text x="125" y="72" fill="#f78166" font-size="14">docker compose --profile db up -d --wait db</text>
+  <text x="40" y="94" fill="#8b949e" font-size="14">y después:</text>
+  <text x="125" y="94" fill="#f78166" font-size="14">docker compose run --rm lab</text>
+
+  <rect x="30" y="115" width="940" height="330" rx="10" fill="none" stroke="#30363d" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="50" y="142" fill="#79c0ff" font-size="14">red de compose: cada servicio se llama por su nombre</text>
+
+  <rect x="60" y="165" width="330" height="220" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="225" y="196" fill="#3fb950" font-size="18" font-weight="600" text-anchor="middle">lab</text>
+  <text x="225" y="220" fill="#8b949e" font-size="13" text-anchor="middle">bash 5.2 y los clientes 16</text>
+  <text x="90" y="256" fill="#f78166" font-size="15">psql</text>
+  <text x="150" y="256" fill="#f78166" font-size="15">pg_dump</text>
+  <text x="240" y="256" fill="#f78166" font-size="15">pg_restore</text>
+  <text x="90" y="296" fill="#d2a8ff" font-size="14">PGHOST=db</text>
+  <text x="90" y="320" fill="#d2a8ff" font-size="14">PGUSER=bashkit</text>
+  <text x="90" y="344" fill="#d2a8ff" font-size="14">PGDATABASE=bashkit</text>
+  <text x="90" y="368" fill="#8b949e" font-size="12">(y PGPASSWORD)</text>
+
+  <line x1="390" y1="250" x2="598" y2="250" stroke="#58a6ff" stroke-width="3"/>
+  <polygon points="610,250 596,242 596,258" fill="#58a6ff"/>
+  <text x="495" y="238" fill="#79c0ff" font-size="15" text-anchor="middle">db:5432</text>
+  <text x="495" y="275" fill="#8b949e" font-size="12" text-anchor="middle">el host "db" es el servicio</text>
+
+  <rect x="612" y="165" width="330" height="170" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="777" y="196" fill="#3fb950" font-size="18" font-weight="600" text-anchor="middle">db</text>
+  <text x="777" y="220" fill="#8b949e" font-size="13" text-anchor="middle">image: postgres:16</text>
+  <rect x="640" y="240" width="274" height="74" rx="6" fill="#0d1117" stroke="#e3b341" stroke-width="2"/>
+  <text x="777" y="265" fill="#e3b341" font-size="14" text-anchor="middle">healthcheck, cada 2 s:</text>
+  <text x="777" y="290" fill="#f78166" font-size="14" text-anchor="middle">pg_isready -U bashkit</text>
+  <text x="777" y="306" fill="#8b949e" font-size="12" text-anchor="middle">0 = healthy: --wait ya puede volver</text>
+
+  <line x1="777" y1="335" x2="777" y2="372" stroke="#58a6ff" stroke-width="2"/>
+  <rect x="680" y="372" width="194" height="52" rx="22" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="777" y="395" fill="#d2a8ff" font-size="14" text-anchor="middle">volumen pgdata</text>
+  <text x="777" y="413" fill="#8b949e" font-size="12" text-anchor="middle">sobrevive a stop y down</text>
+</svg>

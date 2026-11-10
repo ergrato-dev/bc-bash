@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# bk-backup — copia la base de datos PostgreSQL de PGDATABASE con pg_dump y guarda solo las últimas.
+# Para qué: poder dejar la base como estaba ayer, con una copia que cron hace cada noche sin vigilarla.
+set -euo pipefail
+
+bin_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=SCRIPTDIR/../lib/core.sh
+source "$bin_dir/../lib/core.sh"
+
+usage="uso: bk-backup [-d carpeta] [-k copias] [-w segundos]"
+# Sin -d, la carpeta backups/ del kit: cron lanza los comandos desde tu home.
+dir="$(dirname "$bin_dir")/backups"
+keep=7
+wait_limit=30
+
+while getopts ":d:k:w:h" opt; do
+  case "$opt" in
+    d) dir="$OPTARG" ;;
+    k) keep="$OPTARG" ;;
+    w) wait_limit="$OPTARG" ;;
+    h)
+      echo "$usage"
+      exit 0
+      ;;
+    :) die "a -$OPTARG le falta el valor ($usage)" 2 ;;
+    *) die "opción desconocida: -$OPTARG ($usage)" 2 ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+# TODO(semana 14) 1: para con código 2 si -k no es un número mayor que 0, si -w no es un
+# número (0 vale: no esperar) o si PGDATABASE está vacía.
+require pg_dump pg_isready
+mkdir -p "$dir"
+
+# TODO(semana 14) 5: bloquea "$dir/.lock" con flock -n; si otra copia lo tiene, para
+# con código 3 y dilo.
+
+# TODO(semana 14) 3: espera a que pg_isready -q diga que PostgreSQL responde, preguntando
+# cada segundo; si después de wait_limit segundos no responde, para con código 1.
+
+# El nombre lleva la fecha de año a segundo: ordenar por nombre es ordenar por fecha.
+# printf '%(...)T' es la fecha sin lanzar date; -1 significa "ahora".
+# TODO(semana 14) 2: haz la copia con pg_dump -Fc en "$dir/.<nombre>.partial" (borrado al
+# salir con trap) y, si sale bien, muévela a "$dir/<nombre>" y escribe esa ruta en stdout.
+# <nombre> = "$PGDATABASE-AAAAMMDD-HHMMSS.dump".
+
+# TODO(semana 14) 4: deja solo las keep copias más nuevas de esta base y escribe en stderr
+# "copia de '<base>' guardada; quedan N, borradas M".

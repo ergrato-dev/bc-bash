@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Doble de pg_restore para los tests: no toca ninguna base.
+# Con -l, lista el archivo si empieza por PGDMP (como las copias de pg_dump -Fc) y falla si no.
+# Si no, apunta sus argumentos en pg_restore.args, en la carpeta actual, para que el test
+# compruebe con qué opciones lo llamaron. FAKE_PG_RESTORE_FAIL=1 hace que falle.
+set -euo pipefail
+
+if [[ ${1:-} == -l ]]; then
+  if [[ $(head -c 5 "$2" 2> /dev/null) == PGDMP ]]; then
+    echo "; Archive created by pg_dump (doble)"
+    exit 0
+  fi
+  echo "pg_restore: error: input file does not appear to be a valid archive" >&2
+  exit 1
+fi
+
+echo "pg_restore $*" >> pg_restore.args
+if [[ -n ${FAKE_PG_RESTORE_FAIL:-} ]]; then
+  echo "pg_restore: error: could not execute query: ERROR:  relation \"t\" does not exist" >&2
+  exit 1
+fi

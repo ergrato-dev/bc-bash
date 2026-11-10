@@ -1,0 +1,18 @@
+# PostgreSQL para bashkit en tu máquina o en un servidor, desde la raíz del kit:
+#   docker compose up -d --wait     # arranca y espera a que el healthcheck diga que responde
+# La contraseña sale del archivo .env, junto a este, que no se sube a git:
+#   POSTGRES_PASSWORD=una-contraseña-larga
+services:
+  db:
+    # La misma versión mayor que pg_dump: un pg_dump 16 no copia un servidor 17.
+    image: postgres:16
+    environment:
+      POSTGRES_USER: bashkit
+      POSTGRES_DB: bashkit
+      # TODO(semana 14) 8: la contraseña, leída de .env (y que compose pare si falta).
+    # TODO(semana 14) 8: el puerto 5432, solo desde esta máquina; el volumen pgdata en
+    # /var/lib/postgresql/data, y un healthcheck con pg_isready.
+    restart: unless-stopped
+
+volumes:
+  pgdata:
