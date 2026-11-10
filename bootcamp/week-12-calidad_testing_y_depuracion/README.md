@@ -69,6 +69,6 @@ Comprueba tu proyecto (`3-proyecto/starter/`) contra los 15 requisitos verificab
 
 | Anterior | Actual | Siguiente |
 |---|---|---|
-| [← Semana 11 — Scripts robustos](../week-11-scripts_robustos/README.md) | **Semana 12 — Calidad, testing y depuración** | — |
+| [← Semana 11 — Scripts robustos](../week-11-scripts_robustos/README.md) | **Semana 12 — Calidad, testing y depuración** | [Semana 13 — Procesos y concurrencia →](../week-13-procesos_y_concurrencia/README.md) |
 
 [← Volver al índice del bootcamp](../README.md)

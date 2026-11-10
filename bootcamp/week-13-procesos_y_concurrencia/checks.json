@@ -1,0 +1,111 @@
+{
+  "semana": "13",
+  "titulo": "Procesos y concurrencia",
+  "checks": [
+    {
+      "id": "hc-ayuda",
+      "descripcion": "bashkit healthcheck -h enseña el uso con código 0; -j 0 avisa y sale con código 2",
+      "cmd": "out=$({proyecto}/bin/bashkit healthcheck -h); c1=$?; e=$({proyecto}/bin/bk-healthcheck -j 0 2>&1 >/dev/null); echo \"codigo=$c1,$? $out | $e\"",
+      "assert": "stdout~^codigo=0,2 uso: bk-healthcheck \\[-j trabajos\\] \\[-t segundos\\] \\[archivo\\] \\| bk-healthcheck: -j necesita un número mayor que 0, no '0'$",
+      "pista": "3-proyecto/README.md, paso 2"
+    },
+    {
+      "id": "hc-archivo",
+      "descripcion": "un archivo que no existe y una línea sin comando avisan y salen con código 2",
+      "cmd": "printf '# x\\nbien true\\nweb\\n' > c.conf; a=$({proyecto}/bin/bk-healthcheck no-existe 2>&1); c1=$?; b=$({proyecto}/bin/bk-healthcheck c.conf 2>&1); echo \"codigo=$c1,$? $a | $b\"",
+      "assert": "stdout~^codigo=2,2 bk-healthcheck: no puedo leer 'no-existe' \\| bk-healthcheck: c\\.conf, línea 3: falta el comando de 'web'$",
+      "pista": "3-proyecto/README.md, paso 3"
+    },
+    {
+      "id": "hc-ok",
+      "descripcion": "con todo bien: una línea ok por comprobación, sin contar comentarios ni líneas vacías, el resumen a stderr y código 0",
+      "cmd": "printf '# comprobaciones\\nuno true\\n\\n  # sangrado\\ndos test -d /\\n' > c.conf && {proyecto}/bin/bk-healthcheck c.conf > out 2> err; echo \"codigo=$? $(paste -sd, out) | $(cat err)\"",
+      "assert": "stdout~^codigo=0 ok    uno,ok    dos \\| bk-healthcheck: 2 comprobaciones, todas bien$",
+      "pista": "3-proyecto/README.md, paso 4"
+    },
+    {
+      "id": "hc-fallo",
+      "descripcion": "una comprobación que falla sale como FAIL con su código y su error, y bk-healthcheck sale con 1",
+      "cmd": "printf 'bien true\\nmal ls /no-existe\\notra exit 3\\n' > c.conf; {proyecto}/bin/bk-healthcheck c.conf > out 2> err; echo \"codigo=$? $(paste -sd'#' out) | $(cat err)\"",
+      "assert": "stdout~^codigo=1 ok    bien#FAIL  mal \\(código 2\\)#      ls: .*/no-existe.*#FAIL  otra \\(código 3\\) \\| bk-healthcheck: 3 comprobaciones, 2 con fallos$",
+      "pista": "3-proyecto/README.md, paso 4"
+    },
+    {
+      "id": "hc-orden",
+      "descripcion": "el informe sigue el orden del archivo, no el orden en que terminan",
+      "cmd": "printf 'lenta sleep 1\\nrapida true\\n' > c.conf && {proyecto}/bin/bk-healthcheck c.conf 2> /dev/null | paste -sd,",
+      "assert": "stdout~^ok    lenta,ok    rapida$",
+      "pista": "3-proyecto/README.md, paso 4"
+    },
+    {
+      "id": "hc-paralelo",
+      "descripcion": "sin -j van 4 a la vez: cuatro comprobaciones de 1 s tardan menos de 2 s",
+      "cmd": "printf 'a sleep 1\\nb sleep 1\\nc sleep 1\\nd sleep 1\\n' > c.conf; s=${EPOCHREALTIME/./}; {proyecto}/bin/bk-healthcheck c.conf > /dev/null 2>&1; echo \"codigo=$? decimas=$(( (${EPOCHREALTIME/./} - s) / 100000 ))\"",
+      "assert": "stdout~^codigo=0 decimas=1[0-9]$",
+      "pista": "3-proyecto/README.md, paso 5"
+    },
+    {
+      "id": "hc-limite",
+      "descripcion": "con -j 2 nunca van más de dos a la vez: cuatro de 1 s tardan entre 2 y 3 s",
+      "cmd": "printf 'a sleep 1\\nb sleep 1\\nc sleep 1\\nd sleep 1\\n' > c.conf; s=${EPOCHREALTIME/./}; {proyecto}/bin/bk-healthcheck -j 2 c.conf > /dev/null 2>&1; echo \"codigo=$? decimas=$(( (${EPOCHREALTIME/./} - s) / 100000 ))\"",
+      "assert": "stdout~^codigo=0 decimas=2[0-9]$",
+      "pista": "3-proyecto/README.md, paso 5"
+    },
+    {
+      "id": "hc-timeout",
+      "descripcion": "-t corta una comprobación colgada y dice que se le acabó el tiempo",
+      "cmd": "printf 'colgada sleep 30\\nbien true\\n' > c.conf; s=${EPOCHREALTIME/./}; {proyecto}/bin/bk-healthcheck -t 1 c.conf > out 2> /dev/null; echo \"codigo=$? $(head -n 1 out) decimas=$(( (${EPOCHREALTIME/./} - s) / 100000 ))\"",
+      "assert": "stdout~^codigo=1 FAIL  colgada \\(tiempo agotado: 1 s\\) decimas=[1-7][0-9]$",
+      "pista": "3-proyecto/README.md, paso 5"
+    },
+    {
+      "id": "hc-senal",
+      "descripcion": "un kill a bk-healthcheck para también sus comprobaciones y borra su carpeta temporal; sale con 143",
+      "cmd": "printf 'larga sleep 27\\n' > c.conf; mkdir t; TMPDIR=$PWD/t {proyecto}/bin/bk-healthcheck -t 60 c.conf > /dev/null 2>&1 & sleep 1; kill -TERM $!; wait $!; c=$?; sleep 0.5; echo \"codigo=$c sleeps=$(pgrep -cx sleep) temporales=$(ls t | wc -l)\"",
+      "assert": "stdout~^codigo=143 sleeps=0 temporales=0$",
+      "pista": "3-proyecto/README.md, paso 6"
+    },
+    {
+      "id": "hc-cron",
+      "descripcion": "lanzado como lo haría cron (otra carpeta, entorno vacío, PATH mínimo) usa el healthcheck.conf del kit y sale con 0",
+      "cmd": "cd / && env -i PATH=/usr/bin:/bin HOME={tmp} {proyecto}/bin/bk-healthcheck > {tmp}/out 2>&1; echo \"codigo=$? ok=$(grep -c '^ok ' {tmp}/out)\"",
+      "assert": "stdout~^codigo=0 ok=[1-9][0-9]*$",
+      "pista": "3-proyecto/README.md, paso 7"
+    },
+    {
+      "id": "tests-pasan",
+      "descripcion": "bats tests pasa entero, con 3 tests o más de bk-healthcheck",
+      "cmd": "cd {proyecto} && if bats tests > $OLDPWD/out; then echo \"ok n=$(bats -c tests) hc=$(bats -c tests/bk-healthcheck.bats)\"; else grep -A3 '^not ok' $OLDPWD/out; fi",
+      "assert": "stdout~^ok n=(2[2-9]|[3-9][0-9]) hc=([3-9]|[1-9][0-9])$",
+      "pista": "3-proyecto/README.md, paso 8"
+    },
+    {
+      "id": "mut-fallo",
+      "descripcion": "los tests de bk-healthcheck fallan si da por buena una comprobación que falla",
+      "cmd": "bats {proyecto}/tests/bk-healthcheck.bats > /dev/null && cp -r {proyecto} kit && sed -i 's/ || code=\\$?$/ || true/' kit/bin/bk-healthcheck && bats kit/tests/bk-healthcheck.bats",
+      "assert": "stdout~^not ok [0-9]+ ",
+      "pista": "3-proyecto/README.md, paso 8"
+    },
+    {
+      "id": "mut-paralelo",
+      "descripcion": "los tests de bk-healthcheck fallan si las comprobaciones van una detrás de otra",
+      "cmd": "bats {proyecto}/tests/bk-healthcheck.bats > /dev/null && cp -r {proyecto} kit && sed -i 's/>= max_jobs)); do/>= 1)); do/' kit/bin/bk-healthcheck && bats kit/tests/bk-healthcheck.bats",
+      "assert": "stdout~^not ok [0-9]+ ",
+      "pista": "3-proyecto/README.md, paso 8"
+    },
+    {
+      "id": "kit-limpio",
+      "descripcion": "el kit pasa bk-lint (shellcheck y shfmt) y no le quedan TODOs",
+      "cmd": "out=$({proyecto}/bin/bk-lint 2>&1); c=$?; cd {proyecto} && n=$(grep -rn TODO bin lib tests scaffold.sh healthcheck.conf | wc -l); echo \"codigo=$c todos=$n $out\"",
+      "assert": "stdout~^codigo=0 todos=0 bk-lint: archivos revisados: [0-9]+, sin avisos$",
+      "pista": "3-proyecto/README.md, paso 9"
+    },
+    {
+      "id": "readme-completo",
+      "descripcion": "README.md sin TODOs, documenta bk-healthcheck con -j y -t, la línea de cron y la bitácora de la semana 13",
+      "cmd": "cd {proyecto} && ! grep -n TODO README.md && grep 'bin/bk-healthcheck' README.md | grep -q -- '-t' && grep -qE '^\\*/[0-9]+ (\\* ){4}.*bk-healthcheck' README.md && grep -q '^- Semana 13: ' README.md",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 10"
+    }
+  ]
+}

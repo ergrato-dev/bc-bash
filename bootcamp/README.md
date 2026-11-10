@@ -36,7 +36,7 @@ está en construcción (sin enlace hasta que exista la carpeta).
 | [10](week-10-sed_awk_y_jq/README.md) | sed, awk y jq | ✅ |
 | [11](week-11-scripts_robustos/README.md) | Scripts robustos | ✅ |
 | [12](week-12-calidad_testing_y_depuracion/README.md) | Calidad, testing y depuración | ✅ |
-| 13 | Procesos y concurrencia | ⬜ |
+| [13](week-13-procesos_y_concurrencia/README.md) | Procesos y concurrencia | ✅ |
 
 ### Fase 4 — Producción (S14, 12 h)
 

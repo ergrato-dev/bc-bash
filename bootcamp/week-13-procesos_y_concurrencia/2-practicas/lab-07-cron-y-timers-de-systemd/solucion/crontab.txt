@@ -1,0 +1,2 @@
+# De lunes a viernes a las 09:00. flock -n: si la copia anterior sigue en marcha, esta no empieza.
+0 9 * * 1-5 flock -n /tmp/backup-notes.lock /bc-bash/bootcamp/week-13-procesos_y_concurrencia/2-practicas/lab-07-cron-y-timers-de-systemd/starter/backup-notes.sh >> /bc-bash/bootcamp/week-13-procesos_y_concurrencia/2-practicas/lab-07-cron-y-timers-de-systemd/backup.log 2>&1

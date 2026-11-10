@@ -1,0 +1,2 @@
+rapida 1
+terca 60

@@ -1,0 +1,9 @@
+[Unit]
+Description=Copia de notas/ cada día laborable a las 09:00
+
+[Timer]
+# TODO 2: OnCalendar para los días laborables (de lunes a viernes) a las 09:00.
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,3 @@
+madrid 2 0
+paris 3 22
+berlin 1 0

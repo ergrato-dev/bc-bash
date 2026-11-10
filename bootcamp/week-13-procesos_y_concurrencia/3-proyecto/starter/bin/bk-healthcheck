@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# bk-healthcheck — ejecuta a la vez las comprobaciones de un archivo y dice cuáles fallan.
+# Para qué: saber en segundos si una máquina está sana (disco, servicios, una URL), aunque
+# alguna comprobación se cuelgue, y poder lanzarlo solo desde cron o un timer de systemd.
+set -euo pipefail
+
+bin_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=SCRIPTDIR/../lib/core.sh
+source "$bin_dir/../lib/core.sh"
+
+usage="uso: bk-healthcheck [-j trabajos] [-t segundos] [archivo]"
+max_jobs=4
+time_limit=10
+
+# TODO(semana 13) 1: lee -j (max_jobs), -t (time_limit) y -h (el uso en stdout, código 0)
+# con getopts, y haz el shift. Una opción sin valor o desconocida para con código 2, y
+# también un -j o un -t que no sea un número mayor que 0.
+
+# Sin archivo, el healthcheck.conf de la raíz del kit y no uno de la carpeta actual:
+# cron lanza los comandos desde tu home, y ahí no habría ninguno.
+file="${1:-$bin_dir/../healthcheck.conf}"
+[[ -r $file ]] || die "no puedo leer '$file'" 2
+
+# Cada línea es "nombre comando...". Las vacías y las que empiezan por # no cuentan.
+names=()
+commands=()
+# TODO(semana 13) 2: lee "$file" línea a línea; sáltate las vacías y los comentarios,
+# separa el nombre del comando y guarda cada uno en names y commands. Una línea sin
+# comando para con código 2 y dice en qué línea está.
+((${#names[@]} > 0)) || die "'$file' no tiene comprobaciones" 2
+
+out_dir="$(mktemp -d)"
+
+# TODO(semana 13) 5: al salir, para las comprobaciones que sigan en marcha y borra out_dir;
+# con INT o TERM, sal con 130 o 143.
+
+pids=()
+# TODO(semana 13) 3 y 4: lanza cada comprobación en segundo plano con timeout, guardando su
+# salida en "$out_dir/<número>" y su pid en pids; nunca más de max_jobs a la vez.
+
+# El informe va en el orden del archivo, no en el que terminan: así se compara de un día a otro.
+failed=0
+# TODO(semana 13) 3: para cada comprobación, recoge su código con wait y escribe
+# "ok    nombre" o "FAIL  nombre (código N)", con sus últimas líneas debajo si falla.
+
+if ((failed > 0)); then
+  die "${#names[@]} comprobaciones, $failed con fallos"
+fi
+log "${#names[@]} comprobaciones, todas bien"
