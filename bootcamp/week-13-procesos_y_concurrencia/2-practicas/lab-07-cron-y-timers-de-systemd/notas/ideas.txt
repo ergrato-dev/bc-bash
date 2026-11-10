@@ -1,0 +1,2 @@
+Probar flock -n en el cron del backup.
+Mirar systemd-analyze calendar.

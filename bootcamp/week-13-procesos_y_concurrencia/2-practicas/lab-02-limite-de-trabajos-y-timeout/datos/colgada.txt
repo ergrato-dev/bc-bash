@@ -1,0 +1,3 @@
+rapida 1
+colgada 60
+otra 2

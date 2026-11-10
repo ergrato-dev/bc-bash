@@ -1,0 +1,6 @@
+[Unit]
+Description=Copia de notas/ del lab 07
+
+[Service]
+Type=oneshot
+ExecStart=/bc-bash/bootcamp/week-13-procesos_y_concurrencia/2-practicas/lab-07-cron-y-timers-de-systemd/starter/backup-notes.sh

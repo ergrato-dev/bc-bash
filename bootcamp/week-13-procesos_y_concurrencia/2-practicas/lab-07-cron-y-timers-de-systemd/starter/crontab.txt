@@ -1,0 +1,1 @@
+# TODO 3: la línea de cron: de lunes a viernes a las 09:00, con flock -n y la salida a backup.log.

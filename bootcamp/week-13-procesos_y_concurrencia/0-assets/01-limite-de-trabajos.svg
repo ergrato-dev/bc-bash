@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" role="img" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Seis tareas de 1 segundo. Sin límite, las seis van a la vez y tardan 1 segundo. Con un límite de 3, van en tres huecos: cuando una acaba, wait -n devuelve el control y entra la siguiente, y tardan 2 segundos</title>
+  <rect width="1000" height="470" fill="#0d1117"/>
+  <text x="500" y="34" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Seis tareas de 1 s: sin límite y con -j 3</text>
+
+  <rect x="30" y="60" width="440" height="380" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="250" y="92" fill="#f0f6fc" font-size="16" font-weight="600" text-anchor="middle">Sin límite: las seis a la vez</text>
+  <g font-size="14" fill="#0d1117">
+    <rect x="110" y="115" width="150" height="30" rx="5" fill="#58a6ff"/>
+    <rect x="110" y="155" width="150" height="30" rx="5" fill="#58a6ff"/>
+    <rect x="110" y="195" width="150" height="30" rx="5" fill="#58a6ff"/>
+    <rect x="110" y="235" width="150" height="30" rx="5" fill="#58a6ff"/>
+    <rect x="110" y="275" width="150" height="30" rx="5" fill="#58a6ff"/>
+    <rect x="110" y="315" width="150" height="30" rx="5" fill="#58a6ff"/>
+    <text x="185" y="135" text-anchor="middle">a</text>
+    <text x="185" y="175" text-anchor="middle">b</text>
+    <text x="185" y="215" text-anchor="middle">c</text>
+    <text x="185" y="255" text-anchor="middle">d</text>
+    <text x="185" y="295" text-anchor="middle">e</text>
+    <text x="185" y="335" text-anchor="middle">f</text>
+  </g>
+  <line x1="110" y1="365" x2="410" y2="365" stroke="#8b949e" stroke-width="2"/>
+  <g fill="#8b949e" font-size="13" text-anchor="middle">
+    <text x="110" y="385">0 s</text>
+    <text x="260" y="385">1 s</text>
+    <text x="410" y="385">2 s</text>
+  </g>
+  <text x="250" y="420" fill="#e3b341" font-size="14" text-anchor="middle">1 s, pero seis procesos a la vez contra el mismo servicio</text>
+
+  <rect x="530" y="60" width="440" height="380" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="750" y="92" fill="#f0f6fc" font-size="16" font-weight="600" text-anchor="middle">-j 3: como mucho tres a la vez</text>
+  <g fill="#8b949e" font-size="13" text-anchor="end">
+    <text x="600" y="175">hueco 1</text>
+    <text x="600" y="235">hueco 2</text>
+    <text x="600" y="295">hueco 3</text>
+  </g>
+  <g font-size="14" fill="#0d1117" text-anchor="middle">
+    <rect x="610" y="155" width="148" height="30" rx="5" fill="#58a6ff"/>
+    <rect x="762" y="155" width="148" height="30" rx="5" fill="#79c0ff"/>
+    <rect x="610" y="215" width="148" height="30" rx="5" fill="#58a6ff"/>
+    <rect x="762" y="215" width="148" height="30" rx="5" fill="#79c0ff"/>
+    <rect x="610" y="275" width="148" height="30" rx="5" fill="#58a6ff"/>
+    <rect x="762" y="275" width="148" height="30" rx="5" fill="#79c0ff"/>
+    <text x="684" y="175">a</text>
+    <text x="836" y="175">d</text>
+    <text x="684" y="235">b</text>
+    <text x="836" y="235">e</text>
+    <text x="684" y="295">c</text>
+    <text x="836" y="295">f</text>
+  </g>
+  <line x1="760" y1="130" x2="760" y2="320" stroke="#3fb950" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="760" y="122" fill="#3fb950" font-size="13" text-anchor="middle">wait -n: acaba una, entra otra</text>
+  <line x1="610" y1="365" x2="910" y2="365" stroke="#8b949e" stroke-width="2"/>
+  <g fill="#8b949e" font-size="13" text-anchor="middle">
+    <text x="610" y="385">0 s</text>
+    <text x="760" y="385">1 s</text>
+    <text x="910" y="385">2 s</text>
+  </g>
+  <text x="750" y="420" fill="#3fb950" font-size="14" text-anchor="middle">2 s, y nunca más de tres procesos</text>
+</svg>
