@@ -14,35 +14,35 @@ está en construcción (sin enlace hasta que exista la carpeta).
 
 | Semana | Tema | Estado |
 |:--:|---|:--:|
-| [01](week-01-terminal_y_sistema_de_archivos/README.md) | Terminal y sistema de archivos | ✅ |
-| [02](week-02-permisos_procesos_y_primer_script/README.md) | Permisos, procesos y primer script | ✅ |
-| [03](week-03-redireccion_pipes_y_codigos_de_salida/README.md) | Redirección, pipes y códigos de salida | ✅ |
-| [04](week-04-filtros_de_texto_y_regex/README.md) | Filtros de texto y regex | ✅ |
+| [01](week-01-terminal_y_sistema_de_archivos/README.md) | [Terminal y sistema de archivos](week-01-terminal_y_sistema_de_archivos/README.md) | ✅ |
+| [02](week-02-permisos_procesos_y_primer_script/README.md) | [Permisos, procesos y primer script](week-02-permisos_procesos_y_primer_script/README.md) | ✅ |
+| [03](week-03-redireccion_pipes_y_codigos_de_salida/README.md) | [Redirección, pipes y códigos de salida](week-03-redireccion_pipes_y_codigos_de_salida/README.md) | ✅ |
+| [04](week-04-filtros_de_texto_y_regex/README.md) | [Filtros de texto y regex](week-04-filtros_de_texto_y_regex/README.md) | ✅ |
 
 ### Fase 2 — Programar en bash (S05-09, 60 h)
 
 | Semana | Tema | Estado |
 |:--:|---|:--:|
-| [05](week-05-variables_comillas_y_expansiones/README.md) | Variables, comillas y expansiones | ✅ |
-| [06](week-06-condicionales_case_y_regex/README.md) | Condicionales, case y regex | ✅ |
-| [07](week-07-bucles_read_y_archivos_seguros/README.md) | Bucles, read y archivos seguros | ✅ |
-| [08](week-08-funciones_alcance_y_librerias/README.md) | Funciones, alcance y librerías | ✅ |
-| [09](week-09-arrays_y_printf/README.md) | Arrays y printf | ✅ |
+| [05](week-05-variables_comillas_y_expansiones/README.md) | [Variables, comillas y expansiones](week-05-variables_comillas_y_expansiones/README.md) | ✅ |
+| [06](week-06-condicionales_case_y_regex/README.md) | [Condicionales, case y regex](week-06-condicionales_case_y_regex/README.md) | ✅ |
+| [07](week-07-bucles_read_y_archivos_seguros/README.md) | [Bucles, read y archivos seguros](week-07-bucles_read_y_archivos_seguros/README.md) | ✅ |
+| [08](week-08-funciones_alcance_y_librerias/README.md) | [Funciones, alcance y librerías](week-08-funciones_alcance_y_librerias/README.md) | ✅ |
+| [09](week-09-arrays_y_printf/README.md) | [Arrays y printf](week-09-arrays_y_printf/README.md) | ✅ |
 
 ### Fase 3 — Scripts profesionales (S10-13, 48 h)
 
 | Semana | Tema | Estado |
 |:--:|---|:--:|
-| [10](week-10-sed_awk_y_jq/README.md) | sed, awk y jq | ✅ |
-| [11](week-11-scripts_robustos/README.md) | Scripts robustos | ✅ |
-| [12](week-12-calidad_testing_y_depuracion/README.md) | Calidad, testing y depuración | ✅ |
-| [13](week-13-procesos_y_concurrencia/README.md) | Procesos y concurrencia | ✅ |
+| [10](week-10-sed_awk_y_jq/README.md) | [sed, awk y jq](week-10-sed_awk_y_jq/README.md) | ✅ |
+| [11](week-11-scripts_robustos/README.md) | [Scripts robustos](week-11-scripts_robustos/README.md) | ✅ |
+| [12](week-12-calidad_testing_y_depuracion/README.md) | [Calidad, testing y depuración](week-12-calidad_testing_y_depuracion/README.md) | ✅ |
+| [13](week-13-procesos_y_concurrencia/README.md) | [Procesos y concurrencia](week-13-procesos_y_concurrencia/README.md) | ✅ |
 
 ### Fase 4 — Producción (S14, 12 h)
 
 | Semana | Tema | Estado |
 |:--:|---|:--:|
-| [14](week-14-proyecto_integrador/README.md) | Proyecto integrador: backup de PostgreSQL en Docker | ✅ |
+| [14](week-14-proyecto_integrador/README.md) | [Proyecto integrador: backup de PostgreSQL en Docker](week-14-proyecto_integrador/README.md) | ✅ |
 
 ---
 
